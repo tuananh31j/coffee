@@ -183,3 +183,7 @@
     width: 100%;
     color: #b5313a;
 }
+
+.main-product-items {
+    gap: 20px;
+}
