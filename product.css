@@ -171,8 +171,8 @@
 
 .main-product-sale {
     position: relative;
-    top: -266px;
-    left: 10px;
+    top: -194px;
+    left: -74px;
 }
 
 .main-product-btn {
@@ -186,4 +186,31 @@
 
 .main-product-items {
     gap: 20px;
+}
+
+
+/* list danh mục */
+.main-product-list-banner {
+    transform: rotate(90deg) scaleX(2);
+    width: 100%;
+
+}
+
+.main-product-list-banner img {
+    border-radius: 10px;
+    border: 1px solid #b5313a;
+}
+
+.main-product-list-category {
+    background-image: url("img/banneSide2.jpg");
+    border-radius: 10px;
+}
+
+.main-product-list-category-item {
+    background-color: rgba(220, 220, 220, 0.5);
+    color: black;
+    font-weight: 700;
+    margin: 5px 0;
+    width: 100px;
+
 }
