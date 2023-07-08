@@ -65,7 +65,7 @@
 .header-menu ul {
     list-style: none;
     display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-columns: 16.1% 16.1% 16.1% 16.1% 16.1% 16.1%;
     gap: 10px;
     max-width: 1200px;
     margin: 20px auto;
@@ -82,6 +82,20 @@
 .header-banner {
     max-width: 1200px;
     margin: 0 auto;
+
+}
+
+.header-banner-contact {
+    height: 240px;
+
+}
+
+.header-banner-contact {
+    background-color: #b5313a;
+    color: white;
+    display: grid;
+    align-items: center;
+    font-size: 50px;
 }
 
 .header-banner-img {
@@ -202,7 +216,7 @@
 }
 
 .main-product-list-category {
-    background-image: url("img/banneSide2.jpg");
+    border-right: 2px solid #503629;
     border-radius: 10px;
 }
 
@@ -213,4 +227,77 @@
     margin: 5px 0;
     width: 100px;
 
+}
+
+
+.user-list-handle ul {
+    list-style: none;
+    line-height: 2;
+    margin-left: -32px;
+
+}
+
+.user-list-handle ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+}
+
+
+
+.user-title h2 {
+    font-size: 20px;
+}
+
+.user-list-infor ul {
+    list-style: none;
+
+}
+
+.checkout-done-infor-thankyou {
+    display: grid;
+    grid-template-columns: 14% 40%;
+    align-items: center;
+}
+
+.checkout-done-infor-thankyou i {
+    font-size: 80px;
+    color: rgb(157, 193, 104);
+}
+
+.checkout-done {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 80% 8%;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.order-item img {
+    width: 100%;
+
+}
+
+.order-item-count {
+    position: relative;
+    top: -60px;
+
+}
+
+.order-pricing-total,
+.order-pricing-shiping,
+.order-pricing-final {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    gap: 214px;
+}
+
+.cart-products {
+    display: flex;
+    grid-template-columns: auto auto;
 }
