@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="product.css">
-    <link rel="stylesheet" href="logIn.css">
+    <link rel="stylesheet" href="signUp.css">
 </head>
 
 <body>
@@ -95,7 +95,7 @@
                 <!-- đường dẫn -->
                 <div class="header-link">
                     <span><a href="product.html">Trang chủ</a> > </span>
-                    <span><a href="login.html">Login</a></span>
+                    <span><a href="logup.html">Logup</a></span>
                 </div>
 
             </div>
@@ -106,21 +106,25 @@
                     <img src="img/Screenshot 2023-07-08 202142.png" alt="">
                 </div>
                 <div class="abc1">
-                    <h2>Đăng nhập</h2>
+                    <h2>Đăng ký</h2>
                     <form>
-                        <label for="username">Email:</label>
-                        <input type="text" id="username" name="username" placeholder="Nhập đại chỉ Email">
-
-                        <label for="password">Mật khẩu:</label>
-                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-                        <div class="abc2">
-                            <a href="logup.html">Đăng Ký</a>
-                            <a href="#">Quên mật khẩu?</a>
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên:</label>
+                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
                         </div>
-
-                        <input type="submit" value="Đăng nhập">
-                        <p>Highlands Coffee CPG cam kết bảo mật và sẽ không bao giờ đăng </br>
-                            hay chia sẻ thông tin mà chưa có được sự đồng ý của </br> bạn.</p>
+                        <div class="form-group">
+                            <label for="sdt">Số điện thoại:</label>
+                            <input type="text" id="sdt" placeholder="Nhập số điện thoại" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" placeholder="Nhập email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                        </div>
+                        <input type="submit" value="Tạo tài khoản">
                         <hr>
                         <div class="icon">
                             <div class="icon1">
