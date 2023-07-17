@@ -88,17 +88,13 @@
                         <li><a href=""><i class="fa-solid fa-house"></i></a></li>
                         <li><a href="">TRANG CHỦ</a></li>
                         <li><a href="">GIẢM GIÁ</a></li>
-                        <li><a class="header-menu-active" href="">SẢN PHẨM</a></li>
+                        <li><a href="">SẢN PHẨM</a></li>
                         <li><a href="">LIÊN HỆ</a></li>
                         <li><a href="">GIỚI THIỆU</a></li>
                     </ul>
                 </nav>
 
-                <!-- đường dẫn -->
-                <div class="header-link m-0">
-                    <span><a href="">Trang chủ</a> > </span>
-                    <span><a href="" class="text-danger">Sản phẩm</a></span>
-                </div>
+
 
             </div>
 
