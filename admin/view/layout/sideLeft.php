@@ -40,43 +40,43 @@
                                 </div>
                             </li>
                             <!-- điều khiển -->
-                            <a class="text-black fw-bolder" href="">
+                            <a class="text-black fw-bolder" href="index.php">
                                 <li class="mt-4 ">
                                     <i class="fa-solid fa-gauge"></i> Thống kê
                                 </li>
                             </a>
                             <!-- đơn hàng -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=order">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-box"></i> Đơn hàng
                                 </li>
                             </a>
                             <!-- Danh mục -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=category">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-hashtag"></i> Danh mục
                                 </li>
                             </a>
                             <!-- Sản phẩm -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=product">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
                                 </li>
                             </a>
                             <!-- khách hàng -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=customer">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-people-group"></i> Khách hàng
                                 </li>
                             </a>
                             <!-- Bình luận -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=comment">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-comments"></i> Bình luận
                                 </li>
                             </a>
                             <!-- Phản hồi -->
-                            <a class="text-black text-decoration-none" href="">
+                            <a class="text-black text-decoration-none" href="index.php?url=contact">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-envelope"></i> Phản hồi
                                 </li>
