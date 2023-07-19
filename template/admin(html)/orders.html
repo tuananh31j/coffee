@@ -111,144 +111,210 @@
                     </div>
 
 
-                    <!-- item -->
-                    <div class="row p-3 m-3 rounded-2" style="box-shadow: 5px 5px 10px;">
-                        <div class="col">
-                            <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span></p>
-                            <p>Mã đơn: #1111 (<a href="">Chi tiết sản phẩm</a>)</p>
-                            <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
-                            <form action="" method="post">
-                                <!-- id đơn hàng -->
-                                <input type="text" name="maDonHang" value="1111" hidden>
-                                <select name="trangThai" id="" class="p-1 border rounded-2">
-                                    <option value="0">Đang chờ</option>
-                                    <option value="0">Đang giao hàng</option>
-                                    <option value="0">Giao thành công</option>
-                                    <option value="0">Hủy</option>
+                    <!-- list đơn hàng -->
+                    <div>
+                        <div class="row p-3 m-3 rounded-2 align-items-center" style="box-shadow: 5px 5px 10px;">
+                            <div class="col">
+                                <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span>
+                                </p>
+                                <p>Mã đơn: #1111 (<a href="">Chi tiết </a>)</p>
+                                <!-- sản phẩm -->
+                                <div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                </div>
 
-                                </select>
-                                <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
-                                    value="Cập nhật">
-                            </form>
-                        </div>
+                                <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
+                                <form action="" method="post">
+                                    <!-- id đơn hàng -->
+                                    <input type="text" name="maDonHang" value="1111" hidden>
+                                    <select name="trangThai" id="" class="p-1 border rounded-2">
+                                        <option value="0">Đang chờ</option>
+                                        <option value="0">Đang giao hàng</option>
+                                        <option value="0">Giao thành công</option>
+                                        <option value="0">Hủy</option>
 
-                        <div class="col">
-                            <h4 class="text-success">Tổng tiền thanh toán</h4>
-                            <div>
-                                <ul>
-                                    <li>Tạm tính: <span>200000VNĐ</span></li>
-                                    <li>Vận chuyển: <span>20000VNĐ</span></li>
-                                    <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
-                                    <li>Tổng: 180000VNĐ</li>
-                                </ul>
+                                    </select>
+                                    <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
+                                        value="Cập nhật">
+                                </form>
+                            </div>
+
+                            <div class="col">
+                                <h4 class="text-success">Tổng tiền thanh toán</h4>
+                                <div>
+                                    <ul>
+                                        <li>Tạm tính: <span>200000VNĐ</span></li>
+                                        <li>Vận chuyển: <span>20000VNĐ</span></li>
+                                        <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
+                                        <li>Tổng: 180000VNĐ</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- thông tin người mua -->
+                            <div class="col">
+                                <h4 class="text-success">Thông tin người mua</h4>
+                                <div>
+                                    <ul>
+                                        <li>Họ tên: <span>Tuấn Anh</span></li>
+                                        <li>Số điện thoại: <span>0123456789</span></li>
+                                        <li>Email: <span>tuananh@gmail.com</span></li>
+                                        <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- thông tin người mua -->
-                        <div class="col">
-                            <h4 class="text-success">Thông tin người mua</h4>
-                            <div>
-                                <ul>
-                                    <li>Họ tên: <span>Tuấn Anh</span></li>
-                                    <li>Số điện thoại: <span>0123456789</span></li>
-                                    <li>Email: <span>tuananh@gmail.com</span></li>
-                                    <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
-                                </ul>
+                        <div class="row p-3 m-3 rounded-2 align-items-center" style="box-shadow: 5px 5px 10px;">
+                            <div class="col">
+                                <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span>
+                                </p>
+                                <p>Mã đơn: #1111 (<a href="">Chi tiết </a>)</p>
+                                <!-- sản phẩm -->
+                                <div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                </div>
+                                <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
+
+                                <form action="" method="post">
+                                    <!-- id đơn hàng -->
+                                    <input type="text" name="maDonHang" value="1111" hidden>
+                                    <select name="trangThai" id="" class="p-1 border rounded-2">
+                                        <option value="0">Đang chờ</option>
+                                        <option value="0">Đang giao hàng</option>
+                                        <option value="0">Giao thành công</option>
+                                        <option value="0">Hủy</option>
+
+                                    </select>
+                                    <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
+                                        value="Cập nhật">
+                                </form>
+                            </div>
+
+                            <div class="col">
+                                <h4 class="text-success">Tổng tiền thanh toán</h4>
+                                <div>
+                                    <ul>
+                                        <li>Tạm tính: <span>200000VNĐ</span></li>
+                                        <li>Vận chuyển: <span>20000VNĐ</span></li>
+                                        <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
+                                        <li>Tổng: 180000VNĐ</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- thông tin người mua -->
+                            <div class="col">
+                                <h4 class="text-success">Thông tin người mua</h4>
+                                <div>
+                                    <ul>
+                                        <li>Họ tên: <span>Tuấn Anh</span></li>
+                                        <li>Số điện thoại: <span>0123456789</span></li>
+                                        <li>Email: <span>tuananh@gmail.com</span></li>
+                                        <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row p-3 m-3 rounded-2 align-items-center" style="box-shadow: 5px 5px 10px;">
+                            <div class="col">
+                                <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span>
+                                </p>
+                                <p>Mã đơn: #1111 (<a href="">Chi tiết </a>)</p>
+                                <!-- sản phẩm -->
+                                <div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <!-- ảnh sản phẩm -->
+                                        <div class="col">
+                                            <img class="w-75" src="../../public/img/item1.jpg" alt="">
+                                        </div>
+                                        <!-- số lượng sản phẩm -->
+                                        <div class="col">X3</div>
+                                    </div>
+                                </div>
+                                <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
+                                <form action="" method="post">
+                                    <!-- id đơn hàng -->
+                                    <input type="text" name="maDonHang" value="1111" hidden>
+                                    <select name="trangThai" id="" class="p-1 border rounded-2">
+                                        <option value="0">Đang chờ</option>
+                                        <option value="0">Đang giao hàng</option>
+                                        <option value="0">Giao thành công</option>
+                                        <option value="0">Hủy</option>
+
+                                    </select>
+                                    <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
+                                        value="Cập nhật">
+                                </form>
+                            </div>
+
+                            <div class="col">
+                                <h4 class="text-success">Tổng tiền thanh toán</h4>
+                                <div>
+                                    <ul>
+                                        <li>Tạm tính: <span>200000VNĐ</span></li>
+                                        <li>Vận chuyển: <span>20000VNĐ</span></li>
+                                        <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
+                                        <li>Tổng: 180000VNĐ</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- thông tin người mua -->
+                            <div class="col">
+                                <h4 class="text-success">Thông tin người mua</h4>
+                                <div>
+                                    <ul>
+                                        <li>Họ tên: <span>Tuấn Anh</span></li>
+                                        <li>Số điện thoại: <span>0123456789</span></li>
+                                        <li>Email: <span>tuananh@gmail.com</span></li>
+                                        <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row p-3 m-3 rounded-2" style="box-shadow: 5px 5px 10px;">
-                        <div class="col">
-                            <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span></p>
-                            <p>Mã đơn: #1111 (<a href="">Chi tiết sản phẩm</a>)</p>
-                            <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
-                            <form action="" method="post">
-                                <!-- id đơn hàng -->
-                                <input type="text" name="maDonHang" value="1111" hidden>
-                                <select name="trangThai" id="" class="p-1 border rounded-2">
-                                    <option value="0">Đang chờ</option>
-                                    <option value="0">Đang giao hàng</option>
-                                    <option value="0">Giao thành công</option>
-                                    <option value="0">Hủy</option>
 
-                                </select>
-                                <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
-                                    value="Cập nhật">
-                            </form>
-                        </div>
-
-                        <div class="col">
-                            <h4 class="text-success">Tổng tiền thanh toán</h4>
-                            <div>
-                                <ul>
-                                    <li>Tạm tính: <span>200000VNĐ</span></li>
-                                    <li>Vận chuyển: <span>20000VNĐ</span></li>
-                                    <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
-                                    <li>Tổng: 180000VNĐ</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- thông tin người mua -->
-                        <div class="col">
-                            <h4 class="text-success">Thông tin người mua</h4>
-                            <div>
-                                <ul>
-                                    <li>Họ tên: <span>Tuấn Anh</span></li>
-                                    <li>Số điện thoại: <span>0123456789</span></li>
-                                    <li>Email: <span>tuananh@gmail.com</span></li>
-                                    <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row p-3 m-3 rounded-2" style="box-shadow: 5px 5px 10px;">
-                        <div class="col">
-                            <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span>2023/07/07</span></p>
-                            <p>Mã đơn: #1111 (<a href="">Chi tiết sản phẩm</a>)</p>
-                            <p>Trạng thái: <span class="text-info">Đang chờ</span></p>
-                            <form action="" method="post">
-                                <!-- id đơn hàng -->
-                                <input type="text" name="maDonHang" value="1111" hidden>
-                                <select name="trangThai" id="" class="p-1 border rounded-2">
-                                    <option value="0">Đang chờ</option>
-                                    <option value="0">Đang giao hàng</option>
-                                    <option value="0">Giao thành công</option>
-                                    <option value="0">Hủy</option>
-
-                                </select>
-                                <input type="submit" name="btn-submit" class="btn border-0 p-1 bg-black text-light"
-                                    value="Cập nhật">
-                            </form>
-                        </div>
-
-                        <div class="col">
-                            <h4 class="text-success">Tổng tiền thanh toán</h4>
-                            <div>
-                                <ul>
-                                    <li>Tạm tính: <span>200000VNĐ</span></li>
-                                    <li>Vận chuyển: <span>20000VNĐ</span></li>
-                                    <li>Giảm giá: <span>20% <span>(mã: #1111)</span></span></li>
-                                    <li>Tổng: 180000VNĐ</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- thông tin người mua -->
-                        <div class="col">
-                            <h4 class="text-success">Thông tin người mua</h4>
-                            <div>
-                                <ul>
-                                    <li>Họ tên: <span>Tuấn Anh</span></li>
-                                    <li>Số điện thoại: <span>0123456789</span></li>
-                                    <li>Email: <span>tuananh@gmail.com</span></li>
-                                    <li>Địa chỉ: <span>Hà Nội, Quốc Oai, Tân Hòa</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
