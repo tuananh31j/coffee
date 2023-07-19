@@ -1,3 +1,14 @@
+đẩy code
+- git add .
+- git commit -m "adsad"
+- git push
+  git push origin hieu/test
 
-hahahaha
+tạo nhánh
+- check nhánh: git branch -a
+- git checkout -b "tên nhánh mới"
+- chuyển nhánh: git checkout develop
+
+kéo code
+git pull
 
