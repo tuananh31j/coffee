@@ -1,0 +1,275 @@
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 20px;
+}
+
+.carousel-item p {
+    margin: 0;
+    padding: 2px;
+    font-weight: 700;
+}
+
+#carouselExampleInterval {
+    background-color: #503629;
+    color: white;
+}
+
+.header-logo-img {
+
+    margin-top: 0;
+    justify-content: center;
+    gap: 260px;
+
+}
+
+.header-logo {
+    background-color: #b5313a;
+}
+
+.header-logo-search {
+    gap: 200px;
+
+}
+
+.header-logo-search-input {
+    margin-right: -10px;
+    width: 400px;
+}
+
+.header-logo-search-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 4px;
+
+}
+
+.header-count-cart {
+    color: yellow;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 1000px;
+    padding: 4px;
+    font-size: 10px;
+    position: relative;
+    bottom: 10px;
+    width: 16px;
+}
+
+.nav-item {
+    border-left: 0.1px solid #bd464e;
+    padding: 0 10px;
+}
+
+
+.header-menu ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 8px;
+    justify-content: center;
+}
+
+.header-menu ul li a {
+    text-decoration: none;
+    color: #b5313a;
+    font-weight: bold;
+}
+
+.header-banner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-banner-img {
+    width: 100%;
+}
+
+.header-link {
+    margin: 14px 0 14px 32px;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: #505050;
+}
+
+
+/* active cho menu */
+.header-menu-active {
+    background-color: #b5313a;
+    padding: 10px;
+    border-radius: 30px;
+    color: white !important;
+}
+
+
+
+/* footer */
+.footer {
+    display: grid;
+    grid-template-columns: 20% 20% auto auto;
+    gap: 120px;
+    max-width: 1200px;
+    margin: 30px auto;
+    border-top: 1px solid #dadcdf;
+    padding-top: 20px;
+    justify-content: center;
+
+}
+
+.footer-contact {
+    display: grid;
+    grid-template-columns: 20% auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-contact-icon {
+    font-size: 34px;
+}
+
+.footer h3 {
+    font-size: 15px;
+}
+
+.footer h2 {
+    font-size: 20px;
+}
+
+.footer-menu ul {
+    list-style: none;
+    line-height: 40px;
+    margin-left: -33px;
+}
+
+.footer-menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* New-product-title */
+.new-product {
+    width: 1120px;
+    height: 50px;
+    background-color:#FFDECF;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.new-product h4 {
+    line-height: 50px;
+    padding-left: 20px;
+    color: #b5313a;
+    font-weight: 700;
+}
+
+.new-product button {
+    background: #b5313a;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 20px;
+    border: none;
+}
+
+.new-product button a {
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+
+}
+
+/*Main-content */
+.main-content {
+    margin-top: 48px;
+    
+}
+
+.main-content .container .row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 30px;
+    width: 1120px;
+    margin: auto;
+}
+
+.main-content .container .row {
+    margin-bottom: 30px;
+}
+
+
+.main-content main .product img {
+    width: 100%;
+}
+
+.product .product-name h4 a {
+    font-size: 14px;
+    margin-top: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.product .product-name h4 a:hover {
+    color: #b5313a;
+}
+
+.product .price span {
+    color: #b5313a;
+    font-size: 20px;
+}
+
+.product del {
+    font-size: 13px;
+    color: gray;
+}
+
+.product .btn-cart a  {
+    display: block;
+}
+
+.main-product-btn {
+    width: 100%;
+    margin-top: 10px;
+    color: #b5313a;
+    background-color: white;
+    height: 30px;
+    border-radius: 5px;
+    border: #b5313a solid 1px;
+}
+
+.main-product-btn:hover {
+    background-color: #b5313a;
+    color: white;
+}
+
+.text-center {
+    margin: auto;
+    margin-top: 64px;
+}
+
+.text-center a button {
+    width: 658px;
+    border-radius: 5pc;
+    height:50.8px;
+    background: #b5313a;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    border: none;
+}
+
+.product-title {
+    text-align: center;
+}
+
+.menu-icon {
+    display: flex;
+    margin: auto;
+}
