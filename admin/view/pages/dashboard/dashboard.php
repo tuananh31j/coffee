@@ -161,7 +161,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Doanh thu tháng này(VNĐ)'
+                    text: 'Doanh thu(VNĐ)'
                 },
                 legend: {
                     display: false
@@ -235,7 +235,7 @@
         }
 
     });
-    // số lượng sản phẩm theo danh mục
+    // số lượng đơn hàng theo danh mục
     const category = document.getElementById('category');
 
     let barCategory = new Chart(category, {
@@ -264,7 +264,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Thống kê sản phẩm theo danh mục',
+                    text: 'Thống kê đơn hàng theo danh mục',
 
                 },
                 legend: {
