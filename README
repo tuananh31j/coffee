@@ -11,3 +11,5 @@ tạo nhánh
 - git checkout -b "tên nhánh mới"
 - chuyển nhánh: git checkout develop
 
+kéo code
+git pull
