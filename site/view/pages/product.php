@@ -60,20 +60,20 @@
 
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
+                            <?php
+                            foreach($categorys as $item){
+                            ?>
+                            <a class="text-decoration-none" href=""><button
+                                    class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
+                                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
+                                    aria-controls="v-pills-profile"
+                                    aria-selected="false"><?=$item['name']?></button></a>
 
-                            <a class="text-decoration-none" href=""><button
-                                    class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
-                                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
-                                    aria-controls="v-pills-profile" aria-selected="false">Cà
-                                    phê</button></a>
-                            <a class="text-decoration-none" href=""><button
-                                    class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
-                                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
-                                    aria-controls="v-pills-profile" aria-selected="false">Trà</button></a>
-                            <a class="text-decoration-none" href=""><button
-                                    class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
-                                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
-                                    aria-controls="v-pills-profile" aria-selected="false">Chè</button></a>
+                            <?php
+                            }
+                            ?>
+
+
 
                         </div>
 
@@ -83,266 +83,41 @@
 
                 <!-- list product -->
                 <div class="container text-center col">
-                    <!-- item 1 -->
-                    <div class="row">
+
+                    <!-- item -->
+                    <div class="row row-cols-4">
+                        <?php foreach($products as $item) { ?>
                         <div class="col mb-4">
                             <div class="card ">
                                 <img src="img/item1.jpg" class="card-img-top" alt="...">
                                 <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
+                                        class="bg-danger p-1 d-inline text-light"><?=$item['sale']?>%</span>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
+                                    <!-- tên -->
+                                    <h5 class="card-title h-50"><?=$item['name']?>
                                     </h5>
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
+                                    <!-- giá -->
+                                    <p class="card-text text-warning">
+                                        <?php echo $item['price'] - ($item['price']*($item['sale']/100))?>VND
+                                        <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
+                                        <span
+                                            class="main-product-price-old text-decoration-line-through text-secondary"><?=$item['price']?>VND</span>
+                                        <?php } ?>
                                     </p>
                                     <button class="main-product-btn">Thêm vào giỏ hàng</button>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
+                                    <small class="text-body-secondary"><?=$item['create_at']?></small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item2.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
+                        <?php } ?>
 
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item3.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item5.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <!-- item 2 -->
-                    <div class="row">
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item6.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
 
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item7.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
 
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item9.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card">
-                                <img src="img/item10.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- item 3 -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <img src="img/item11.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="img/item11.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="img/item11.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="img/item11.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light">12%</span>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title h-50">Thùng 24 Lon Cà Phê Sữa Highlands Coffee
-                                        235ml/lon
-                                    </h5>
-
-                                    <p class="card-text text-warning">234000VND <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                                    </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">28/06/2023</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- more product -->
                     <div class="d-flex justify-content-center mt-4">
@@ -353,9 +128,12 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="index.php?url=product">1</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=2">2</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=3">3</a>
+                                </li>
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
