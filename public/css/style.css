@@ -27,7 +27,7 @@
 }
 
 .header-logo-search {
-    gap: 200px;
+    gap: 40px;
 
 }
 
@@ -52,7 +52,7 @@
     padding: 4px;
     font-size: 10px;
     position: relative;
-    bottom: 10px;
+    bottom: 20px;
     width: 16px;
 }
 

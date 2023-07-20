@@ -47,7 +47,8 @@
                 <nav class=" navbar navbar-expand-lg ">
 
                     <div class="container  header-logo-img">
-                        <a class="navbar-brand" href="#"><img src="img/logo 1.svg" alt=""></a>
+                        <!-- logo -->
+                        <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -62,18 +63,36 @@
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                             <ul class="navbar-nav  mb-2 mb-lg-0">
-                                <!-- người dùng -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="login.html"><i
-                                            class="fa-regular fa-user"></i></a>
-                                </li>
-                                <!-- giỏ hàng -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="cart.html"><i
+                                <?php if(!isset($_SESSION['user'])){ ?>
+                                <li class="nav-item d-flex gap-4 align-items-center">
+                                    <!-- login -->
+                                    <a class="p-2 text-decoration-none rounded-2 bg-danger text-light nav-link active"
+                                        aria-current="page" href="index.php?url=login">Đăng
+                                        nhập</a>
+                                    <!-- đăng ký -->
+                                    <a class="p-2 text-decoration-none rounded-2 bg-info text-black "
+                                        href="index.php?url=signup">Đăng
+                                        ký</a>
+                                    <!-- giỏ hàng -->
+                                    <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
                                             class="header-count-cart">2</span></a>
                                 </li>
+                                <?php }else{ ?>
 
+
+                                <li class="nav-item d-flex align-items-center gap-4">
+                                    <!-- người dùng -->
+                                    <a class="nav-link active d-flex align-items-center " aria-current="page"
+                                        href="index.php?url=account"><i class="text-light fs-6">Xin
+                                            chào! <span>tuấn anh</span></i><img class="w-25 rounded-circle"
+                                            style="height: 35px; object-fit:cover" src="<?=$IMAGE?>/mm.png" alt=""></a>
+                                    <!-- giỏ hàng -->
+                                    <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
+                                            class="fa-solid fa-cart-shopping"></i><span
+                                            class="header-count-cart">2</span></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -88,7 +107,7 @@
                         <li><a href=""><i class="fa-solid fa-house"></i></a></li>
                         <li><a href="">TRANG CHỦ</a></li>
                         <li><a href="">GIẢM GIÁ</a></li>
-                        <li><a href="">SẢN PHẨM</a></li>
+                        <li><a href="index.php?url=product">SẢN PHẨM</a></li>
                         <li><a href="">LIÊN HỆ</a></li>
                         <li><a href="">GIỚI THIỆU</a></li>
                     </ul>
