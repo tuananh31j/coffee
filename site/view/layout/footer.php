@@ -97,31 +97,40 @@
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script>
-// Lấy thẻ input và giá trị ban đầu của số lượng
-const quantityInput = document.getElementById('quantity');
-let quantity = parseInt(quantityInput.value);
+// Lấy tất cả các phần tử có class "quantity"
+const quantityInputs = document.querySelectorAll('.quantity');
+
+// Thêm sự kiện tăng giảm số lượng cho từng phần tử
+quantityInputs.forEach(input => {
+    input.nextElementSibling.addEventListener('click', function() {
+        increaseQuantity(input);
+    });
+
+    input.previousElementSibling.addEventListener('click', function() {
+        decreaseQuantity(input);
+    });
+});
 
 // Hàm tăng số lượng
-function increaseQuantity() {
+function increaseQuantity(input) {
+    let quantity = parseInt(input.value);
     quantity += 1;
-    updateQuantity();
+    updateQuantity(input, quantity);
 }
 
 // Hàm giảm số lượng, đảm bảo số lượng không âm
-function decreaseQuantity() {
+function decreaseQuantity(input) {
+    let quantity = parseInt(input.value);
     if (quantity > 1) {
         quantity -= 1;
-        updateQuantity();
+        updateQuantity(input, quantity);
     }
 }
 
 // Hàm cập nhật số lượng vào thẻ input
-function updateQuantity() {
-    quantityInput.value = quantity;
+function updateQuantity(input, quantity) {
+    input.value = quantity;
 }
-
-// Cập nhật số lượng ban đầu
-updateQuantity();
 
 
 var splide = new Splide('.splide', {

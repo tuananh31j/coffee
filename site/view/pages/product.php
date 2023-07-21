@@ -23,12 +23,24 @@
                     sắp xếp mặc định
                 </button>
                 <ul class="dropdown-menu">
-
-                    <li><a class="dropdown-item" href="#">A -> Z</a></li>
-                    <li><a class="dropdown-item" href="#">Giá tăng dần</a></li>
-                    <li><a class="dropdown-item" href="#">Giá giảm dần</a></li>
-                    <li><a class="dropdown-item" href="#">Hàng mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Hàng cũ nhất</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=az">A
+                            -> Z</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=za">Z
+                            -> A</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=priceup">Giá
+                            tăng dần</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=pricedown">Giá
+                            giảm dần</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=new">Hàng
+                            mới nhất</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=old">Hàng
+                            cũ nhất</a></li>
                 </ul>
             </div>
 
@@ -63,7 +75,8 @@
                             <?php
                             foreach($categorys as $item){
                             ?>
-                            <a class="text-decoration-none" href=""><button
+                            <a class="text-decoration-none"
+                                href="index.php?url=product&category=<?=$item['category_id']?>"><button
                                     class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
                                     data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
                                     aria-controls="v-pills-profile"
@@ -87,11 +100,12 @@
                     <!-- item -->
                     <div class="row row-cols-4">
                         <?php
-
+                        $index = 0;
                          foreach($products as $item) {
                             $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
                             $custumPriceOld = number_format($item['price'], 0, ",", ".");
                             $custumPriceNew = number_format($priceNew, 0, ",", ".");
+                            $index++;
                              ?>
                         <!-- item child -->
                         <div class="col mb-4">
@@ -122,14 +136,23 @@
                                         <?php } ?>
                                     </p>
                                     <button type="button" class="btn border-danger text-danger cart-btn"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm vào giỏ hàng</button>
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $index?>">Thêm
+                                        vào giỏ hàng</button>
                                     <!-- form thêm vào giỏ hàng -->
-                                    <form class="" action="" method="post">
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    <form class="" action="index.php?url=order" method="post">
+                                        <div hidden>
+                                            <input type="hidden" name="product_id" value="<?=$item['product_id']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['name']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['image_url']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['price']?>">
+
+                                        </div>
+                                        <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
+                                                        <!-- tên sản phẩm -->
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">
                                                             <?=$item['name']?></h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -147,7 +170,8 @@
                                                                     <div class="card-body">
 
                                                                         <p class="card-text text-danger fw-bold">
-                                                                            <?php echo $custumPriceNew?> đ
+                                                                            <?php echo $custumPriceNew?> <span
+                                                                                style="text-decoration:underline;">đ</span>
                                                                             <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
                                                                             <span
                                                                                 class="main-product-price-old text-decoration-line-through text-secondary"
@@ -166,22 +190,25 @@
                                                                                 aria-label="Basic radio toggle button group">
 
                                                                                 <input type="radio" class="btn-check"
-                                                                                    name="btnradio" id="btnradio1"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio1<?=$index?>"
                                                                                     autocomplete="off" checked>
                                                                                 <label class="btn btn-outline-primary"
-                                                                                    for="btnradio1">S</label>
+                                                                                    for="btnradio1<?=$index?>">S</label>
 
                                                                                 <input type="radio" class="btn-check"
-                                                                                    name="btnradio" id="btnradio2"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio2<?=$index?>"
                                                                                     autocomplete="off">
                                                                                 <label class="btn btn-outline-primary"
-                                                                                    for="btnradio2">M</label>
+                                                                                    for="btnradio2<?=$index?>">M</label>
 
                                                                                 <input type="radio" class="btn-check"
-                                                                                    name="btnradio" id="btnradio3"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio3<?=$index?>"
                                                                                     autocomplete="off">
                                                                                 <label class="btn btn-outline-primary"
-                                                                                    for="btnradio3">L</label>
+                                                                                    for="btnradio3<?=$index?>">L</label>
                                                                             </div>
 
                                                                         </div>
@@ -196,17 +223,15 @@
                                                                             <div class="d-flex">
 
                                                                                 <button type="button"
-                                                                                    class="border-info rounded-2"
-                                                                                    onclick="decreaseQuantity()">
+                                                                                    class="border-info rounded-2">
                                                                                     <i class="fa-solid fa-minus"></i>
                                                                                 </button>
                                                                                 <input
-                                                                                    class="border-secondary mx-2 rounded-2 p-1 ps-2"
+                                                                                    class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
                                                                                     style="width: 30px;" type="text"
-                                                                                    id="quantity" value="1">
+                                                                                    id="quantity-<?=$index?>" value="1">
                                                                                 <button type="button"
-                                                                                    class="border-danger rounded-2"
-                                                                                    onclick="increaseQuantity()">
+                                                                                    class="border-danger rounded-2">
                                                                                     <i class="fa-solid fa-plus"></i>
                                                                                 </button>
                                                                             </div>
@@ -219,18 +244,19 @@
                                                     <div class="modal-footer">
                                                         <!-- <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button> -->
-                                                        <button type="submit" class="btn btn-primary">Thêm vào
+                                                        <button type="submit" name="btn-addCart"
+                                                            class="btn btn-primary">Thêm vào
                                                             giỏ</button>
-                                                        <button type="submit" class="btn btn-danger">Đặt ngay</button>
+                                                        <button type="submit" name="btn-payOrder"
+                                                            class="btn btn-danger">Đặt
+                                                            ngay</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <Script>
 
-                                </Script>
                             </div>
                         </div>
                         <?php } ?>
@@ -244,22 +270,28 @@
                     <div class="d-flex justify-content-center mt-4">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
+                                <li class="page-item"><a class="page-link border-danger"
+                                        href="index.php?url=product">1</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product">1</a>
+                                <?php
+                               
+                                $count = 1;
+                                $page = 1;
+                                for($i = 0; $i < sizeof($allPro); $i++ ){
+                                    $count++;
+                                    
+                                    if($count == 12) {
+                                        $page +=1;
+                                        $count = 0;
+
+                                ?>
+                                <li class="page-item "><a class="page-link border-danger"
+                                        href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&pagenum=<?=$page?>&category=<?php echo isset($category)?$category:0?>&pagenum=<?=$page?>"><?=$page?></a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=2">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=3">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
+                                <?php }} ?>
+
+
+
                             </ul>
                         </nav>
                     </div>

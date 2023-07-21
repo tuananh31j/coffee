@@ -16,13 +16,55 @@ if(isset($_GET['url'])) {
     case 'product':
         // danh sách danh mục
         $categorys = getListCategory();
-        $products = getListProduct(0);
+        $allPro = getProducts();
+        
+        $sortStyle = "asc";
+        $sortType = "name";
+        $products = getListProduct(0,$sortType, $sortStyle);
+        // lấy ra sản phẩm cho mỗi trang
         if(isset($_GET['pagenum'])) {
             
             $pageNumber = $_GET['pagenum'];
             $offset= ($pageNumber - 1) * 12;
-            $products = getListProduct($offset);
+            $products = getListProduct($offset,$sortType, $sortStyle);
+            if(isset($_GET['category']) && $_GET['category'] != 0) {
+                $category = $_GET['category'];
+                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle);
+            }
         }
+        if(isset($_GET['category'])) {
+            $category = $_GET['category'];
+            $allPro = getProductsByCate($category,$sortType, $sortStyle);
+            
+        }
+
+        //sắp xêp sản phẩm
+        if(isset($_GET['sort']) && $_GET['sort'] != 0) {
+            $sort = $_GET['sort'];
+            if($sort == 'az'){
+                $sortStyle = "asc";
+            }
+            if($sort == 'za'){
+                $sortStyle = "desc";
+            }
+            if($sort == 'priceup'){
+                $sortType = "price";
+            }
+            if($sort == 'pricedown'){
+                $sortStyle = "desc";
+                $sortType = 'price';
+            }
+            if($sort == 'new'){
+                $sortType = "product.product_id";
+                $sortStyle = "desc";
+            }
+            if($sort == 'old'){
+                $sortType = "product.product_id";
+                $sortStyle = "asc";
+            }
+        }
+
+        
         
         require_once "view/pages/product.php";
         break;
