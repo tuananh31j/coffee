@@ -1,843 +1,924 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/du-an-1-nhom7/public/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="/du-an-1-nhom7/public/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+  </head>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+  <body>
+    <div class="container-fuild">
+      <!-- HEADER -->
 
-</head>
-
-<body>
-  <div class="container-fuild">
-    <!-- HEADER -->
-
-    <header class="">
-      <!-- slide text -->
-      <div id="carouselExampleInterval" class="carousel slide text-center" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="2000">
-            <p class="text-lg-center">UỐNG HIGNLAND COFFEE TẠI NHÀ!</p>
-          </div>
-          <div class="carousel-item" data-bs-interval="4000">
-            <p class="text-lg-center">GIAO HÀNG TOÀN QUỐC</p>
-          </div>
-          <div class="carousel-item" data-bs-interval="7000">
-            <p class="text-lg-center">UỐNG LÀ NGHIỀN</p>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="prev">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="next">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-      <!-- header-logo -->
-      <div class="header-logo">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container header-logo-img">
-            <a class="navbar-brand" href="#"><img src="../../public/img/logo 1.svg" alt="" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
-              <form class="d-flex header-logo-search-form" role="search">
-                <input class="form-control header-logo-search-input" type="search" placeholder="Tìm kiếm sản phẩm..."
-                  aria-label="Search" />
-                <button class="header-logo-search-btn" type="submit">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
-              <ul class="navbar-nav mb-2 mb-lg-0">
-                <!-- người dùng -->
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="login.html"><i
-                      class="fa-regular fa-user"></i></a>
-                </li>
-                <!-- giỏ hàng -->
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="cart.html"><i
-                      class="fa-solid fa-cart-shopping"></i><span class="header-count-cart">2</span></a>
-                </li>
-              </ul>
+      <header class="">
+        <!-- slide text -->
+        <div
+          id="carouselExampleInterval"
+          class="carousel slide text-center"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2000">
+              <p class="text-lg-center">UỐNG HIGNLAND COFFEE TẠI NHÀ!</p>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <p class="text-lg-center">GIAO HÀNG TOÀN QUỐC</p>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <p class="text-lg-center">UỐNG LÀ NGHIỀN</p>
             </div>
           </div>
-        </nav>
-      </div>
-      <!-- menu -->
-      <div class="container">
-        <nav class="header-menu">
-          <ul>
-            <li>
-              <a href=""><i class="fa-solid fa-house"></i></a>
-            </li>
-            <li><a href="">TRANG CHỦ</a></li>
-            <li><a href="">GIẢM GIÁ</a></li>
-            <li><a class="header-menu-active" href="">SẢN PHẨM</a></li>
-            <li><a href="">LIÊN HỆ</a></li>
-            <li><a href="">GIỚI THIỆU</a></li>
-          </ul>
-        </nav>
-
-        <!-- đường dẫn -->
-        <div class="header-link m-0">
-          <span><a href="">Trang chủ</a> > </span>
-          <span><a href="" class="text-danger">Chi tiết sản phẩm</a></span>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
-        <!-- <div class="header-banner">
+        <!-- header-logo -->
+        <div class="navbar-header">
+          <div class="navbar-logo">
+            <div class="navbar-logo-menu">
+              <i class="fa-solid fa-bars"></i>
+              MENU
+            </div>
             <img
-              src="../../public/img/bannerSP.jpg"
+              width="110px"
+              height="73px"
+              src="../../public/img/logo 1.svg"
               alt=""
-              class="header-banner-img"
             />
-          </div> -->
-      </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-      <style>
-        * {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-          font-family: sans-serif;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
-
-        .container-slider {
-          margin: 50px auto;
-          height: 80%;
-
-          display: flex;
-        }
-
-        .main {
-          position: relative;
-          height: 513px;
-        }
-
-        .control {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 30px;
-          color: rgb(134, 55, 55);
-          cursor: pointer;
-          text-shadow: 0 0 5px grey;
-        }
-
-        .prev {
-          left: 20px;
-        }
-
-        .next {
-          right: 20px;
-        }
-
-        .img-wrap {
-          width: 100%;
-          height: 100%;
-        }
-
-
-
-        .list-img div {
-          cursor: pointer;
-          padding: 2px;
-          margin-bottom: 20px;
-          margin-right: 40px;
-          background-color: #bbb;
-        }
-
-        .list-img div img {
-          width: 80px;
-          height: 80px;
-        }
-
-        .img-wrap {
-          width: 455px;
-          height: 455px;
-
-          box-shadow: 0 0 10px #bbb;
-        }
-
-        .list-img div.active {
-          background-color: rgb(220, 86, 86);
-        }
-
-        .container-flex {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .content-right {
-          width: 620px;
-        }
-
-        .content-right h2 {
-          margin-top: 45px;
-          font-size: 28px;
-        }
-
-        .content-right-brand {
-          display: flex;
-          justify-content: space-between;
-          color: grey;
-          font-size: 18px;
-        }
-
-        .cost {
-          color: red;
-          font-size: 33px;
-        }
-
-        .content-right-price {
-          display: flex;
-          gap: 30px;
-          color: grey;
-          font-size: 18px;
-        }
-
-        .content-right-add {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .content-right-add-left {
-          display: flex;
-          align-items: center;
-          width: 150px;
-        }
-
-        .content-right-add-left button {
-          width: 50px;
-          height: 50px;
-          border: none;
-        }
-
-        .content-right-add-left input {
-          width: 50px;
-          height: 50px;
-          border: none;
-          outline: none;
-          padding-left: 19px;
-          font-size: 20px;
-          background: #f0f0f0;
-        }
-
-        .content-right-add-right button {
-          width: 385px;
-          height: 50px;
-          border: none;
-          font-size: 17px;
-          color: white;
-          background: red;
-        }
-
-        .content-right-whitlist {
-          display: flex;
-          color: red;
-          align-items: center;
-          font-size: 20px;
-          margin: 15px 0;
-        }
-
-        .content-right-whitlist p {
-          margin-bottom: 0 !important;
-        }
-
-        .content-right-whitlist i {
-          font-size: 25px;
-        }
-
-        .content-right-suppost {
-          cursor: pointer;
-
-          max-height: 40px;
-          overflow: hidden;
-          transition: all 0.5s;
-        }
-
-        .content-right-suppost-flex {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .content-right-suppost-flex:hover p {
-          color: red;
-        }
-
-        .content-right-suppost-flex p {
-          font-weight: 700;
-        }
-
-        .content-right-suppost-flex {
-          transition: all 0.5s;
-        }
-
-        .content-right-suppost button {
-          border: none;
-          background: red;
-          width: 180px;
-          height: 36px;
-          color: white;
-        }
-
-        .toggle {
-          max-height: 1000px;
-        }
-
-        .footer-about img {
-          width: 74px !important;
-          height: 56px !important;
-        }
-
-        .productrelate-title {
-          margin: 40px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 30px;
-        }
-
-        .line {
-          width: 400px;
-          height: 1px;
-          background-color: grey;
-        }
-
-        .tns-outer {
-          position: relative;
-        }
-
-        .tns-controls {
-          width: 110%;
-          position: absolute;
-          top: 50%;
-          left: -5%;
-          z-index: 10;
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .tns-controls button {
-          width: 60px;
-          height: 30px;
-
-          border: none;
-        }
-
-        .tns-nav {
-          display: none;
-        }
-
-        .rotate {
-          transform: rotate(180deg);
-          transition: all 0.5s;
-        }
-      </style>
-      <div class="container">
-        <div class="container-flex">
-          <div class="content-left">
-            <div class="container-slider">
-              <div class="list-img">
-                <div>
-                  <img src="../../public/img/item1.jpg" alt="" />
-                </div>
-                <div>
-                  <img src="../../public/img/item3.jpg" alt="" />
-                </div>
-                <div>
-                  <img src="../../public/img/item4.jpg" alt="" />
-                </div>
-                <div>
-                  <img src="../../public/img/item5.jpg" alt="" />
-                </div>
-              </div>
-              <div class="main">
-                <span class="control prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </span>
-                <span class="control next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </span>
-                <div class="img-wrap">
-                  <img src="img1.jpeg" alt="" />
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="content-right">
-            <h2>
-              [TẶNG TÚI HIGHLANDS COFFEE-màu ngẫu nhiên] Cà Phê Bột Truyền
-              Thống Highlands Coffee 1KG
-            </h2>
-            <div class="content-right-brand">
-              <p>Thương hiệu: Highlands Coffee</p>
-              <p>Mã sản phẩm: PVN12</p>
-            </div>
-            <hr />
-            <p class="cost">295.000₫</p>
-            <div class="content-right-price">
-              <p>Giá thị trường: <del>504.000₫</del></p>
-              <p>Tiết kiệm: 209.000₫</p>
-            </div>
-            <hr />
-            <div class="content-right-add">
-              <div class="content-right-add-left">
-                <button class="minus">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-                <input class="value" type="text" value="1" />
-                <button class="plus"><i class="fa-solid fa-plus"></i></button>
-              </div>
-              <div class="content-right-add-right">
-                <button>THÊM VÀO GIỎ</button>
-              </div>
-            </div>
-            <div class="content-right-whitlist">
-              <i class="fa-regular fa-heart"></i>
-              <p>Yêu thích sản phẩm</p>
-            </div>
-            <div class="content-right-suppost">
-              <div class="content-right-suppost-flex">
-                <p>MÔ TẢ SẢN PHẨM</p>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-              <div class="description">
-                Nội dung chương trình: Mua 01 bịch cà phê truyền thống
-                Highlands Coffee 1kg, tặng 1 Túi chịu nhiệt Highlands Coffee
-                trị giá 209,000vnđ. <br />
-                Thời gian khuyến mãi: đến hết 31/07/2023. Lưu ý: <br />
-                <br />
-                Khuyến mãi chỉ áp dụng khi mua hàng online, không áp dụng tại
-                cửa hàng Highlands Coffee. <br />
-                Hàng tặng kèm với màu sắc ngẫu nhiên (gồm màu đỏ hoặc màu
-                đen), được gửi tặng ngẫu nhiên, bạn vui lòng nhận ngẫu nhiên
-                nhé Chương trình có thể kết thúc sớm khi hết sản phẩm quà
-                tặng. <br />
-                THÔNG TIN SẢN PHẨM: <br />
-                Những hạt cà phê thượng hạng trồng ở vùng cao nguyên của Việt
-                Nam được rang xay và phối trộn theo công thức độc đáo tại
-                Highlands Coffee. Dòng sản phẩm Cà Phê Bột Truyền Thống
-                Highlands Coffee là sự kết hợp hài hòa giữa 2 loại hạt cà phê
-                Arabica và Robusta. Highlands Coffee <br />
-                mong muốn đưa vị cà phê Truyền Thống tại chuỗi cửa hàng đến
-                gần hơn với gia đình Việt trên mọi miền đất nước, thưởng thức
-                ngay tại nhà. <br />Là sản phẩm đặc sản để pha chế café Sữa
-                Đá, Café Đá tại hệ thống Highlands Coffee. <br />Thức dậy mỗi
-                ngày cùng một tách cà phê Truyền Thống Highlands Coffee đậm
-                đà, mạnh mẽ khi bạn không có thời gian tới quán! Tỉ lệ: 80%
-                Robusta – 20% Arabica  Cà phê Bột Truyền Thống Highlands
-                Coffee được đóng gói tiện lợi cho việc sử dụng và bảo quản.
-                Không chỉ dùng trong gia đình, với bao bì lịch sự còn thích
-                hợp làm quà tặng ý nghĩa dành cho người thân, bạn bè và đồng
-                nghiệp.  <br />Hướng dẫn sử dụng:  <br />Cho 20 gram Cà phê
-                Bột Truyền Thống Highlands Coffee vào phin.  <br />Dùng nước
-                tinh khiết đun nóng. Châm 30ml vào phin và đợi 2 phút rồi rót
-                thêm 40ml nước để có ly cà phê thành phẩm.  <br />Cho thêm đá,
-                đường hoặc sữa đặc theo khẩu vị mong muốn. <br />
-                Thương hiệu: Highlands Coffee Xuất xứ thương hiệu: Việt Nam
-              </div>
-            </div>
-            <div class="content-right-suppost">
-              <div class="content-right-suppost-flex">
-                <p>GIAO HÀNG TOÀN QUỐC</p>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-              <div class="decription">
-                1. Thanh toán trực tiếp tại cửa hàng: <br />
-
-                Thanh toán bằng tiền mặt hoặc bằng các loại thẻ thanh toán thẻ
-                ghi nợ được chấp nhận theo quy định pháp luật hiện hành.<br />
-
-                2. Thanh toán khi mua hàng online qua website và ứng dụng của
-                NUTY:<br />
-
-                Thanh toán bằng tiền mặt khi nhận hàng (COD).<br />
-                Thanh toán trực tuyến (Internet Banking, VNPAY-QR, Ví điện tử
-                VNPAY, Visa - Miễn phí thanh toán) qua cổng thanh toán
-                VNPAY.<br />
-                3. Các bước thực hiện đối với từng phương thức thanh toán qua
-                cổng thanh toán VNPAY:
-              </div>
-            </div>
-            <div class="content-right-suppost">
-              <div class="content-right-suppost-flex">
-                <p>HƯỚNG DẪN BẢO QUẢN</p>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-              <div class="decription">
-                Hướng dẫn bảo quản: <br />
-                Dùng kéo để mở bao theo đường vạch sẵn. <br />
-                Gập kẹp bảo quản lại để giữ kín miệng bao sau khi sử dụng.
-                <br />Bảo quản nơi khô ráo và thoáng mát.
-              </div>
-            </div>
-            <div class="content-right-suppost">
-              <div class="content-right-suppost-flex">
-                <p>ĐÁNH GIÁ</p>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-              <button>Gửi đánh giá của bạn</button>
-            </div>
+          <div class="navbar-logo-search">
+            <input type="text" placeholder="Tìm sản phẩm ..." />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="navbar-logo-user">
+            <i class="fa-regular fa-user"></i>
+            <p>Tài Khoản</p>
+          </div>
+          <div class="navbar-logo-user">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Giỏ Hàng</p>
           </div>
         </div>
-        <div class="productrelate">
-          <div class="productrelate-title">
-            <div class="line"></div>
-            <h2>SẢN PHẨM LIÊN QUAN</h2>
-            <div class="line"></div>
-          </div>
-          <didiv class="my-slider" style="display: flex; gap: 15px">
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="../../public/img/item1.jpg" class="card-img-top" alt="..." />
-                <div class="main-product-sale">
-                  <span class="bg-danger p-1 d-inline text-light">12%</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title h-50">
-                    Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
-                  </h5>
-                  <p class="card-text text-warning">
-                    234000VND
-                    <span class="main-product-price-old text-decoration-line-through text-secondary">300000VND</span>
-                  </p>
-                  <button class="main-product-btn">Thêm vào giỏ hàng</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">28/06/2023</small>
-                </div>
-              </div>
-            </div>
-          </didiv>
-        </div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="container footer">
-        <div class="footer-about">
-          <h2>HAI LẦN COFFEE CPG</h2>
-          <p>
-            Hai Lần coffee là dự án của sinh viên của trường cao đẳng thực
-            hàng FPT polytechnic
-          </p>
-          <img width="74px" height="56px" src="../../public/img/logo 1.svg" alt="" />
-        </div>
-
-        <div class="footer-address">
-          <h2>THÔNG TIN CÔNG TY</h2>
-          <p>FPT phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
-          <p>Số điện thoại: 0123456789</p>
-          <p>hailan@gmail.com</p>
-        </div>
-
-        <div class="footer-menu">
-          <h2>MENU</h2>
+        <div class="navbar-header-menu">
+          <i class="fa-solid fa-house"></i>
           <ul>
-            <li><a href="">TRANG CHỦ</a></li>
-            <li><a href="">SẢN PHẨM</a></li>
-            <li><a href="">GIỚI THIỆU</a></li>
+            <li class="active-menu">Trang Chủ</li>
+            <li>Giảm Giá</li>
+            <li>Sản Phẩm</li>
+            <li>Liên Hệ</li>
+            <li>Giới Thiệu</li>
           </ul>
         </div>
+        <hr style="background: #f5f5f5; margin: 0; margin-bottom: 10px" />
+        <div class="navbar-header-category">
+          <ul>
+            <li>Cà phê rang xay</li>
+            <li>Cà phê uống liền</li>
+            <li>Cà phê hòa tan</li>
+            <li>Cà phê hạt</li>
+            <li>Cà phê hộp giấy</li>
+          </ul>
+        </div>
+        <div class="modal-menu">
+          <i class="fa-solid fa-house"></i>
+          <hr />
+          <ul>
+            <li>TRANG CHỦ</li>
+            <li>GIẢM GIÁ</li>
+            <li>SẢN PHẨM</li>
+            <li>LIÊN HỆ</li>
+            <li>GIỚI THIỆU</li>
+            <li>BẠN CẦN HỖ TRỢ</li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <p>0123456789</p>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope-open-text"></i>
+              <p>Exmaple@gmail.com</p>
+            </li>
+          </ul>
+        </div>
+      </header>
 
-        <!-- chăm sóc khách hàng -->
-        <div>
-          <h2>TỔNG ĐÀI HỖ TRỢ</h2>
-          <div class="footer-contact">
-            <div class="footer-contact-icon">
-              <i class="fa-solid fa-phone-volume"></i>
+      <!-- MAIN CONTENT -->
+      <div class="main-content">
+        <style>
+          * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .container-slider {
+            margin: 50px auto;
+            height: 80%;
+
+            display: flex;
+          }
+
+          .main {
+            position: relative;
+            height: 513px;
+          }
+
+          .control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: rgb(134, 55, 55);
+            cursor: pointer;
+            text-shadow: 0 0 5px grey;
+          }
+
+          .prev {
+            left: 20px;
+          }
+
+          .next {
+            right: 20px;
+          }
+
+          .img-wrap {
+            width: 100%;
+            height: 100%;
+          }
+
+          .list-img div {
+            cursor: pointer;
+            padding: 2px;
+            margin-bottom: 20px;
+            margin-right: 40px;
+            background-color: #bbb;
+          }
+
+          .list-img div img {
+            width: 80px;
+            height: 80px;
+          }
+
+          .img-wrap {
+            width: 455px;
+            height: 455px;
+
+            box-shadow: 0 0 10px #bbb;
+          }
+
+          .list-img div.active {
+            background-color: rgb(220, 86, 86);
+          }
+
+          .container-flex {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .content-right {
+            width: 620px;
+          }
+
+          .content-right h2 {
+            margin-top: 45px;
+            font-size: 28px;
+          }
+
+          .content-right-brand {
+            display: flex;
+            justify-content: space-between;
+            color: grey;
+            font-size: 18px;
+          }
+
+          .cost {
+            color: red;
+            font-size: 33px;
+          }
+
+          .content-right-price {
+            display: flex;
+            gap: 30px;
+            color: grey;
+            font-size: 18px;
+          }
+
+          .content-right-add {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .content-right-add-left {
+            display: flex;
+            align-items: center;
+            width: 150px;
+          }
+
+          .content-right-add-left button {
+            width: 50px;
+            height: 50px;
+            border: none;
+          }
+
+          .content-right-add-left input {
+            width: 50px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 19px;
+            font-size: 20px;
+            background: #f0f0f0;
+          }
+
+          .content-right-add-right button {
+            width: 385px;
+            height: 50px;
+            border: none;
+            font-size: 17px;
+            color: white;
+            background: red;
+          }
+
+          .content-right-whitlist {
+            display: flex;
+            color: red;
+            align-items: center;
+            font-size: 20px;
+            margin: 15px 0;
+          }
+
+          .content-right-whitlist p {
+            margin-bottom: 0 !important;
+          }
+
+          .content-right-whitlist i {
+            font-size: 25px;
+          }
+
+          .content-right-suppost {
+            cursor: pointer;
+
+            max-height: 40px;
+            overflow: hidden;
+            transition: all 0.5s;
+          }
+
+          .content-right-suppost-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .content-right-suppost-flex:hover p {
+            color: red;
+          }
+
+          .content-right-suppost-flex p {
+            font-weight: 700;
+          }
+
+          .content-right-suppost-flex {
+            transition: all 0.5s;
+          }
+
+          .content-right-suppost button {
+            border: none;
+            background: red;
+            width: 180px;
+            height: 36px;
+            color: white;
+          }
+
+          .toggle {
+            max-height: 1000px;
+          }
+
+          .footer-about img {
+            width: 74px !important;
+            height: 56px !important;
+          }
+
+          .productrelate-title {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+          }
+
+          .line {
+            width: 400px;
+            height: 1px;
+            background-color: grey;
+          }
+
+          .tns-outer {
+            position: relative;
+          }
+
+          .tns-controls {
+            width: 110%;
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .tns-controls button {
+            width: 60px;
+            height: 30px;
+
+            border: none;
+          }
+
+          .tns-nav {
+            display: none;
+          }
+
+          .rotate {
+            transform: rotate(180deg);
+            transition: all 0.5s;
+          }
+        </style>
+        <div class="container">
+          <div class="container-flex">
+            <div class="content-left">
+              <div class="container-slider">
+                <div class="list-img">
+                  <div>
+                    <img src="../../public/img/item1.jpg" alt="" />
+                  </div>
+                  <div>
+                    <img src="../../public/img/item3.jpg" alt="" />
+                  </div>
+                  <div>
+                    <img src="../../public/img/item4.jpg" alt="" />
+                  </div>
+                  <div>
+                    <img src="../../public/img/item5.jpg" alt="" />
+                  </div>
+                </div>
+                <div class="main">
+                  <span class="control prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </span>
+                  <span class="control next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </span>
+                  <div class="img-wrap">
+                    <img src="img1.jpeg" alt="" />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="footer-contact-text">
-              <h3>Lỗi sản phẩm: <span>019999999</span></h3>
-              <h3>Mua hàng: <span>018888888</span></h3>
-              <p>hailan@gmail.com</p>
+            <div class="content-right">
+              <h2>
+                [TẶNG TÚI HIGHLANDS COFFEE-màu ngẫu nhiên] Cà Phê Bột Truyền
+                Thống Highlands Coffee 1KG
+              </h2>
+              <div class="content-right-brand">
+                <p>Thương hiệu: Highlands Coffee</p>
+                <p>Mã sản phẩm: PVN12</p>
+              </div>
+              <hr />
+              <p class="cost">295.000₫</p>
+              <div class="content-right-price">
+                <p>Giá thị trường: <del>504.000₫</del></p>
+                <p>Tiết kiệm: 209.000₫</p>
+              </div>
+              <hr />
+              <div class="content-right-add">
+                <div class="content-right-add-left">
+                  <button class="minus">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input class="value" type="text" value="1" />
+                  <button class="plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="content-right-add-right">
+                  <button>THÊM VÀO GIỎ</button>
+                </div>
+              </div>
+              <div class="content-right-whitlist">
+                <i class="fa-regular fa-heart"></i>
+                <p>Yêu thích sản phẩm</p>
+              </div>
+              <div class="content-right-suppost">
+                <div class="content-right-suppost-flex">
+                  <p>MÔ TẢ SẢN PHẨM</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="description">
+                  Nội dung chương trình: Mua 01 bịch cà phê truyền thống
+                  Highlands Coffee 1kg, tặng 1 Túi chịu nhiệt Highlands Coffee
+                  trị giá 209,000vnđ. <br />
+                  Thời gian khuyến mãi: đến hết 31/07/2023. Lưu ý: <br />
+                  <br />
+                  Khuyến mãi chỉ áp dụng khi mua hàng online, không áp dụng tại
+                  cửa hàng Highlands Coffee. <br />
+                  Hàng tặng kèm với màu sắc ngẫu nhiên (gồm màu đỏ hoặc màu
+                  đen), được gửi tặng ngẫu nhiên, bạn vui lòng nhận ngẫu nhiên
+                  nhé Chương trình có thể kết thúc sớm khi hết sản phẩm quà
+                  tặng. <br />
+                  THÔNG TIN SẢN PHẨM: <br />
+                  Những hạt cà phê thượng hạng trồng ở vùng cao nguyên của Việt
+                  Nam được rang xay và phối trộn theo công thức độc đáo tại
+                  Highlands Coffee. Dòng sản phẩm Cà Phê Bột Truyền Thống
+                  Highlands Coffee là sự kết hợp hài hòa giữa 2 loại hạt cà phê
+                  Arabica và Robusta. Highlands Coffee <br />
+                  mong muốn đưa vị cà phê Truyền Thống tại chuỗi cửa hàng đến
+                  gần hơn với gia đình Việt trên mọi miền đất nước, thưởng thức
+                  ngay tại nhà. <br />Là sản phẩm đặc sản để pha chế café Sữa
+                  Đá, Café Đá tại hệ thống Highlands Coffee. <br />Thức dậy mỗi
+                  ngày cùng một tách cà phê Truyền Thống Highlands Coffee đậm
+                  đà, mạnh mẽ khi bạn không có thời gian tới quán! Tỉ lệ: 80%
+                  Robusta – 20% Arabica  Cà phê Bột Truyền Thống Highlands
+                  Coffee được đóng gói tiện lợi cho việc sử dụng và bảo quản.
+                  Không chỉ dùng trong gia đình, với bao bì lịch sự còn thích
+                  hợp làm quà tặng ý nghĩa dành cho người thân, bạn bè và đồng
+                  nghiệp.  <br />Hướng dẫn sử dụng:  <br />Cho 20 gram Cà phê
+                  Bột Truyền Thống Highlands Coffee vào phin.  <br />Dùng nước
+                  tinh khiết đun nóng. Châm 30ml vào phin và đợi 2 phút rồi rót
+                  thêm 40ml nước để có ly cà phê thành phẩm.  <br />Cho thêm đá,
+                  đường hoặc sữa đặc theo khẩu vị mong muốn. <br />
+                  Thương hiệu: Highlands Coffee Xuất xứ thương hiệu: Việt Nam
+                </div>
+              </div>
+              <div class="content-right-suppost">
+                <div class="content-right-suppost-flex">
+                  <p>GIAO HÀNG TOÀN QUỐC</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="decription">
+                  1. Thanh toán trực tiếp tại cửa hàng: <br />
+
+                  Thanh toán bằng tiền mặt hoặc bằng các loại thẻ thanh toán thẻ
+                  ghi nợ được chấp nhận theo quy định pháp luật hiện hành.<br />
+
+                  2. Thanh toán khi mua hàng online qua website và ứng dụng của
+                  NUTY:<br />
+
+                  Thanh toán bằng tiền mặt khi nhận hàng (COD).<br />
+                  Thanh toán trực tuyến (Internet Banking, VNPAY-QR, Ví điện tử
+                  VNPAY, Visa - Miễn phí thanh toán) qua cổng thanh toán
+                  VNPAY.<br />
+                  3. Các bước thực hiện đối với từng phương thức thanh toán qua
+                  cổng thanh toán VNPAY:
+                </div>
+              </div>
+              <div class="content-right-suppost">
+                <div class="content-right-suppost-flex">
+                  <p>HƯỚNG DẪN BẢO QUẢN</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="decription">
+                  Hướng dẫn bảo quản: <br />
+                  Dùng kéo để mở bao theo đường vạch sẵn. <br />
+                  Gập kẹp bảo quản lại để giữ kín miệng bao sau khi sử dụng.
+                  <br />Bảo quản nơi khô ráo và thoáng mát.
+                </div>
+              </div>
+              <div class="content-right-suppost">
+                <div class="content-right-suppost-flex">
+                  <p>ĐÁNH GIÁ</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <button>Gửi đánh giá của bạn</button>
+              </div>
             </div>
           </div>
-          <div class="footer-social">
-            <h3>FOLLOW US</h3>
-            <div>
-              <span><i class="fa-brands fa-facebook-f"></i></span>
-              <span><i class="fa-brands fa-twitter"></i></span>
-              <span><i class="fa-brands fa-youtube"></i></span>
-              <span><i class="fa-brands fa-square-instagram"></i></span>
+          <div class="productrelate">
+            <div class="productrelate-title">
+              <div class="line"></div>
+              <h2>SẢN PHẨM LIÊN QUAN</h2>
+              <div class="line"></div>
             </div>
+            <didiv class="my-slider" style="display: flex; gap: 15px">
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card">
+                  <img
+                    src="../../public/img/item1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="main-product-sale">
+                    <span class="bg-danger p-1 d-inline text-light">12%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title h-50">
+                      Thùng 24 Lon Cà Phê Sữa Highlands Coffee 235ml/lon
+                    </h5>
+                    <p class="card-text text-warning">
+                      234000VND
+                      <span
+                        class="main-product-price-old text-decoration-line-through text-secondary"
+                        >300000VND</span
+                      >
+                    </p>
+                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">28/06/2023</small>
+                  </div>
+                </div>
+              </div>
+            </didiv>
           </div>
-          <div></div>
         </div>
       </div>
-    </footer>
-    <section class="splide" aria-label="Basic Structure Example">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <div class="img-box"></div>
-          </li>
-          <li class="splide__slide">
-            <div class="img-box"></div>
-          </li>
-          <li class="splide__slide">
-            <div class="img-box"></div>
-          </li>
-          <li class="splide__slide">
-            <div class="img-box"></div>
-          </li>
-          <li class="splide__slide">
-            <div class="img-box"></div>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-  <script>
-    var splide = new Splide(".splide", {
-      type: "loop",
-      perPage: 5,
-      focus: "center",
-    });
 
-    splide.mount();
+      <!-- FOOTER -->
+      <footer>
+        <div class="container footer">
+          <div class="footer-about">
+            <h2>HAI LẦN COFFEE CPG</h2>
+            <p>
+              Hai Lần coffee là dự án của sinh viên của trường cao đẳng thực
+              hàng FPT polytechnic
+            </p>
+            <img
+              width="74px"
+              height="56px"
+              src="../../public/img/logo 1.svg"
+              alt=""
+            />
+          </div>
 
-    let listDivImg = document.querySelectorAll(".list-img div");
-    let next = document.querySelector(".next");
-    let prev = document.querySelector(".prev");
-    let imgWrap = document.querySelector(".img-wrap img");
+          <div class="footer-address">
+            <h2>THÔNG TIN CÔNG TY</h2>
+            <p>FPT phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
+            <p>Số điện thoại: 0123456789</p>
+            <p>hailan@gmail.com</p>
+          </div>
 
-    let currentIndex = 0;
+          <div class="footer-menu">
+            <h2>MENU</h2>
+            <ul>
+              <li><a href="">TRANG CHỦ</a></li>
+              <li><a href="">SẢN PHẨM</a></li>
+              <li><a href="">GIỚI THIỆU</a></li>
+            </ul>
+          </div>
 
-    setCurrent(currentIndex);
-
-    function setCurrent(index) {
-      currentIndex = index;
-      imgWrap.src = listDivImg[currentIndex].querySelector("img").src;
-
-      // remove all active img
-      listDivImg.forEach((item) => {
-        item.classList.remove("active");
+          <!-- chăm sóc khách hàng -->
+          <div>
+            <h2>TỔNG ĐÀI HỖ TRỢ</h2>
+            <div class="footer-contact">
+              <div class="footer-contact-icon">
+                <i class="fa-solid fa-phone-volume"></i>
+              </div>
+              <div class="footer-contact-text">
+                <h3>Lỗi sản phẩm: <span>019999999</span></h3>
+                <h3>Mua hàng: <span>018888888</span></h3>
+                <p>hailan@gmail.com</p>
+              </div>
+            </div>
+            <div class="footer-social">
+              <h3>FOLLOW US</h3>
+              <div>
+                <span><i class="fa-brands fa-facebook-f"></i></span>
+                <span><i class="fa-brands fa-twitter"></i></span>
+                <span><i class="fa-brands fa-youtube"></i></span>
+                <span><i class="fa-brands fa-square-instagram"></i></span>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </footer>
+      <section class="splide" aria-label="Basic Structure Example">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <div class="img-box"></div>
+            </li>
+            <li class="splide__slide">
+              <div class="img-box"></div>
+            </li>
+            <li class="splide__slide">
+              <div class="img-box"></div>
+            </li>
+            <li class="splide__slide">
+              <div class="img-box"></div>
+            </li>
+            <li class="splide__slide">
+              <div class="img-box"></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script>
+      var splide = new Splide(".splide", {
+        type: "loop",
+        perPage: 5,
+        focus: "center",
       });
 
-      // set active
-      listDivImg[currentIndex].classList.add("active");
-    }
+      splide.mount();
 
-    listDivImg.forEach((img, index) => {
-      img.addEventListener("click", (e) => {
-        setCurrent(index);
-      });
-    });
+      let listDivImg = document.querySelectorAll(".list-img div");
+      let next = document.querySelector(".next");
+      let prev = document.querySelector(".prev");
+      let imgWrap = document.querySelector(".img-wrap img");
 
-    next.addEventListener("click", () => {
-      if (currentIndex == listDivImg.length - 1) {
-        currentIndex = 0;
-      } else currentIndex++;
+      let currentIndex = 0;
 
       setCurrent(currentIndex);
-    });
 
-    prev.addEventListener("click", () => {
-      if (currentIndex == 0) currentIndex = listDivImg.length - 1;
-      else currentIndex--;
+      function setCurrent(index) {
+        currentIndex = index;
+        imgWrap.src = listDivImg[currentIndex].querySelector("img").src;
 
-      setCurrent(currentIndex);
-    });
+        // remove all active img
+        listDivImg.forEach((item) => {
+          item.classList.remove("active");
+        });
 
-    // description
-    let desall = document.querySelectorAll(".content-right-suppost");
-    let check = document.querySelectorAll(".fa-chevron-down");
-
-    desall.forEach((item, index) => {
-      return item.addEventListener("click", function () {
-        check[index].classList.toggle("rotate");
-        item.classList.toggle("toggle");
-      });
-    });
-
-    let minus = document.querySelector(".minus");
-    let plus = document.querySelector(".plus");
-    let value = document.querySelector(".value");
-    plus.addEventListener("click", function (e) {
-      let count = value.value;
-      value.value = Number(count) + 1;
-    });
-    minus.addEventListener("click", function (e) {
-      let count = value.value;
-      if (Number(count) === 1) {
-        value.value = 1;
-      } else {
-        value.value = Number(count) - 1;
+        // set active
+        listDivImg[currentIndex].classList.add("active");
       }
-    });
 
-    var slider = document.querySelector(".my-slider");
-    var tns = tns({
-      container: slider,
-      loop: false,
-      responsive: {
-        350: {
-          items: 2,
-        },
-        500: {
-          items: 6,
-        },
-      },
-      swipeAngle: false,
-      speed: 400,
-    });
-  </script>
-</body>
+      listDivImg.forEach((img, index) => {
+        img.addEventListener("click", (e) => {
+          setCurrent(index);
+        });
+      });
 
+      next.addEventListener("click", () => {
+        if (currentIndex == listDivImg.length - 1) {
+          currentIndex = 0;
+        } else currentIndex++;
+
+        setCurrent(currentIndex);
+      });
+
+      prev.addEventListener("click", () => {
+        if (currentIndex == 0) currentIndex = listDivImg.length - 1;
+        else currentIndex--;
+
+        setCurrent(currentIndex);
+      });
+
+      // description
+      let desall = document.querySelectorAll(".content-right-suppost");
+      let check = document.querySelectorAll(".fa-chevron-down");
+
+      desall.forEach((item, index) => {
+        return item.addEventListener("click", function () {
+          check[index].classList.toggle("rotate");
+          item.classList.toggle("toggle");
+        });
+      });
+
+      let minus = document.querySelector(".minus");
+      let plus = document.querySelector(".plus");
+      let value = document.querySelector(".value");
+      plus.addEventListener("click", function (e) {
+        let count = value.value;
+        value.value = Number(count) + 1;
+      });
+      minus.addEventListener("click", function (e) {
+        let count = value.value;
+        if (Number(count) === 1) {
+          value.value = 1;
+        } else {
+          value.value = Number(count) - 1;
+        }
+      });
+
+      var slider = document.querySelector(".my-slider");
+      var tns = tns({
+        container: slider,
+        loop: false,
+        responsive: {
+          350: {
+            items: 2,
+          },
+          500: {
+            items: 6,
+          },
+        },
+        swipeAngle: false,
+        speed: 400,
+      });
+    </script>
+  </body>
 </html>
