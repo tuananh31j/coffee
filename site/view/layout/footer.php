@@ -93,8 +93,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script>
+// Lấy thẻ input và giá trị ban đầu của số lượng
+const quantityInput = document.getElementById('quantity');
+let quantity = parseInt(quantityInput.value);
+
+// Hàm tăng số lượng
+function increaseQuantity() {
+    quantity += 1;
+    updateQuantity();
+}
+
+// Hàm giảm số lượng, đảm bảo số lượng không âm
+function decreaseQuantity() {
+    if (quantity > 1) {
+        quantity -= 1;
+        updateQuantity();
+    }
+}
+
+// Hàm cập nhật số lượng vào thẻ input
+function updateQuantity() {
+    quantityInput.value = quantity;
+}
+
+// Cập nhật số lượng ban đầu
+updateQuantity();
+
+
 var splide = new Splide('.splide', {
     type: 'loop',
     perPage: 5,

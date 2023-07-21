@@ -302,6 +302,11 @@
     grid-template-columns: auto auto;
 }
 
+.cart-btn:hover {
+    background-color: #b5313a;
+    color: white !important;
+}
+
 
 
 
