@@ -85,8 +85,14 @@ if(isset($_GET['url'])) {
             $pass = $_POST['password'];
             
             $user = checkLogin($email, $pass);
-            
-            if(is_array($user)) {
+            if($email == '') {
+                $errEmail = "Chưa nhập email!";
+            }
+            if($pass == '') {
+                $errPass = "Chưa nhập mật khẩu!";
+            }
+            if($email != '' && $pass != '' ) {
+                if(is_array($user)) {
                 $_SESSION['user'] = $user;
                 $noti ="Đăng nhập thành công!";
                 header("location: /du-an-1-nhom7/");
@@ -94,6 +100,8 @@ if(isset($_GET['url'])) {
             }else{
                 $noti = "Dữ liệu không khớp!";
             } 
+            }
+            
           
         
         }
