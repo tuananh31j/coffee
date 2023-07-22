@@ -52,7 +52,7 @@
                             <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
                             <div>
                                 <!-- tra cứu đơn hàng -->
-                                <form class="d-flex" role="search">
+                                <form class="d-flex style=" font-size: 10px;"" role="search">
                                     <input class="form-control border-secondary text-light " type="search"
                                         placeholder="Tra cứu đơn hàng" aria-label="Search">
                                     <button class="border-0 rounded-end-2 bg-dark text-light w-50"
@@ -80,15 +80,16 @@
                                 <?php if(!isset($_SESSION['user'])){ ?>
                                 <li class="nav-item d-flex gap-4 align-items-center">
                                     <!-- login -->
-                                    <a class="p-2 text-decoration-none rounded-2 bg-danger text-light nav-link active"
+                                    <a style="font-size: 14px;"
+                                        class="p-2 text-decoration-none rounded-2 bg-danger text-light nav-link active"
                                         aria-current="page" href="index.php?url=login">Đăng
                                         nhập</a>
                                     <!-- đăng ký -->
-                                    <a class="p-2 text-decoration-none rounded-2 bg-info text-black "
-                                        href="index.php?url=signup">Đăng
+                                    <a style="font-size: 14px;" class=" p-2 text-decoration-none rounded-2 bg-info
+                                        text-black " href=" index.php?url=signup">Đăng
                                         ký</a>
                                     <!-- giỏ hàng -->
-                                    <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
+                                    <a class=" nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
                                             class="header-count-cart">2</span></a>
                                 </li>
