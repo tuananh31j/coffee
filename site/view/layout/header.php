@@ -52,10 +52,10 @@
                             <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
                             <div>
                                 <!-- tra cứu đơn hàng -->
-                                <form class="d-flex style=" font-size: 10px;"" role="search">
+                                <form class="d-flex " role="search">
                                     <input class="form-control border-secondary text-light " type="search"
-                                        placeholder="Tra cứu đơn hàng" aria-label="Search">
-                                    <button class="border-0 rounded-end-2 bg-dark text-light w-50"
+                                        placeholder="#Mã đơn hàng" aria-label="Search">
+                                    <button class="border-0 rounded-end-2 bg-danger text-light w-50"
                                         style="margin-left: -20px;" type="submit">Tra
                                         cứu</button>
                                 </form>
