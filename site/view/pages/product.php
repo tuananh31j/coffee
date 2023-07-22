@@ -139,7 +139,7 @@
                                     </h5>
                                     <!-- giá -->
                                     <p class="card-text text-danger fw-bold">
-                                        <?php echo $custumPriceNew?> đ
+                                        <?php echo $custumPriceNew?> <span class="text-decoration-underline">đ</span>
                                         <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
                                         <span class="main-product-price-old text-decoration-line-through text-secondary"
                                             style="font-size: 10px;"><?=$custumPriceOld?></span>
@@ -173,7 +173,7 @@
                                                         <div class="card mb-3" style="max-width: 540px;">
                                                             <div class="row g-0">
                                                                 <div class="col-md-4">
-                                                                    <img src="<?=$IMAGE?>/item1.jpg"
+                                                                    <img src="<?=$IMAGE.'/'.$item['image_url']?>"
                                                                         class="img-fluid rounded-start" alt="...">
                                                                 </div>
                                                                 <div class="col-md-8">
@@ -181,7 +181,7 @@
 
                                                                         <p class="card-text text-danger fw-bold">
                                                                             <?php echo $custumPriceNew?> <span
-                                                                                style="text-decoration:underline;">đ</span>
+                                                                                class="text-decoration-underline">đ</span>
                                                                             <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
                                                                             <span
                                                                                 class="main-product-price-old text-decoration-line-through text-secondary"
