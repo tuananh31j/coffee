@@ -17,7 +17,7 @@
 .header-logo-img {
   margin-top: 0;
   justify-content: center;
-  gap: 260px;
+  gap: 30px;
 }
 
 .header-logo {
@@ -25,7 +25,7 @@
 }
 
 .header-logo-search {
-  gap: 40px;
+  gap: 50px;
 }
 
 .header-logo-search-input {

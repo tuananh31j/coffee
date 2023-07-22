@@ -4,7 +4,7 @@
         <!-- đường dẫn -->
         <div class="header-link m-0">
             <span><a href="">Trang chủ</a> > </span>
-            <span><a href="" class="text-danger">Sản phẩm</a></span>
+            <span><a href="index.php?url=product" class="text-danger">Sản phẩm</a></span>
         </div>
         <div class="header-banner">
             <img src="../../public/img/bannerSP.jpg" alt="" class="header-banner-img">

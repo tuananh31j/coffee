@@ -48,14 +48,28 @@
 
                     <div class="container  header-logo-img">
                         <!-- logo -->
-                        <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
+                        <div class="d-flex align-items-center gap-1">
+                            <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
+                            <div>
+                                <!-- tra cứu đơn hàng -->
+                                <form class="d-flex" role="search">
+                                    <input class="form-control border-secondary text-light " type="search"
+                                        placeholder="Tra cứu đơn hàng" aria-label="Search">
+                                    <button class="border-0 rounded-end-2 bg-dark text-light w-50"
+                                        style="margin-left: -20px;" type="submit">Tra
+                                        cứu</button>
+                                </form>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
 
+                        <!-- tìm kiếm -->
+
+                        <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
                             <form class="d-flex header-logo-search-form" role="search">
                                 <input class="form-control header-logo-search-input " type="search"
                                     placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
@@ -84,9 +98,11 @@
                                 <li class="nav-item d-flex align-items-center gap-4">
                                     <!-- người dùng -->
                                     <a class="nav-link active d-flex align-items-center " aria-current="page"
-                                        href="index.php?url=account"><i class="text-light fs-6">Xin
-                                            chào! <span>tuấn anh</span></i><img class="w-25 rounded-circle"
-                                            style="height: 35px; object-fit:cover" src="<?=$IMAGE?>/mm.png" alt=""></a>
+                                        href="index.php?url=account"><i class="text-light me-1 fs-6"
+                                            style="width: 100px">Xin
+                                            chào! <br><span><?=$_SESSION['user']['name']?></span></i><img
+                                            class=" rounded-circle" style="height: 35px;width: 35px; object-fit:cover"
+                                            src="<?=$IMAGE?>/mm.png" alt=""></a>
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
