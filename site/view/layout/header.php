@@ -53,10 +53,11 @@
                             <div>
                                 <!-- tra cứu đơn hàng -->
                                 <form class="d-flex " role="search">
-                                    <input class="form-control border-secondary text-light " type="search"
-                                        placeholder="#Mã đơn hàng" aria-label="Search">
-                                    <button class="border-0 rounded-end-2 bg-danger text-light w-50"
-                                        style="margin-left: -20px;" type="submit">Tra
+                                    <input class="form-control border-light text-light "
+                                        style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng"
+                                        aria-label="Search">
+                                    <button class="border-0 rounded-end-2 bg-danger text-light "
+                                        style="margin-left: -20px; width: 60px; font-size: 14px;" type="submit">Tra
                                         cứu</button>
                                 </form>
                             </div>
