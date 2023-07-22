@@ -279,7 +279,13 @@
   grid-template-columns: auto auto;
 }
 
-/* Header */
+
+.cart-btn:hover {
+  background-color: #b5313a;
+  color: white !important;
+}
+
+
 
 .navbar-header {
   height: 90px;
@@ -289,24 +295,29 @@
   display: flex;
   align-items: center;
 }
+
 .navbar-logo {
   display: flex;
   align-items: center;
 }
+
 .navbar-logo img {
   width: 107px !important;
   height: 73px !important;
   margin: 0 80px;
 }
+
 .navbar-logo-menu {
   display: flex;
   flex-direction: column;
   text-align: center;
   color: white;
 }
+
 .navbar-logo-menu i {
   font-size: 33px;
 }
+
 .navbar-logo-search {
   display: flex;
   width: 548px;
@@ -317,6 +328,7 @@
   margin-right: 250px;
   margin-left: 71px;
 }
+
 .navbar-logo-search input {
   width: 90%;
   height: 100%;
@@ -324,10 +336,12 @@
   outline: none;
   margin-left: 20px;
 }
+
 .navbar-logo-search i {
   color: #bbb;
   font-size: 16px;
 }
+
 .navbar-logo-user {
   display: flex;
   flex-direction: column;
@@ -337,9 +351,11 @@
   margin-right: 30px;
   margin-top: 26px;
 }
+
 .navbar-logo-user i {
   font-size: 25px;
 }
+
 .navbar-header-menu {
   padding: 0 220px;
   display: flex;
@@ -347,10 +363,12 @@
   gap: 30px;
   background-color: #dde0eb;
 }
+
 .navbar-header-menu i {
   font-size: 25px;
   color: #b5313a;
 }
+
 .navbar-header-menu ul {
   display: flex;
   align-items: center;
@@ -368,19 +386,23 @@
   color: #b5313a;
   margin-top: 20px;
 }
+
 .active-menu {
   background-color: #b5313a;
   color: white !important;
 }
+
 .navbar-header-category {
   width: 100%;
   padding: 0 220px;
 }
+
 .navbar-header-category ul {
   display: flex;
   margin-left: 57px;
   gap: 30px;
 }
+
 .navbar-header-category ul li {
   list-style: none;
   height: 38px;
@@ -391,6 +413,7 @@
   line-height: 2.3;
   border-radius: 5px;
 }
+
 .modal-menu {
   position: absolute;
   width: 270px;
@@ -405,20 +428,24 @@
   transition: all 0.5s;
   pointer-events: none;
 }
+
 .modal-open-menu {
   opacity: 1;
   transform: scale(1);
   pointer-events: all;
 }
+
 .modal-menu i {
   font-size: 30px;
   line-height: 2.5;
   margin-left: 20px;
   color: #b5313a;
 }
+
 .modal-menu hr {
   margin: 0;
 }
+
 .modal-menu ul li {
   list-style: none;
   display: flex;
@@ -426,19 +453,24 @@
   height: 30px;
   line-height: 1.5;
 }
+
 .modal-menu ul li:hover {
   color: #b5313a;
 }
+
 .modal-menu ul li p {
   margin: 0;
 }
+
 .modal-menu ul li i {
   font-size: 20px !important;
   margin-right: 20px;
 }
+
 .carousel-control-prev {
   display: none;
 }
+
 .carousel-control-next {
   display: none;
 }

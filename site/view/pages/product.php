@@ -23,12 +23,24 @@
                     sắp xếp mặc định
                 </button>
                 <ul class="dropdown-menu">
-
-                    <li><a class="dropdown-item" href="#">A -> Z</a></li>
-                    <li><a class="dropdown-item" href="#">Giá tăng dần</a></li>
-                    <li><a class="dropdown-item" href="#">Giá giảm dần</a></li>
-                    <li><a class="dropdown-item" href="#">Hàng mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Hàng cũ nhất</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=az">A
+                            -> Z</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=za">Z
+                            -> A</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=priceup">Giá
+                            tăng dần</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=pricedown">Giá
+                            giảm dần</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=new">Hàng
+                            mới nhất</a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&category=<?php echo isset($category)?$category:0?>&sort=old">Hàng
+                            cũ nhất</a></li>
                 </ul>
             </div>
 
@@ -39,11 +51,18 @@
                 </button>
                 <ul class="dropdown-menu">
 
-                    <li><a class="dropdown-item" href="#">500k <i class="fa-solid fa-arrow-down"></i></a></li>
-                    <li><a class="dropdown-item" href="#">400k-600k</a></li>
-                    <li><a class="dropdown-item" href="#">600k-800k</a></li>
-                    <li><a class="dropdown-item" href="#">800k-900k</a></li>
-                    <li><a class="dropdown-item" href="#">1tr <i class="fa-solid fa-arrow-up"></i></a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">200k
+                            <i class="fa-solid fa-arrow-down"></i></a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent1">20k-100k</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent2">100k-200k</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=up">60k
+                            <i class="fa-solid fa-arrow-up"></i></a></li>
                 </ul>
             </div>
 
@@ -63,7 +82,8 @@
                             <?php
                             foreach($categorys as $item){
                             ?>
-                            <a class="text-decoration-none" href=""><button
+                            <a class="text-decoration-none"
+                                href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><button
                                     class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
                                     data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
                                     aria-controls="v-pills-profile"
@@ -86,30 +106,167 @@
 
                     <!-- item -->
                     <div class="row row-cols-4">
-                        <?php foreach($products as $item) { ?>
+                        <?php
+                       
+                        $index = 0;
+                        foreach($products as $item) {
+                        $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
+                        $custumPriceOld = number_format($item['price'], 0, ",", ".");
+                        $custumPriceNew = number_format($priceNew, 0, ",", ".");
+                        $index++;
+                        ?>
+                        <!-- item child -->
                         <div class="col mb-4">
-                            <div class="card ">
-                                <img src="img/item1.jpg" class="card-img-top" alt="...">
-                                <div class="main-product-sale "><span
-                                        class="bg-danger p-1 d-inline text-light"><?=$item['sale']?>%</span>
+                            <div class="card h-100">
+                                <!-- ảnh -->
+                                <div class="h-100">
+                                    <a href=""><img src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
+                                            alt="..."></a>
+                                    <!-- giảm giá -->
+                                    <?php if($item['sale']>0 && $item['sale']<=100){
+                                    ?>
+                                    <div class="main-product-sale "><span
+                                            class="bg-danger p-1 d-inline text-light"><?=$item['sale']?>%</span>
+                                    </div>
+
+                                    <?php } ?>
                                 </div>
+
                                 <div class="card-body">
+
                                     <!-- tên -->
-                                    <h5 class="card-title h-50"><?=$item['name']?>
+                                    <h5 class="card-title"><?=$item['name']?>
                                     </h5>
                                     <!-- giá -->
-                                    <p class="card-text text-warning">
-                                        <?php echo $item['price'] - ($item['price']*($item['sale']/100))?>VND
+                                    <p class="card-text text-danger fw-bold">
+                                        <?php echo $custumPriceNew?> đ
                                         <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
-                                        <span
-                                            class="main-product-price-old text-decoration-line-through text-secondary"><?=$item['price']?>VND</span>
+                                        <span class="main-product-price-old text-decoration-line-through text-secondary"
+                                            style="font-size: 10px;"><?=$custumPriceOld?></span>
                                         <?php } ?>
                                     </p>
-                                    <button class="main-product-btn">Thêm vào giỏ hàng</button>
+                                    <button type="button" class="btn border-danger text-danger cart-btn"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $index?>">Thêm
+                                        vào giỏ hàng</button>
+                                    <!-- form thêm vào giỏ hàng -->
+                                    <form class="" action="index.php?url=order" method="post">
+                                        <div hidden>
+                                            <input type="hidden" name="product_id" value="<?=$item['product_id']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['name']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['image_url']?>">
+                                            <input type="hidden" name="product_id" value="<?=$item['price']?>">
+
+                                        </div>
+                                        <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <!-- tên sản phẩm -->
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                            <?=$item['name']?></h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- item order -->
+                                                        <div class="card mb-3" style="max-width: 540px;">
+                                                            <div class="row g-0">
+                                                                <div class="col-md-4">
+                                                                    <img src="<?=$IMAGE?>/item1.jpg"
+                                                                        class="img-fluid rounded-start" alt="...">
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="card-body">
+
+                                                                        <p class="card-text text-danger fw-bold">
+                                                                            <?php echo $custumPriceNew?> <span
+                                                                                style="text-decoration:underline;">đ</span>
+                                                                            <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
+                                                                            <span
+                                                                                class="main-product-price-old text-decoration-line-through text-secondary"
+                                                                                style="font-size: 10px;"><?=$custumPriceOld?></span>
+                                                                            <?php } ?>
+                                                                        </p>
+
+                                                                        <!-- size -->
+                                                                        <div
+                                                                            class="d-flex gap-4 my-3 ms-1 align-items-center">
+                                                                            <div>
+                                                                                <span>Kích cỡ: </span>
+                                                                            </div>
+
+                                                                            <div class="btn-group" role="group"
+                                                                                aria-label="Basic radio toggle button group">
+
+                                                                                <input type="radio" class="btn-check"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio1<?=$index?>"
+                                                                                    autocomplete="off" checked>
+                                                                                <label class="btn btn-outline-primary"
+                                                                                    for="btnradio1<?=$index?>">S</label>
+
+                                                                                <input type="radio" class="btn-check"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio2<?=$index?>"
+                                                                                    autocomplete="off">
+                                                                                <label class="btn btn-outline-primary"
+                                                                                    for="btnradio2<?=$index?>">M</label>
+
+                                                                                <input type="radio" class="btn-check"
+                                                                                    name="btnradio"
+                                                                                    id="btnradio3<?=$index?>"
+                                                                                    autocomplete="off">
+                                                                                <label class="btn btn-outline-primary"
+                                                                                    for="btnradio3<?=$index?>">L</label>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                        <!-- số lượng -->
+                                                                        <div
+                                                                            class="d-flex gap-3 my-3 align-items-center">
+                                                                            <div>
+                                                                                <span>Số lượng: </span>
+                                                                            </div>
+                                                                            <div class="d-flex">
+
+                                                                                <button type="button"
+                                                                                    class="border-info rounded-2">
+                                                                                    <i class="fa-solid fa-minus"></i>
+                                                                                </button>
+                                                                                <input
+                                                                                    class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
+                                                                                    style="width: 30px;" type="text"
+                                                                                    id="quantity-<?=$index?>" value="1">
+                                                                                <button type="button"
+                                                                                    class="border-danger rounded-2">
+                                                                                    <i class="fa-solid fa-plus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <!-- <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button> -->
+                                                        <button type="submit" name="btn-addCart"
+                                                            class="btn btn-primary">Thêm vào
+                                                            giỏ</button>
+                                                        <button type="submit" name="btn-payOrder"
+                                                            class="btn btn-danger">Đặt
+                                                            ngay</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary"><?=$item['create_at']?></small>
-                                </div>
+
                             </div>
                         </div>
                         <?php } ?>
@@ -123,22 +280,30 @@
                     <div class="d-flex justify-content-center mt-4">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
+                                <li class="page-item"><a class="page-link border-danger"
+                                        href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>&filter=<?php echo isset($filterType)?$filterType:0?>">1</a>
+                                </li>
+                                <?php
+                               
+                                $count = 1;
+                                $page = 1;
+                                for($i = 0; $i < sizeof($allPro); $i++ ){
+                                    $count++;
+                                    
+                                    if($count == 12) {
+                                        $page +=1;
+                                        $count = 0;
+
+                                ?>
+                                <li class="page-item "><a class="page-link border-danger"
+                                        href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=<?php echo isset($filterType)?$filterType:0?>&pagenum=<?=$page?>">
+                                        <?=$page?>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product">1</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=2">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="index.php?url=product&pagenum=3">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
+                                <?php }} ?>
+
+
+
                             </ul>
                         </nav>
                     </div>
