@@ -51,11 +51,18 @@
                 </button>
                 <ul class="dropdown-menu">
 
-                    <li><a class="dropdown-item" href="#">500k <i class="fa-solid fa-arrow-down"></i></a></li>
-                    <li><a class="dropdown-item" href="#">400k-600k</a></li>
-                    <li><a class="dropdown-item" href="#">600k-800k</a></li>
-                    <li><a class="dropdown-item" href="#">800k-900k</a></li>
-                    <li><a class="dropdown-item" href="#">1tr <i class="fa-solid fa-arrow-up"></i></a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">200k
+                            <i class="fa-solid fa-arrow-down"></i></a></li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent1">20k-100k</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent2">100k-200k</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                            href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=up">60k
+                            <i class="fa-solid fa-arrow-up"></i></a></li>
                 </ul>
             </div>
 
@@ -76,7 +83,7 @@
                             foreach($categorys as $item){
                             ?>
                             <a class="text-decoration-none"
-                                href="index.php?url=product&category=<?=$item['category_id']?>"><button
+                                href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><button
                                     class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
                                     data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
                                     aria-controls="v-pills-profile"
@@ -100,19 +107,21 @@
                     <!-- item -->
                     <div class="row row-cols-4">
                         <?php
+                       
                         $index = 0;
-                         foreach($products as $item) {
-                            $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
-                            $custumPriceOld = number_format($item['price'], 0, ",", ".");
-                            $custumPriceNew = number_format($priceNew, 0, ",", ".");
-                            $index++;
-                             ?>
+                        foreach($products as $item) {
+                        $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
+                        $custumPriceOld = number_format($item['price'], 0, ",", ".");
+                        $custumPriceNew = number_format($priceNew, 0, ",", ".");
+                        $index++;
+                        ?>
                         <!-- item child -->
                         <div class="col mb-4">
                             <div class="card h-100">
                                 <!-- ảnh -->
                                 <div class="h-100">
-                                    <a href=""><img src="<?=$IMAGE?>/item1.jpg" class="card-img-top" alt="..."></a>
+                                    <a href=""><img src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
+                                            alt="..."></a>
                                     <!-- giảm giá -->
                                     <?php if($item['sale']>0 && $item['sale']<=100){
                                     ?>
@@ -124,6 +133,7 @@
                                 </div>
 
                                 <div class="card-body">
+
                                     <!-- tên -->
                                     <h5 class="card-title"><?=$item['name']?>
                                     </h5>
@@ -271,7 +281,7 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link border-danger"
-                                        href="index.php?url=product">1</a>
+                                        href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>&filter=<?php echo isset($filterType)?$filterType:0?>">1</a>
                                 </li>
                                 <?php
                                
@@ -286,7 +296,9 @@
 
                                 ?>
                                 <li class="page-item "><a class="page-link border-danger"
-                                        href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&pagenum=<?=$page?>&category=<?php echo isset($category)?$category:0?>&pagenum=<?=$page?>"><?=$page?></a>
+                                        href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=<?php echo isset($filterType)?$filterType:0?>&pagenum=<?=$page?>">
+                                        <?=$page?>
+                                    </a>
                                 </li>
                                 <?php }} ?>
 

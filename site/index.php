@@ -15,29 +15,14 @@ if(isset($_GET['url'])) {
     switch ($_GET['url']) {
     case 'product':
         // danh sách danh mục
-        $categorys = getListCategory();
-        $allPro = getProducts();
-        
         $sortStyle = "asc";
         $sortType = "name";
-        $products = getListProduct(0,$sortType, $sortStyle);
-        // lấy ra sản phẩm cho mỗi trang
-        if(isset($_GET['pagenum'])) {
-            
-            $pageNumber = $_GET['pagenum'];
-            $offset= ($pageNumber - 1) * 12;
-            $products = getListProduct($offset,$sortType, $sortStyle);
-            if(isset($_GET['category']) && $_GET['category'] != 0) {
-                $category = $_GET['category'];
-                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle);
-            }
-        }
-        if(isset($_GET['category'])) {
-            $category = $_GET['category'];
-            $allPro = getProductsByCate($category,$sortType, $sortStyle);
+        $filterType = 0;
+        // lọc sản phẩm theo giá
+        if(isset($_GET['filter']) && $_GET['filter'] != 0) {
+            $filterType = $_GET['filter'];
             
         }
-
         //sắp xêp sản phẩm
         if(isset($_GET['sort']) && $_GET['sort'] != 0) {
             $sort = $_GET['sort'];
@@ -63,6 +48,31 @@ if(isset($_GET['url'])) {
                 $sortStyle = "asc";
             }
         }
+        $offset= 0;
+        $categorys = getListCategory();
+        $allPro = getAllProducts($sortType, $sortStyle, $filterType);
+        $products = getListProduct(0,$sortType, $sortStyle, $filterType);
+
+        
+        // lấy ra sản phẩm cho mỗi trang
+        if(isset($_GET['pagenum'])) {
+            
+            $pageNumber = $_GET['pagenum'];
+            $offset= ($pageNumber - 1) * 12;
+            $products = getListProduct($offset,$sortType, $sortStyle, $filterType);
+            if(isset($_GET['category']) && $_GET['category'] != 0) {
+                $category = $_GET['category'];
+                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType);
+            }
+        }
+    if(isset($_GET['category']) && $_GET['category'] != 0) {
+            $category = $_GET['category'];
+            $allPro = getAllProductsByCate($category,$sortType, $sortStyle, $filterType);
+            $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType);
+            
+        }
+
+        
 
         
         
