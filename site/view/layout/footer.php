@@ -44,10 +44,10 @@
               <div class="footer-social">
                   <h3>FOLLOW US</h3>
                   <div>
-                      <span><i class="fa-brands fa-facebook-f"></i></span>
-                      <span><i class="fa-brands fa-twitter"></i></span>
-                      <span><i class="fa-brands fa-youtube"></i></span>
-                      <span><i class="fa-brands fa-square-instagram"></i></span>
+                      <span class="me-1"><i class="fa-brands fa-facebook-f"></i></span>
+                      <span class="mx-1"><i class="fa-brands fa-twitter"></i></span>
+                      <span class="mx-1"><i class="fa-brands fa-youtube"></i></span>
+                      <span class="ms-1"><i class="fa-brands fa-square-instagram"></i></span>
                   </div>
               </div>
               <div>

@@ -30,7 +30,7 @@
                                 <div class="d-flex gap-2 align-content-center">
                                     <div class=" h-25" style="width: 42px;">
                                         <img class="w-100 rounded-circle" style="height: 42px; object-fit: cover;"
-                                            src="../img/mm.png" alt="">
+                                            src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt="">
                                     </div>
                                     <div class="">
                                         <p class="fw-bold m-0">Tuấn Anh</p>
@@ -39,9 +39,15 @@
 
                                 </div>
                             </li>
-                            <!-- điều khiển -->
-                            <a class="text-black fw-bolder" href="index.php">
+                            <!-- Trang chủ -->
+                            <a class="text-black text-decoration-none" href="<?=$ROOT_URL?>">
                                 <li class="mt-4 ">
+                                    <i class="fa-solid fa-house"></i> Trang chủ
+                                </li>
+                            </a>
+                            <!-- điều khiển -->
+                            <a class="text-black  text-decoration-none" href="index.php">
+                                <li class="mt-3 ">
                                     <i class="fa-solid fa-gauge"></i> Thống kê
                                 </li>
                             </a>

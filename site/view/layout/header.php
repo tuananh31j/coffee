@@ -99,12 +99,18 @@
 
                                 <li class="nav-item d-flex align-items-center gap-4">
                                     <!-- người dùng -->
-                                    <a class="nav-link active d-flex align-items-center " aria-current="page"
-                                        href="index.php?url=account"><i class="text-light me-1 fs-6"
-                                            style="width: 100px">Xin
-                                            chào! <br><span><?=$_SESSION['user']['name']?></span></i><img
-                                            class=" rounded-circle" style="height: 35px;width: 35px; object-fit:cover"
-                                            src="<?=$IMAGE?>/mm.png" alt=""></a>
+                                    <div class="nav-link active d-flex align-items-center " aria-current="page"><i
+                                            class="text-light me-1 fs-6" style="width: 100px">
+                                            <?php if($_SESSION['user']['role'] == 1){ ?>
+                                            <a class="bg-danger p-2 text-light text-decoration-none rounded-2"
+                                                href="<?=$ADMIN_URL?>">Quản trị</a>
+                                            <?php }else{ ?>
+                                            Xin
+                                            chào! <br><span><?=$_SESSION['user']['name']?></span>
+                                            <?php } ?>
+                                        </i><a href="index.php?url=account"><img class=" rounded-circle"
+                                                style="height: 35px;width: 35px; object-fit:cover"
+                                                src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt=""></a></div>
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
