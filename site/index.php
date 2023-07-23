@@ -1,8 +1,7 @@
 <?php
-ob_start();
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
-require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
 
+// models
 require_once "models/product.php";
 require_once "models/category.php";
 require_once "models/customer.php";

@@ -89,8 +89,8 @@
                             </a>
                         </ul>
                     </nav>
-                    <a class="position-relative text-black text-decoration-none" style="top: 120px; left: 200px;"
-                        href=""><i class="fa-solid fa-right-from-bracket"></i>
+                    <a class="position-relative text-black text-decoration-none" style="top: 100px; left: 200px;"
+                        href="index.php?url=logout"><i class="fa-solid fa-right-from-bracket"></i>
                         Đăng xuất</a>
                 </div>
             </div>
