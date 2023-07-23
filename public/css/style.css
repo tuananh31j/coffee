@@ -1,314 +1,478 @@
 .carousel-control-prev,
 .carousel-control-next {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .carousel-item p {
-    margin: 0;
-    padding: 2px;
-    font-weight: 700;
+  margin: 0;
+  padding: 2px;
+  font-weight: 700;
 }
 
 #carouselExampleInterval {
-    background-color: #503629;
-    color: white;
+  background-color: #503629;
+  color: white;
 }
 
 .header-logo-img {
-
-    margin-top: 0;
-    justify-content: center;
-    gap: 260px;
-
+  margin-top: 0;
+  justify-content: center;
+  gap: 70px;
 }
 
 .header-logo {
-    background-color: #b5313a;
+  background-color: #b5313a;
 }
 
 .header-logo-search {
-    gap: 200px;
-
+  gap: 60px;
 }
 
 .header-logo-search-input {
-    margin-right: -10px;
-    width: 400px;
+  margin-right: -10px;
+  width: 410px;
 }
 
 .header-logo-search-btn {
-    background-color: white;
-    color: black;
-    border: 1px solid white;
-    border-radius: 4px;
-
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 .header-count-cart {
-    color: yellow;
-    background-color: red;
-    border: 1px solid red;
-    border-radius: 1000px;
-    padding: 4px;
-    font-size: 10px;
-    position: relative;
-    bottom: 10px;
-    width: 16px;
+  color: yellow;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 1000px;
+  padding: 4px;
+  font-size: 10px;
+  position: relative;
+  bottom: 20px;
+  width: 16px;
 }
 
 .nav-item {
-    border-left: 0.1px solid #bd464e;
-    padding: 0 10px;
+  border-left: 0.1px solid #bd464e;
+  padding: 0 10px;
 }
 
-
 .header-menu ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 16.1% 16.1% 16.1% 16.1% 16.1% 16.1%;
-    gap: 10px;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 8px;
-    justify-content: center;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 16.1% 16.1% 16.1% 16.1% 16.1% 16.1%;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 8px;
+  justify-content: center;
 }
 
 .header-menu ul li a {
-    text-decoration: none;
-    color: #b5313a;
-    font-weight: bold;
+  text-decoration: none;
+  color: #b5313a;
+  font-weight: bold;
 }
 
 .header-banner {
-    max-width: 1200px;
-    margin: 0 auto;
-
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .header-banner-contact {
-    height: 240px;
-
+  height: 240px;
 }
 
 .header-banner-contact {
-    background-color: #b5313a;
-    color: white;
-    display: grid;
-    align-items: center;
-    font-size: 50px;
+  background-color: #b5313a;
+  color: white;
+  display: grid;
+  align-items: center;
+  font-size: 50px;
 }
 
 .header-banner-img {
-    width: 100%;
+  width: 100%;
 }
 
 .header-link {
-    margin: 14px 0 14px 32px;
+  margin: 14px 0 14px 32px;
 }
 
 .header-link a {
-    text-decoration: none;
-    color: #505050;
+  text-decoration: none;
+  color: #505050;
 }
-
 
 /* active cho menu */
 .header-menu-active {
-    background-color: #b5313a;
-    padding: 10px;
-    border-radius: 30px;
-    color: white !important;
+  background-color: #b5313a;
+  padding: 10px;
+  border-radius: 30px;
+  color: white !important;
 }
-
-
 
 /* footer */
 .footer {
-    display: grid;
-    grid-template-columns: 20% 20% auto auto;
-    gap: 110px;
-    max-width: 1200px;
-    margin: 30px auto;
-    border-top: 1px solid #dadcdf;
-    padding-top: 20px;
-    justify-content: center;
-
+  display: grid;
+  grid-template-columns: 20% 20% auto auto;
+  gap: 110px;
+  max-width: 1200px;
+  margin: 30px auto;
+  border-top: 1px solid #dadcdf;
+  padding-top: 20px;
+  justify-content: center;
 }
 
 .footer-contact {
-    display: grid;
-    grid-template-columns: 14% auto;
-    align-items: center;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 14% auto;
+  align-items: center;
+  gap: 20px;
 }
 
 .footer-contact-icon {
-    font-size: 34px;
+  font-size: 34px;
 }
 
 .footer h3 {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .footer h2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .footer-menu ul {
-    list-style: none;
-    line-height: 40px;
-    margin-left: -33px;
+  list-style: none;
+  line-height: 40px;
+  margin-left: -33px;
 }
 
 .footer-menu ul li a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
-
 .price-filter {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .price-filter label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .price-filter input[type="range"] {
-    width: 200px;
+  width: 200px;
 }
 
 .price-filter #price-value {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .main-product-sale {
-    position: relative;
-    top: -194px;
-    left: -74px;
+  position: relative;
+  top: -194px;
+  left: -74px;
 }
 
 .main-product-btn {
-    border: 1px solid #b5313a;
-    background-color: white;
-    border-radius: 4px;
-    padding: 4px;
-    width: 100%;
-    color: #b5313a;
+  border: 1px solid #b5313a;
+  background-color: white;
+  border-radius: 4px;
+  padding: 4px;
+  width: 100%;
+  color: #b5313a;
 }
 
 .main-product-items {
-    gap: 20px;
+  gap: 20px;
 }
-
 
 /* list danh mục */
 .main-product-list-banner {
-    transform: rotate(90deg) scaleX(2);
-    width: 100%;
-
+  transform: rotate(90deg) scaleX(2);
+  width: 100%;
 }
 
 .main-product-list-banner img {
-    border-radius: 10px;
-    border: 1px solid #b5313a;
+  border-radius: 10px;
+  border: 1px solid #b5313a;
 }
 
 .main-product-list-category {
-    border-right: 2px solid #503629;
-    border-radius: 10px;
+  border-right: 2px solid #503629;
+  border-radius: 10px;
 }
 
 .main-product-list-category-item {
-    background-color: rgba(220, 220, 220, 0.5);
-    color: black;
-    font-weight: 700;
-    margin: 5px 0;
-    width: 100px;
-
+  background-color: rgba(220, 220, 220, 0.5);
+  color: black;
+  font-weight: 700;
+  margin: 5px 0;
+  width: 100px;
 }
 
-
 .user-list-handle ul {
-    list-style: none;
-    line-height: 2;
-    margin-left: -32px;
-
+  list-style: none;
+  line-height: 2;
+  margin-left: -32px;
 }
 
 .user-list-handle ul li a {
-    text-decoration: none;
-    color: black;
-    padding: 4px;
+  text-decoration: none;
+  color: black;
+  padding: 4px;
 }
 
-
-
 .user-title h2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .user-list-infor ul {
-    list-style: none;
-
+  list-style: none;
 }
 
 .checkout-done-infor-thankyou {
-    display: grid;
-    grid-template-columns: 14% 40%;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 14% 40%;
+  align-items: center;
 }
 
 .checkout-done-infor-thankyou i {
-    font-size: 80px;
-    color: rgb(157, 193, 104);
+  font-size: 80px;
+  color: rgb(157, 193, 104);
 }
 
 .checkout-done {
-    display: grid;
-    grid-template-columns: 60% 40%;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 
 .order-item {
-    display: grid;
-    grid-template-columns: 80% 8%;
-    align-items: center;
-    gap: 10px;
-
+  display: grid;
+  grid-template-columns: 80% 8%;
+  align-items: center;
+  gap: 10px;
 }
 
 .order-item img {
-    width: 100%;
-
+  width: 100%;
 }
 
 .order-item-count {
-    position: relative;
-    top: -60px;
-
+  position: relative;
+  top: -60px;
 }
 
 .order-pricing-total,
 .order-pricing-shiping,
 .order-pricing-final {
-    display: grid;
-    grid-template-columns: 30% 30%;
-    gap: 214px;
+  display: grid;
+  grid-template-columns: 30% 30%;
+  gap: 214px;
 }
 
 .cart-products {
-    display: flex;
-    grid-template-columns: auto auto;
+  display: flex;
+  grid-template-columns: auto auto;
+}
+
+
+.cart-btn:hover {
+  background-color: #b5313a;
+  color: white !important;
 }
 
 
 
+.navbar-header {
+  height: 90px;
+  width: 100%;
+  background: #b5313a;
+  padding: 0 220px;
+  display: flex;
+  align-items: center;
+}
 
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
 
+.navbar-logo img {
+  width: 107px !important;
+  height: 73px !important;
+  margin: 0 80px;
+}
 
+.navbar-logo-menu {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
 
+.navbar-logo-menu i {
+  font-size: 33px;
+}
 
+.navbar-logo-search {
+  display: flex;
+  width: 548px;
+  height: 42px;
+  border-radius: 5px;
+  background: white;
+  align-items: center;
+  margin-right: 250px;
+  margin-left: 71px;
+}
 
+.navbar-logo-search input {
+  width: 90%;
+  height: 100%;
+  border: none;
+  outline: none;
+  margin-left: 20px;
+}
+
+.navbar-logo-search i {
+  color: #bbb;
+  font-size: 16px;
+}
+
+.navbar-logo-user {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  gap: 10px;
+  margin-right: 30px;
+  margin-top: 26px;
+}
+
+.navbar-logo-user i {
+  font-size: 25px;
+}
+
+.navbar-header-menu {
+  padding: 0 220px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background-color: #dde0eb;
+}
+
+.navbar-header-menu i {
+  font-size: 25px;
+  color: #b5313a;
+}
+
+.navbar-header-menu ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-header-menu ul li {
+  width: 167px;
+  height: 49px;
+  list-style: none;
+  border: 1px solid #f5f5f5;
+  text-align: center;
+  line-height: 2.9;
+  font-weight: 900;
+  margin-right: 31px;
+  color: #b5313a;
+  margin-top: 20px;
+}
+
+.active-menu {
+  background-color: #b5313a;
+  color: white !important;
+}
+
+.navbar-header-category {
+  width: 100%;
+  padding: 0 220px;
+}
+
+.navbar-header-category ul {
+  display: flex;
+  margin-left: 57px;
+  gap: 30px;
+}
+
+.navbar-header-category ul li {
+  list-style: none;
+  height: 38px;
+  padding: 0 15px;
+  color: #b5313a;
+  font-weight: 700;
+  border: 1px solid #f5f5f5;
+  line-height: 2.3;
+  border-radius: 5px;
+}
+
+.modal-menu {
+  position: absolute;
+  width: 270px;
+  background-color: white;
+  box-shadow: 0 0 10px grey;
+  left: 221px;
+  top: 117px;
+  z-index: 11;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s;
+  pointer-events: none;
+}
+
+.modal-open-menu {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.modal-menu i {
+  font-size: 30px;
+  line-height: 2.5;
+  margin-left: 20px;
+  color: #b5313a;
+}
+
+.modal-menu hr {
+  margin: 0;
+}
+
+.modal-menu ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  line-height: 1.5;
+}
+
+.modal-menu ul li:hover {
+  color: #b5313a;
+}
+
+.modal-menu ul li p {
+  margin: 0;
+}
+
+.modal-menu ul li i {
+  font-size: 20px !important;
+  margin-right: 20px;
+}
+
+.carousel-control-prev {
+  display: none;
+}
+
+.carousel-control-next {
+  display: none;
+}
 
 /* CSS CỦA HIẾU */

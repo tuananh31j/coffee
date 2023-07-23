@@ -1,4 +1,5 @@
 <?php
+
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
 require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
 
@@ -72,9 +73,15 @@ if(isset($_GET['url'])) {
     case 'comment':
         # code...
         break;
-    case 'contact':
-        # code...
+
+
+
+
+    case 'logout':
+        require_once "../site/view/pages/account/logOut.php";
+        header("location: $ROOT_URL");
         break;
+
     default:
         require_once "./view/dashboard/dashboard.php";
         break;

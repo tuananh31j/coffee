@@ -24,225 +24,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
     />
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-
-      .container-slider {
-        margin: 50px auto;
-        height: 80%;
-
-        display: flex;
-      }
-
-      .main {
-        position: relative;
-        height: 513px;
-      }
-
-      .control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 30px;
-        color: rgb(134, 55, 55);
-        cursor: pointer;
-        text-shadow: 0 0 5px grey;
-      }
-
-      .prev {
-        left: 20px;
-      }
-
-      .next {
-        right: 20px;
-      }
-
-      .img-wrap {
-        width: 100%;
-        height: 100%;
-      }
-
-      .list-img {
-      }
-
-      .list-img div {
-        cursor: pointer;
-        padding: 2px;
-        margin-bottom: 20px;
-        margin-right: 40px;
-        background-color: #bbb;
-      }
-      .list-img div img {
-        width: 80px;
-        height: 80px;
-      }
-      .img-wrap {
-        width: 455px;
-        height: 455px;
-
-        box-shadow: 0 0 10px #bbb;
-      }
-
-      .list-img div.active {
-        background-color: rgb(220, 86, 86);
-      }
-      .container-flex {
-        display: flex;
-        justify-content: space-between;
-      }
-      .content-right {
-        width: 620px;
-      }
-      .content-right h2 {
-        margin-top: 45px;
-        font-size: 28px;
-      }
-      .content-right-brand {
-        display: flex;
-        justify-content: space-between;
-        color: grey;
-        font-size: 18px;
-      }
-      .cost {
-        color: red;
-        font-size: 33px;
-      }
-      .content-right-price {
-        display: flex;
-        gap: 30px;
-        color: grey;
-        font-size: 18px;
-      }
-      .content-right-add {
-        display: flex;
-        justify-content: space-between;
-      }
-      .content-right-add-left {
-        display: flex;
-        align-items: center;
-        width: 150px;
-      }
-      .content-right-add-left button {
-        width: 50px;
-        height: 50px;
-        border: none;
-      }
-      .content-right-add-left input {
-        width: 50px;
-        height: 50px;
-        border: none;
-        outline: none;
-        padding-left: 19px;
-        font-size: 20px;
-        background: #f0f0f0;
-      }
-      .content-right-add-right button {
-        width: 385px;
-        height: 50px;
-        border: none;
-        font-size: 17px;
-        color: white;
-        background: red;
-      }
-      .content-right-whitlist {
-        display: flex;
-        color: red;
-        align-items: center;
-        font-size: 20px;
-        margin: 15px 0;
-      }
-      .content-right-whitlist p {
-        margin-bottom: 0 !important;
-      }
-      .content-right-whitlist i {
-        font-size: 25px;
-      }
-      .content-right-suppost {
-        cursor: pointer;
-
-        max-height: 40px;
-        overflow: hidden;
-        transition: all 0.5s;
-      }
-      .content-right-suppost-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .content-right-suppost-flex:hover p {
-        color: red;
-      }
-      .content-right-suppost-flex p {
-        font-weight: 700;
-      }
-      .content-right-suppost-flex {
-        transition: all 0.5s;
-      }
-      .content-right-suppost button {
-        border: none;
-        background: red;
-        width: 180px;
-        height: 36px;
-        color: white;
-      }
-      .toggle {
-        max-height: 1000px;
-      }
-      .footer-about img {
-        width: 74px !important;
-        height: 56px !important;
-      }
-      .productrelate-title {
-        margin: 40px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-      }
-      .line {
-        width: 400px;
-        height: 1px;
-        background-color: grey;
-      }
-      .tns-outer {
-        position: relative;
-      }
-      .tns-controls {
-        width: 110%;
-        position: absolute;
-        top: 50%;
-        left: -5%;
-        z-index: 10;
-        display: flex;
-        justify-content: space-between;
-      }
-      .tns-controls button {
-        width: 60px;
-        height: 30px;
-
-        border: none;
-      }
-      .tns-nav {
-        display: none;
-      }
-      .rotate {
-        transform: rotate(180deg);
-        transition: all 0.5s;
-      }
-    </style>
   </head>
 
   <body>
@@ -285,95 +66,322 @@
           </button>
         </div>
         <!-- header-logo -->
-        <div class="header-logo">
-          <nav class="navbar navbar-expand-lg">
-            <div class="container header-logo-img">
-              <a class="navbar-brand" href="#"
-                ><img src="../../public/img/logo 1.svg" alt=""
-              /></a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div
-                class="collapse navbar-collapse header-logo-search"
-                id="navbarSupportedContent"
-              >
-                <form class="d-flex header-logo-search-form" role="search">
-                  <input
-                    class="form-control header-logo-search-input"
-                    type="search"
-                    placeholder="Tìm kiếm sản phẩm..."
-                    aria-label="Search"
-                  />
-                  <button class="header-logo-search-btn" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </form>
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                  <!-- người dùng -->
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      aria-current="page"
-                      href="login.html"
-                      ><i class="fa-regular fa-user"></i
-                    ></a>
-                  </li>
-                  <!-- giỏ hàng -->
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      aria-current="page"
-                      href="cart.html"
-                      ><i class="fa-solid fa-cart-shopping"></i
-                      ><span class="header-count-cart">2</span></a
-                    >
-                  </li>
-                </ul>
-              </div>
+        <div class="navbar-header">
+          <div class="navbar-logo">
+            <div class="navbar-logo-menu">
+              <i class="fa-solid fa-bars"></i>
+              MENU
             </div>
-          </nav>
-        </div>
-        <!-- menu -->
-        <div class="container">
-          <nav class="header-menu">
-            <ul>
-              <li>
-                <a href=""><i class="fa-solid fa-house"></i></a>
-              </li>
-              <li><a href="">TRANG CHỦ</a></li>
-              <li><a href="">GIẢM GIÁ</a></li>
-              <li><a class="header-menu-active" href="">SẢN PHẨM</a></li>
-              <li><a href="">LIÊN HỆ</a></li>
-              <li><a href="">GIỚI THIỆU</a></li>
-            </ul>
-          </nav>
-
-          <!-- đường dẫn -->
-          <div class="header-link m-0">
-            <span><a href="">Trang chủ</a> > </span>
-            <span><a href="" class="text-danger">Chi tiết sản phẩm</a></span>
-          </div>
-          <!-- <div class="header-banner">
             <img
-              src="../../public/img/bannerSP.jpg"
+              width="110px"
+              height="73px"
+              src="../../public/img/logo 1.svg"
               alt=""
-              class="header-banner-img"
             />
-          </div> -->
+          </div>
+          <div class="navbar-logo-search">
+            <input type="text" placeholder="Tìm sản phẩm ..." />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="navbar-logo-user">
+            <i class="fa-regular fa-user"></i>
+            <p>Tài Khoản</p>
+          </div>
+          <div class="navbar-logo-user">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Giỏ Hàng</p>
+          </div>
+        </div>
+        <div class="navbar-header-menu">
+          <i class="fa-solid fa-house"></i>
+          <ul>
+            <li class="active-menu">Trang Chủ</li>
+            <li>Giảm Giá</li>
+            <li>Sản Phẩm</li>
+            <li>Liên Hệ</li>
+            <li>Giới Thiệu</li>
+          </ul>
+        </div>
+        <hr style="background: #f5f5f5; margin: 0; margin-bottom: 10px" />
+        <div class="navbar-header-category">
+          <ul>
+            <li>Cà phê rang xay</li>
+            <li>Cà phê uống liền</li>
+            <li>Cà phê hòa tan</li>
+            <li>Cà phê hạt</li>
+            <li>Cà phê hộp giấy</li>
+          </ul>
+        </div>
+        <div class="modal-menu">
+          <i class="fa-solid fa-house"></i>
+          <hr />
+          <ul>
+            <li>TRANG CHỦ</li>
+            <li>GIẢM GIÁ</li>
+            <li>SẢN PHẨM</li>
+            <li>LIÊN HỆ</li>
+            <li>GIỚI THIỆU</li>
+            <li>BẠN CẦN HỖ TRỢ</li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <p>0123456789</p>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope-open-text"></i>
+              <p>Exmaple@gmail.com</p>
+            </li>
+          </ul>
         </div>
       </header>
 
       <!-- MAIN CONTENT -->
       <div class="main-content">
+        <style>
+          * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .container-slider {
+            margin: 50px auto;
+            height: 80%;
+
+            display: flex;
+          }
+
+          .main {
+            position: relative;
+            height: 513px;
+          }
+
+          .control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: rgb(134, 55, 55);
+            cursor: pointer;
+            text-shadow: 0 0 5px grey;
+          }
+
+          .prev {
+            left: 20px;
+          }
+
+          .next {
+            right: 20px;
+          }
+
+          .img-wrap {
+            width: 100%;
+            height: 100%;
+          }
+
+          .list-img div {
+            cursor: pointer;
+            padding: 2px;
+            margin-bottom: 20px;
+            margin-right: 40px;
+            background-color: #bbb;
+          }
+
+          .list-img div img {
+            width: 80px;
+            height: 80px;
+          }
+
+          .img-wrap {
+            width: 455px;
+            height: 455px;
+
+            box-shadow: 0 0 10px #bbb;
+          }
+
+          .list-img div.active {
+            background-color: rgb(220, 86, 86);
+          }
+
+          .container-flex {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .content-right {
+            width: 620px;
+          }
+
+          .content-right h2 {
+            margin-top: 45px;
+            font-size: 28px;
+          }
+
+          .content-right-brand {
+            display: flex;
+            justify-content: space-between;
+            color: grey;
+            font-size: 18px;
+          }
+
+          .cost {
+            color: red;
+            font-size: 33px;
+          }
+
+          .content-right-price {
+            display: flex;
+            gap: 30px;
+            color: grey;
+            font-size: 18px;
+          }
+
+          .content-right-add {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .content-right-add-left {
+            display: flex;
+            align-items: center;
+            width: 150px;
+          }
+
+          .content-right-add-left button {
+            width: 50px;
+            height: 50px;
+            border: none;
+          }
+
+          .content-right-add-left input {
+            width: 50px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 19px;
+            font-size: 20px;
+            background: #f0f0f0;
+          }
+
+          .content-right-add-right button {
+            width: 385px;
+            height: 50px;
+            border: none;
+            font-size: 17px;
+            color: white;
+            background: red;
+          }
+
+          .content-right-whitlist {
+            display: flex;
+            color: red;
+            align-items: center;
+            font-size: 20px;
+            margin: 15px 0;
+          }
+
+          .content-right-whitlist p {
+            margin-bottom: 0 !important;
+          }
+
+          .content-right-whitlist i {
+            font-size: 25px;
+          }
+
+          .content-right-suppost {
+            cursor: pointer;
+
+            max-height: 40px;
+            overflow: hidden;
+            transition: all 0.5s;
+          }
+
+          .content-right-suppost-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .content-right-suppost-flex:hover p {
+            color: red;
+          }
+
+          .content-right-suppost-flex p {
+            font-weight: 700;
+          }
+
+          .content-right-suppost-flex {
+            transition: all 0.5s;
+          }
+
+          .content-right-suppost button {
+            border: none;
+            background: red;
+            width: 180px;
+            height: 36px;
+            color: white;
+          }
+
+          .toggle {
+            max-height: 1000px;
+          }
+
+          .footer-about img {
+            width: 74px !important;
+            height: 56px !important;
+          }
+
+          .productrelate-title {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+          }
+
+          .line {
+            width: 400px;
+            height: 1px;
+            background-color: grey;
+          }
+
+          .tns-outer {
+            position: relative;
+          }
+
+          .tns-controls {
+            width: 110%;
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .tns-controls button {
+            width: 60px;
+            height: 30px;
+
+            border: none;
+          }
+
+          .tns-nav {
+            display: none;
+          }
+
+          .rotate {
+            transform: rotate(180deg);
+            transition: all 0.5s;
+          }
+        </style>
         <div class="container">
           <div class="container-flex">
             <div class="content-left">

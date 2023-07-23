@@ -1,455 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="admin.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
-    />
-    <link rel="stylesheet" href="https://cdnjs.com/libraries/Chart.js" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
 
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- THANH DIEU KHIEN -->
-        <div
-          class="col-3"
-          style="background: linear-gradient(to bottom, #f6606a, #4d0846)"
-        >
-          <div
-            class="dashboard-menu col-3 position-fixed h-100"
-            style="
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.com/libraries/Chart.js" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- THANH DIEU KHIEN -->
+      <div class="col-3" style="background: linear-gradient(to bottom, #f6606a, #4d0846)">
+        <div class="dashboard-menu col-3 position-fixed h-100" style="
               margin-left: -12px;
               background: linear-gradient(to bottom, #f6606a, #4d0846);
-            "
-          >
-            <h2 class="text-center pe-3 mb-4">Hignland coffee</h2>
+            ">
+          <h2 class="text-center pe-3 mb-4">Hignland coffee</h2>
 
-            <nav class="control">
-              <ul>
-                <!-- user -->
-                <li>
-                  <div class="d-flex gap-2 align-content-center">
-                    <div class="h-25" style="width: 42px">
-                      <img
-                        class="w-100 rounded-circle"
-                        style="height: 42px; object-fit: cover"
-                        src="../img/mm.png"
-                        alt=""
-                      />
-                    </div>
-                    <div class="">
-                      <p class="fw-bold m-0">Tuấn Anh</p>
-                      <p class="fs-6 m-0">tuananh@gmail.com</p>
-                    </div>
+          <nav class="control">
+            <ul>
+              <!-- user -->
+              <li>
+                <div class="d-flex gap-2 align-content-center">
+                  <div class="h-25" style="width: 42px">
+                    <img class="w-100 rounded-circle" style="height: 42px; object-fit: cover" src="../img/mm.png"
+                      alt="" />
                   </div>
+                  <div class="">
+                    <p class="fw-bold m-0">Tuấn Anh</p>
+                    <p class="fs-6 m-0">tuananh@gmail.com</p>
+                  </div>
+                </div>
+              </li>
+              <!-- điều khiển -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-4">
+                  <i class="fa-solid fa-gauge"></i> Thống kê
                 </li>
-                <!-- điều khiển -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-4">
-                    <i class="fa-solid fa-gauge"></i> Thống kê
-                  </li>
-                </a>
-                <!-- đơn hàng -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-3"><i class="fa-solid fa-box"></i> Đơn hàng</li>
-                </a>
-                <!-- Danh mục -->
-                <a class="text-black fw-bolder" href="">
-                  <li class="mt-3">
-                    <i class="fa-solid fa-hashtag"></i> Danh mục
-                  </li>
-                </a>
-                <!-- Sản phẩm -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-3">
-                    <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
-                  </li>
-                </a>
-                <!-- khách hàng -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-3">
-                    <i class="fa-solid fa-people-group"></i> Khách hàng
-                  </li>
-                </a>
-                <!-- Bình luận -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-3">
-                    <i class="fa-solid fa-comments"></i> Bình luận
-                  </li>
-                </a>
-                <!-- Phản hồi -->
-                <a class="text-black text-decoration-none" href="">
-                  <li class="mt-3">
-                    <i class="fa-solid fa-envelope"></i> Phản hồi
-                  </li>
-                </a>
-              </ul>
-            </nav>
-            <a
-              class="position-relative text-black text-decoration-none"
-              style="top: 120px; left: 200px"
-              href=""
-              ><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a
-            >
-          </div>
-        </div>
-
-        <!-- CONTENT -->
-        <div class="col">
-          <div class="container">
-            <h3 class="text-center my-5">Thêm Sản Phẩm</h3>
-            <div class="d-flex">
-              <!-- thêm danh mục -->
-
-              <a
-                href=""
-                class="text-decoration-none bg-success p-1 px-2 rounded-2 text-light m-3"
-                >Danh sách sản phẩm</a
-              >
-            </div>
-
-            <!-- content -->
-            <div class="wrapper" style="margin-top: 20px; width: 100%">
-              <form
-                class="row g-3 needs-validation"
-                method="post"
-                enctype="multipart/form-data"
-                novalidate
-              >
-                <div class="col-md-4">
-                  <label for="validationCustom01" class="form-label"
-                    >Mã hàng hóa</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustom01"
-                    placeholder="Auto Number"
-                    disabled
-                    required
-                  />
-                  <div class="valid-feedback">Looks good!</div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label"
-                    >Tên hàng hóa</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    id="validationCustom02"
-                    required
-                  />
-                  <div style="color: red"></div>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">Đơn giá</label>
-                  <div class="input-group has-validation">
-                    <input
-                      type="number"
-                      class="form-control"
-                      name="dongia"
-                      id="validationCustom02"
-                      required
-                    />
-                  </div>
-                  <div style="color: red"></div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom01" class="form-label"
-                    >Giảm giá</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="giamgia"
-                    value="<?php if(!empty($dataupdate)) echo $dataupdate[0]['saleprice'] ?>"
-                    id="validationCustom01"
-                    required
-                  />
-                  <div style="color: red"></div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label"
-                    >Ảnh hàng hóa</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control"
-                    name="anh"
-                    aria-label="file example"
-                    required
-                  />
-                  <div class="valid-feedback">Không được để trống!</div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustomUsername" class="form-label"
-                    >Loại hàng</label
-                  >
-                  <div class="input-group has-validation">
-                    <select
-                      class="form-select"
-                      name="loai"
-                      aria-label="Default select example"
-                    >
-                      <option>...Chọn Loại Hàng....</option>
-                    </select>
-                    <div class="invalid-feedback">Không được để trống!</div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom01" class="form-label"
-                    >Hàng đạc biệt</label
-                  >
-                  <div class="check">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="radio"
-                        id="inlineCheckbox1"
-                        value="1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >Đặc biệt</label
-                      >
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="radio"
-                        id="inlineCheckbox2"
-                        value="2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Bình thường</label
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label"
-                    >Ngày nhập
-                  </label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    name="date"
-                    id="validationCustom01"
-                    required
-                  />
-                  <div style="color: red"></div>
-                </div>
-                <div class="col-md-4">
-                  <label for="validationCustomUsername" class="form-label"
-                    >Số lượt xem
-                  </label>
-                  <div class="input-group has-validation">
-                    <input
-                      type="number"
-                      class="form-control"
-                      name="luotxem"
-                      value="0"
-                      id="validationCustom01"
-                      disabled
-                      required
-                    />
-                    <div class="invalid-feedback">Không được để trống!</div>
-                  </div>
-                </div>
-                <div class="form-floating">
-                  <textarea
-                    class="form-control"
-                    name="des"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea"
-                  >
-                  </textarea>
-                  <label for="floatingTextarea">Mô tả</label>
-                </div>
-                <div class="button">
-                  <button type="button" class="btn btn-primary">
-                    Thêm mới
-                  </button>
-
-                  <button type="button" class="btn btn-warning">
-                    Nhập lại
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-          <script>
-            // tổng doanh thu
-            const totalMoney = document.getElementById("total-money");
-
-            let lineTotalMoney = new Chart(totalMoney, {
-              type: "line",
-              data: {
-                labels: ["", "", "", "", "", ""],
-                datasets: [
-                  {
-                    label: "VNĐ",
-                    data: [12, 19, 3, 6, 7, 2],
-                    borderWidth: 4,
-                    borderColer: "#b5313a",
-                    hoverBorderColor: "#000",
-                    hoverBorderWidth: 6,
-                    backgroundColor: "#b5313a",
-                    tension: 0.5,
-                  },
-                ],
-              },
-              options: {
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Doanh thu tháng này(VNĐ)",
-                  },
-                  legend: {
-                    display: false,
-                  },
-                },
-              },
-            });
-            // số lượng khách hàng mới
-            const userNew = document.getElementById("userNew");
-
-            let lineUserNew = new Chart(userNew, {
-              type: "line",
-              data: {
-                labels: ["", "", "", "", "", ""],
-                datasets: [
-                  {
-                    label: "Số lượng",
-                    data: [12, 19, 3, 6, 7, 2],
-                    borderWidth: 4,
-                    borderColer: "#777",
-                    hoverBorderColor: "#000",
-                    hoverBorderWidth: 6,
-                    tension: 0.5,
-                  },
-                ],
-              },
-              options: {
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Khách hàng mới",
-                  },
-                  legend: {
-                    display: false,
-                  },
-                },
-              },
-            });
-            // lượng đơn hàng
-            const orders = document.getElementById("orders");
-
-            let lineOrders = new Chart(orders, {
-              type: "line",
-              data: {
-                labels: ["", "", "", "", "", ""],
-                datasets: [
-                  {
-                    label: "Số lượng",
-                    data: [12, 19, 3, 6, 7, 2],
-                    borderWidth: 4,
-                    borderColer: "#777",
-                    hoverBorderColor: "#000",
-                    hoverBorderWidth: 6,
-                    backgroundColor: "#198754",
-                    tension: 0.5,
-                  },
-                ],
-              },
-              options: {
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Đơn hàng",
-                  },
-                  legend: {
-                    display: false,
-                  },
-                },
-              },
-            });
-            // số lượng sản phẩm theo danh mục
-            const category = document.getElementById("category");
-
-            let barCategory = new Chart(category, {
-              type: "bar",
-              data: {
-                labels: [
-                  "Cà phê",
-                  "Chè",
-                  "Trà",
-                  "Trà sữa",
-                  "Sữa",
-                  "Bột cà phê",
-                ],
-                datasets: [
-                  {
-                    label: "Số lượng",
-                    data: [12, 19, 3, 6, 7, 2],
-                    borderWidth: 4,
-                    borderColer: "#777",
-                    hoverBorderColor: "#000",
-                    hoverBorderWidth: 6,
-                    backgroundColor: [
-                      "rgb(255, 99, 132)",
-                      "rgb(54, 162, 235)",
-                      "rgb(165, 205, 86)",
-                      "rgb(255, 205, 00)",
-                      "rgb(255, 00, 86)",
-                      "rgb(165, 42, 42)",
-                    ],
-                  },
-                ],
-              },
-              options: {
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Thống kê sản phẩm theo danh mục",
-                  },
-                  legend: {
-                    display: false,
-                  },
-                },
-              },
-            });
-          </script>
+              </a>
+              <!-- đơn hàng -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-3"><i class="fa-solid fa-box"></i> Đơn hàng</li>
+              </a>
+              <!-- Danh mục -->
+              <a class="text-black fw-bolder" href="">
+                <li class="mt-3">
+                  <i class="fa-solid fa-hashtag"></i> Danh mục
+                </li>
+              </a>
+              <!-- Sản phẩm -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-3">
+                  <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
+                </li>
+              </a>
+              <!-- khách hàng -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-3">
+                  <i class="fa-solid fa-people-group"></i> Khách hàng
+                </li>
+              </a>
+              <!-- Bình luận -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-3">
+                  <i class="fa-solid fa-comments"></i> Bình luận
+                </li>
+              </a>
+              <!-- Phản hồi -->
+              <a class="text-black text-decoration-none" href="">
+                <li class="mt-3">
+                  <i class="fa-solid fa-envelope"></i> Phản hồi
+                </li>
+              </a>
+            </ul>
+          </nav>
+          <a class="position-relative text-black text-decoration-none" style="top: 120px; left: 200px" href=""><i
+              class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
         </div>
       </div>
-    </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      <!-- CONTENT -->
+      <div class="col">
+        <div class="container">
+          <h3 class="text-center my-5">Thêm Sản Phẩm</h3>
+          <div class="d-flex">
+            <!-- thêm danh mục -->
+
+            <a href="" class="text-decoration-none bg-success p-1 px-2 rounded-2 text-light m-3">Danh sách sản phẩm</a>
+          </div>
+
+          <!-- content -->
+          <div class="wrapper" style="margin-top: 20px; width: 100%">
+            <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data" novalidate>
+              <!-- id -->
+              <div class="col-md-4" hidden>
+                <label for="validationCustom01" class="form-label">Mã hàng hóa</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Auto Number" disabled
+                  required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <!-- tên -->
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Tên hàng hóa</label>
+                <input type="text" class="form-control" name="name" id="validationCustom02" required />
+                <div style="color: red"></div>
+              </div>
+              <!-- price -->
+              <div class="col-md-4">
+                <label class="form-label">Đơn giá</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" name="dongia" id="validationCustom02" required />
+                </div>
+                <div style="color: red"></div>
+              </div>
+              <!-- giảm giá -->
+              <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Giảm giá %</label>
+                <input type="number" class="form-control" name="giamgia" value="" required />
+                <div style="color: red"></div>
+              </div>
+              <!-- ảnh hàng hóa -->
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Ảnh hàng hóa</label>
+                <input type="file" class="form-control" name="anh" aria-label="file example" required />
+                <div class="valid-feedback">Không được để trống!</div>
+              </div>
+              <!-- danh mục -->
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Loại hàng</label>
+                <div class="input-group has-validation">
+                  <select class="form-select" name="loai" aria-label="Default select example">
+                    <option>...Chọn Loại Hàng....</option>
+                  </select>
+                  <div class="invalid-feedback">Không được để trống!</div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Ngày nhập
+                </label>
+                <input type="date" class="form-control" name="date" id="validationCustom01" required />
+                <div style="color: red"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Số lượt xem
+                </label>
+                <div class="input-group has-validation">
+                  <input type="number" class="form-control" name="luotxem" value="0" id="validationCustom01" disabled
+                    required />
+                  <div class="invalid-feedback">Không được để trống!</div>
+                </div>
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control" name="des" placeholder="Leave a comment here" id="floatingTextarea">
+                  </textarea>
+                <label for="floatingTextarea">Mô tả</label>
+              </div>
+              <div class="button">
+                <button type="button" class="btn btn-primary">
+                  Thêm mới
+                </button>
+
+                <button type="button" class="btn btn-warning">
+                  Nhập lại
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+          // tổng doanh thu
+          const totalMoney = document.getElementById("total-money");
+
+          let lineTotalMoney = new Chart(totalMoney, {
+            type: "line",
+            data: {
+              labels: ["", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "VNĐ",
+                  data: [12, 19, 3, 6, 7, 2],
+                  borderWidth: 4,
+                  borderColer: "#b5313a",
+                  hoverBorderColor: "#000",
+                  hoverBorderWidth: 6,
+                  backgroundColor: "#b5313a",
+                  tension: 0.5,
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Doanh thu tháng này(VNĐ)",
+                },
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+          // số lượng khách hàng mới
+          const userNew = document.getElementById("userNew");
+
+          let lineUserNew = new Chart(userNew, {
+            type: "line",
+            data: {
+              labels: ["", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "Số lượng",
+                  data: [12, 19, 3, 6, 7, 2],
+                  borderWidth: 4,
+                  borderColer: "#777",
+                  hoverBorderColor: "#000",
+                  hoverBorderWidth: 6,
+                  tension: 0.5,
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Khách hàng mới",
+                },
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+          // lượng đơn hàng
+          const orders = document.getElementById("orders");
+
+          let lineOrders = new Chart(orders, {
+            type: "line",
+            data: {
+              labels: ["", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "Số lượng",
+                  data: [12, 19, 3, 6, 7, 2],
+                  borderWidth: 4,
+                  borderColer: "#777",
+                  hoverBorderColor: "#000",
+                  hoverBorderWidth: 6,
+                  backgroundColor: "#198754",
+                  tension: 0.5,
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Đơn hàng",
+                },
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+          // số lượng sản phẩm theo danh mục
+          const category = document.getElementById("category");
+
+          let barCategory = new Chart(category, {
+            type: "bar",
+            data: {
+              labels: [
+                "Cà phê",
+                "Chè",
+                "Trà",
+                "Trà sữa",
+                "Sữa",
+                "Bột cà phê",
+              ],
+              datasets: [
+                {
+                  label: "Số lượng",
+                  data: [12, 19, 3, 6, 7, 2],
+                  borderWidth: 4,
+                  borderColer: "#777",
+                  hoverBorderColor: "#000",
+                  hoverBorderWidth: 6,
+                  backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)",
+                    "rgb(165, 205, 86)",
+                    "rgb(255, 205, 00)",
+                    "rgb(255, 00, 86)",
+                    "rgb(165, 42, 42)",
+                  ],
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Thống kê sản phẩm theo danh mục",
+                },
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

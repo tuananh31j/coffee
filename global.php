@@ -1,5 +1,6 @@
 <?php
 require_once "pdo.php";
+ob_start();
 session_start();
 //định nghĩa URL
 $ROOT_URL = "/du-an-1-nhom7";

@@ -47,14 +47,30 @@
                 <nav class=" navbar navbar-expand-lg ">
 
                     <div class="container  header-logo-img">
-                        <a class="navbar-brand" href="#"><img src="img/logo 1.svg" alt=""></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
+                        <!-- logo -->
+                        <div class="d-flex align-items-center gap-1">
+                            <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
+                            <div>
+                                <!-- tra cứu đơn hàng -->
+                                <form class="d-flex " role="search">
+                                    <input class="form-control border-light text-light "
+                                        style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng"
+                                        aria-label="Search">
+                                    <button class="border-0 rounded-end-2 bg-danger text-light "
+                                        style="margin-left: -20px; width: 60px; font-size: 14px;" type="submit">Tra
+                                        cứu</button>
+                                </form>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
 
+                        <!-- tìm kiếm -->
+
+                        <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
                             <form class="d-flex header-logo-search-form" role="search">
                                 <input class="form-control header-logo-search-input " type="search"
                                     placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
@@ -62,18 +78,45 @@
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                             <ul class="navbar-nav  mb-2 mb-lg-0">
-                                <!-- người dùng -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="login.html"><i
-                                            class="fa-regular fa-user"></i></a>
-                                </li>
-                                <!-- giỏ hàng -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="cart.html"><i
+                                <?php if(!isset($_SESSION['user'])){ ?>
+                                <li class="nav-item d-flex gap-4 align-items-center">
+                                    <!-- login -->
+                                    <a style="font-size: 14px;"
+                                        class="p-2 text-decoration-none rounded-2 bg-danger text-light nav-link active"
+                                        aria-current="page" href="index.php?url=login">Đăng
+                                        nhập</a>
+                                    <!-- đăng ký -->
+                                    <a style="font-size: 14px;" class=" p-2 text-decoration-none rounded-2 bg-info
+                                        text-black " href=" index.php?url=signup">Đăng
+                                        ký</a>
+                                    <!-- giỏ hàng -->
+                                    <a class=" nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
                                             class="header-count-cart">2</span></a>
                                 </li>
+                                <?php }else{ ?>
 
+
+                                <li class="nav-item d-flex align-items-center gap-4">
+                                    <!-- người dùng -->
+                                    <div class="nav-link active d-flex align-items-center " aria-current="page"><i
+                                            class="text-light me-1 fs-6" style="width: 100px">
+                                            <?php if($_SESSION['user']['role'] == 1){ ?>
+                                            <a class="bg-danger p-2 text-light text-decoration-none rounded-2"
+                                                href="<?=$ADMIN_URL?>">Quản trị</a>
+                                            <?php }else{ ?>
+                                            Xin
+                                            chào! <br><span><?=$_SESSION['user']['name']?></span>
+                                            <?php } ?>
+                                        </i><a href="index.php?url=account"><img class=" rounded-circle"
+                                                style="height: 35px;width: 35px; object-fit:cover"
+                                                src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt=""></a></div>
+                                    <!-- giỏ hàng -->
+                                    <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
+                                            class="fa-solid fa-cart-shopping"></i><span
+                                            class="header-count-cart">2</span></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -88,7 +131,7 @@
                         <li><a href=""><i class="fa-solid fa-house"></i></a></li>
                         <li><a href="">TRANG CHỦ</a></li>
                         <li><a href="">GIẢM GIÁ</a></li>
-                        <li><a href="">SẢN PHẨM</a></li>
+                        <li><a href="index.php?url=product">SẢN PHẨM</a></li>
                         <li><a href="">LIÊN HỆ</a></li>
                         <li><a href="">GIỚI THIỆU</a></li>
                     </ul>
