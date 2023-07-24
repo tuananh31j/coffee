@@ -86,6 +86,7 @@ if(isset($_GET['url'])) {
                         ];
             if(!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = [];
+                array_push($_SESSION['cart'], $cartProducts);
             }else{
                 array_push($_SESSION['cart'], $cartProducts);
             }
@@ -147,6 +148,7 @@ if(isset($_GET['url'])) {
         if(isset($_SESSION['cart'])) {
            $listCart = $_SESSION['cart']; 
         }
+        //xóa sản phẩm trong giỏ hàng
         if(isset($_GET['index'])) {
             $index = $_GET['index'];
             unset($_SESSION['cart'][$index]);
