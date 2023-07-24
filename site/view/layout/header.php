@@ -49,7 +49,7 @@
                     <div class="container  header-logo-img">
                         <!-- logo -->
                         <div class="d-flex align-items-center gap-1">
-                            <a class="navbar-brand" href="#"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
+                            <a class="navbar-brand" href="index.php"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
                             <div>
                                 <!-- tra cứu đơn hàng -->
                                 <form class="d-flex " role="search">

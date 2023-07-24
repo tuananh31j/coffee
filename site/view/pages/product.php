@@ -7,7 +7,7 @@
             <span><a href="index.php?url=product" class="text-danger">Sản phẩm</a></span>
         </div>
         <div class="header-banner">
-            <img src="../../public/img/bannerSP.jpg" alt="" class="header-banner-img">
+            <img src="<?=$IMAGE?>/bannerpro.jpg" alt="" class="header-banner-img">
         </div>
         <div class="content-title my-5 ">
             <h2>Sản phẩm của chúng tôi</h2>
@@ -79,37 +79,26 @@
 
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
-                            <?php
-                            foreach($categorys as $item){
-                            ?>
+                            <?php foreach($categorys as $item){ ?>
                             <a class="text-decoration-none"
                                 href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><button
                                     class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
                                     data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
                                     aria-controls="v-pills-profile"
                                     aria-selected="false"><?=$item['name']?></button></a>
-
-                            <?php
-                            }
-                            ?>
-
-
-
+                            <?php } ?>
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- list product -->
                 <div class="container text-center col">
-
                     <!-- item -->
                     <div class="row row-cols-4">
                         <?php
-                       
                         $index = 0;
                         foreach($products as $item) {
+                       
                         $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
                         $custumPriceOld = number_format($item['price'], 0, ",", ".");
                         $custumPriceNew = number_format($priceNew, 0, ",", ".");
@@ -128,12 +117,9 @@
                                     <div class="main-product-sale "><span
                                             class="bg-danger p-1 d-inline text-light"><?=$item['sale']?>%</span>
                                     </div>
-
                                     <?php } ?>
                                 </div>
-
                                 <div class="card-body">
-
                                     <!-- tên -->
                                     <h5 class="card-title"><?=$item['name']?>
                                     </h5>
@@ -146,17 +132,10 @@
                                         <?php } ?>
                                     </p>
                                     <button type="button" class="btn border-danger text-danger cart-btn"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $index?>">Thêm
-                                        vào giỏ hàng</button>
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $index?>">Đặt
+                                        ngay</button>
                                     <!-- form thêm vào giỏ hàng -->
-                                    <form class="" action="index.php?url=order" method="post">
-                                        <div hidden>
-                                            <input type="hidden" name="product_id" value="<?=$item['product_id']?>">
-                                            <input type="hidden" name="product_id" value="<?=$item['name']?>">
-                                            <input type="hidden" name="product_id" value="<?=$item['image_url']?>">
-                                            <input type="hidden" name="product_id" value="<?=$item['price']?>">
-
-                                        </div>
+                                    <form class="" action="index.php?url=product" method="post">
                                         <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -170,6 +149,15 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- item order -->
+                                                        <div hidden>
+                                                            <input type="text" name="id"
+                                                                value="<?=$item['product_id']?>">
+                                                            <input type="text" name="name" value="<?=$item['name']?>">
+                                                            <input type="text" name="img"
+                                                                value="<?=$item['image_url']?>">
+
+                                                            <input type="text" name="price" value="<?=$item['price']?>">
+                                                        </div>
                                                         <div class="card mb-3" style="max-width: 540px;">
                                                             <div class="row g-0">
                                                                 <div class="col-md-4">
@@ -195,32 +183,23 @@
                                                                             <div>
                                                                                 <span>Kích cỡ: </span>
                                                                             </div>
-
                                                                             <div class="btn-group" role="group"
                                                                                 aria-label="Basic radio toggle button group">
-
-                                                                                <input type="radio" class="btn-check"
-                                                                                    name="btnradio"
-                                                                                    id="btnradio1<?=$index?>"
-                                                                                    autocomplete="off" checked>
+                                                                                <?php 
+                                                                                $flag = 0;
+                                                                                foreach($listSize as $size) { 
+                                                                                    $flag +=1;
+                                                                                 ?>
+                                                                                <input type="radio"
+                                                                                    value="<?=$size['size_id']?>"
+                                                                                    class="btn-check" name="size"
+                                                                                    id="btnradio<?=$flag.'-'.$index?>"
+                                                                                    autocomplete="off"
+                                                                                    <?php if($flag == 1) echo 'checked'?>>
                                                                                 <label class="btn btn-outline-primary"
-                                                                                    for="btnradio1<?=$index?>">S</label>
-
-                                                                                <input type="radio" class="btn-check"
-                                                                                    name="btnradio"
-                                                                                    id="btnradio2<?=$index?>"
-                                                                                    autocomplete="off">
-                                                                                <label class="btn btn-outline-primary"
-                                                                                    for="btnradio2<?=$index?>">M</label>
-
-                                                                                <input type="radio" class="btn-check"
-                                                                                    name="btnradio"
-                                                                                    id="btnradio3<?=$index?>"
-                                                                                    autocomplete="off">
-                                                                                <label class="btn btn-outline-primary"
-                                                                                    for="btnradio3<?=$index?>">L</label>
+                                                                                    for="btnradio<?=$flag.'-'.$index?>"><?=$size['name']?></label>
+                                                                                <?php } ?>
                                                                             </div>
-
                                                                         </div>
 
 
@@ -239,7 +218,8 @@
                                                                                 <input
                                                                                     class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
                                                                                     style="width: 30px;" type="text"
-                                                                                    id="quantity-<?=$index?>" value="1">
+                                                                                    id="quantity-<?=$index?>" value="1"
+                                                                                    name="quantity">
                                                                                 <button type="button"
                                                                                     class="border-danger rounded-2">
                                                                                     <i class="fa-solid fa-plus"></i>
@@ -254,12 +234,12 @@
                                                     <div class="modal-footer">
                                                         <!-- <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button> -->
-                                                        <button type="submit" name="btn-addCart"
-                                                            class="btn btn-primary">Thêm vào
-                                                            giỏ</button>
-                                                        <button type="submit" name="btn-payOrder"
-                                                            class="btn btn-danger">Đặt
-                                                            ngay</button>
+
+                                                        <input type="submit" onclick="alert('Thêm thành công vào giỏ!')"
+                                                            value="Thêm vào giỏ" name="btn-addToCart"
+                                                            class="border-0 rounded-2 bg-primary text-light p-2">
+                                                        <input type="submit" value="Đặt hàng"
+                                                            class="border-0 rounded-2 bg-danger text-light p-2">
                                                     </div>
                                                 </div>
                                             </div>

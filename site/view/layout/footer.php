@@ -133,6 +133,9 @@ function updateQuantity(input, quantity) {
 }
 
 
+//script đổi giá khi nhấn vào size khác nhau
+
+
 var splide = new Splide('.splide', {
     type: 'loop',
     perPage: 5,
