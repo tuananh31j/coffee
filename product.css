@@ -1,0 +1,303 @@
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 20px;
+}
+
+.carousel-item p {
+    margin: 0;
+    padding: 2px;
+    font-weight: 700;
+}
+
+#carouselExampleInterval {
+    background-color: #503629;
+    color: white;
+}
+
+.header-logo-img {
+
+    margin-top: 0;
+    justify-content: center;
+    gap: 260px;
+
+}
+
+.header-logo {
+    background-color: #b5313a;
+}
+
+.header-logo-search {
+    gap: 200px;
+
+}
+
+.header-logo-search-input {
+    margin-right: -10px;
+    width: 400px;
+}
+
+.header-logo-search-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 4px;
+
+}
+
+.header-count-cart {
+    color: yellow;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 1000px;
+    padding: 4px;
+    font-size: 10px;
+    position: relative;
+    bottom: 10px;
+    width: 16px;
+}
+
+.nav-item {
+    border-left: 0.1px solid #bd464e;
+    padding: 0 10px;
+}
+
+
+.header-menu ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 16.1% 16.1% 16.1% 16.1% 16.1% 16.1%;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 8px;
+    justify-content: center;
+}
+
+.header-menu ul li a {
+    text-decoration: none;
+    color: #b5313a;
+    font-weight: bold;
+}
+
+.header-banner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.header-banner-contact {
+    height: 240px;
+
+}
+
+.header-banner-contact {
+    background-color: #b5313a;
+    color: white;
+    display: grid;
+    align-items: center;
+    font-size: 50px;
+}
+
+.header-banner-img {
+    width: 100%;
+}
+
+.header-link {
+    margin: 14px 0 14px 32px;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: #505050;
+}
+
+
+/* active cho menu */
+.header-menu-active {
+    background-color: #b5313a;
+    padding: 10px;
+    border-radius: 30px;
+    color: white !important;
+}
+
+
+
+/* footer */
+.footer {
+    display: grid;
+    grid-template-columns: 20% 20% auto auto;
+    gap: 110px;
+    max-width: 1200px;
+    margin: 30px auto;
+    border-top: 1px solid #dadcdf;
+    padding-top: 20px;
+    justify-content: center;
+
+}
+
+.footer-contact {
+    display: grid;
+    grid-template-columns: 14% auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-contact-icon {
+    font-size: 34px;
+}
+
+.footer h3 {
+    font-size: 15px;
+}
+
+.footer h2 {
+    font-size: 20px;
+}
+
+.footer-menu ul {
+    list-style: none;
+    line-height: 40px;
+    margin-left: -33px;
+}
+
+.footer-menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.price-filter {
+    display: flex;
+    align-items: center;
+}
+
+.price-filter label {
+    margin-right: 10px;
+}
+
+.price-filter input[type="range"] {
+    width: 200px;
+}
+
+.price-filter #price-value {
+    margin-left: 10px;
+}
+
+.main-product-sale {
+    position: relative;
+    top: -194px;
+    left: -74px;
+}
+
+.main-product-btn {
+    border: 1px solid #b5313a;
+    background-color: white;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+    color: #b5313a;
+}
+
+.main-product-items {
+    gap: 20px;
+}
+
+
+/* list danh mục */
+.main-product-list-banner {
+    transform: rotate(90deg) scaleX(2);
+    width: 100%;
+
+}
+
+.main-product-list-banner img {
+    border-radius: 10px;
+    border: 1px solid #b5313a;
+}
+
+.main-product-list-category {
+    border-right: 2px solid #503629;
+    border-radius: 10px;
+}
+
+.main-product-list-category-item {
+    background-color: rgba(220, 220, 220, 0.5);
+    color: black;
+    font-weight: 700;
+    margin: 5px 0;
+    width: 100px;
+
+}
+
+
+.user-list-handle ul {
+    list-style: none;
+    line-height: 2;
+    margin-left: -32px;
+
+}
+
+.user-list-handle ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+}
+
+
+
+.user-title h2 {
+    font-size: 20px;
+}
+
+.user-list-infor ul {
+    list-style: none;
+
+}
+
+.checkout-done-infor-thankyou {
+    display: grid;
+    grid-template-columns: 14% 40%;
+    align-items: center;
+}
+
+.checkout-done-infor-thankyou i {
+    font-size: 80px;
+    color: rgb(157, 193, 104);
+}
+
+.checkout-done {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 80% 8%;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.order-item img {
+    width: 100%;
+
+}
+
+.order-item-count {
+    position: relative;
+    top: -60px;
+
+}
+
+.order-pricing-total,
+.order-pricing-shiping,
+.order-pricing-final {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    gap: 214px;
+}
+
+.cart-products {
+    display: flex;
+    grid-template-columns: auto auto;
+}

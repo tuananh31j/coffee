@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/du-an-1-nhom7/public/style.css">
-    
+    <link rel="stylesheet" href="public/css/signUp.css">
 
 </head>
 
@@ -112,24 +112,24 @@
                     </div>
                     <div class="abc1">
                         <h2>Đăng ký</h2>
-                        <form>
+                        <form action="index.php?act=signup" method="post">
                             <div class="form-group">
                                 <label for="fullname">Họ và tên:</label>
-                                <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+                                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
                             </div>
                             <div class="form-group">
                                 <label for="sdt">Số điện thoại:</label>
-                                <input type="text" id="sdt" placeholder="Nhập số điện thoại" required>
+                                <input type="text" id="sdt" name="sdt" placeholder="Nhập số điện thoại" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="text" id="email" placeholder="Nhập email" required>
+                                <input type="text" id="email" name="email" placeholder="Nhập email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Mật khẩu:</label>
-                                <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
                             </div>
-                            <input type="submit" value="Tạo tài khoản">
+                            <input type="submit" value="Tạo tài khoản" name="taotk">
                             <hr>
                             <div class="icon">
                                 <div class="icon1">
@@ -142,6 +142,13 @@
                                 </div>
                             </div>
                         </form>
+                        <h2 class="thongbao">
+                        <?php
+                            if(isset($thongbao)&&($thongbao!="")){
+                                echo $thongbao;
+                            }
+                        ?>
+                        </h2>
                     </div>
                 </div>
             </main>
