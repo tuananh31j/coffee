@@ -1,5 +1,10 @@
 <?php
 include "models/signup.php";
+include "models/quenmk.php";
+include "view/product/add.php";
+include "view/product/edit.php";
+include "view/product/list.php";
+
 
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
 require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
@@ -101,7 +106,7 @@ if(isset($_GET['url'])) {
                 $target_dir = "../uploads/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
                 if(move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)){
-                    // echo "The file". htmlspecialchars( basename($_FILES["fileToUpLoad"]["name"])). "has been uploaded.";
+                    // echo "The file";
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
@@ -133,8 +138,21 @@ if(isset($_GET['url'])) {
         }
         include "view/taikhoan/signup.php";
         break;
-    case 'comment':
-        # code...
+
+    case 'quenmk':
+        if(isset($_POST['guiEmail'])&&($_POST['sdt'])){
+            $email=$_POST['email'];
+            $sdt=$_POST['sdt'];
+            $checktaikhoan=checktaikhoan($email,$sdt)
+            if(is_array($checktaikhoan)){
+                $thongbao="Mật khẩu của bạn là: ".$checktaikhoan['pass'];
+            }if($email != 0){
+                $thongbao="Email không tồn tại";
+            }else($sdt != 0){
+                $thongbao="SĐT không tồn tại";
+            }
+        }
+        include "view/taikhoan/quenmk.php";
         break;
 
 
