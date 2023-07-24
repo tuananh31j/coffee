@@ -52,30 +52,74 @@ if(isset($_GET['url'])) {
         
     //PRODUCT
         //danh sách sản phẩm. Phải có trạng thái là 1(on)
-    case 'product':
-        # code...
-        break;
-
-        //chỉnh sửa sản phẩm
-    case 'product-update':
-        # code...
-        break;
-
-        //xóa sản phẩm. Nếu có khóa ngoại thì chuyển trạng thái sang 0(off)
-    case 'product-delete':
-        # code...
-        break;
-
-
-    case 'customer':
-        # code...
-        break;
-    case 'comment':
-        # code...
-        break;
-
-
-
+        case 'product':
+            case 'addsp':
+                if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
+                    $iddm=$_POST['iddm'];
+                    $tensp=$_POST['tensp'];
+                    $giasp=$_POST['giasp'];
+                    $mota=$_POST['mota'];
+                    $hinh=$_FILES['hinh']['name'];
+                    $status=$_POST['status'];
+                    $view=$_POST=['view'];
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                    if(move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)){
+                        // echo "The file". htmlspecialchars( basename($_FILES["fileToUpLoad"]["name"])). "has been uploaded.";
+                    } else {
+                        // echo "Sorry, there was an error uploading your file.";
+                    }
+    
+                    insert_sanpham($tensp, $giasp, $hinh, $mota, $status, $view ,$iddm);
+                    $thongbao="Them thanh cong";
+                }
+                $listdanhmuc=loadall_danhmuc();
+                
+                include "sanpham/add.php";
+                break;
+    
+            //chỉnh sửa sản phẩm
+            case 'suasp':
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                   
+                    $sanpham=loadone_sanpham($_GET['id']);
+                }
+                
+                include "sanpham/update.php";
+                break;
+            case 'uppdatesp':
+                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                    $id=$_POST['id'];
+                    $iddm=$_POST['iddm'];
+                    $tensp=$_POST['tensp'];
+                    $giasp=$_POST['giasp'];
+                    $mota=$_POST['mota'];
+                    $hinh=$_FILES['hinh']['name'];
+                    $status=$_POST['status'];
+                    $view=$_POST=['view'];
+                    $target_dir = "../uploads/";
+                    $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                    if(move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)){
+                        // echo "The file";
+                    } else {
+                        // echo "Sorry, there was an error uploading your file.";
+                    }
+                    uppdate_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh);
+                    $thongbao="Cập nhật thanh cong";
+                    }
+                    $listdanhmuc=loadall_danhmuc();
+                    $listsanpham=loadall_sanpham();
+                    include "sanpham/list.php";
+                    break;
+            //xóa sản phẩm. Nếu có khóa ngoại thì chuyển trạng thái sang 0(off)
+            case 'xoasp':
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    delete_sanpham($_GET['id']);
+                }
+                $listsanpham=loadall_sanpham("",0);
+                include "sanpham/list.php";
+                break;
+    
 
     case 'logout':
         require_once "../site/view/pages/account/logOut.php";

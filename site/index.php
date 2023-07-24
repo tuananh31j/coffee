@@ -122,7 +122,21 @@ if(isset($_GET['url'])) {
             require_once "view/pages/account/signUp.php";
         
         break;
-
+    case 'quenmk':
+            if(isset($_POST['guiEmail'])&&($_POST['sdt'])){
+                $email=$_POST['email'];
+                $sdt=$_POST['sdt'];
+                $checktaikhoan=checktaikhoan($email,$sdt)
+                if(is_array($checktaikhoan)){
+                    $thongbao="Mật khẩu của bạn là: ".$checktaikhoan['pass'];
+                }if($email != ''){
+                    $thongbao="Email không tồn tại";
+                }else($sdt != ''){
+                    $thongbao="SĐT không tồn tại";
+                }
+            }
+            require_once "view/pages/account/changePass.php";
+        break;   
     case "account":
         
             require_once "view/pages/account/info.php";
