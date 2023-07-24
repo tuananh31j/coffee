@@ -141,32 +141,6 @@ if(isset($_GET['url'])) {
             require_once "view/pages/account/info.php";
         
         break;
-
-        //Đổi mật khẩu
-        case "edit":
-            if($_SERVER["REQUEST_METHOD"] == "POST") {
-                $username = $_POST["username"];
-                $old_password = $_POST["old_password"];
-                $new_password = $_POST["new_password"];
-            
-                
-                $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$old_password'";
-                $result = $conn->query($sql);
-            
-                if ($result->num_rows > 0) {
-                   
-                    $sql_update = "UPDATE users SET password = '$new_password' WHERE username = '$username'";
-                    if ($conn->query($sql_update) === TRUE) {
-                        echo "Đổi mật khẩu thành công!";
-                    } else {
-                        echo "Có lỗi xảy ra khi đổi mật khẩu: " . $conn->error;
-                    }
-                } else {
-                    echo "Tên người dùng hoặc mật khẩu cũ không đúng.";
-                }
-            }
-            require_once "view/pages/account/edit.php";
-            break;
             
     // ORDER
     case "cart":
