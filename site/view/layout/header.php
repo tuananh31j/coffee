@@ -47,6 +47,7 @@
          <div class="header-logo">
             <nav class=" navbar navbar-expand-lg ">
 
+<<<<<<< HEAD
                <div class="container  header-logo-img">
                   <!-- logo -->
                   <div class="d-flex align-items-center gap-1">
@@ -67,6 +68,29 @@
                         <span class="navbar-toggler-icon"></span>
                      </button>
                   </div>
+=======
+                    <div class="container  header-logo-img">
+                        <!-- logo -->
+                        <div class="d-flex align-items-center gap-1">
+                            <a class="navbar-brand" href="index.php"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
+                            <div>
+                                <!-- tra cứu đơn hàng -->
+                                <form class="d-flex " role="search">
+                                    <input class="form-control border-light text-light "
+                                        style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng"
+                                        aria-label="Search">
+                                    <button class="border-0 rounded-end-2 bg-danger text-light "
+                                        style="margin-left: -20px; width: 60px; font-size: 14px;" type="submit">Tra
+                                        cứu</button>
+                                </form>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+>>>>>>> d05f3c93018172289f08f346d69ef23cab2fa40b
 
                   <!-- tìm kiếm -->
 
