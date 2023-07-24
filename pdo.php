@@ -76,4 +76,44 @@ function pdo_query_one($sql) {
     }
 }
 
+// Insert 
+function pdo_insert($sql) {
+    try {
+        $connect = Pdo_get_connection();
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($connect);
+    }
+}
+function pdo_delete($sql) {
+    try {
+        $connect = Pdo_get_connection();
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($connect);
+    }
+}
+
+function pdo_update($sql) {
+    try {
+        $connect = Pdo_get_connection();
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($connect);
+    }
+}
+
+
 ?>

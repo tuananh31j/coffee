@@ -7,6 +7,7 @@ require_once "models/category.php";
 require_once "models/customer.php";
 require_once "models/size.php";
 
+
 require_once "view/layout/header.php";
 
 
@@ -131,7 +132,30 @@ if(isset($_GET['url'])) {
         break;
 
     case "signup":
-        
+    if(isset($_POST['btn-client'])){
+
+        $dir = "./public/img/";
+        $up_file = $dir . $_FILES['anh']['name'];
+       if (move_uploaded_file($_FILES['anh']['tmp_name'], $up_file)) {
+          
+       }
+            $name= $_POST['name'];
+            $password1= $_POST['password1'];
+            $password2= $_POST['password2'];
+             $address= $_POST['address'];
+            $phone= $_POST['phone'];
+            $email= $_POST['email'];
+            $image="/".$_FILES['anh']['name'];
+            $kichhoat= 1;
+            $vaitro= 0;
+            
+            $check = AddCustumerclient($name,$password2,$address,$phone,$email,$kichhoat,$vaitro,$image);
+       
+            
+    
+      
+       
+        }
             require_once "view/pages/account/signUp.php";
         
         break;
