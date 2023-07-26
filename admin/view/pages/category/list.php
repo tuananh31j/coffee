@@ -40,24 +40,23 @@
                         <th>Tên danh mục</th>
                         <th>Chức năng</th>
                     </tr>
-                    <?php
-                                    foreach ($cate as $category) {
-                                        extract($category);
-                                        $update_cate="index.php?url=category-update&category_id=".$category_id;
-                                        $delete_cate="index.php?url=category-delete&category_id=".$category_id;
-                                        echo '
-                                        <tr>
-                                        <td>'.$category_id.'</td>
-                                        <td>'.$name.'</td>
-                                        <td>
-                                            <a href="'.$delete_cate.'" class="bg-danger text-light p-1 rounded-2">Xóa</a>
-                                            <a href="'.$update_cate.'" class="bg-info text-light p-1 rounded-2">Sửa</a>
-                                        </td>
-                                        </tr>';
-                                    }
-                                ?>
                 </thead>
+
                 <tbody>
+                    <?php
+                        foreach ($categorys as $category) {?>
+                    <tr>
+                        <td><?=$category['category_id']?></td>
+                        <td><?=$category['name']?></td>
+                        <td>
+                            <a href="index.php?url=category-delete&category_id=<?=$category['category_id']?>"
+                                class="bg-danger text-light p-1 rounded-2">Xóa</a>
+                            <a href="index.php?url=category-update&category_id=<?=$category['category_id']?>"
+                                class="bg-info text-light p-1 rounded-2">Sửa</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+
                 </tbody>
             </table>
         </div>

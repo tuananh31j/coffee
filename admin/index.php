@@ -52,19 +52,23 @@ if(isset($_GET['url'])) {
             $key = $_POST['keyword'];
             $sql="select * from category where name like '%$key%' ";
         }else {
-            $sql="select * from category order by category_id";
+            $categorys = getListCategory();
         }
-        $cate=pdo_query($sql);
+        
         require_once "./view/pages/category/list.php";
         break; 
 
         //chỉnh sửa danh mục
     case 'category-update':
         # code...
-        if(isset($_GET['category_id'])&&$_GET['category_id']>0){
-            $sql="select * from category where category_id=".$_GET['category_id'];
-            $catego=pdo_query_one($sql);
-            $thongbao="update complete !";
+        if(isset($_GET['category_id'])){
+            $id = $_GET['category_id'];
+            $item = getCategory($id);
+            if(isset($_POST['btn-update']) && $_POST['btn-update'] == true) {
+                $name = $_POST['name'];
+                updateCate($name, $id);
+            }
+            
         }
         require_once "./view/pages/category/update.php";
         break;
@@ -73,12 +77,12 @@ if(isset($_GET['url'])) {
     case 'category-delete':
         # code...
         if(isset($_GET['category_id'])&&$_GET['category_id']>0){
-            $sql=" delete from category where category_id=".$_GET['category_id'];
-            pdo_execute($sql);
+            $id = $_GET['category_id'];
+            deleteCate($id);
+            
         }
-        $sql="select * from category order by category_id";
-        $cate=pdo_query($sql);
-        require_once "./view/pages/category/list.php";
+        
+        header("location: index.php?url=list_category");
         break;
     
     case 'tangdan':
