@@ -125,46 +125,153 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/logIn.php";
         break;
         
-    // Đăng xuất
-    case 'logout':
-        require_once "view/pages/account/logOut.php";
-        header("location: index.php");
-        break;
-
+    // đăng ký
     case "signup":
-    if(isset($_POST['btn-client'])){
-
-        $dir = "./public/img/";
-        $up_file = $dir . $_FILES['anh']['name'];
-       if (move_uploaded_file($_FILES['anh']['tmp_name'], $up_file)) {
-          
-       }
-            $name= $_POST['name'];
-            $password1= $_POST['password1'];
-            $password2= $_POST['password2'];
-             $address= $_POST['address'];
-            $phone= $_POST['phone'];
-            $email= $_POST['email'];
-            $image="/".$_FILES['anh']['name'];
-            $kichhoat= 1;
-            $vaitro= 0;
+        $err = [];
+        if(isset($_POST['btn-signup']) && $_POST['btn-signup'] == true) {
+        // handle 
+            // name
+            if($_POST['name'] != ''){
+                $name = $_POST['name'];
+            }else{
+                $err['name'] = 'Chưa điền tên!';
+            }
+            // số điện thoại
+            if($_POST['phone'] != ''){
+                $phone = $_POST['phone'];
+            }else{
+                $err['phone'] = 'Chưa điền số điện thoại!';
+            }
             
-            $check = AddCustumerclient($name,$password2,$address,$phone,$email,$kichhoat,$vaitro,$image);
-       
-            
-    
-      
-       
+            // email
+            if($_POST['email'] != ''){
+                $email = $_POST['email'];
+            }else{
+                $err['email'] = 'Chưa điền email!';
+            }
+            // ảnh
+            if(isset($_FILES['img']['name']) && $_FILES['img']['name'] != '' ){
+                $img = $_FILES['img']['name'];
+                $path = pathinfo($img, PATHINFO_EXTENSION);
+                $format= ["jpg", "jpeg", "png", "gif"];
+                if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                    move_uploaded_file($IMAGE,$img);
+                }else{
+                    $err['img'] = "File gửi lên không phải là file ảnh!";
+                }
+            }else{
+                $img = "default.png";
+            }
+            // mật khẩu
+            if($_POST['pass'] != ''){
+                if($_POST['pass'] == $_POST['rePass']) {
+                    $pass = $_POST['pass'];
+                }else{
+                    $err['pass'] = "Mật khẩu không trùng khớp!";
+                }
+            }else{
+                $err['pass'] = 'Chưa điền mật khẩu!';
+            }
+            // kiểm tra và đẩy lên hệ thống
+            if(count($err) === 0) {
+                handleSigup( $name,$pass, $phone, $email,$img);
+                $noti = "Đăng ký thành công!";
+            }
         }
-            require_once "view/pages/account/signUp.php";
-        
+        require_once "view/pages/account/signUp.php";
         break;
 
     case "account":
-        
+        $err = [];
+        if(isset($_GET['act'])) {
+
+            
+             if($_GET['act'] == 'edit') {
+                $act = $_GET['act'];
+                $err=[];
+            if(isset($_POST['btn-edit']) && $_POST['btn-edit'] == true) {
+            // handle 
+                // name
+                if($_POST['name'] != ''){
+                    $name = $_POST['name'];
+                }else{
+                    $err['name'] = 'Chưa điền tên!';
+                }
+                // số điện thoại
+                if($_POST['phone'] != ''){
+                    $phone = $_POST['phone'];
+                }else{
+                    $err['phone'] = 'Chưa điền số điện thoại!';
+                }
+                // địa chỉ
+                
+                    $address = $_POST['address'];
+                
+                
+                // email
+                if($_POST['email'] != ''){
+                    $email = $_POST['email'];
+                }else{
+                    $err['email'] = 'Chưa điền email!';
+                }
+                // ảnh
+                if(isset($_FILES['img']) && $_FILES['img'] == true){
+                    $img = $_FILES['img']['name'];
+                    $path = pathinfo($img, PATHINFO_EXTENSION);
+                    $format= ["jpg", "jpeg", "png", "gif"];
+                    if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                        move_uploaded_file($IMAGE,$img);
+                    }else{
+                        $err['img'] = "File gửi lên không phải là file ảnh!";
+                    }
+                }else{
+                    $img = $_SESSION['user']['image_url'];
+                }
+                $update_at = date("Y-m-d");
+                $id = $_POST['id'];
+                // kiểm tra và đẩy lên hệ thống
+                if(count($err) === 0) {
+                    //chỉnh sửa ngày
+                    $result = editInfo($name,$update_at,$address,$phone,$email,$img,$id);
+                    if($result) {
+                    $_SESSION['user']['name'] = $_POST['name'];
+                    $_SESSION['user']['update_at'] = $update_at;
+                    $_SESSION['user']['address'] = $address;
+                    $_SESSION['user']['phone'] = $phone;
+                    $_SESSION['user']['email'] = $email;
+                    $_SESSION['user']['image_url'] = $img;
+                    }
+                }
+            }
+            require_once "view/pages/account/edit.php";
+                require_once "view/pages/account/myOrder.php";
+            }
+            if($_GET['act'] == 'myOrder') {
+                $act = $_GET['act'];
+                require_once "view/pages/account/myOrder.php";
+            }
+            if($_GET['act'] == 'pass') {
+                $act = $_GET['act'];
+                require_once "view/pages/account/changePass.php";
+            }
+            if($_GET['act'] == 'hisOrder') {
+                $act = $_GET['act'];
+                require_once "view/pages/account/historyOrder.php";
+            }
+            if($_GET['act'] == 'logout') {
+                $act = $_GET['act'];
+                require_once "view/pages/account/logOut.php";
+                header("location: index.php");
+            }
+        }else{
             require_once "view/pages/account/info.php";
-        
+        }
         break;
+    case "changePass":
+        
+        require_once "view/pages/account/changePass.php";
+    
+    break;
             
     // ORDER
     case "cart":
@@ -180,8 +287,10 @@ if(isset($_GET['url'])) {
         require_once "view/pages/order/cart.php";
         break;
     
-    case "/":
-        require_once "view/pages/home.php";
+    case "editinfo":
+        
+           
+        
         break;
         
     default:

@@ -113,7 +113,7 @@
                                             <?php } ?>
                                         </i><a href="index.php?url=account"><img class=" rounded-circle"
                                                 style="height: 35px;width: 35px; object-fit:cover"
-                                                src="<?=$IMAGE.$_SESSION['user']['image_url']?>" alt=""></a></div>
+                                                src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt=""></a></div>
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span

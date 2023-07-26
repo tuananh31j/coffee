@@ -19,7 +19,8 @@
         <div class=" row ">
             <!-- THANH ĐIỀU KHIỂN -->
             <div class="col-3 " style="background: linear-gradient(to bottom, #f6606a, #4d0846);">
-                <div class="dashboard-menu col-3  position-fixed h-100"
+                <!-- position-fixed h-100 -->
+                <div class="dashboard-menu col-3  "
                     style="margin-left:-12px;background: linear-gradient(to bottom, #f6606a, #4d0846);">
                     <h2 class="text-center pe-3 mb-4">Hignland coffee</h2>
 
@@ -64,7 +65,7 @@
                                 </li>
                             </a>
                             <!-- Sản phẩm -->
-                            <a class="text-black text-decoration-none" href="index.php?url=product">
+                            <a class="text-black text-decoration-none" href="index.php?url=product&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
                                 </li>
@@ -89,7 +90,7 @@
                             </a>
                         </ul>
                     </nav>
-                    <a class="position-relative text-black text-decoration-none" style="top: 100px; left: 200px;"
+                    <a hidden class="position-relative text-black text-decoration-none" style="top: 100px; left: 200px;"
                         href="index.php?url=logout"><i class="fa-solid fa-right-from-bracket"></i>
                         Đăng xuất</a>
                 </div>

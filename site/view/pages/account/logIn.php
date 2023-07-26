@@ -27,12 +27,13 @@
                     <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
                     <p class="mx-2 text-danger"><?php echo isset($errPass)?$errPass:'' ?></p>
                     <div class="abc2">
-                        <a href="logup.html">Đăng Ký</a>
+                        <a href="index.php?url=signup">Đăng Ký</a>
                         <a href="#">Quên mật khẩu?</a>
                     </div>
 
                     <input type="submit" name="btn-login" value="Đăng nhập">
-                    <p style="font-size: 14px; line-height: 2;">Highlands Coffee CPG cam kết bảo mật và sẽ không bao giờ
+                    <p class="ms-2" style="font-size: 14px; line-height: 2;">Highlands Coffee CPG cam kết bảo mật và sẽ
+                        không bao giờ
                         đăng
                         hay chia sẻ thông tin mà chưa có được sự đồng ý của bạn.</p>
 

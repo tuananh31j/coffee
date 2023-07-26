@@ -2,8 +2,10 @@
 
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
 require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
-require("../admin/models/customer.php");
-
+require_once "../admin/models/customer.php";
+require_once "../admin/models/product.php";
+require_once "../admin/models/size.php";
+require_once "../admin/models/category.php";
 require_once "./view/layout/sideLeft.php";
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
@@ -53,17 +55,96 @@ if(isset($_GET['url'])) {
     //PRODUCT
         //danh sách sản phẩm. Phải có trạng thái là 1(on)
     case 'product':
-        # code...
-        break;
+        if(isset($_GET['act'])) {
+            // danh sách sản phẩm
+            if($_GET['act'] == 'list') {
+                $products = getListPro();
+                require_once "../admin/view/pages/product/list.php";
+            }
+            // thêm sản phẩm
+            if($_GET['act'] == 'add') {
+                $err = [];
+                $listSize = getListSize();
+                $listCategory = getListCategory();
+                if(isset($_POST['btn-add']) && $_POST['btn-add'] == true) {
+                            //name
+                            if($_POST['name'] != '') {
+                                $name = $_POST['name'];
+                            }else{
+                                $err['name'] = "Chưa điền tên sản phẩm!";
+                            }
+                            // sale
+                            if(isset($_POST['sale']) ) {
+                                if($_POST['sale'] > 0 && $_POST['sale'] <= 100){
+                                    $sale = $_POST['sale'];
+                                }else{
+                                    $err['sale'] = "Giá trị phải >0 và <100!";
+                                }
+                            }else{
+                                $sale = null;
+                            }
+                            // ảnh
+                            if(isset($_FILES['img']) && $_FILES['img'] == true){
+                                $img = $_FILES['img']['name'];
+                                $path = pathinfo($img, PATHINFO_EXTENSION);
+                                $format= ["jpg", "jpeg", "png", "gif"];
+                                if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                                    move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                }else{
+                                    $err['img'] = "File gửi lên không phải là file ảnh!";
+                                }
+                            }else{
+                                $err['img'] = "Chưa tải file ảnh!";
+                            }
+                            //category
+                            if($_POST['category'] != '') {
+                                $category = $_POST['category'];
+                            }else{
+                                $err['category'] = "Chưa chọn danh mục sản phẩm!";
+                            }
+                            //mô tả
+                            if($_POST['des'] != '') {
+                                $des = $_POST['des'];
+                            }else{
+                                $err['des'] = "Chưa nhập mô tả sản phẩm!";
+                            }
+                            // size, price
+                            $price = [];
+                            foreach($listSize as $key => $size) {
+                                if($_POST['price-'.$key] == '') {
+                                    $err['price-'.$key] = "Chưa nhập giá tiền!";
+                                }else{
+                                    array_push($price,$_POST['price-'.$key]);
+                                }
+                            }
+                            if(count($err) === 0) {
+                                $result =  addPro($name, $sale, $img,$category,$des,getIdPro());
+                            
+                            }
+                            if(isset($result)) {
+                                $product_id = $result;
+                                foreach($listSize as $key => $size) {
+                                    addProDetail($size,$price[$key],$product_id);
+                            }
 
-        //chỉnh sửa sản phẩm
-    case 'product-update':
-        # code...
-        break;
-
-        //xóa sản phẩm. Nếu có khóa ngoại thì chuyển trạng thái sang 0(off)
-    case 'product-delete':
-        # code...
+                        }
+                    
+                } 
+                require_once "../admin/view/pages/product/add.php";
+            }
+            // xóa sản phẩm
+            if($_GET['act'] == 'delete' && isset($_GET['id'])) {
+                $id = $_GET['id'];
+                handleDelete($id);
+                header("location: index.php?url=product&act=list");
+            }
+            // sửa sản phẩm
+            if($_GET['act'] == 'update' && isset($_GET['id'])) {
+                $id = $_GET['id'];
+                handleDelete($id);
+                header("location: index.php?url=product&act=list");
+            }
+        }
         break;
 
 
