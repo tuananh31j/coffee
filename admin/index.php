@@ -33,9 +33,6 @@ if(isset($_GET['url'])) {
         
         
     //CATEGORY
-        //danh sách danh mục có trạng thái bằng 1(on)
-    
-
     case 'add_categories':
         if(isset($_POST['btn-add'])&&$_POST['btn-add']) {
             $name=$_POST['name'];
@@ -46,10 +43,16 @@ if(isset($_GET['url'])) {
         break;
         
     case 'list_category':
-        $sql="select * from category order by category_id";
+        //search danh mục
+        if(isset($_POST['keyword']) && $_POST['keyword']!=""){
+            $key = $_POST['keyword'];
+            $sql="select * from category where name like '%$key%' ";
+        }else {
+            $sql="select * from category order by category_id";
+        }
         $cate=pdo_query($sql);
         require_once "./view/pages/category/list.php";
-        break;
+        break; 
 
         //chỉnh sửa danh mục
     case 'category-update':
@@ -61,8 +64,6 @@ if(isset($_GET['url'])) {
         }
         require_once "./view/pages/category/update.php";
         break;
-    
-
 
         //xóa danh mục. Nếu có khóa ngoại thì chỉ tắt trạng thái sang 0(off)
     case 'category-delete':
@@ -75,7 +76,18 @@ if(isset($_GET['url'])) {
         $cate=pdo_query($sql);
         require_once "./view/pages/category/list.php";
         break;
-        
+    
+    case 'tangdan':
+        $sql = "select * from category order by name ASC";
+        $cate=pdo_query($sql);
+        require_once "./view/pages/category/list.php";
+        break;
+    
+    case 'giamdan':
+        $sql = "select * from category order by name DESC";
+        $cate=pdo_query($sql);
+        require_once "./view/pages/category/list.php";
+        break;
 
         
     //PRODUCT

@@ -107,18 +107,17 @@
                                 <i class="fa-solid fa-filter"></i> Sắp xếp
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">A->Z</a></li>
-                                <li><a class="dropdown-item" href="#">Z->A</a></li>
+                                <!-- sắp xếp list -->
+                                <li><a class="dropdown-item" href="index.php?url=tangdan">A->Z</a></li>
+                                <li><a class="dropdown-item" href="index.php?url=giamdan">Z->A</a></li>
                             </ul>
                         </div>
                         <!-- tìm kiếm -->
                         <div class="m-3">
-                            <!-- <form action="" method="post">
-                                <input class="p-1 rounded-2" type="text" name="search"
-                                    placeholder="nội dung tìm kiếm...">
-                                <input type="submit" name="btn-search" value="Tìm kiếm"
-                                    class="p-1 border-1 text-light rounded-2 bg-black">
-                            </form> -->
+                            <form action="index.php?url=list_category" method="post">
+                                <input class="p-1 rounded-2" type="text" name="keyword" placeholder="nội dung tìm kiếm...">
+                                <input type="submit" name="btn-search" name="search" value="Tìm kiếm" class="p-1 border-1 text-light rounded-2 bg-black">
+                            </form>
                         </div>
                     </div>
 
@@ -141,7 +140,7 @@
                                         <td>'.$category_id.'</td>
                                         <td>'.$name.'</td>
                                         <td>
-                                            <a href="'.$delete_cate.'" class="bg-danger text-light p-1 rounded-2">Xóa</a> |
+                                            <a href="'.$delete_cate.'" class="bg-danger text-light p-1 rounded-2">Xóa</a>
                                             <a href="'.$update_cate.'" class="bg-info text-light p-1 rounded-2">Sửa</a>
                                         </td>
                                         </tr>';
