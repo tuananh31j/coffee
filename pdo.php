@@ -31,7 +31,31 @@
         }
     }
 
+// hàm CUD trả về id với phương thức lastInsertId() nó trả về giá trị tự động tăng tỏng db
+function add_product_with_details($sqlDetail, $sqlPro) {
+    $connect = pdo_get_connection();
 
+    // Bắt đầu giao dịch
+    $connect->beginTransaction();
+    $sql_args = array_slice(func_get_args(), 2);
+    try {
+        // Thêm sản phẩm vào bảng "products"
+        $product_id = add_product($product_name, $product_price, $product_description);
+
+        // Thêm chi tiết sản phẩm vào bảng "product_details"
+        add_product_details($product_id, $sql_args);
+
+        // Nếu không có lỗi, hoàn tất giao dịch
+        $connect->commit();
+        return true;
+    } catch (PDOException $e) {
+        // Nếu có lỗi xảy ra, hủy giao dịch
+        $connect->rollback();
+        throw $e;
+    } finally {
+        unset($connect);
+    }
+}
 
 
 
