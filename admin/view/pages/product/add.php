@@ -1,20 +1,15 @@
 <!-- content -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center">Sản phẩm</h3>
-        <p><?php
-    echo "<pre>";
-    echo $product_id;
-    var_dump($_POST);
-    echo "</pre>";
-    
-    ?></p>
-        <div class="d-flex ">
+        <h3 class="text-center">Thêm sản phẩm</h3>
+
+        <div class="">
             <!-- thêm sản phẩm -->
 
             <a href="index.php?url=product&act=list"
                 class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Danh sách sản
                 phẩm <i class="fa-solid fa-plus"></i></a>
+            <p class="text-danger m-3"><?=isset($noti)?$noti:''?></p>
 
 
         </div>
@@ -52,8 +47,8 @@
                                 <option value="<?=$cate['category_id']?>"><?=$cate['name']?></option>
                                 <?php } ?>
                             </select>
-                            <p class="text-danger"><?=isset($err['category'])?$err['category']:''?></p>
                         </div>
+                        <p class="text-danger"><?=isset($err['category'])?$err['category']:''?></p>
                     </div>
                 </div>
                 <!-- giá và size -->
@@ -62,9 +57,11 @@
                     foreach($listSize as $key => $size) {
                     ?>
                     <div class="">
-                        <label for="size">Size <span class="text-danger"><?=$size['name']?></span> có giá là:</label>
-                        <input type="text" value="<?=$size['name']?>" hidden name="size-<?=$key?>">
-                        <input type="text" class="form-control" name="price-<?=$key?>" value="" placeholder="đ" />
+                        <label for="size">Size <span class="text-danger fw-bold"><?=$size['name']?></span> có giá
+                            là:</label>
+                        <input type="text" value="<?=$size['size_id']?>" hidden name="details[<?=$key?>][size]">
+                        <input type="text" class="form-control" name="details[<?=$key?>][price]" value=""
+                            placeholder="đ" />
                         <p class="text-danger"><?=isset($err['price-'.$key])?$err['price-'.$key]:''?></p>
                     </div>
                     <?php } ?>

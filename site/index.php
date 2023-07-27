@@ -186,63 +186,71 @@ if(isset($_GET['url'])) {
         if(isset($_GET['act'])) {
 
             
-             if($_GET['act'] == 'edit') {
-                $act = $_GET['act'];
-                $err=[];
-            if(isset($_POST['btn-edit']) && $_POST['btn-edit'] == true) {
-            // handle 
-                // name
-                if($_POST['name'] != ''){
-                    $name = $_POST['name'];
-                }else{
-                    $err['name'] = 'Chưa điền tên!';
-                }
-                // số điện thoại
-                if($_POST['phone'] != ''){
-                    $phone = $_POST['phone'];
-                }else{
-                    $err['phone'] = 'Chưa điền số điện thoại!';
-                }
-                // địa chỉ
-                
-                    $address = $_POST['address'];
-                
-                
-                // email
-                if($_POST['email'] != ''){
-                    $email = $_POST['email'];
-                }else{
-                    $err['email'] = 'Chưa điền email!';
-                }
-                // ảnh
-                if(isset($_FILES['img']) && $_FILES['img'] == true){
-                    $img = $_FILES['img']['name'];
-                    $path = pathinfo($img, PATHINFO_EXTENSION);
-                    $format= ["jpg", "jpeg", "png", "gif"];
-                    if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                        move_uploaded_file($IMAGE,$img);
-                    }else{
-                        $err['img'] = "File gửi lên không phải là file ảnh!";
+             if($_GET['act'] === 'update') {
+       
+                    $err=[];
+                    if(isset($_POST['btn-update'])) {
+                    // handle 
+                        // name
+                        if($_POST['name'] != ''){
+                            $name = $_POST['name'];
+                        }else{
+                            $err['name'] = 'Chưa điền tên!';
+                        }
+                        // số điện thoại
+                        if($_POST['phone'] != ''){
+                            $phone = $_POST['phone'];
+                        }else{
+                            $err['phone'] = 'Chưa điền số điện thoại!';
+                        }
+                        // địa chỉ
+                        if(isset($_POST['address'])){
+                            $address = $_POST['address'];
+                        }else{
+                            $address = '';
+                        }
+                           
+                        
+                        
+                        // email
+                        if($_POST['email'] != ''){
+                            $email = $_POST['email'];
+                        }else{
+                            $err['email'] = 'Chưa điền email!';
+                        }
+                        // ảnh
+                        if(isset($_FILES['img']['name']) && $_FILES['img'] == true){
+                            $img = $_FILES['img']['name'];
+                            $path = pathinfo($img, PATHINFO_EXTENSION);
+                            $format= ["jpg", "jpeg", "png", "gif"];
+                            if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                                move_uploaded_file($IMAGE,$img);
+                            }else{
+                                $err['img'] = "File gửi lên không phải là file ảnh!";
+                            }
+                        }else{
+                            $img = $_SESSION['user']['image_url'];
+                        }
+                        $update_at = date("Y-m-d");
+                        $id = $_POST['id'];
+                        // kiểm tra và đẩy lên hệ thống
+                       if(isset($name) && isset($phone) && isset($email)) {
+                        //chỉnh sửa ngày
+                            $_SESSION['user']['name'] = $name;
+                            $_SESSION['user']['update_at'] = $update_at;
+                            $_SESSION['user']['address'] = $address;
+                            $_SESSION['user']['phone'] = $phone;
+                            $_SESSION['user']['email'] = $email;
+                            if($img != '') {
+                                $_SESSION['user']['image_url'] = $img;
+                            }
+                            
+                            $result = updateInfo($name,$update_at,$address,$phone,$email,$img,$id);
+                            
+                       }
+                            
+                        
                     }
-                }else{
-                    $img = $_SESSION['user']['image_url'];
-                }
-                $update_at = date("Y-m-d");
-                $id = $_POST['id'];
-                // kiểm tra và đẩy lên hệ thống
-                if(count($err) === 0) {
-                    //chỉnh sửa ngày
-                    $result = editInfo($name,$update_at,$address,$phone,$email,$img,$id);
-                    if($result) {
-                    $_SESSION['user']['name'] = $_POST['name'];
-                    $_SESSION['user']['update_at'] = $update_at;
-                    $_SESSION['user']['address'] = $address;
-                    $_SESSION['user']['phone'] = $phone;
-                    $_SESSION['user']['email'] = $email;
-                    $_SESSION['user']['image_url'] = $img;
-                    }
-                }
-            }
             require_once "view/pages/account/edit.php";
                 require_once "view/pages/account/myOrder.php";
             }
@@ -298,7 +306,8 @@ if(isset($_GET['url'])) {
         break;
 }
 }else{
-    
+    $listProSale = getProSale();
+    $listProSale = getNewPro();
     require_once "view/pages/home.php";
 }
 

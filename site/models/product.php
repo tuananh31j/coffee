@@ -23,7 +23,7 @@ function getListProduct($offset,$type = "name", $sort = 'ASC',$filterType = 0) {
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 3 order by $type $sort, product.product_id limit 12 offset $offset";
+    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort, product.product_id limit 12 offset $offset";
     
     return pdo_query($sql);
 }
@@ -47,7 +47,7 @@ function getAllProducts($type = "name", $sort = 'ASC',$filterType = 0) {
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 3 order by $type $sort";
+    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort";
     return pdo_query($sql);
 }
 
@@ -70,7 +70,7 @@ function getAllProductsByCate($id, $type = "name", $sort = 'ASC',$filterType = 0
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 3 and category_id = $id order by  $type $sort";
+    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort";
     return pdo_query($sql);
 }
 //lấy danh sách sản phẩm phân trang theo danh mục
@@ -92,7 +92,21 @@ function getListProductsByCate($id, $offset, $type = "name", $sort = 'ASC', $fil
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 3 and category_id = $id order by  $type $sort, product.product_id limit 12 offset $offset";
+    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort, product.product_id limit 12 offset $offset";
+    return pdo_query($sql);
+}
+// danh sách sản phẩm giảm giá
+function getProSale() {
+    $sql = "select * from product ";
+    $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
+    $sql .= "where status = 1 and product_detail.size_id = 1 and sale >0 and sale <= 100";
+    return pdo_query($sql);
+}
+// danh sách sản phẩm mới
+function getNewPro() {
+    $sql = "select * from product ";
+    $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
+    $sql .= "where status = 1 and product_detail.size_id = 1 and sale >0 and sale <= 100 order by product.product_id desc limit 10";
     return pdo_query($sql);
 }
 ?>

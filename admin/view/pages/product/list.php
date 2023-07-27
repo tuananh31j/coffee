@@ -8,7 +8,6 @@
             <a href="index.php?url=product&act=add"
                 class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm sản
                 phẩm <i class="fa-solid fa-plus"></i></a>
-
             <!-- fillter -->
             <div class="dropdown m-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -16,27 +15,19 @@
                     <i class="fa-solid fa-filter"></i> Sắp xếp
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">A->Z</a></li>
-                    <li><a class="dropdown-item" href="#">Z->A</a></li>
-                    <li><a class="dropdown-item" href="#">Mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Cũ nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Lượt xem <i class="fa-solid fa-arrow-up"></i></a>
+                    <li><a class="dropdown-item" href="index.php?url=product&act=list&filter=az">A->Z</a></li>
+                    <li><a class="dropdown-item" href="index.php?url=product&act=list&filter=za">Z->A</a></li>
+                    <li><a class="dropdown-item" href="index.php?url=product&act=list&filter=new">Mới nhất</a></li>
+                    <li><a class="dropdown-item" href="index.php?url=product&act=list&filter=old">Cũ nhất</a></li>
+                    <li><a class="dropdown-item" href="index.php?url=product&act=list&filter=view">nhiều lượt xem nhất
+                            <i class="fa-solid fa-arrow-up"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="#">Lượt thích <i class="fa-solid fa-arrow-up"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Số đơn hàng <i class="fa-solid fa-arrow-up"></i></a></li>
-
-                    <li><a class="dropdown-item" href="#">Lượt xem <i class="fa-solid fa-arrow-down"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Lượt thích <i class="fa-solid fa-arrow-down"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Số đơn hàng <i class="fa-solid fa-arrow-down"></i></a></li>
-
-
                 </ul>
             </div>
             <!-- tìm kiếm -->
             <div class="m-3">
                 <form action="" method="post">
-                    <input class="p-1 rounded-2" type="text" name="search" placeholder="nội dung tìm kiếm...">
+                    <input class="p-1 rounded-2" type="search" name="keyWord" placeholder="nội dung tìm kiếm...">
                     <input type="submit" name="btn-search" value="Tìm kiếm"
                         class="p-1 border-1 text-light rounded-2 bg-black">
                 </form>
@@ -48,11 +39,11 @@
             <table class="table table-hover table-bordered text-center">
                 <thead>
                     <tr>
-                        <th>#MÃ</th>
+                        <th>MÃ</th>
                         <th>Ảnh</th>
                         <th>Tên sản phẩm</th>
                         <th>Mô tả</th>
-
+                        <th>Loại</th>
                         <th><i class="fa-sharp fa-solid fa-eye"></i></th>
 
                         <th>Ngày tạo</th>
@@ -76,7 +67,14 @@
                             }
                         }?></td>
                         <td style="width: 60px;"><img class="w-100" src="<?=$IMAGE.'/'.$pro['image_url']?>" alt=""></td>
-                        <td><?=$pro['name']?></td>
+                        <td><?php $flag = 0; for($i = 0; $i < strlen($pro['name']); $i++) {
+                            echo $pro['name'][$i];
+                            $flag++;
+                            if($flag == 5) {
+                                echo " </br> ";
+                                $flag = 0;
+                            }
+                        }?></td>
                         <td><?php $flag = 0; for($i = 0; $i < strlen($pro['des']); $i++) {
                             echo $pro['des'][$i];
                             $flag++;
@@ -85,6 +83,7 @@
                                 $flag = 0;
                             }
                         }?></td>
+                        <td><?=$pro['category_name']?></td>
                         <td><?=$pro['view']?></td>
                         <td><?=$pro['create_at']?></td>
                         <td><?=$pro['update_at']?></td>

@@ -108,8 +108,7 @@
                             <div class="card h-100">
                                 <!-- ảnh -->
                                 <div class="h-100">
-                                    <a href=""><img src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
-                                            alt="..."></a>
+                                    <a href=""><img src="<?=$IMAGE?>/item3.jpg" class="card-img-top" alt="..."></a>
                                     <!-- giảm giá -->
                                     <?php if($item['sale']>0 && $item['sale']<=100){
                                     ?>
@@ -134,14 +133,15 @@
                                     <button type="button" class="btn border-danger text-danger cart-btn"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $index?>">Đặt
                                         ngay</button>
-                                    <!-- form thêm vào giỏ hàng -->
-                                    <form class="" action="index.php?url=product" method="post">
-                                        <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                    <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <!-- form thêm vào giỏ hàng -->
+                                        <form class="" action="index.php?url=product" method="post">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                 <div class="modal-content">
+                                                    <!-- tên sản phẩm -->
                                                     <div class="modal-header">
-                                                        <!-- tên sản phẩm -->
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">
                                                             <?=$item['name']?></h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -161,7 +161,7 @@
                                                         <div class="card mb-3" style="max-width: 540px;">
                                                             <div class="row g-0">
                                                                 <div class="col-md-4">
-                                                                    <img src="<?=$IMAGE.'/'.$item['image_url']?>"
+                                                                    <img src="<?=$IMAGE?>/item3.jpg"
                                                                         class="img-fluid rounded-start" alt="...">
                                                                 </div>
                                                                 <div class="col-md-8">
@@ -232,9 +232,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <!-- <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button> -->
-
                                                         <input type="submit" onclick="alert('Thêm thành công vào giỏ!')"
                                                             value="Thêm vào giỏ" name="btn-addToCart"
                                                             class="border-0 rounded-2 bg-primary text-light p-2">
@@ -243,7 +240,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                    </div>
                                     </form>
                                 </div>
 
@@ -378,10 +375,11 @@
                                 </div>
                             </form>
                         </div>
+                        <?php } ?>
 
                     </div>
                 </div>
-                <?php } ?>
+
 
             </div>
 
