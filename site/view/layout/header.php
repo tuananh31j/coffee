@@ -131,8 +131,8 @@
                 <nav class="header-menu ">
 
                     <ul>
-                        <li><a href=""><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="">TRANG CHỦ</a></li>
+                        <li><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="index.php">TRANG CHỦ</a></li>
                         <li><a href="">GIẢM GIÁ</a></li>
                         <li><a href="index.php?url=product">SẢN PHẨM</a></li>
                         <li><a href="">LIÊN HỆ</a></li>

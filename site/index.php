@@ -307,7 +307,8 @@ if(isset($_GET['url'])) {
 }
 }else{
     $listProSale = getProSale();
-    $listProSale = getNewPro();
+    $listProNew = getNewPro();
+    $listSize = getListSize();
     require_once "view/pages/home.php";
 }
 

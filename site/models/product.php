@@ -106,7 +106,7 @@ function getProSale() {
 function getNewPro() {
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where status = 1 and product_detail.size_id = 1 and sale >0 and sale <= 100 order by product.product_id desc limit 10";
+    $sql .= "where status = 1 and product_detail.size_id = 1 and sale > 0 and sale <= 100 order by product.product_id desc limit 10";
     return pdo_query($sql);
 }
 ?>
