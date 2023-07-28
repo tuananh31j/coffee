@@ -5,7 +5,7 @@ function getListPro($kw, $filter) {
     $fil = ' asc';
     $type = "product.name";
     
-    if ($kw != '') {
+    if ($kw != '' && $kw !=0) {
         $word = "product.name like '%$kw%'";
     }
     if ($filter == "az" && $filter != '') {
@@ -26,7 +26,7 @@ function getListPro($kw, $filter) {
     $sql = "select product.*, product.product_id as pro_id, category.name AS category_name, product_detail.* ";
     $sql .= "from product inner join product_detail on product_detail.product_id = product.product_id "; 
     $sql .= "inner join category on category.category_id = product.category_id ";
-    $sql .= "where $word and product.status = 1 and category.status = 1 and size_id = 1 order by $type $fil";
+    $sql .= "where $word and category.status = 1 and size_id = 1 order by $type $fil";
 
     return pdo_query($sql);
 }
@@ -41,13 +41,14 @@ function getProById($id) {
     return pdo_query_one($sql);
 }
 function update_product($name, $sale, $img,$category,$des,$update_at,$id) {
-    $sql = "update product set name = ?, sale = ?, image_url = ?, category_id = ?, des = ?, update_at = ? where product_id = ?";
-    pdo_execute($sql,$name, $sale, $img,$category,$des,$update_at,$id);
+    $sql = "UPDATE `product` SET `category_id` = ?, `image_url` = ?, `name` = ?, `des` = ?, `sale` = ?, `update_at` = ? WHERE `product`.`product_id` = ?;";
+    pdo_execute($sql,$category, $img, $name,$des,$sale,$update_at,$id);
+    return true;
 
 }
 function updateDetails($id, $size, $price, $update_at) {
-    $sql = "UPDATE product_detail SET size_id = ?, price = ?, update_at = ? WHERE product_id = ?";
-    pdo_execute($sql, $size, $price, $update_at, $id);
+    $sql = "UPDATE `product_detail` SET `price` = ?, `update_at` = ? WHERE `product_id` = ? AND `size_id` = ?";
+    pdo_execute($sql, $price, $update_at, $id, $size);
 }
 
 function getlistProDetailById($id) {

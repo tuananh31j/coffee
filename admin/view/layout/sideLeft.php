@@ -59,7 +59,7 @@
                                 </li>
                             </a>
                             <!-- Danh mục -->
-                            <a class="text-black text-decoration-none" href="index.php?url=list_category">
+                            <a class="text-black text-decoration-none" href="index.php?url=category&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-hashtag"></i> Danh mục
                                 </li>

@@ -56,37 +56,6 @@
           </div>
       </div>
   </footer>
-  <section class="splide" aria-label="Basic Structure Example">
-      <div class="splide__track">
-          <ul class="splide__list">
-              <li class="splide__slide">
-                  <div class="img-box">
-
-                  </div>
-              </li>
-              <li class="splide__slide">
-                  <div class="img-box">
-
-                  </div>
-              </li>
-              <li class="splide__slide">
-                  <div class="img-box">
-
-                  </div>
-              </li>
-              <li class="splide__slide">
-                  <div class="img-box">
-
-                  </div>
-              </li>
-              <li class="splide__slide">
-                  <div class="img-box">
-
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </section>
 
 
   </div>
@@ -132,16 +101,30 @@ function updateQuantity(input, quantity) {
     input.value = quantity;
 }
 
+let allProSale = document.querySelectorAll(".proSaleItem");
+let btnMoreSale = document.querySelector(".more-btn-sale");
+let btnHideSale = document.querySelector(".hide-btn-sale");
 
-//script đổi giá khi nhấn vào size khác nhau
+// Ẩn các phần tử từ vị trí thứ 8 trở đi
+for (let i = 8; i < allProSale.length; i++) {
+    allProSale[i].classList.add('d-none');
+}
 
+function handleItemAll(items) {
+    btnMoreSale.classList.add("d-none");
+    btnHideSale.classList.remove("d-none");
+    // Hiển thị tất cả các phần tử
+    items.forEach(element => element.classList.remove('d-none'));
+}
 
-var splide = new Splide('.splide', {
-    type: 'loop',
-    perPage: 5,
-    focus: 'center',
-});
-
-splide.mount();
+function handleItem(items) {
+    btnMoreSale.classList.remove("d-none");
+    btnHideSale.classList.add("d-none");
+    // Ẩn các phần tử từ vị trí thứ 8 trở đi
+    for (let i = 8; i < items.length; i++) {
+        items[i].classList.add('d-none');
+    }
+}
   </script>
+
   </body>

@@ -74,10 +74,11 @@
                         <!-- tìm kiếm -->
 
                         <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
-                            <form class="d-flex header-logo-search-form" role="search">
-                                <input class="form-control header-logo-search-input " type="search"
+                            <form method="post" action="index.php?url=product" class="d-flex header-logo-search-form"
+                                role="search">
+                                <input name="keyword" class="form-control header-logo-search-input " type="search"
                                     placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
-                                <button class=" header-logo-search-btn" type="submit"><i
+                                <button name="btn-search" class=" header-logo-search-btn" type="submit"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                             <ul class="navbar-nav  mb-2 mb-lg-0">

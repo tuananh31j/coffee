@@ -36,66 +36,65 @@ if(isset($_GET['url'])) {
         
         
         
-    //CATEGORY
-    case 'add_categories':
-        if(isset($_POST['btn-add'])&&$_POST['btn-add']) {
-            $name=$_POST['name'];
-            addCategory($name);
-            $noti="addtion complete !";
-        }
-        include_once "./view/pages/category/add.php";
-        break;
-        
-    case 'list_category':
-        //search danh mục
-        if(isset($_POST['keyword']) && $_POST['keyword']!=""){
-            $key = $_POST['keyword'];
-            $sql="select * from category where name like '%$key%' ";
-        }else {
-            $categorys = getListCategory();
-        }
-        
-        require_once "./view/pages/category/list.php";
-        break; 
+    //CATEGORY  
+    case 'category':
+        if(isset($_GET['act'])) {
+            $act = $_GET['act'];
+            // danh sách danh mục
+            if($act == 'list') {
+                $kw = 0;
+                $fil = 0;
 
-        //chỉnh sửa danh mục
-    case 'category-update':
-        # code...
-        if(isset($_GET['category_id'])){
-            $id = $_GET['category_id'];
-            $item = getCategory($id);
-            if(isset($_POST['btn-update']) && $_POST['btn-update'] == true) {
-                $name = $_POST['name'];
-                updateCate($name, $id);
+                //search
+                if(isset($_POST['btn-search']) && $_POST['keyword'] != ""){
+                    $kw = $_POST['keyword'];
+                }
+                // fillter
+                if(isset($_GET['filter'])) {
+                    $fil = $_GET['filter'];
+                }
+                $categorys = getListCategoryBy($kw,$fil);
+                    
+                
+                
+                require_once "./view/pages/category/list.php";
             }
-            
+            // thêm mới danh mục
+            if($act == 'add') {
+                $errName = '';
+                if(isset($_POST['btn-add'])) {
+                    $name = $_POST['name'];
+                    if($_POST['name'] != '') {
+                        addCategory($name);
+                        $noti="Thêm mới thành công!";
+                    }else{
+                        $errName = "Chưa nhập tên danh mục!";
+                    }
+                }
+                include_once "./view/pages/category/add.php";
+            }
+            // sửa danh mục
+            if($act == 'update') {
+                $errName = '';
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $target = getCategoryById($id);
+                }
+                if(isset($_POST['btn-update'])) {
+                    $name = $_POST['name'];
+                    if($_POST['name'] != '') {
+                        updateCate($name, $_POST['id']);
+                        $noti="Cập nhật thành công!";
+                    }else{
+                        $errName = "Chưa nhập tên danh mục!";
+                    }
+                }
+                
+                include_once "./view/pages/category/update.php";
+            }
         }
-        require_once "./view/pages/category/update.php";
-        break;
-
-        //xóa danh mục. Nếu có khóa ngoại thì chỉ tắt trạng thái sang 0(off)
-    case 'category-delete':
-        # code...
-        if(isset($_GET['category_id'])&&$_GET['category_id']>0){
-            $id = $_GET['category_id'];
-            deleteCate($id);
-            
-        }
-        
-        header("location: index.php?url=list_category");
-        break;
+        break; 
     
-    case 'tangdan':
-        $sql = "select * from category order by name ASC";
-        $cate=pdo_query($sql);
-        require_once "./view/pages/category/list.php";
-        break;
-    
-    case 'giamdan':
-        $sql = "select * from category order by name DESC";
-        $cate=pdo_query($sql);
-        require_once "./view/pages/category/list.php";
-        break;
 
         
     //PRODUCT
@@ -204,89 +203,93 @@ if(isset($_GET['url'])) {
                 header("location: index.php?url=product&act=list");
             }
             // sửa sản phẩm
-            if($_GET['act'] == 'update' && isset($_GET['id'])) {
-                $err = [];
+            if($_GET['act'] == 'update') {
                 $listSize = getListSize();
                 $listCategory = getListCategory();
-                $id = $_GET['id'];
-                $target = getProById($id);
-                $listProDetail = getlistProDetailById($id);
-                    if(isset($_POST['btn-update']) && $_POST['btn-update']) {
-                            //name
-                            if($_POST['name'] != '') {
-                                $name = $_POST['name'];
+                $err = [];
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $target = getProById($id);
+                    $listProDetail = getlistProDetailById($id);
+                }
+                if(isset($_POST['btn-update'])) {
+                    //name
+                    if($_POST['name'] != '') {
+                        $name = $_POST['name'];
+                    }else{
+                        $err['name'] = "Chưa điền tên sản phẩm!";
+                    }
+                    // sale
+                    if(isset($_POST['sale']) ) {
+                        if($_POST['sale'] > 0 && $_POST['sale'] <= 100 || $_POST['sale'] == ''){
+                            $sale = $_POST['sale'];
+                        }else{
+                            $err['sale'] = "Giá trị phải >0 và <100!";
+                        }
+                    }else{
+                        $sale = 0;
+                    }
+                    // ảnh
+                    if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
+                        $img = $_FILES['img']['name'];
+                        $path = pathinfo($img, PATHINFO_EXTENSION);
+                        $format= ["jpg", "jpeg", "png", "gif"];
+                        if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                        }else{
+                            $err['img'] = "File gửi lên không phải là file ảnh!";
+                        }
+                    }else{
+                        $img = "default.png";
+                    }
+                    //category
+                    if($_POST['category'] != '') {
+                        $category = $_POST['category'];
+                    }else{
+                        $err['category'] = "Chưa chọn danh mục sản phẩm!";
+                    }
+                    //mô tả
+                    if($_POST['des'] != '') {
+                        $des = $_POST['des'];
+                    }else{
+                        $err['des'] = "Chưa nhập mô tả sản phẩm!";
+                    }
+                    // dữ liệu chi tiết sản phẩm
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $detailsArray = array();
+                        // Lặp qua dữ liệu được post từ form và lưu vào mảng $detailsArray
+                        foreach ($_POST['details'] as $key => $value) {
+                            $size = $value['size'];
+                            $price = $value['price'];
+                            if($price != '') {
+                            $detailsArray[$key] = array('size' => $size, 'price' => $price);
                             }else{
-                                $err['name'] = "Chưa điền tên sản phẩm!";
+                                $err["price-".$key] = "Chưa nhập giá!";
                             }
-                            // sale
-                            if(isset($_POST['sale']) ) {
-                                if($_POST['sale'] > 0 && $_POST['sale'] <= 100 || $_POST['sale'] == ''){
-                                    $sale = $_POST['sale'];
-                                }else{
-                                    $err['sale'] = "Giá trị phải >0 và <100!";
-                                }
-                            }else{
-                                $sale = 0;
-                            }
-                            // ảnh
-                            // if(isset($_FILES['img']['name']) && $_FILES['img']['name'] != ''){
-                            //     $img = $_FILES['img']['name'];
-                            //     $path = pathinfo($img, PATHINFO_EXTENSION);
-                            //     $format= ["jpg", "jpeg", "png", "gif"];
-                            //     if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                            //         move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
-                            //     }else{
-                            //         $err['img'] = "File gửi lên không phải là file ảnh!";
-                            //     }
-                            // }else{
-                            //     $img = $target['image_url'];
-                            // }
-                            //category
-                            $img = $target['image_url'];
-                            if($_POST['category'] != '') {
-                                $category = $_POST['category'];
-                            }else{
-                                $err['category'] = "Chưa chọn danh mục sản phẩm!";
-                            }
-                            //mô tả
-                            if($_POST['des'] != '') {
-                                $des = $_POST['des'];
-                            }else{
-                                $err['des'] = "Chưa nhập mô tả sản phẩm!";
-                            }
-                            // // size, price
-                            // foreach($listSize as $key => $size) {
-                            //     if(isset($_POST['details'][$key]['price']))
-                            // }
-                          
-                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                $detailsArray = array();
-                            
-                                // Lặp qua dữ liệu được post từ form và lưu vào mảng $detailsArray
-                                foreach ($_POST['details'] as $key => $value) {
-                                    $size = $value['size'];
-                                    $price = $value['price'];
-                                    if($price != '') {
-                                    $detailsArray[$key] = array('size' => $size, 'price' => $price);
-                                    }else{
-                                        $err["price-".$key] = "Chưa nhập giá!";
-                                    }
-                                }
-                            }
-                            $update_at = date("Y-m-d");
-                           $result =  update_product($name, $sale, $img,$category,$des,$update_at,$id);
-                           if($result) {
-                            foreach($detailsArray as $details) {
-                                $size = $details['size'];
-                                $price = $details['price'];
-                                updateDetails($id, $size, $price, $update_at);
-                                
-                              }
-                           }
-                } 
-                $target = getProById($id);
-                $listProDetail = getlistProDetailById($id);
-                require "./view/pages/product/edit.php";
+                        }
+                    }
+                    
+                    $update_at = date("Y-m-d");
+                    $idPro = $_POST['id'];
+                    if(count($err) === 0){
+                        $result = update_product($name, $sale, $img,$category,$des,$update_at,$idPro);
+                        if($result){
+                            for($i = 0; $i < sizeof($detailsArray); $i++) {
+                            $size = $detailsArray[$i]['size'];
+                            $price = $detailsArray[$i]['price'];
+                            updateDetails($idPro,$size, $price, $update_at);
+                        } 
+                        $noti = "Cập nhật thành công!";
+
+                        }
+                        // updateDetails($idPro,$detailsArray[0]['size'], $detailsArray[0]['price'], $update_at);
+                        // updateDetails($idPro,$detailsArray[1]['size'], $detailsArray[1]['price'], $update_at);
+                        // updateDetails($idPro,$detailsArray[2]['size'], $detailsArray[2]['price'], $update_at);
+                        
+                        
+                    }
+                }  
+                require "./view/pages/product/update.php";
             }
         }
         break;

@@ -19,6 +19,12 @@ if(isset($_GET['url'])) {
         $sortStyle = "asc";
         $sortType = "name";
         $filterType = 0;
+        $kw = 0;
+        // tìm kiếm
+        if(isset($_POST['btn-search'])) {
+            $kw = $_POST['keyword'];
+          
+        }
         // lọc sản phẩm theo giá
         if(isset($_GET['filter']) && $_GET['filter'] != 0) {
             $filterType = $_GET['filter'];
@@ -51,8 +57,8 @@ if(isset($_GET['url'])) {
         }
         $offset= 0;
         $categorys = getListCategory();
-        $allPro = getAllProducts($sortType, $sortStyle, $filterType);
-        $products = getListProduct(0,$sortType, $sortStyle, $filterType);
+        $allPro = getAllProducts($sortType, $sortStyle, $filterType,$kw);
+        $products = getListProduct(0,$sortType, $sortStyle, $filterType,$kw);
         $listSize = getListSize();
 
         
@@ -61,16 +67,16 @@ if(isset($_GET['url'])) {
             
             $pageNumber = $_GET['pagenum'];
             $offset= ($pageNumber - 1) * 12;
-            $products = getListProduct($offset,$sortType, $sortStyle, $filterType);
+            $products = getListProduct($offset,$sortType, $sortStyle, $filterType,$kw);
             if(isset($_GET['category']) && $_GET['category'] != 0) {
                 $category = $_GET['category'];
-                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType);
+                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType,$kw);
             }
         }
         if(isset($_GET['category']) && $_GET['category'] != 0) {
                 $category = $_GET['category'];
-                $allPro = getAllProductsByCate($category,$sortType, $sortStyle, $filterType);
-                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType);
+                $allPro = getAllProductsByCate($category,$sortType, $sortStyle, $filterType,$kw);
+                $products = getListProductsByCate($category,$offset,$sortType, $sortStyle, $filterType,$kw);
                 
             }
 
@@ -306,6 +312,10 @@ if(isset($_GET['url'])) {
         break;
 }
 }else{
+    if(isset($_GET['keyword'])) {
+        $kw = $_GET['keyword'];
+        header("Location: index.php?url=product&keyword=$kw");
+    }
     $listProSale = getProSale();
     $listProNew = getNewPro();
     $listSize = getListSize();

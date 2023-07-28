@@ -11,6 +11,11 @@
         </div>
         <div class="content-title my-5 ">
             <h2>Sản phẩm của chúng tôi</h2>
+            <p>
+                <?php
+            var_dump($_POST);
+             ?>
+            </p>
         </div>
         <div class="content-fillter d-flex flex-row-reverse
                     ">

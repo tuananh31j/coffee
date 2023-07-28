@@ -5,8 +5,12 @@ function getPrice($pro_id,$size_id){
     return pdo_query_one($sql);
 }
 // phân trang mỗi trang lấy ra 12 sản phẩm
-function getListProduct($offset,$type = "name", $sort = 'ASC',$filterType = 0) {
+function getListProduct($offset,$type = "name", $sort = 'ASC',$filterType = 0,$keyword) {
     $queryFilter = 1;
+    $kw = 1;
+    if($keyword != 0) {
+        $kw = "product.name like '%$keyword%'";
+    }
    
         if($filterType == "down") {
             $queryFilter = "price <= 200000";
@@ -23,14 +27,18 @@ function getListProduct($offset,$type = "name", $sort = 'ASC',$filterType = 0) {
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort, product.product_id limit 12 offset $offset";
+    $sql .= "where $kw and $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort, product.product_id limit 12 offset $offset";
     
     return pdo_query($sql);
 }
 
 //lấy toàn bộ sản phẩm có size S
-function getAllProducts($type = "name", $sort = 'ASC',$filterType = 0) {
+function getAllProducts($type = "name", $sort = 'ASC',$filterType = 0,$keyword) {
     $queryFilter = 1;
+    $kw = 1;
+    if($keyword != 0) {
+        $kw = "product.name like '%$kw%'";
+    }
    
         if($filterType == "down") {
             $queryFilter = "price <= 200000";
@@ -47,13 +55,17 @@ function getAllProducts($type = "name", $sort = 'ASC',$filterType = 0) {
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort";
+    $sql .= "where $kw and $queryFilter and status = 1 and product_detail.size_id = 1 order by $type $sort";
     return pdo_query($sql);
 }
 
 // lấy toàn bộ sản phẩm theo danh mục
-function getAllProductsByCate($id, $type = "name", $sort = 'ASC',$filterType = 0) {
+function getAllProductsByCate($id, $type = "name", $sort = 'ASC',$filterType = 0,$keyword) {
     $queryFilter = 1;
+    $kw = 1;
+    if($keyword != 0) {
+        $kw = "product.name like '%$kw%'";
+    }
    
         if($filterType == "down") {
             $queryFilter = "price <= 200000";
@@ -70,12 +82,16 @@ function getAllProductsByCate($id, $type = "name", $sort = 'ASC',$filterType = 0
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort";
+    $sql .= "where $kw and $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort";
     return pdo_query($sql);
 }
 //lấy danh sách sản phẩm phân trang theo danh mục
-function getListProductsByCate($id, $offset, $type = "name", $sort = 'ASC', $filterType = 0) {
+function getListProductsByCate($id, $offset, $type = "name", $sort = 'ASC', $filterType = 0,$keyword) {
     $queryFilter = 1;
+    $kw = 1;
+    if($keyword != 0) {
+        $kw = "product.name like '%$kw%'";
+    }
    
         if($filterType == "down") {
             $queryFilter = "price <= 200000";
@@ -92,21 +108,21 @@ function getListProductsByCate($id, $offset, $type = "name", $sort = 'ASC', $fil
     
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort, product.product_id limit 12 offset $offset";
+    $sql .= "where $kw and $queryFilter and status = 1 and product_detail.size_id = 1 and category_id = $id order by  $type $sort, product.product_id limit 12 offset $offset";
     return pdo_query($sql);
 }
 // danh sách sản phẩm giảm giá
 function getProSale() {
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where status = 1 and product_detail.size_id = 1 and sale >0 and sale <= 100";
+    $sql .= "where status = 1 and product_detail.size_id = 3 and sale >0 and sale <= 100";
     return pdo_query($sql);
 }
 // danh sách sản phẩm mới
 function getNewPro() {
     $sql = "select * from product ";
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
-    $sql .= "where status = 1 and product_detail.size_id = 1 and sale > 0 and sale <= 100 order by product.product_id desc limit 10";
+    $sql .= "where status = 1 and product_detail.size_id = 3 and sale > 0 and sale <= 100 order by product.product_id desc limit 10";
     return pdo_query($sql);
 }
 ?>
