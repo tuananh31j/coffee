@@ -22,4 +22,14 @@ function updateInfo($name,$update_at,$address,$phone,$email,$image,$id){
     $sql = "update customer set name = ?, update_at = ?, address = ?, phone = ?, email = ?, image_url = ? where customer_id = ? and status = 1";
     pdo_execute($sql,$name,$update_at,$address,$phone,$email,$image,$id);
 }
+// đổi mật khẩu
+function changePass($id,$pass) {
+    $sql = "update customer set pass = ? where customer_id = ?";
+    pdo_execute($sql,$pass,$id);
+}
+// kiêm tra mật khẩu
+function checkPass($id,$pass) {
+    $sql = "select * from customer where pass = ? and customer_id = ?";
+    return pdo_query_one($sql,$pass,$id);
+}
 ?>

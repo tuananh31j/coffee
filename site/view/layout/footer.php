@@ -125,6 +125,10 @@ function handleItem(items) {
         items[i].classList.add('d-none');
     }
 }
+
+
+// thông báo đã gửi
+
   </script>
 
   </body>

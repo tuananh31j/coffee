@@ -9,31 +9,32 @@
         </div>
         <!-- name -->
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Họ và Tên</label>
+            <label for="validationCustom03" class="form-label">Họ và Tên<span class="text-danger">*</span></label>
             <input type="text" class="form-control" value="" name="name" id="validationCustom03">
             <p class="text-danger"><?=isset($err['name'])?$err['name']:''?></p>
         </div>
         <!-- sđt -->
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Số điện thoại</label>
+            <label for="validationCustom03" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="phone" value="" id="validationCustom03">
             <p class="text-danger"><?=isset($err['phone'])?$err['phone']:''?></p>
         </div>
         <!-- pass -->
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Mật khẩu</label>
+            <label for="validationCustom03" class="form-label">Mật khẩu<span class="text-danger">*</span></label>
             <input type="password" value="" name="pass" class="form-control" id="validationCustom03">
             <p class="text-danger"><?=isset($err['pass'])?$err['pass']:''?></p>
         </div>
         <!-- email -->
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Email</label>
+            <label for="validationCustom03" class="form-label">Email<span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="email" value="" id="validationCustom03">
             <p class="text-danger"><?=isset($err['email'])?$err['email']:''?></p>
         </div>
         <!-- rePass -->
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Xác nhận mật khẩu</label>
+            <label for="validationCustom03" class="form-label">Xác nhận mật khẩu<span
+                    class="text-danger">*</span></label>
             <input type="password" class="form-control" value="" name="rePass" id="validationCustom03">
             <p class="text-danger"><?=isset($err['pass'])?$err['pass']:''?></p>
         </div>

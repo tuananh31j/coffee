@@ -26,7 +26,7 @@ function getListPro($kw, $filter) {
     $sql = "select product.*, product.product_id as pro_id, category.name AS category_name, product_detail.* ";
     $sql .= "from product inner join product_detail on product_detail.product_id = product.product_id "; 
     $sql .= "inner join category on category.category_id = product.category_id ";
-    $sql .= "where $word and category.status = 1 and size_id = 1 order by $type $fil";
+    $sql .= "where $word and product.status = 1 and category.status = 1 and size_id = 1 order by $type $fil";
 
     return pdo_query($sql);
 }

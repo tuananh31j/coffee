@@ -76,10 +76,12 @@
                         <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
                             <form method="post" action="index.php?url=product" class="d-flex header-logo-search-form"
                                 role="search">
-                                <input name="keyword" class="form-control header-logo-search-input " type="search"
-                                    placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                                <input name="keyword" value="" class="form-control header-logo-search-input "
+                                    type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                                 <button name="btn-search" class=" header-logo-search-btn" type="submit"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
+                                <p class="text-black"><?=isset($errKw)?$errKw:''?></p>
+
                             </form>
                             <ul class="navbar-nav  mb-2 mb-lg-0">
                                 <?php if(!isset($_SESSION['user'])){ ?>
@@ -136,8 +138,8 @@
                         <li><a href="index.php">TRANG CHỦ</a></li>
                         <li><a href="">GIẢM GIÁ</a></li>
                         <li><a href="index.php?url=product">SẢN PHẨM</a></li>
-                        <li><a href="">LIÊN HỆ</a></li>
-                        <li><a href="">GIỚI THIỆU</a></li>
+                        <li><a href="index.php?url=contact">LIÊN HỆ</a></li>
+                        <li><a href="index.php?url=aboutus">GIỚI THIỆU</a></li>
                     </ul>
                 </nav>
 

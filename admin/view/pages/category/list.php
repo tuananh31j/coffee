@@ -6,7 +6,7 @@
             <!-- thêm danh mục -->
 
             <a href="index.php?url=category&act=add"
-                class="text-decoration-none bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
+                class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
                 mục <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
             <div class="dropdown m-3">
@@ -28,6 +28,7 @@
                     <input class="p-1 rounded-2" type="text" name="keyword" placeholder="nội dung tìm kiếm...">
                     <input type="submit" name="btn-search" value="Tìm kiếm"
                         class="p-1 border-1 text-light rounded-2 bg-black">
+                    <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
                 </form>
             </div>
         </div>
@@ -50,8 +51,8 @@
                         <td><?=$category['category_id']?></td>
                         <td><?=$category['name']?></td>
                         <td>
-                            <a href="index.php?url=category&act=delete&id=<?=$category['category_id']?>"
-                                class="bg-danger text-light p-1 rounded-2">Xóa</a>
+                            <button onclick="confirmDelete('category&act=delete&id=<?=$category['category_id']?>')"
+                                class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button>
                             <a href="index.php?url=category&act=update&id=<?=$category['category_id']?>"
                                 class="bg-info text-light p-1 rounded-2">Sửa</a>
                         </td>

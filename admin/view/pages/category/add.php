@@ -14,7 +14,8 @@
             <p class="text-success"><?=isset($noti)?$noti:''?></p>
             <form class="input" style="width: 50%" method="post" action="index.php?url=category&act=add">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Tên loại</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Tên loại<span
+                            class="text-danger">*</span></span>
                     <input type="text" class="form-control" name="name">
                 </div>
                 <p class="text-danger"><?php echo isset($errName)?$errName:'' ?></p>

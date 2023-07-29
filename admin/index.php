@@ -7,6 +7,7 @@ require_once "../admin/models/customer.php";
 require_once "../admin/models/product.php";
 require_once "../admin/models/size.php";
 require_once "../admin/models/category.php";
+require_once "../admin/models/contact.php";
 
 require_once "./view/layout/sideLeft.php";
 if(isset($_GET['url'])) {
@@ -48,6 +49,8 @@ if(isset($_GET['url'])) {
                 //search
                 if(isset($_POST['btn-search']) && $_POST['keyword'] != ""){
                     $kw = $_POST['keyword'];
+                }else{
+                    $errKw = "Chưa nhập từ khóa!";
                 }
                 // fillter
                 if(isset($_GET['filter'])) {
@@ -92,6 +95,13 @@ if(isset($_GET['url'])) {
                 
                 include_once "./view/pages/category/update.php";
             }
+            if($act == 'delete') {
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    deleteCate($id);
+                }
+                header("location: index.php?url=category&act=list");
+            }
         }
         break; 
     
@@ -105,7 +115,12 @@ if(isset($_GET['url'])) {
                 $kw = '';
                 $filter = '';
                 if(isset($_POST['btn-search'])) {
-                    $kw = $_POST['keyWord'];
+                    if($_POST['keyWord'] != ''){
+                        $kw = $_POST['keyWord'];
+                    }else{
+                    $errKw = "Chưa nhập từ khóa!";
+                }
+
                 }
                 if(isset($_GET['filter'])){
                     $filter = $_GET['filter'];
@@ -197,9 +212,12 @@ if(isset($_GET['url'])) {
                 require "./view/pages/product/add.php";
             }
             // xóa sản phẩm
-            if($_GET['act'] == 'delete' && isset($_GET['id'])) {
-                $id = $_GET['id'];
-                handleDelete($id);
+            if($_GET['act'] == 'delete') {
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    handleDelete($id);
+                }
+                
                 header("location: index.php?url=product&act=list");
             }
             // sửa sản phẩm
@@ -240,7 +258,8 @@ if(isset($_GET['url'])) {
                             $err['img'] = "File gửi lên không phải là file ảnh!";
                         }
                     }else{
-                        $img = "default.png";
+                        $cur = getProById($id);
+                        $img = $cur['image_url'];
                     }
                     //category
                     if($_POST['category'] != '') {
@@ -285,8 +304,6 @@ if(isset($_GET['url'])) {
                         // updateDetails($idPro,$detailsArray[0]['size'], $detailsArray[0]['price'], $update_at);
                         // updateDetails($idPro,$detailsArray[1]['size'], $detailsArray[1]['price'], $update_at);
                         // updateDetails($idPro,$detailsArray[2]['size'], $detailsArray[2]['price'], $update_at);
-                        
-                        
                     }
                 }  
                 require "./view/pages/product/update.php";
@@ -354,6 +371,52 @@ if(isset($_GET['url'])) {
     // COMMENT
     case 'comment':
         # code...
+        break;
+    // CONTACT
+    case 'contact':
+        $filter = 0;
+        $sort = "new";
+        $kw = 0;
+        if(isset($_POST['btn-search'])) {
+            if($_POST['keyword'] != ''){
+                $kw = $_POST['keyword'];
+            }else{
+                $errKw = "Chưa nhập từ khóa!";
+            }
+        }
+        if(isset($_GET['filter'])) {
+            $filter = $_GET['filter'];
+        }
+        if(isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }
+        $listContact =  getListContact($filter, $sort,$kw);
+        $update_at = date("Y-m-d");
+                for($i = 0; $i < sizeof($listContact); $i++) {
+                    if(isset($_POST['btn-update-'.$i]) && $_POST['btn-update-'.$i] != '' && $_POST['btn-update-'.$i]) {
+                        if(isset($_POST['status-'.$i])){
+                            $status = $_POST['status-'.$i];
+                            $id = $_POST['id-'.$i];
+                            updateStatus($id,$status,$update_at);
+                            $listContact =  getListContact($filter, $sort,$kw);
+                        }else{
+                            $err = "chưa chọn trạng thái!";;
+                        }
+                    }
+                }
+        // xóa sản phẩm
+        
+        if(isset($_GET['act']) && $_GET['act'] == 'delete') {
+            if(isset($_GET['id'])){
+                $id = $_GET['id'];
+                deleteContact($id);
+            }
+            
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+            
+        
+        require_once "./view/pages/contact/list.php";
         break;
     // ĐĂNG XUẤT
     case 'logout':

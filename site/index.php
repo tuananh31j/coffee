@@ -6,6 +6,7 @@ require_once "models/product.php";
 require_once "models/category.php";
 require_once "models/customer.php";
 require_once "models/size.php";
+require_once "models/contact.php";
 
 
 require_once "view/layout/header.php";
@@ -13,7 +14,7 @@ require_once "view/layout/header.php";
 
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
-    // trang sản phẩm
+    // TRANG SẢN PHẨM
     case 'product':
         // danh sách danh mục
         $sortStyle = "asc";
@@ -22,8 +23,11 @@ if(isset($_GET['url'])) {
         $kw = 0;
         // tìm kiếm
         if(isset($_POST['btn-search'])) {
-            $kw = $_POST['keyword'];
-          
+            if($_POST['keyword'] != ''){
+                $kw = $_POST['keyword'];
+            }else{
+                $errKw = "Chưa nhập từ khóa!";
+            }
         }
         // lọc sản phẩm theo giá
         if(isset($_GET['filter']) && $_GET['filter'] != 0) {
@@ -104,7 +108,7 @@ if(isset($_GET['url'])) {
         require_once "view/pages/product.php";
         break;
 
-    // đăng nhập
+    // ĐĂNG NHẬP
     case "login":
         if(isset($_POST['btn-login']) && $_POST['btn-login'] == true) {
             $email = $_POST['email'];
@@ -131,7 +135,7 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/logIn.php";
         break;
         
-    // đăng ký
+    // ĐĂNG KÝ
     case "signup":
         $err = [];
         if(isset($_POST['btn-signup']) && $_POST['btn-signup'] == true) {
@@ -187,14 +191,14 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/signUp.php";
         break;
 
+    // TRANG TÀI KHOẢN
     case "account":
         $err = [];
         if(isset($_GET['act'])) {
-
-            
-             if($_GET['act'] === 'update') {
-       
-                    $err=[];
+            $act = $_GET['act'];
+            // Cập nhât tài khoản
+             if($act === 'update') {
+                    $err= array();
                     if(isset($_POST['btn-update'])) {
                     // handle 
                         // name
@@ -215,9 +219,6 @@ if(isset($_GET['url'])) {
                         }else{
                             $address = '';
                         }
-                           
-                        
-                        
                         // email
                         if($_POST['email'] != ''){
                             $email = $_POST['email'];
@@ -225,7 +226,7 @@ if(isset($_GET['url'])) {
                             $err['email'] = 'Chưa điền email!';
                         }
                         // ảnh
-                        if(isset($_FILES['img']['name']) && $_FILES['img'] == true){
+                        if(isset($_FILES['img']) && $_FILES['img']['name'] != 'true'){
                             $img = $_FILES['img']['name'];
                             $path = pathinfo($img, PATHINFO_EXTENSION);
                             $format= ["jpg", "jpeg", "png", "gif"];
@@ -237,43 +238,68 @@ if(isset($_GET['url'])) {
                         }else{
                             $img = $_SESSION['user']['image_url'];
                         }
+                        // ngày sửa
                         $update_at = date("Y-m-d");
+                        // id
                         $id = $_POST['id'];
                         // kiểm tra và đẩy lên hệ thống
-                       if(isset($name) && isset($phone) && isset($email)) {
-                        //chỉnh sửa ngày
+                       if(isset($name) && isset($email) && isset($phone) && isset($img) && isset($address)) {
                             $_SESSION['user']['name'] = $name;
                             $_SESSION['user']['update_at'] = $update_at;
                             $_SESSION['user']['address'] = $address;
                             $_SESSION['user']['phone'] = $phone;
                             $_SESSION['user']['email'] = $email;
-                            if($img != '') {
-                                $_SESSION['user']['image_url'] = $img;
-                            }
-                            
-                            $result = updateInfo($name,$update_at,$address,$phone,$email,$img,$id);
-                            
+                            $_SESSION['user']['image_url'] = $img;
+                            updateInfo($name,$update_at,$address,$phone,$email,$img,$id);
                        }
-                            
-                        
                     }
             require_once "view/pages/account/edit.php";
                 require_once "view/pages/account/myOrder.php";
             }
-            if($_GET['act'] == 'myOrder') {
-                $act = $_GET['act'];
+            // Đơn hàng của tôi
+            if($act == 'myOrder') {
                 require_once "view/pages/account/myOrder.php";
             }
-            if($_GET['act'] == 'pass') {
-                $act = $_GET['act'];
+            // Đổi mật khẩu
+            if($act == 'changePass') {
+                $err = [];
+                if(isset($_POST['btn-update'])) {
+                    $id = $_POST['id'];
+                    if($_POST['curPass'] != '') {
+                        $curPass = $_POST['curPass'];
+                        $check = checkPass($id,$curPass);
+                        if(!is_array($check)){
+                        $err['curPass'] = "Mật khẩu không đúng!";
+                        }
+                    }else{
+                        $err['curPass'] = "Chưa điền mật khẩu cũ";
+                    }
+                    if($_POST['newPass'] != '') {
+                        $newPass = $_POST['newPass'];
+                    }else{
+                        $err['newPass'] = "Chưa điền mật khẩu mới";
+                    }
+                    if($_POST['rePass'] != '') {
+                        $rePass = $_POST['rePass'];
+                    }else{
+                        $err['rePass'] = "Chưa điền mật khẩu mới";
+                    }
+                    if(isset($rePass) && isset($newPass) && $rePass != $newPass) {
+                        $err['pass'] = "Mật khẩu không trùng khớp";
+                    }
+                    if(count($err) === 0) {
+                        changePass($id,$newPass);
+                        $noti = "Đổi mật khẩu thành công!";
+                    }
+                }
                 require_once "view/pages/account/changePass.php";
             }
-            if($_GET['act'] == 'hisOrder') {
-                $act = $_GET['act'];
+            // lịch sử mua hàng
+            if($act == 'hisOrder') {
                 require_once "view/pages/account/historyOrder.php";
             }
-            if($_GET['act'] == 'logout') {
-                $act = $_GET['act'];
+            // Đăng xuất
+            if($act == 'logout') {
                 require_once "view/pages/account/logOut.php";
                 header("location: index.php");
             }
@@ -286,7 +312,38 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/changePass.php";
     
     break;
-            
+    // CONTACT
+    case "contact":
+        $err = array();
+        if(isset($_POST['btn-send']) && $_POST['btn-send']) {
+            if(isset($_POST['name']) && $_POST['name'] != '') {
+                $name = $_POST['name'];
+            }else{
+                $err['name'] = "Chưa điền tên!";
+            }
+            if(isset($_POST['email']) && $_POST['email'] != '') {
+                $email = $_POST['email'];
+            }else{
+                $err['email'] = "Chưa điền email!";
+            }
+            if(isset($_POST['phone']) && $_POST['phone'] != '') {
+                $phone = $_POST['phone'];
+            }else{
+                $err['phone'] = "Chưa điền số điện thoại!";
+            }
+            if(isset($_POST['content']) && $_POST['content'] != '') {
+                $content = $_POST['content'];
+            }else{
+                $err['content'] = "Chưa điền nội dung!";
+            }
+            if(count($err) == 0) {
+                addContact($name,$email,$phone,$content);
+                $noti = "Gửi thành công!";
+            }
+        }
+        require_once "view/pages/contact.php";
+    
+    break;
     // ORDER
     case "cart":
         if(isset($_SESSION['cart'])) {
@@ -306,15 +363,25 @@ if(isset($_GET['url'])) {
            
         
         break;
-        
+    case "aboutus":
+
+        require_once "view/pages/aboutUs.php";
+        break;
     default:
         require_once "view/pages/home.php";
         break;
 }
 }else{
-    if(isset($_GET['keyword'])) {
-        $kw = $_GET['keyword'];
-        header("Location: index.php?url=product&keyword=$kw");
+    // if(isset($_GET['keyword'])) {
+    //     $kw = $_GET['keyword'];
+    //     header("Location: index.php?url=product&keyword=$kw");
+    // }
+    if(isset($_POST['btn-search'])) {
+        if($_POST['keyword'] != ''){
+            $kw = $_POST['keyword'];
+        }else{
+            $errKw = "Chưa nhập từ khóa!";
+        }
     }
     $listProSale = getProSale();
     $listProNew = getNewPro();

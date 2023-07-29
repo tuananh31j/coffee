@@ -87,9 +87,9 @@
                             <?php foreach($categorys as $item){ ?>
                             <a class="text-decoration-none"
                                 href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><button
-                                    class="main-product-list-category-item nav-link" id="v-pills-profile-tab"
-                                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
-                                    aria-controls="v-pills-profile"
+                                    class="main-product-list-category-item nav-link" style="color: #b5313a;"
+                                    id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+                                    type="button" role="tab" aria-controls="v-pills-profile"
                                     aria-selected="false"><?=$item['name']?></button></a>
                             <?php } ?>
                         </div>

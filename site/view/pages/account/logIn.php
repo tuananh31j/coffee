@@ -20,10 +20,10 @@
                 <p class="text-center text-danger"><?= isset($noti)?$noti:''?></p>
 
                 <form method="post" action="index.php?url=login">
-                    <label for="email">Email:</label>
+                    <label for="email">Email<span class="text-danger">*</span></label>
                     <input type="text" id="email" name="email" placeholder="Nhập đại chỉ Email">
                     <p class="mx-2 text-danger"><?php echo isset($errEmail)?$errEmail:'' ?></p>
-                    <label for="password">Mật khẩu:</label>
+                    <label for="password">Mật khẩu<span class="text-danger">*</span></label>
                     <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
                     <p class="mx-2 text-danger"><?php echo isset($errPass)?$errPass:'' ?></p>
                     <div class="abc2">

@@ -13,7 +13,8 @@
                 <input type="text" hidden name="id"
                     value="<?=isset($target['category_id'])?$target['category_id']:''?>">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Tên loại</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Tên loại<span
+                            class="text-danger">*</span></span>
                     <input type="text" class="form-control" name="name"
                         value="<?=isset($target['name'])?$target['name']:''?>">
                 </div>

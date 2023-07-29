@@ -21,25 +21,29 @@
                 <div class="col">
                     <!-- tên -->
                     <div class="">
-                        <label for="validationCustom02" class="form-label">Tên hàng hóa</label>
+                        <label for="validationCustom02" class="form-label">Tên hàng hóa<span
+                                class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="name" id="validationCustom02" />
                         <p class="text-danger"><?=isset($err['name'])?$err['name']:''?></p>
                     </div>
                     <!-- giảm giá -->
                     <div class="">
-                        <label for="validationCustom01" class="form-label">Giảm giá %</label>
+                        <label for="validationCustom01" class="form-label">Giảm giá %<span
+                                class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="sale" value="" />
                         <p class="text-danger"><?=isset($err['sale'])?$err['sale']:''?></p>
                     </div>
                     <!-- ảnh hàng hóa -->
                     <div class="">
-                        <label for="validationCustom02" class="form-label">Ảnh hàng hóa</label>
+                        <label for="validationCustom02" class="form-label">Ảnh hàng hóa<span
+                                class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="img" aria-label="file example" />
                         <p class="text-danger"><?=isset($err['img'])?$err['img']:''?></p>
                     </div>
                     <!-- danh mục -->
                     <div class="">
-                        <label for="validationCustomUsername" class="form-label">Loại hàng</label>
+                        <label for="validationCustomUsername" class="form-label">Loại hàng<span
+                                class="text-danger">*</span></label>
                         <div class="input-group has-validation">
                             <select class="form-select" name="category" aria-label="Default select example">
                                 <option value="">...Chọn Loại Hàng....</option>
@@ -58,7 +62,7 @@
                     ?>
                     <div class="">
                         <label for="size">Size <span class="text-danger fw-bold"><?=$size['name']?></span> có giá
-                            là:</label>
+                            là<span class="text-danger">*</span>:</label>
                         <input type="text" value="<?=$size['size_id']?>" hidden name="details[<?=$key?>][size]">
                         <input type="text" class="form-control" name="details[<?=$key?>][price]" value=""
                             placeholder="đ" />
@@ -68,7 +72,7 @@
                 </div>
                 <!-- mô tả -->
                 <div class="row  ms-1">
-                    <label for="validationCustom02" class="form-label">Mô tả</label>
+                    <label for="validationCustom02" class="form-label">Mô tả<span class="text-danger">*</span></label>
                     <input placeholder="......." type="text" class="form-control pb-5" name="des"
                         aria-label="file example" />
                     <p class="text-danger"><?=isset($err['des'])?$err['des']:''?></p>

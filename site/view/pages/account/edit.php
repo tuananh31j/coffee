@@ -1,7 +1,7 @@
 <!-- MAIN-CONTENT -->
 <div class="main-content my-5 container">
     <h2 class="text-center">Cập nhật thông tin cá nhân</h2>
-    
+
     <div class="d-flex justify-content-center my-4" style="height: 210px;">
         <?php if(isset($_SESSION['user']['image_url']) && $_SESSION['user']['image_url'] != ''){ ?>
         <img class="h-100 rounded-2 border border-2 border-danger" src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>"
@@ -18,19 +18,19 @@
 
         <!-- họ tên -->
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Họ tên</label>
+            <label for="exampleInputEmail1" class="form-label">Họ tên<span class="text-danger">*</span></label>
             <input name="name" value="<?=$_SESSION['user']['name']?>" type="text" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <!-- email -->
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <label for="exampleInputEmail1" class="form-label">Email<span class="text-danger">*</span></label>
             <input name="email" value="<?=$_SESSION['user']['email']?>" type="email" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <!-- số điên thoại -->
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Số điện thoại</label>
+            <label for="exampleInputEmail1" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
             <input name="phone" value="<?=$_SESSION['user']['phone']?>" type="text" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>

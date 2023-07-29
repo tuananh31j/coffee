@@ -6,7 +6,7 @@
             <!-- thêm sản phẩm -->
 
             <a href="index.php?url=product&act=add"
-                class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm sản
+                class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm sản
                 phẩm <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
             <div class="dropdown m-3">
@@ -26,10 +26,11 @@
             </div>
             <!-- tìm kiếm -->
             <div class="m-3">
-                <form action="" method="post">
+                <form action="index.php?url=product&act=list&filter=<?=isset($filter)?$filter:''?>" method="post">
                     <input class="p-1 rounded-2" type="search" name="keyWord" placeholder="nội dung tìm kiếm...">
                     <input type="submit" name="btn-search" value="Tìm kiếm"
                         class="p-1 border-1 text-light rounded-2 bg-black">
+                    <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
                 </form>
             </div>
         </div>
@@ -90,8 +91,8 @@
                         <td><?=$pro['price']?></td>
                         <td><?=$pro['sale']?></td>
 
-                        <td><a href="index.php?url=product&act=delete&id=<?=$pro['product_id']?>"
-                                class="bg-danger text-light p-1 rounded-2">Xóa</a> |
+                        <td><button onclick="confirmDelete('product&act=delete&id=<?=$pro['product_id']?>')"
+                                class="bg-danger border-0 text-light p-1 rounded-2">Xóa</button> |
                             <a href="index.php?url=product&act=update&id=<?=$pro['product_id']?>"
                                 class="bg-info text-light p-1 rounded-2">Sửa</a>
                         </td>
