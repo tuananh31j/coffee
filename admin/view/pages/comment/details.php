@@ -37,7 +37,6 @@
 
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col bg-info rounded-2">

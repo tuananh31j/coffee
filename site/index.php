@@ -62,7 +62,7 @@ if(isset($_GET['url'])) {
         $offset= 0;
         $categorys = getListCategory();
         $allPro = getAllProducts($sortType, $sortStyle, $filterType,$kw);
-        $products = getListProduct(0,$sortType, $sortStyle, $filterType,$kw);
+        $products = getListProduct($offset,$sortType, $sortStyle, $filterType,$kw);
         $listSize = getListSize();
 
         

@@ -2,7 +2,7 @@
 //hàm kết nối database
     function pdo_get_connection() {
         $hostname='localhost';
-        $db_name='du-an-11';
+        $db_name='du-an-1';
         $username='root';
         $password="";
         // Dựng đối tương PDO

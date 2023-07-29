@@ -32,7 +32,8 @@
                             </ul>
                             <!-- chỉnh sửa -->
                             <div class="m-4">
-                                <a href="index.php?url=account&act=update"> <button class="btn bg-info">Chỉnh sửa
+                                <a href="index.php?url=account&act=update"> <button
+                                        class="btn bg-danger text-light">Chỉnh sửa
                                         thông
                                         tin</button></a>
                             </div>

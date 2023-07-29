@@ -45,7 +45,7 @@
 
         </div>
 
-        <!-- sản phẩm bán chạy -->
+        <!-- sản phẩm giảm giá-->
         <div class="" style="display: flex; justify-content: center; margin-top: 10px">
             <button class="product-sale-title">Đang giảm giá</button>
         </div>
@@ -231,7 +231,7 @@
 
         <div class="product-sale my-5">
             <div class="" style="display: flex; justify-content: center; margin-top: 10px">
-                <button class="product-sale-title">Sản phẩm bán chạy</button>
+                <button class="product-sale-title">Sản phẩm mới</button>
             </div>
             <div class="row row-cols-5">
                 <?php foreach($listProNew as $index => $item){
