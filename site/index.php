@@ -1,6 +1,6 @@
 <?php
+// global
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
-
 // models
 require_once "models/product.php";
 require_once "models/category.php";
@@ -8,10 +8,10 @@ require_once "models/customer.php";
 require_once "models/size.php";
 require_once "models/contact.php";
 
-
+// HEADER
 require_once "view/layout/header.php";
 
-
+// CONTENT
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
     // TRANG SẢN PHẨM
@@ -307,11 +307,7 @@ if(isset($_GET['url'])) {
             require_once "view/pages/account/info.php";
         }
         break;
-    case "changePass":
-        
-        require_once "view/pages/account/changePass.php";
     
-    break;
     // CONTACT
     case "contact":
         $err = array();
@@ -342,8 +338,7 @@ if(isset($_GET['url'])) {
             }
         }
         require_once "view/pages/contact.php";
-    
-    break;
+        break;
     // ORDER
     case "cart":
         if(isset($_SESSION['cart'])) {
@@ -358,19 +353,17 @@ if(isset($_GET['url'])) {
         require_once "view/pages/order/cart.php";
         break;
     
-    case "editinfo":
-        
-           
-        
-        break;
+    // TRANG GIỚI THIỆU
     case "aboutus":
-
         require_once "view/pages/aboutUs.php";
         break;
+
+    // TRANG CHỦ
     default:
         require_once "view/pages/home.php";
         break;
 }
+// TRANG CHỦ
 }else{
     // if(isset($_GET['keyword'])) {
     //     $kw = $_GET['keyword'];
@@ -389,6 +382,7 @@ if(isset($_GET['url'])) {
     require_once "view/pages/home.php";
 }
 
+// FOOTER
 require_once "view/layout/footer.php";
 
 

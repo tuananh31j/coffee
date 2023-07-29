@@ -1,54 +1,46 @@
 <?php
+//danh sách tài khoản
+function getListCustomerBy($kw, $fil) {
+    $keyword = 1;
+    $filter = '';
 
-function AddCustumer( $name,$password2, $address, $phone, $email,$kichhoat,$vaitro,$image){
-   $sql="INSERT INTO `customer`( `name`, `phone`, `email`, `status`, `address`, `image_url`, `role`, `pass`) 
-   VALUES ('$name','$phone','$email','$kichhoat','$address','$image','$vaitro','$password2')";
-  try {
+    if ($fil == "az" && $fil != 0) {
+        $filter = "order by customer.name asc";
+    }
+    if ($fil == "za" && $fil != 0) {
+        $filter = "order by customer.name desc";
+    }
+    if ($fil == "new" && $fil != 0) {
+        $filter = "order by customer.customer_id desc";
+    }
+    if ($fil == "old" && $fil != 0) {
+        $filter = "order by customer.customer_id asc";
+    }
+    if ($kw != 0 && $kw != '') {
+        $keyword = "customer.name like '%$kw%'";
+    }
+    $sql = "select * from customer where $keyword and status = 1 $filter";
+    return pdo_query($sql);
+}
+// thêm mới tài khoản
+function addCustomer($name, $phone, $pass,$email,$status,$img,$role) {
+    $sql = "insert into customer (name,phone,pass,email,status,image_url,role) values(?,?,?,?,?,?,?)";
+    pdo_execute($sql,$name, $phone, $pass,$email,$status,$img,$role);
+}
+// xóa mềm
+function deleteCus($id) {
+    $sql="update customer set status = 0 where customer_id= $id";
     pdo_execute($sql);
-   return "Thêm thành công";
-} catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
 }
-
+// chỉnh sửa
+function updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$id) {
+    $sql="update customer set name = ?, phone = ?, pass = ?, email = ?, status = ?, image_url = ?, role = ? where customer_id = ?";
+    pdo_execute($sql,$name, $phone, $pass,$email,$status,$img,$role,$id);
+    
 }
-function GetAllCustumer(){
-   $sql="SELECT * FROM `customer`";
-   
-    try {
-   return pdo_query($sql);;
-} catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
+// lấy ra 1 user
+function getCusById($id) {
+    $sql = "select * from customer where customer_id = ? and status = 1";
+    return pdo_query_one($sql, $id);
 }
-   
-}
-function DeleteCustumer($id){
-   $sql="DELETE FROM `customer` WHERE customer_id=$id";
-   
-    try {
-   return pdo_execute($sql);
-} catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
-}
-   
-}
-
-function getOneupdate($id){
-    $sql="SELECT * FROM `customer` where customer_id=$id";
-     try {
-   return pdo_query_one($sql);;
-} catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
-}
-}
-function updateCustumer($id, $name, $address, $phone, $email,$kichhoat,$vaitro){
-   $sql="UPDATE `customer` SET `name`='$name',`phone`='$phone',`email`='$email',`status`='$kichhoat',`address`='$address',`role`='$vaitro' WHERE customer_id=$id";
-  try {
-    pdo_execute($sql);
-   return "Update thành công";
-} catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
-}
-
-}
-
 ?>

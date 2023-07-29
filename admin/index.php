@@ -1,15 +1,20 @@
 <?php
-
+// GLOBAL
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
 
+// MODELS
 require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
 require_once "../admin/models/customer.php";
 require_once "../admin/models/product.php";
 require_once "../admin/models/size.php";
 require_once "../admin/models/category.php";
 require_once "../admin/models/contact.php";
+require_once "../admin/models/comment.php";
 
+// HEADER
 require_once "./view/layout/sideLeft.php";
+
+// CONTENT
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
         
@@ -47,10 +52,12 @@ if(isset($_GET['url'])) {
                 $fil = 0;
 
                 //search
-                if(isset($_POST['btn-search']) && $_POST['keyword'] != ""){
-                    $kw = $_POST['keyword'];
-                }else{
-                    $errKw = "Chưa nhập từ khóa!";
+                if(isset($_POST['btn-search'])){
+                    if($_POST['keyword'] != ""){
+                        $kw = $_POST['keyword'];
+                    }else{
+                        $errKw = "Chưa nhập từ khóa!";
+                    }
                 }
                 // fillter
                 if(isset($_GET['filter'])) {
@@ -95,6 +102,7 @@ if(isset($_GET['url'])) {
                 
                 include_once "./view/pages/category/update.php";
             }
+            //xóa danh mục
             if($act == 'delete') {
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
@@ -203,11 +211,6 @@ if(isset($_GET['url'])) {
                                 $noti = "Thêm mới thành công!";
                             }  
                             }
-                            
-                                                    
-                                
-                        
-                    
                 } 
                 require "./view/pages/product/add.php";
             }
@@ -315,62 +318,194 @@ if(isset($_GET['url'])) {
 
     // CUSTOMER
     case 'customer':
-        if(isset($_POST['btn'])){
-             $dir = "../public/img/";
-            $up_file = $dir . $_FILES['anh']['name'];
-       if (move_uploaded_file($_FILES['anh']['tmp_name'], $up_file)) {
-          
-       }
-       
+        if(isset($_GET['act'])) {
+            $act = $_GET['act'];
+            // danh sách khách hàng
+            if($act == 'list') {
+                $kw = 0;
+                $fil = 0;
+
+                //search
+                if(isset($_POST['btn-search'])){
+                    if($_POST['keyword'] != ""){
+                        $kw = $_POST['keyword'];
+                    }else{
+                        $errKw = "Chưa nhập từ khóa!";
+                    }
+                }
+                // fillter
+                if(isset($_GET['filter'])) {
+                    $fil = $_GET['filter'];
+                }
+                $customers = getListCustomerBy($kw,$fil);
+                    
+                
+                require_once "./view/pages/customer/list.php";
+
+            }
+            // thêm mới khách hàng
+            if($act == 'add') {
+                $err = [];
+                if(isset($_POST['btn-add'])) {
+                    // name
+                    if($_POST['name'] != '') {
+                        $name = $_POST['name'];
+                    }else{
+                        $err['name'] = "Chưa nhập tên khách hàng!";
+                    }
+                    // phone
+                    if($_POST['phone'] != '') {
+                        $phone = $_POST['phone'];
+                    }else{
+                        $err['phone'] = "Chưa nhập số điện thoại!";
+                    }
+                    // pass
+                    if($_POST['pass'] != '') {
+                        $pass = $_POST['pass'];
+                    }else{
+                        $err['pass'] = "Chưa nhập mật khẩu!";
+                    }
+                    // email
+                    if($_POST['email'] != '') {
+                        $email = $_POST['email'];
+                    }else{
+                        $err['email'] = "Chưa nhập email!";
+                    }
+                    // status
+                        $status = $_POST['status'];
+                    // ảnh
+                    if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
+                        $img = $_FILES['img']['name'];
+                        $path = pathinfo($img, PATHINFO_EXTENSION);
+                        $format= ["jpg", "jpeg", "png", "gif"];
+                        if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                        }else{
+                            $err['img'] = "File gửi lên không phải là file ảnh!";
+                        }
+                    }else{
+                        $img = "anhcuaban.png";
+                    }
+                    // vai trò
+                        $role = $_POST['role'];
+                    if(count($err) === 0){
+                        addCustomer($name, $phone, $pass,$email,$status,$img,$role);
+                        $noti = "Thêm mới thành công!";
+                      }  
+                }
+                include_once "./view/pages/customer/add.php";
+            }
+            // chỉnh sửa thông tin khách hàng
+            if($act == 'update'){
+                $err = [];
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $target = getCusById($id);
+                }
+                if(isset($_POST['btn-update'])) {
+                    // name
+                    if($_POST['name'] != '') {
+                        $name = $_POST['name'];
+                    }else{
+                        $err['name'] = "Chưa nhập tên khách hàng!";
+                    }
+                    // phone
+                    if($_POST['phone'] != '') {
+                        $phone = $_POST['phone'];
+                    }else{
+                        $err['phone'] = "Chưa nhập số điện thoại!";
+                    }
+                    // pass
+                    if($_POST['pass'] != '') {
+                        $pass = $_POST['pass'];
+                    }else{
+                        $err['pass'] = "Chưa nhập mật khẩu!";
+                    }
+                    // email
+                    if($_POST['email'] != '') {
+                        $email = $_POST['email'];
+                    }else{
+                        $err['email'] = "Chưa nhập email!";
+                    }
+                    // status
+                        $status = $_POST['status'];
+                    // ảnh
+                    if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
+                        $img = $_FILES['img']['name'];
+                        $path = pathinfo($img, PATHINFO_EXTENSION);
+                        $format= ["jpg", "jpeg", "png", "gif"];
+                        if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                        }else{
+                            $err['img'] = "File gửi lên không phải là file ảnh!";
+                        }
+                    }else{
+                        $curImg = getCusById($_POST['id']);
+                        $img = $curImg['image_url'];
+                    }
+                    // vai trò
+                        $role = $_POST['role'];
+                    // id 
+                    $id = $_POST['id'];
+                    if(count($err) === 0){
+                        updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$id);
+                        $noti = "Cập nhật thành công!";
+                      }  
+                }
+                include_once "./view/pages/customer/update.php";
+            }
+            // xóa khách hàng
+            if($act == 'delete') {
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    deleteCus($id);
+                }
+                header("location: index.php?url=customer&act=list");
+            }
+        }
+        break; 
     
-      $name= $_POST['name'];
-       $password1= $_POST['password1'];
-       $password2= $_POST['password2'];
-        $address= $_POST['address'];
-       $phone= $_POST['phone'];
-       $email= $_POST['email'];
-       $kichhoat= $_POST['kichhoat'];
-       $vaitro= $_POST['vaitro'];
-       $image="/".$_FILES['anh']['name'];
-       
-       $check = AddCustumer($name,$password2,$address,$phone,$email,$kichhoat,$vaitro,$image);
-      
-       
-        }
-
-            if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $dataupdate = getOneupdate($id);
-            if(isset($_POST['btn-update'])){
-                    $name= $_POST['name'];
-                    $address= $_POST['address'];
-                $phone= $_POST['phone'];
-                $email= $_POST['email'];
-                $kichhoat= $_POST['kichhoat'];
-                $vaitro= $_POST['vaitro'];
-                $check = updateCustumer($id,$name,$address,$phone,$email,$kichhoat,$vaitro);
-                header("location:index.php?url=customer-list");
-            }
-
-
-            }
-        
-       require_once("../admin/view/pages/custumer/custumer.php");
-        break;
-     case 'customer-list':
-          $checkdelete='';  
-        $arrcustumer = GetAllCustumer();
-        if(isset($_POST['delete'])){
-           $id = $_POST['id'];
-           DeleteCustumer($id);
-            $checkdelete="Bạn đã xóa người dùng thành công";
-              $arrcustumer = GetAllCustumer();
-        }
-            require_once("../admin/view/pages/custumer/listcustumer.php");
-        break;
     // COMMENT
     case 'comment':
-        # code...
+        if(isset($_GET['act'])) {
+            $act = $_GET['act'];
+            // danh sách danh mục
+            if($act == 'list') {
+                $kw = 0;
+                $fil = 0;
+
+                //search
+                if(isset($_POST['btn-search'])){
+                    if($_POST['keyword'] != ""){
+                        $kw = $_POST['keyword'];
+                    }else{
+                        $errKw = "Chưa nhập từ khóa!";
+                    }
+                }
+                // fillter
+                if(isset($_GET['filter'])) {
+                    $fil = $_GET['filter'];
+                }
+                $comments = getListCMT($kw, $fil);
+                require_once "./view/pages/comment/list.php";
+            }
+            // chi tiết cmt
+            if($act == 'details') {
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    $target = getCMTID($id);
+                }
+                require_once "./view/pages/comment/details.php";
+            }
+            // xóa cmt
+            if($act == 'delete') {
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    deleteCMT($id);
+                }
+                header("location: index.php?url=comment&act=list");
+            }
+        }
         break;
     // CONTACT
     case 'contact':
@@ -424,14 +559,17 @@ if(isset($_GET['url'])) {
         header("location: $ROOT_URL");
         break;
 
+    // THỐNG KÊ
     default:
         require_once "./view/dashboard/dashboard.php";
         break;
 }
+// THÔNG KÊ
 }else{
     require_once "./view/pages/dashboard/dashboard.php";
     
 }
 
+// FOOTER
 require_once "./view/layout/footer.php";
 ?>

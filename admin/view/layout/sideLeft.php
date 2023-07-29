@@ -71,13 +71,13 @@
                                 </li>
                             </a>
                             <!-- khách hàng -->
-                            <a class="text-black text-decoration-none" href="index.php?url=customer">
+                            <a class="text-black text-decoration-none" href="index.php?url=customer&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-people-group"></i> Khách hàng
                                 </li>
                             </a>
                             <!-- Bình luận -->
-                            <a class="text-black text-decoration-none" href="index.php?url=comment">
+                            <a class="text-black text-decoration-none" href="index.php?url=comment&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-comments"></i> Bình luận
                                 </li>

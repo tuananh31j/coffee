@@ -38,7 +38,7 @@
         <!-- content -->
         <div>
             <table class="table table-hover table-bordered text-center">
-                <thead>
+                <thead style="border: 2px solid black">
                     <tr>
                         <th>MÃ</th>
                         <th>Ảnh</th>
