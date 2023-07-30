@@ -11,6 +11,13 @@ require_once "../admin/models/category.php";
 require_once "../admin/models/contact.php";
 require_once "../admin/models/comment.php";
 
+
+if (!isset($_SESSION['user'])) {
+    header("location: $ROOT_URL/notFound.php");
+}elseif($_SESSION['user']['role'] != 1){
+    header("location: $ROOT_URL/notFound.php");
+}
+
 // HEADER
 require_once "./view/layout/sideLeft.php";
 

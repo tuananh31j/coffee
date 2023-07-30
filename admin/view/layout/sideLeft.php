@@ -34,8 +34,8 @@
                                             src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt="">
                                     </div>
                                     <div class="">
-                                        <p class="fw-bold m-0">Tuấn Anh</p>
-                                        <p class=" fs-6 m-0">tuananh@gmail.com</p>
+                                        <p class="fw-bold m-0"><?=$_SESSION['user']['name']?></p>
+                                        <p class=" fs-6 m-0"><?=$_SESSION['user']['email']?></p>
                                     </div>
 
                                 </div>
@@ -90,7 +90,7 @@
                             </a>
                         </ul>
                     </nav>
-                    <a hidden class="position-relative text-black text-decoration-none" style="top: 100px; left: 200px;"
+                    <a class="position-relative text-black text-decoration-none" style="top: 90px; left: 200px;"
                         href="index.php?url=logout"><i class="fa-solid fa-right-from-bracket"></i>
                         Đăng xuất</a>
                 </div>

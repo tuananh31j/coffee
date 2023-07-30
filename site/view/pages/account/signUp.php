@@ -48,7 +48,7 @@
         <!-- btn -->
         <div class="button">
             <input type="reset" value="Nhập lại" class="bg-info p-2 border-0 rounded-2">
-            <input type="submit" value="Đăng ký" name="btn-signup" class="bg-success p-2 border-0 rounded-2">
+            <input type="submit" value="Đăng ký" name="btn-signup" class="bg-success text-light p-2 border-0 rounded-2">
         </div>
     </form>
 </div>

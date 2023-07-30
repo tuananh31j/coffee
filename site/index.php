@@ -8,13 +8,13 @@ require_once "models/customer.php";
 require_once "models/size.php";
 require_once "models/contact.php";
 
-// HEADER
+# HEADER
 require_once "view/layout/header.php";
 
-// CONTENT
+# CONTENT
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
-    // TRANG SẢN PHẨM
+    # TRANG SẢN PHẨM
     case 'product':
         // danh sách danh mục
         $sortStyle = "asc";
@@ -108,7 +108,7 @@ if(isset($_GET['url'])) {
         require_once "view/pages/product.php";
         break;
 
-    // ĐĂNG NHẬP
+    # ĐĂNG NHẬP
     case "login":
         if(isset($_POST['btn-login']) && $_POST['btn-login'] == true) {
             $email = $_POST['email'];
@@ -135,7 +135,7 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/logIn.php";
         break;
         
-    // ĐĂNG KÝ
+    # ĐĂNG KÝ
     case "signup":
         $err = [];
         if(isset($_POST['btn-signup']) && $_POST['btn-signup'] == true) {
@@ -191,7 +191,7 @@ if(isset($_GET['url'])) {
         require_once "view/pages/account/signUp.php";
         break;
 
-    // TRANG TÀI KHOẢN
+    # TRANG TÀI KHOẢN
     case "account":
         $err = [];
         if(isset($_GET['act'])) {
@@ -308,7 +308,7 @@ if(isset($_GET['url'])) {
         }
         break;
     
-    // CONTACT
+    # CONTACT
     case "contact":
         $err = array();
         if(isset($_POST['btn-send']) && $_POST['btn-send']) {
@@ -339,7 +339,7 @@ if(isset($_GET['url'])) {
         }
         require_once "view/pages/contact.php";
         break;
-    // ORDER
+    # ORDER
     case "cart":
         if(isset($_SESSION['cart'])) {
            $listCart = $_SESSION['cart']; 
@@ -353,17 +353,30 @@ if(isset($_GET['url'])) {
         require_once "view/pages/order/cart.php";
         break;
     
-    // TRANG GIỚI THIỆU
+    # TRANG GIỚI THIỆU
     case "aboutus":
         require_once "view/pages/aboutUs.php";
         break;
 
-    // TRANG CHỦ
+    # TRANG CHI TIẾT SẢN PHẨM
+    case "proDetails":
+        $listSize = getListSize();
+        if(isset($_GET['id'])){
+            $idPro = $_GET['id'];
+            $item = getProFeedback($idPro);
+            if($item == []) {
+                $item = getProNoFeedback($idPro);
+            }
+        }
+        $target = $item;
+        require_once "view/pages/detailsPro/proDetails.php";
+        break;
+    # TRANG CHỦ
     default:
         require_once "view/pages/home.php";
         break;
 }
-// TRANG CHỦ
+# TRANG CHỦ
 }else{
     // if(isset($_GET['keyword'])) {
     //     $kw = $_GET['keyword'];
@@ -382,7 +395,7 @@ if(isset($_GET['url'])) {
     require_once "view/pages/home.php";
 }
 
-// FOOTER
+# FOOTER
 require_once "view/layout/footer.php";
 
 

@@ -2,7 +2,7 @@
 <div class="main-content">
     <link rel="stylesheet" href="<?php echo $STYLE?>/index.css">
     <div class="header-banner">
-        <img width="1360px" src="<?=$IMAGE?>/bannerSP.jpg" alt="" class="header-banner-img" />
+        <img src="<?=$IMAGE?>/bnhome.jpg" alt="" class="header-banner-img" />
     </div>
     <div class="container">
         <!-- dịch vụ -->
@@ -65,8 +65,9 @@
                     <div class="card h-100">
                         <!-- ảnh -->
                         <div class="h-100">
-                            <a href=""><img style="height: 208px; object-fit: cover;"
-                                    src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top" alt="..."></a>
+                            <a href="index.php?url=proDetails&id=<?=$item['product_id']?>"><img
+                                    style="height: 208px; object-fit: cover;" src="<?=$IMAGE.'/'.$item['image_url']?>"
+                                    class="card-img-top" alt="..."></a>
                             <!-- giảm giá -->
                             <?php if($item['sale']>0 && $item['sale']<=100){
                                     ?>
@@ -243,8 +244,9 @@
                     <div class="card h-100">
                         <!-- ảnh -->
                         <div class="h-100">
-                            <a href=""><img style="height: 208px; object-fit: cover;"
-                                    src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top" alt="..."></a>
+                            <a href="index.php?url=proDetails&id=<?=$item['product_id']?>"><img
+                                    style="height: 208px; object-fit: cover;" src="<?=$IMAGE.'/'.$item['image_url']?>"
+                                    class="card-img-top" alt="..."></a>
                             <!-- giảm giá -->
                             <?php if($item['sale']>0 && $item['sale']<=100){
                                     ?>

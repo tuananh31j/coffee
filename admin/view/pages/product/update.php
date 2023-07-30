@@ -29,8 +29,7 @@
                     </div>
                     <!-- giảm giá -->
                     <div class="">
-                        <label for="validationCustom01" class="form-label">Giảm giá%<span
-                                class="text-danger">*</span></label>
+                        <label for="validationCustom01" class="form-label">Giảm giá%</label>
                         <input type="text" class="form-control" name="sale"
                             value="<?=isset($target['sale'])?$target['sale']:''?>" />
                         <p class="text-danger"><?=isset($err['sale'])?$err['sale']:''?></p>

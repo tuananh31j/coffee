@@ -4,6 +4,18 @@ function getPrice($pro_id,$size_id){
     $sql = "select * from product_detail where product_id = $pro_id and size_id = $size_id";
     return pdo_query_one($sql);
 }
+// lấy sản phẩm theo id
+function getProFeedback($pro_id){
+    $sql = "select product.*, product_detail.*, count(feedback.product_id) as count_fb, avg(feedback.star) as avg_star from product inner join product_detail on product_detail.product_id = product.product_id ";
+    $sql .= "inner join feedback on feedback.product_id = product.product_id ";
+    $sql .= "where product.product_id = $pro_id group by product.product_id";
+    return pdo_query_one($sql);
+}
+function getProNoFeedback($pro_id){
+    $sql = "select * from product inner join product_detail on product_detail.product_id = product.product_id ";
+    $sql .= "where product.product_id = $pro_id group by product.product_id";
+    return pdo_query_one($sql);
+}
 // phân trang mỗi trang lấy ra 12 sản phẩm
 function getListProduct($offset,$type = "name", $sort = 'ASC',$filterType = 0,$keyword) {
     $queryFilter = 1;

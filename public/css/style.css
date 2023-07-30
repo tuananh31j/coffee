@@ -74,10 +74,7 @@
   font-weight: bold;
 }
 
-.header-banner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.header-banner {}
 
 .header-banner-contact {
   height: 240px;
@@ -475,4 +472,38 @@
   display: none;
 }
 
-/* CSS CỦA HIẾU */
+
+
+
+.star-rating {
+  font-size: 40px;
+  /* Kích thước của icon sao */
+}
+
+.star-rating span {
+  display: inline-block;
+  position: relative;
+}
+
+.star-rating span:before {
+  content: "\2605";
+  /* Mã Unicode cho dấu sao ★ */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.star-rating .full-star {
+  color: gold;
+  /* Màu sắc của sao đầy */
+}
+
+.star-rating .half-star {
+  color: gold;
+  /* Màu sắc của half star */
+}
+
+.star-rating .empty-star {
+  color: #ccc;
+  /* Màu sắc của sao không đầy */
+}

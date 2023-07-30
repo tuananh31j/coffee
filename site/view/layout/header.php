@@ -136,7 +136,7 @@
                     <ul>
                         <li><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
                         <li><a href="index.php">TRANG CHỦ</a></li>
-                        <li><a href="">GIẢM GIÁ</a></li>
+                        <li><a href="">CỬA HÀNG</a></li>
                         <li><a href="index.php?url=product">SẢN PHẨM</a></li>
                         <li><a href="index.php?url=contact">LIÊN HỆ</a></li>
                         <li><a href="index.php?url=aboutus">GIỚI THIỆU</a></li>

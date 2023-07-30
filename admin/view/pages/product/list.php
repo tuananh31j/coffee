@@ -76,12 +76,17 @@
                                 $flag = 0;
                             }
                         }?></td>
-                        <td><?php $flag = 0; for($i = 0; $i < strlen($pro['des']); $i++) {
+                        <td><?php $flag = 0; $index = 0; for($i = 0; $i < strlen($pro['des']); $i++) {
                             echo $pro['des'][$i];
                             $flag++;
-                            if($flag == 15) {
-                                echo " </br> ";
+                            if($flag >= 10 && $flag <=20  && $pro['des'][$i] == ' ') {
+                                echo "</br>";
                                 $flag = 0;
+                                $index++;
+                            }
+                            if($index ==2) {
+                                echo '.....';
+                                break;
                             }
                         }?></td>
                         <td><?=$pro['category_name']?></td>

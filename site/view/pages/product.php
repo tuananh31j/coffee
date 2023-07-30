@@ -1,14 +1,15 @@
 <!-- MAIN CONTENT -->
 <div class="main-content ">
+    <div class="header-banner">
+        <img src="<?=$IMAGE?>/bannerpro.jpg" alt="" class="header-banner-img">
+    </div>
     <main class="container">
         <!-- đường dẫn -->
         <!-- <div class="header-link m-0">
             <span><a href="">Trang chủ</a> > </span>
             <span><a href="index.php?url=product" class="text-danger">Sản phẩm</a></span>
         </div> -->
-        <div class="header-banner">
-            <img src="<?=$IMAGE?>/bannerpro.jpg" alt="" class="header-banner-img">
-        </div>
+
         <div class="content-title my-5 ">
             <h2>Sản phẩm của chúng tôi</h2>
             <div class="content-fillter d-flex flex-row-reverse
@@ -108,7 +109,8 @@
                                 <div class="card h-100">
                                     <!-- ảnh -->
                                     <div class="h-100">
-                                        <a href=""><img style="height: 208px; object-fit: cover;"
+                                        <a href="index.php?url=proDetails&id=<?=$item['product_id']?>"><img
+                                                style="height: 208px; object-fit: cover;"
                                                 src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
                                                 alt="..."></a>
                                         <!-- giảm giá -->
