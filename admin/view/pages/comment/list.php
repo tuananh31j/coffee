@@ -3,12 +3,6 @@
     <div class="container">
         <h3 class="text-center my-5">Bình luận</h3>
         <div class="d-flex ">
-            <!-- thêm sản phẩm -->
-
-            <a href="index.php?url=comment&act=add"
-                class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm bình
-                luận <i class="fa-solid fa-plus"></i></a>
-
             <!-- fillter -->
             <div class="dropdown m-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -39,7 +33,7 @@
                         <th>#MÃ</th>
                         <th>User</th>
                         <th>Sản phẩm</th>
-                        <th>Ngày cập nhật</th>
+                        <th>Ngày tạo</th>
                         <th>Ngày sửa</th>
                         <th>Nội dung</th>
                         <th style="width: 170px;">Chức năng</th>
@@ -50,10 +44,10 @@
                     <tr>
 
                         <td>#<?=isset($item['cmt_id'])?$item['cmt_id']:''?></td>
-                        <td><?=isset($item['customer.name'])?$item['customer.name']:''?></td>
-                        <td><?=isset($item['product.name'])?$item['product.name']:''?></td>
-                        <td><?=isset($item['comment.create_at'])?$item['comment.create_at']:''?></td>
-                        <td><?=isset($item['comment.update_at'])?$item['comment.update_at']:''?></td>
+                        <td><?=isset($item['nameCus'])?$item['nameCus']:''?></td>
+                        <td><?=isset($item['namePro'])?$item['namePro']:''?></td>
+                        <td><?=isset($item['create_at'])?$item['create_at']:''?></td>
+                        <td><?=isset($item['update_at'])?$item['update_at']:''?></td>
                         <td><?php $flag = 0; for($i = 0; $i < strlen($item['content']); $i++) {
                             echo $item['content'][$i];
                             $flag++;

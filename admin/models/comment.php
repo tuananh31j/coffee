@@ -10,13 +10,18 @@ function getListCMT($kw, $fil) {
         $filter = "order by comment.cmt_id asc";
     }
     if ($kw != 0 && $kw != '') {
-        $keyword = "comment.content like '%$kw%' or customer.name like '%$kw%' or product.name like '%$kw%'";
+$keyword = "comment.content like '%$kw%'";
+        
+            
+
     }
-    $sql = "select * from comment ";
+    $sql = "select comment.*, customer.name as nameCus, product.name as namePro from comment ";
     $sql .= "inner join customer on customer.customer_id ";
     $sql .= "inner join product on product.product_id ";
     $sql .= "where $keyword group by cmt_id $filter ";
     return pdo_query($sql);
+    
+    
 }
 // xoa cmt
 function deleteCMT($id) {

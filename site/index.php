@@ -7,6 +7,7 @@ require_once "models/category.php";
 require_once "models/customer.php";
 require_once "models/size.php";
 require_once "models/contact.php";
+require_once "models/feedback.php";
 
 # HEADER
 require_once "view/layout/header.php";
@@ -226,12 +227,12 @@ if(isset($_GET['url'])) {
                             $err['email'] = 'Chưa điền email!';
                         }
                         // ảnh
-                        if(isset($_FILES['img']) && $_FILES['img']['name'] != 'true'){
+                        if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
                             $img = $_FILES['img']['name'];
                             $path = pathinfo($img, PATHINFO_EXTENSION);
                             $format= ["jpg", "jpeg", "png", "gif"];
                             if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                                move_uploaded_file($IMAGE,$img);
+                                move_uploaded_file($_FILES['img']['tmp_name'],"./public/img/".$img);
                             }else{
                                 $err['img'] = "File gửi lên không phải là file ảnh!";
                             }
@@ -243,7 +244,7 @@ if(isset($_GET['url'])) {
                         // id
                         $id = $_POST['id'];
                         // kiểm tra và đẩy lên hệ thống
-                       if(isset($name) && isset($email) && isset($phone) && isset($img) && isset($address)) {
+                       if(count($err) == 0) {
                             $_SESSION['user']['name'] = $name;
                             $_SESSION['user']['update_at'] = $update_at;
                             $_SESSION['user']['address'] = $address;
@@ -251,6 +252,7 @@ if(isset($_GET['url'])) {
                             $_SESSION['user']['email'] = $email;
                             $_SESSION['user']['image_url'] = $img;
                             updateInfo($name,$update_at,$address,$phone,$email,$img,$id);
+                            $noti = "Cập nhật thành công!";
                        }
                     }
             require_once "view/pages/account/edit.php";
@@ -364,11 +366,17 @@ if(isset($_GET['url'])) {
         if(isset($_GET['id'])){
             $idPro = $_GET['id'];
             $item = getProFeedback($idPro);
+            $countFB =  getFeedbackCountById($idPro);
             if($item == []) {
                 $item = getProNoFeedback($idPro);
             }
+            if(isset($_GET['view']) && $_GET['view'] > 0) {
+                $view = $_GET['view'];
+                updateView($idPro,$view);
+            }
         }
         $target = $item;
+        $products = getAllByCate($target['category_id']);
         require_once "view/pages/detailsPro/proDetails.php";
         break;
     # TRANG CHỦ

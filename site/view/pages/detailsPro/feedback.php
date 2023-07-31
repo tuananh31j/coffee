@@ -11,6 +11,8 @@ $list = getFeebBackById($id);
 $err =[];
 if(isset($_POST['btn-add'])){
     $idPro = $_POST['id'];
+    $checkOrder = [];
+    $checkOnlyOne = [];
     if($_POST['star'] != ''){
         $star = $_POST['star'];
     }else{
@@ -18,12 +20,13 @@ if(isset($_POST['btn-add'])){
     }
     if(isset($_SESSION['user']['customer_id'])){
         $idUser = $_SESSION['user']['customer_id'];
+        $checkOrder = checkOrder($idPro,$idUser);
+        $checkOnlyOne = checkFeedbackOnlyOne($idPro,$idUser);
     }else{
         $err['user'] = "Bạn cần đăng nhập mới có thể đánh giá";
     }
     $content = $_POST['content'];
-    $checkOrder = checkOrder($idPro,$idUser);
-    $checkOnlyOne = checkFeedbackOnlyOne($idPro,$idUser);
+    
     // kiểm tra người này đã mua hàng chưa
     if($checkOrder == []) {
         $err['checkOrder'] = "Bạn chưa từng mua đơn hàng này!";
@@ -148,13 +151,13 @@ if(isset($_POST['btn-add'])){
             <?php foreach($list as $itemFB) {
                
                ?>
-            <li class="nav-link active d-flex gap-2 align-items-center">
+            <li class="nav-link active d-flex gap-2 align-items-center mb-2">
                 <img class="rounded-circle object-fit-cover" style="width:50px; height: 50px;"
                     src="<?=$IMAGE.'/'.$itemFB['imgCus'] ?>" alt="">
                 <div>
                     <div class="star-rating" data-rating="<?=$itemFB['star']?>"></div>
 
-                    <span class=""><?php echo $itemFB['nameCus'] ?>: <span
+                    <span><span class="fw-bold"><?php echo $itemFB['nameCus'] ?>: </span><span
                             class=""><?=$itemFB['content']?></span></span><br>
 
                     <i class="text-secondray"
@@ -163,6 +166,7 @@ if(isset($_POST['btn-add'])){
                 </div>
 
             </li>
+            <hr>
             <?php }  ?>
         </ul>
 

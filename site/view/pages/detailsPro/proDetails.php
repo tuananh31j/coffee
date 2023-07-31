@@ -1,8 +1,8 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
     <?php
-$newPrice = number_format($target['price']-($target['price']*$target['sale']/100),0,',','.');
-?>
+        $newPrice = number_format($target['price']-($target['price']*$target['sale']/100),0,',','.');
+        ?>
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="" style="height: 640px;">
@@ -20,7 +20,7 @@ $newPrice = number_format($target['price']-($target['price']*$target['sale']/100
                     <!-- điểm đánh giá trung bình -->
                     <div class="content-right-whitlist d-flex align-items-center gap-1 mb-2">
                         <span class="star-rating" data-rating="<?=isset($target['avg_star'])?$target['avg_star']:0?>">
-                        </span><span>(<?=isset($target['count_fb'])?$target['count_fb']:0?>)</span>
+                        </span><span class=" fs-4">(<?=isset($countFB['count_fb'])?$countFB['count_fb']:0?>)</span>
 
                     </div>
                     <!-- size -->
@@ -76,13 +76,15 @@ $newPrice = number_format($target['price']-($target['price']*$target['sale']/100
                             <?=($target['sale'] == 0)?'':'<p class="text-light bg-danger p-1">Sale:
                             <span>'.$target['sale'].'%</span></p>'?>
                             <p><del
-                                    class="text-secondary"><?php if($target['sale'] != 0){ echo $target['price'].'₫ - '.$priceByCur.'₫';}else{echo '';}?></del>
+                                    class="text-secondary"><?php if($target['sale'] != 0){ echo $target['price'].'₫ đến '.$priceByCur.'₫';}else{echo '';}?></del>
                             </p>
                         </div>
                     </div>
                     <div>
-                        <!--                         <input type="submit" value="">
- -->
+                        <input type="submit" value="Thêm vào giỏ hàng"
+                            class="bg-info p-2 me-1 text-light rounded-2 border-0">
+                        <input type="submit" value="Đặt hàng" class="bg-danger text-light p-2 rounded-2 border-0">
+
                     </div>
                 </form>
 
@@ -143,8 +145,76 @@ $newPrice = number_format($target['price']-($target['price']*$target['sale']/100
                 </div>
             </div>
         </div>
+        <!-- sản phẩm liên quan -->
+        <h2 class="my-5">Sản phẩm liên quan</h2>
+        <section class="splide" aria-label="Basic Structure Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php
+                $index = 0;
+                foreach($products as $item) {
+            
+                $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
+                $custumPriceOld = number_format($item['price'], 0, ",", ".");
+                $custumPriceNew = number_format($priceNew, 0, ",", ".");
+                $index++;
+                ?>
+                    <li class="splide__slide">
+                        <div class="img-box">
+                            <!-- item child -->
+                            <div class="card h-100">
+                                <!-- ảnh -->
+                                <div class="h-100">
+                                    <a
+                                        href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
+                                            style="height: 208px; object-fit: cover;"
+                                            src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top" alt="..."></a>
+                                    <!-- giảm giá -->
+                                    <?php if($item['sale']>0 && $item['sale']<=100){
+                                            ?>
+                                    <div class="main-product-sale "><span
+                                            class="bg-danger p-1 d-inline text-light"><?=$item['sale']?>%</span>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="card-body">
+                                    <!-- tên -->
+                                    <h6 style="font-size: 14px;" class="card-title fw-bold"><?=$item['name']?>
+                                    </h6>
+                                    <!-- giá -->
+                                    <p class="card-text text-danger fw-bold">
+                                        <?php echo $custumPriceNew?> <span class="text-decoration-underline">đ</span>
+                                        <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
+                                        <span class="main-product-price-old text-decoration-line-through text-secondary"
+                                            style="font-size: 10px;"><?=$custumPriceOld?></span>
+                                        <?php }else{ ?>
+                                        <span class="main-product-price-old text-decoration-line-through text-secondary"
+                                            style="font-size: 10px;">
+                                            <p class="my-4"></p>
+                                        </span>
+                                        <?php } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
+
+
     </div>
 </div>
+<script>
+var splide = new Splide('.splide', {
+    type: 'loop',
+    perPage: 2,
+    focus: 'center',
+});
+
+splide.mount();
+</script>
 <script>
 // số lượng
 const quantityInput = document.getElementById('quantity');
@@ -187,11 +257,11 @@ document.addEventListener("DOMContentLoaded", function() {
     starRatingElements.forEach(function(starRatingElement) {
         const rating = parseFloat(starRatingElement.dataset.rating);
         const fullStars = Math.floor(rating);
-        const halfStars = rating % 1 === 0.5 ? 1 : 0;
+        const decimalPart = rating % 1;
+        const halfStars = decimalPart >= 0.25 && decimalPart < 0.75 ? 1 : 0;
         const remainingStars = 5 - fullStars - halfStars;
 
-        starRatingElement.innerHTML = getStarIcons(fullStars, halfStars,
-            remainingStars);
+        starRatingElement.innerHTML = getStarIcons(fullStars, halfStars, remainingStars);
     });
 });
 
@@ -203,8 +273,7 @@ function getStarIcons(fullStars, halfStars, remainingStars) {
     }
 
     if (halfStars === 1) {
-        starIcons +=
-            `<span class="half-star">&#9733;&#189;</span>`;
+        starIcons += `<span class="half-star">&#9733;</span>`;
     }
 
     for (let i = 0; i < remainingStars; i++) {
@@ -213,4 +282,7 @@ function getStarIcons(fullStars, halfStars, remainingStars) {
 
     return starIcons;
 }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
 </script>

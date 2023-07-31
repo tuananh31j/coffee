@@ -1,6 +1,7 @@
 <!-- MAIN-CONTENT -->
 <div class="main-content my-5 container">
     <h2 class="text-center">Cập nhật thông tin cá nhân</h2>
+    <p class="text-danger"><?=isset($noti)?$noti:''?></p>
 
     <div class="d-flex justify-content-center my-4" style="height: 210px;">
         <?php if(isset($_SESSION['user']['image_url']) && $_SESSION['user']['image_url'] != ''){ ?>
@@ -21,18 +22,21 @@
             <label for="exampleInputEmail1" class="form-label">Họ tên<span class="text-danger">*</span></label>
             <input name="name" value="<?=$_SESSION['user']['name']?>" type="text" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
+                <p class="text-danger"><?=isset($err['name'])?$err['name']:''?></p>
         </div>
         <!-- email -->
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email<span class="text-danger">*</span></label>
             <input name="email" value="<?=$_SESSION['user']['email']?>" type="email" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
+                <p class="text-danger"><?=isset($err['email'])?$err['email']:''?></p>
         </div>
         <!-- số điên thoại -->
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
             <input name="phone" value="<?=$_SESSION['user']['phone']?>" type="text" class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
+                <p class="text-danger"><?=isset($err['phone'])?$err['phone']:''?></p>
         </div>
         <!-- địa chỉ -->
         <div class="mb-3">
@@ -45,6 +49,7 @@
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Ảnh đại diện</label>
             <input name="img" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <p class="text-danger"><?=isset($err['img'])?$err['img']:''?></p>
         </div>
         <input type="reset" value="Nhập lại" class="bg-info border-0 rounded-2 p-2 text-light mt-3">
         <input type="submit" name="btn-update" value="Cập nhật"

@@ -22,4 +22,9 @@ function checkFeedbackOnlyOne($idPro,$idUser) {
     $sql = "select * from feedback where product_id = ? and customer_id = ?";
     return pdo_query_one($sql,$idPro,$idUser);
 }
+// đếm fb by id
+function getFeedbackCountById($idPro) {
+    $sql = "select count(feedback_id) as count_fb from feedback where product_id = ?";
+    return pdo_query_one($sql,$idPro);
+}
 ?>

@@ -6,7 +6,7 @@ function getPrice($pro_id,$size_id){
 }
 // lấy sản phẩm theo id
 function getProFeedback($pro_id){
-    $sql = "select product.*, product_detail.*, count(feedback.product_id) as count_fb, avg(feedback.star) as avg_star from product inner join product_detail on product_detail.product_id = product.product_id ";
+    $sql = "select count(feedback.feedback_id) as count_fb, product.*, product_detail.*, avg(feedback.star) as avg_star from product inner join product_detail on product_detail.product_id = product.product_id ";
     $sql .= "inner join feedback on feedback.product_id = product.product_id ";
     $sql .= "where product.product_id = $pro_id group by product.product_id";
     return pdo_query_one($sql);
@@ -136,5 +136,16 @@ function getNewPro() {
     $sql .= "inner join product_detail on product_detail.product_id = product.product_id ";
     $sql .= "where product.status = 1 and product_detail.size_id = 1 and sale > 0 and sale <= 100 order by product.product_id desc limit 10";
     return pdo_query($sql);
+}
+function getAllByCate($id) {
+    $sql = "select * from product inner join product_detail on product_detail.product_id = product.product_id where product.category_id = ? and product_detail.size_id = 1";
+    return pdo_query($sql,$id);
+}
+
+
+// cập nhật lượt xem
+function updateView($idPro,$view) {
+    $sql = "update product set view = ? where product_id = ?";
+    pdo_execute($sql,$view,$idPro);
 }
 ?>

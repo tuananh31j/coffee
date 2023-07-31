@@ -74,7 +74,7 @@
   font-weight: bold;
 }
 
-.header-banner {}
+
 
 .header-banner-contact {
   height: 240px;
@@ -126,6 +126,7 @@
   grid-template-columns: 14% auto;
   align-items: center;
   gap: 20px;
+
 }
 
 .footer-contact-icon {
@@ -142,8 +143,9 @@
 
 .footer-menu ul {
   list-style: none;
-  line-height: 40px;
   margin-left: -33px;
+  line-height: 30px;
+
 }
 
 .footer-menu ul li a {
@@ -170,8 +172,8 @@
 
 .main-product-sale {
   position: relative;
-  top: -194px;
-  left: -74px;
+  top: -180px;
+  left: 50px;
 }
 
 .main-product-btn {

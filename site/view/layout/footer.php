@@ -4,7 +4,7 @@
       <div class="container footer ">
           <div class="footer-about">
               <h2>HAI LẦN COFFEE CPG</h2>
-              <p>Hai Lần coffee là dự án của sinh viên của trường cao đẳng thực hàng FPT polytechnic</p>
+              <p class="lh-4">Hai Lần coffee là dự án của sinh viên của trường cao đẳng thực hàng FPT polytechnic</p>
               <img src="img/logo 1.svg" alt="">
           </div>
 
@@ -20,10 +20,11 @@
           <div class="footer-menu">
               <h2>MENU</h2>
               <ul>
-
-                  <li><a href="">TRANG CHỦ</a></li>
-                  <li><a href="">SẢN PHẨM</a></li>
-                  <li><a href="">GIỚI THIỆU</a></li>
+                  <li><a href="index.php">TRANG CHỦ</a></li>
+                  <li><a href="">CỬA HÀNG</a></li>
+                  <li><a href="index.php?url=product">SẢN PHẨM</a></li>
+                  <li><a href="index.php?url=contact">LIÊN HỆ</a></li>
+                  <li><a href="index.php?url=aboutus">GIỚI THIỆU</a></li>
               </ul>
 
           </div>
@@ -62,6 +63,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
   </script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -128,7 +130,14 @@ function handleItem(items) {
 
 
 // thông báo đã gửi
-
   </script>
+  <script>
+var splide = new Splide('.splide', {
+    type: 'loop',
+    perPage: 5,
+    focus: 'center',
+});
 
+splide.mount();
+  </script>
   </body>

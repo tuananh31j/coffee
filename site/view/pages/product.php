@@ -109,7 +109,8 @@
                                 <div class="card h-100">
                                     <!-- ảnh -->
                                     <div class="h-100">
-                                        <a href="index.php?url=proDetails&id=<?=$item['product_id']?>"><img
+                                        <a
+                                            href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
                                                 style="height: 208px; object-fit: cover;"
                                                 src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
                                                 alt="..."></a>
@@ -123,8 +124,8 @@
                                     </div>
                                     <div class="card-body">
                                         <!-- tên -->
-                                        <h5 class="card-title"><?=$item['name']?>
-                                        </h5>
+                                        <h6 style="font-size: 14px;" class="card-title fw-bold"><?=$item['name']?>
+                                        </h6>
                                         <!-- giá -->
                                         <p class="card-text text-danger fw-bold">
                                             <?php echo $custumPriceNew?> <span
