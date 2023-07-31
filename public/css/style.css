@@ -509,3 +509,11 @@
   color: #ccc;
   /* Màu sắc của sao không đầy */
 }
+
+.item__hover:hover {
+  background-color: #503629;
+  color: white;
+  padding: 2px;
+  border: 1px solid #503629;
+  border-radius: 2px;
+}

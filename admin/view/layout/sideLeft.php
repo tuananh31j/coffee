@@ -19,8 +19,8 @@
         <div class=" row ">
             <!-- THANH ĐIỀU KHIỂN -->
             <div class="col-3 " style="background: linear-gradient(to bottom, #f6606a, #4d0846);">
-                <!-- position-fixed h-100 -->
-                <div class="dashboard-menu col-3  "
+                <!-- -->
+                <div class="dashboard-menu col-3   position-fixed h-100"
                     style="margin-left:-12px;background: linear-gradient(to bottom, #f6606a, #4d0846);">
                     <h2 class="text-center pe-3 mb-4">Hignland coffee</h2>
 
@@ -41,49 +41,53 @@
                                 </div>
                             </li>
                             <!-- Trang chủ -->
-                            <a class="text-black text-decoration-none" href="<?=$ROOT_URL?>">
+                            <a class="text-black text-decoration-none item__hover" href="<?=$ROOT_URL?>">
                                 <li class="mt-4 ">
                                     <i class="fa-solid fa-house"></i> Trang chủ
                                 </li>
                             </a>
                             <!-- điều khiển -->
-                            <a class="text-black  text-decoration-none" href="index.php">
+                            <a class="text-black  text-decoration-none item__hover" href="index.php">
                                 <li class="mt-3 ">
                                     <i class="fa-solid fa-gauge"></i> Thống kê
                                 </li>
                             </a>
                             <!-- đơn hàng -->
-                            <a class="text-black text-decoration-none" href="index.php?url=order">
+                            <a class="text-black text-decoration-none item__hover" href="index.php?url=order">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-box"></i> Đơn hàng
                                 </li>
                             </a>
                             <!-- Danh mục -->
-                            <a class="text-black text-decoration-none" href="index.php?url=category&act=list">
+                            <a class="text-black text-decoration-none item__hover"
+                                href="index.php?url=category&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-hashtag"></i> Danh mục
                                 </li>
                             </a>
                             <!-- Sản phẩm -->
-                            <a class="text-black text-decoration-none" href="index.php?url=product&act=list">
+                            <a class="text-black text-decoration-none item__hover"
+                                href="index.php?url=product&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
                                 </li>
                             </a>
                             <!-- khách hàng -->
-                            <a class="text-black text-decoration-none" href="index.php?url=customer&act=list">
+                            <a class="text-black text-decoration-none item__hover"
+                                href="index.php?url=customer&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-people-group"></i> Khách hàng
                                 </li>
                             </a>
                             <!-- Bình luận -->
-                            <a class="text-black text-decoration-none" href="index.php?url=comment&act=list">
+                            <a class="text-black text-decoration-none item__hover"
+                                href="index.php?url=comment&act=list">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-comments"></i> Bình luận
                                 </li>
                             </a>
                             <!-- Phản hồi -->
-                            <a class="text-black text-decoration-none" href="index.php?url=contact">
+                            <a class="text-black text-decoration-none item__hover" href="index.php?url=contact">
                                 <li class="mt-3">
                                     <i class="fa-solid fa-envelope"></i> Phản hồi
                                 </li>

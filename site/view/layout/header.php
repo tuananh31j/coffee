@@ -134,12 +134,12 @@
                 <nav class="header-menu ">
 
                     <ul>
-                        <li><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="index.php">TRANG CHỦ</a></li>
-                        <li><a href="">CỬA HÀNG</a></li>
-                        <li><a href="index.php?url=product">SẢN PHẨM</a></li>
-                        <li><a href="index.php?url=contact">LIÊN HỆ</a></li>
-                        <li><a href="index.php?url=aboutus">GIỚI THIỆU</a></li>
+                        <li><a class="item__hover" href="index.php"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a class="item__hover" href="index.php">TRANG CHỦ</a></li>
+                        <li><a class="item__hover" href="">CỬA HÀNG</a></li>
+                        <li><a class="item__hover" href="index.php?url=product">SẢN PHẨM</a></li>
+                        <li><a class="item__hover" href="index.php?url=contact">LIÊN HỆ</a></li>
+                        <li><a class="item__hover" href="index.php?url=aboutus">GIỚI THIỆU</a></li>
                     </ul>
                 </nav>
 
