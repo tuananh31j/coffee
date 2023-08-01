@@ -148,4 +148,10 @@ function updateView($idPro,$view) {
     $sql = "update product set view = ? where product_id = ?";
     pdo_execute($sql,$view,$idPro);
 }
+
+// lấy sản phẩm theo id sản phẩm
+function getProById($id) {
+    $sql = "select * from product where product_id = ?";
+    return pdo_query_one($sql,$id);
+}
 ?>

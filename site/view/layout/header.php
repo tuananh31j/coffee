@@ -50,8 +50,9 @@
 
                     <div class="container  header-logo-img">
                         <!-- logo -->
-                        <div class="d-flex align-items-center gap-1">
-                            <a class="navbar-brand" href="index.php"><img src="<?=$IMAGE?>/logo 1.svg" alt=""></a>
+                        <div class="d-flex align-items-center gap-5">
+                            <a class="navbar-brand" href="index.php"><img style="width: 60px;"
+                                    src="<?=$IMAGE?>/logo.png" alt=""></a>
                             <div>
                                 <!-- tra cứu đơn hàng -->
                                 <form class="d-flex " role="search">
@@ -110,9 +111,9 @@
                                             <?php if($_SESSION['user']['role'] == 1){ ?>
                                             <a class="bg-danger p-2 text-light text-decoration-none rounded-2"
                                                 href="<?=$ADMIN_URL?>">Quản trị</a>
-                                            <?php }else{ ?>
-                                            Xin
-                                            chào! <br><span><?=$_SESSION['user']['name']?></span>
+                                            <?php }else{ ?><span> <span style="font-size: 12px;">Xin
+                                                    chào! <br><?=$_SESSION['user']['name']?></span>
+                                            </span>
                                             <?php } ?>
                                         </i><a href="index.php?url=account"><img class=" rounded-circle"
                                                 style="height: 35px;width: 35px; object-fit:cover"
@@ -120,7 +121,7 @@
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
-                                            class="header-count-cart">2</span></a>
+                                            class="header-count-cart"><?=$cartNum?></span></a>
                                 </li>
                                 <?php } ?>
                             </ul>
@@ -133,14 +134,30 @@
             <div class="container">
                 <nav class="header-menu ">
 
-                    <ul>
-                        <li><a class="item__hover" href="index.php"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a class="item__hover" href="index.php">TRANG CHỦ</a></li>
-                        <li><a class="item__hover" href="">CỬA HÀNG</a></li>
-                        <li><a class="item__hover" href="index.php?url=product">SẢN PHẨM</a></li>
-                        <li><a class="item__hover" href="index.php?url=contact">LIÊN HỆ</a></li>
-                        <li><a class="item__hover" href="index.php?url=aboutus">GIỚI THIỆU</a></li>
-                    </ul>
+                    <div class="menu ">
+
+                        <div><a class="item__hover " href="index.php">TRANG CHỦ</a></div>
+                        <div><a class="item__hover " href="">CỬA HÀNG</a></div>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle border-0 item__hover-cate"
+                                style="background: none;" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                DANH MỤC
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <?php foreach($categorys as $item){ ?>
+                                <li><a class="dropdown-item item__hover-cate"
+                                        href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><?=$item['name']?></a>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+
+                        <div><a class="item__hover " href="index.php?url=product">SẢN PHẨM</a></div>
+                        <div><a class="item__hover " href="index.php?url=contact">LIÊN HỆ</a></div>
+                        <div><a class="item__hover " href="index.php?url=aboutus">GIỚI THIỆU</a></div>
+                    </div>
                 </nav>
 
 

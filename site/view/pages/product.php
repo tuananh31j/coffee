@@ -13,7 +13,7 @@
         <div class="content-title my-5 ">
             <h2>Sản phẩm của chúng tôi</h2>
             <div class="content-fillter d-flex flex-row-reverse
-                    ">
+                     my-5">
                 <!-- sắp xếp -->
 
 
@@ -72,24 +72,7 @@
             <!-- product -->
             <div class="main-product container mt-4">
                 <div class="row">
-                    <!-- list danh mục -->
-                    <h3 class="mt-4">Danh mục</h3>
-                    <div class="col-2 main-product-list-category">
-                        <div class="d-flex align-items-start col-2 mt-3 me-5">
 
-                            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                                aria-orientation="vertical">
-                                <?php foreach($categorys as $item){ ?>
-                                <a class="text-decoration-none"
-                                    href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><button
-                                        class="main-product-list-category-item nav-link" style="color: #b5313a;"
-                                        id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-                                        type="button" role="tab" aria-controls="v-pills-profile"
-                                        aria-selected="false"><?=$item['name']?></button></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- list product -->
                     <div class="container text-center col">
@@ -176,7 +159,9 @@
                                                                         <div class="card-body">
 
                                                                             <p class="card-text text-danger fw-bold">
-                                                                                <?php echo $custumPriceNew?> <span
+                                                                                <span
+                                                                                    class=""><?php echo $custumPriceNew?></span>
+                                                                                <span
                                                                                     class="text-decoration-underline">đ</span>
                                                                                 <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
                                                                                 <span
@@ -195,7 +180,7 @@
                                                                                     aria-label="Basic radio toggle button group">
                                                                                     <?php 
                                                                                 $flag = 0;
-                                                                                foreach($listSize as $size) { 
+                                                                                foreach($listSize as $key => $size) { 
                                                                                     $flag +=1;
                                                                                  ?>
                                                                                     <input type="radio"
@@ -205,7 +190,7 @@
                                                                                         autocomplete="off"
                                                                                         <?php if($flag == 1) echo 'checked'?>>
                                                                                     <label
-                                                                                        class="btn btn-outline-primary"
+                                                                                        class="btn btn-outline-primary price__check"
                                                                                         for="btnradio<?=$flag.'-'.$index?>"><?=$size['name']?></label>
                                                                                     <?php } ?>
                                                                                 </div>
@@ -226,7 +211,7 @@
                                                                                             class="fa-solid fa-minus"></i>
                                                                                     </button>
                                                                                     <input
-                                                                                        class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
+                                                                                        class="quantity quantityPagePro border-secondary mx-2 rounded-2 p-1 ps-2"
                                                                                         style="width: 30px;" type="text"
                                                                                         id="quantity-<?=$index?>"
                                                                                         value="1" name="quantity">
@@ -242,13 +227,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <!-- <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button> -->
-
-                                                            <input type="submit"
-                                                                onclick="alert('Thêm thành công vào giỏ!')"
-                                                                value="Thêm vào giỏ" name="btn-addToCart"
-                                                                class="border-0 rounded-2 bg-primary text-light p-2">
+                                                            <!-- btn -->
                                                             <input type="submit" value="Đặt hàng"
                                                                 class="border-0 rounded-2 bg-danger text-light p-2">
                                                         </div>

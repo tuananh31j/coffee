@@ -10,6 +10,11 @@ require_once "models/contact.php";
 require_once "models/feedback.php";
 
 # HEADER
+$categorys = getListCategory();
+$cartNum = 0;
+if(isset($_SESSION['cart'])) {
+    $cartNum = count($_SESSION['cart']);
+}
 require_once "view/layout/header.php";
 
 # CONTENT
@@ -85,27 +90,7 @@ if(isset($_GET['url'])) {
                 
             }
 
-        // thêm vào giỏ hàng
-        
-        if(isset($_POST['btn-addToCart']) && $_POST['btn-addToCart'] == true ) {
-            $cartProducts = ["id" => $_POST['id'],
-                            "name" => $_POST['name'],
-                            "img" => $_POST['img'],
-                            "price" =>$_POST['price'],
-                            "size" => $_POST['size'],
-                            "quantity" => $_POST['quantity'],
-                            "img" => $_POST['img']
-                        ];
-            if(!isset($_SESSION['cart'])) {
-                $_SESSION['cart'] = [];
-                array_push($_SESSION['cart'], $cartProducts);
-            }else{
-                array_push($_SESSION['cart'], $cartProducts);
-            }
-            
-            
-            
-        }
+       
         require_once "view/pages/product.php";
         break;
 
@@ -341,6 +326,29 @@ if(isset($_GET['url'])) {
         }
         require_once "view/pages/contact.php";
         break;
+    
+    
+    # TRANG GIỚI THIỆU
+    case "aboutus":
+        require_once "view/pages/aboutUs.php";
+        break;
+    
+    # PAY
+    case "pay":
+       if(isset($_POST['btn-submit'])){
+        foreach($_SESSION['cart'] as $key => $item) {
+            
+                if($item['id'] == $_POST['id'][$key]) {
+                    $_SESSION['cart'][$key]['quantity'] = $_POST['quantity'][$key];
+                }
+            
+        }
+        $listCart = $_SESSION['cart']; 
+       }
+        
+        require_once "view/pages/order/pay.php";
+        break;
+
     # ORDER
     case "cart":
         if(isset($_SESSION['cart'])) {
@@ -350,14 +358,10 @@ if(isset($_GET['url'])) {
         if(isset($_GET['index'])) {
             $index = $_GET['index'];
             unset($_SESSION['cart'][$index]);
+            header("location: index.php?url=cart");
         }
         
         require_once "view/pages/order/cart.php";
-        break;
-    
-    # TRANG GIỚI THIỆU
-    case "aboutus":
-        require_once "view/pages/aboutUs.php";
         break;
 
     # TRANG CHI TIẾT SẢN PHẨM
@@ -377,6 +381,40 @@ if(isset($_GET['url'])) {
         }
         $target = $item;
         $products = getAllByCate($target['category_id']);
+
+         // thêm vào giỏ hàng
+         if(isset($_POST['btn-addToCart']) && $_POST['btn-addToCart'] == true ) {
+            $cartProducts = ["id" => $_POST['id'],
+                            "name" => $_POST['name'],
+                            "img" => $_POST['img'],
+                            "size" => $_POST['size'],
+                            "quantity" => $_POST['quantity'],
+                        ];
+            if(!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+                array_push($_SESSION['cart'], $cartProducts);
+                header("location: index.php?url=proDetails&id=".$cartProducts['id']);
+
+            }else{
+                if(count($_SESSION['cart']) != 0){
+                    foreach($_SESSION['cart']  as $key => $item) {
+                    if($item['id'] == $cartProducts['id'] && $item['size'] == $cartProducts['size']) {
+                        $_SESSION['cart'][$key]['quantity'] = $item['quantity'] + $cartProducts['quantity'];
+                        break;
+                    }
+                    if($key < sizeof($_SESSION['cart']) - 1){ 
+                    continue;
+                    }
+                    array_push($_SESSION['cart'], $cartProducts);
+                    header("location: index.php?url=proDetails&id=".$cartProducts['id']);
+                } 
+                }else{
+                    array_push($_SESSION['cart'], $cartProducts);
+                    header("location: index.php?url=proDetails&id=".$cartProducts['id']);
+                }
+                  
+            } 
+        }
         require_once "view/pages/detailsPro/proDetails.php";
         break;
     # TRANG CHỦ

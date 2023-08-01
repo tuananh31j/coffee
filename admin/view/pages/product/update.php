@@ -8,7 +8,7 @@
             <!-- thêm sản phẩm -->
 
             <a href="index.php?url=product&act=list"
-                class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Danh sách sản
+                class="bg-success p-1 px-2 rounded-2 text-light mb-3 text-decoration-none">Danh sách sản
                 phẩm <i class="fa-solid fa-plus"></i></a>
             <p class="text-danger m-3"><?=isset($noti)?$noti:''?></p>
         </div>
@@ -76,7 +76,7 @@
                         <input type="text" value="<?=($size['size_id'])?>" name="details[<?=$key?>][size]">
                         <input type="text" class="form-control" name="details[<?=$key?>][price]"
                             value="<?=isset($listProDetail[$key]['price'])?$listProDetail[$key]['price']:''?>"
-                            placeholder="đ" />
+                            placeholder="₫" />
                         <p class="text-danger"><?=isset($err['price-'.$key])?$err['price-'.$key]:''?></p>
                     </div>
                     <?php } ?>

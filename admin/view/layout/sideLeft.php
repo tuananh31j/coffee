@@ -41,7 +41,7 @@
                                 </div>
                             </li>
                             <!-- Trang chủ -->
-                            <a class="text-black text-decoration-none item__hover" href="<?=$ROOT_URL?>">
+                            <a class="text-black text-decoration-none item__hover " href="<?=$ROOT_URL?>">
                                 <li class="mt-4 ">
                                     <i class="fa-solid fa-house"></i> Trang chủ
                                 </li>

@@ -69,7 +69,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script>
 // Lấy tất cả các phần tử có class "quantity"
-const quantityInputs = document.querySelectorAll('.quantity');
+const quantityInputs = document.querySelectorAll('.quantityPagePro');
 
 // Thêm sự kiện tăng giảm số lượng cho từng phần tử
 quantityInputs.forEach(input => {
@@ -127,9 +127,6 @@ function handleItem(items) {
         items[i].classList.add('d-none');
     }
 }
-
-
-// thông báo đã gửi
   </script>
   <script>
 var splide = new Splide('.splide', {

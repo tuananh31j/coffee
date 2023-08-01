@@ -9,84 +9,101 @@
                 <img class="h-100" src="<?=$IMAGE.'/'.$target['image_url']?>" alt="">
             </div>
             <div class="content-right">
-                <form class="ms-3">
-                    <h4>
-                        <?=$target['name']?>
-                    </h4>
-                    <div class="text-secondary d-flex align-items-center mt-3" style="font-size: 14px;gap:180px">
-                        <p>Lượt xem <span><?=$target['view']?></span> <i class="fa-solid fa-eye"></i></p>
-                        <p>Mã sản phẩm: #<span><?=$target['product_id']?></span></p>
-                    </div>
-                    <!-- điểm đánh giá trung bình -->
-                    <div class="content-right-whitlist d-flex align-items-center gap-1 mb-2">
-                        <span class="star-rating" data-rating="<?=isset($target['avg_star'])?$target['avg_star']:0?>">
-                        </span><span class=" fs-4">(<?=isset($countFB['count_fb'])?$countFB['count_fb']:0?>)</span>
+                <div class="ms-3">
+                    <form action="index.php?url=proDetails&id=<?=$target['product_id']?>" method="post">
 
-                    </div>
-                    <!-- size -->
-                    <span class="me-5">Size:</span>
-
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <?php 
-                foreach ($listSize as $key => $size) {
-                  $idSize = $size['size_id'];
-                  $priceBysize = getPrice($idPro,$idSize)['price'];
-                  $priceBysizeNew = $priceBysize - $priceBysize*$target['sale']/100;
-                  $salePrice = number_format($priceBysize- $priceBysizeNew,0,',','.');
-                  $result = number_format($priceBysizeNew,0,',','.');
-                  if($key == sizeof($listSize)-1) {
-                  $priceByCur = number_format($priceBysize,0,',','.');
-
-                  }
-                ?>
-                        <div class="mx-2">
-                            <input type="radio" class="btn-check" value="<?=$size['size_id']?>" name="btnradio"
-                                id="btnradio<?=$key?>" autocomplete="off" <?=($key == 0)?'checked':''?>>
-                            <label class="btn btn-outline-secondary price__check" data-price="<?=$priceBysizeNew?>"
-                                for="btnradio<?=$key?>"><?=$size['name']?></label>
+                        <h4>
+                            <?=$target['name']?>
+                        </h4>
+                        <div class="text-secondary d-flex align-items-center mt-3" style="font-size: 14px;gap:180px">
+                            <p>Lượt xem <span><?=$target['view']?></span> <i class="fa-solid fa-eye"></i></p>
+                            <p>Mã sản phẩm: #<span><?=$target['product_id']?></span></p>
                         </div>
+                        <!-- điểm đánh giá trung bình -->
+                        <div class="content-right-whitlist d-flex align-items-center gap-1 mb-2">
+                            <span class="star-rating"
+                                data-rating="<?=isset($target['avg_star'])?$target['avg_star']:0?>">
+                            </span><span class=" fs-4">(<?=isset($countFB['count_fb'])?$countFB['count_fb']:0?>)</span>
 
-                        <?php } ?>
+                        </div>
+                        <!-- size -->
+                        <span class="me-5">Size:</span>
 
-                    </div>
-                    <!-- số lượng -->
-                    <div class="d-flex gap-3 my-3 align-items-center">
-                        <div>
-                            <span>Số lượng: </span>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <?php 
+                            foreach ($listSize as $key => $size) {
+                            $idSize = $size['size_id'];
+                            $priceBysize = getPrice($idPro,$idSize)['price'];
+                            $priceBysizeNew = $priceBysize - $priceBysize*$target['sale']/100;
+                            $salePrice = number_format($priceBysize- $priceBysizeNew,0,',','.');
+                            $result = number_format($priceBysizeNew,0,',','.');
+                            if($key == sizeof($listSize)-1) {
+                            $priceByCur = number_format($priceBysize,0,',','.');
+
+                            }
+                            ?>
+                            <div class="mx-2">
+                                <input type="radio" class="btn-check" value="<?=$size['size_id']?>" name="size"
+                                    id="btnradio<?=$key?>" autocomplete="off" <?=($key == 0)?'checked':''?>>
+                                <label class="btn btn-outline-secondary price__check" data-price="<?=$priceBysizeNew?>"
+                                    for="btnradio<?=$key?>"><?=$size['name']?></label>
+                            </div>
+
+                            <?php } ?>
+
                         </div>
-                        <div class="d-flex">
-                            <button style="background-color: transparent;" type="button" class="border-0  rounded-2 m-2"
-                                id="decrease-btn">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <input class="quantity border-secondary mx-4 rounded-2 px-2 ps-2" style="width: 30px;"
-                                type="text" id="quantity" value="1" name="quantity">
-                            <button style="background-color: transparent;" type="button"
-                                class="border-0  rounded-2 mx-2" id="increase-btn">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
+                        <!-- số lượng -->
+                        <div class="d-flex gap-3 my-3 align-items-center">
+                            <div>
+                                <span>Số lượng: </span>
+                            </div>
+                            <div class="d-flex">
+                                <button style="background-color: transparent;" type="button"
+                                    class="border-0  rounded-2 m-2" id="decrease-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <input class="quantity quantityPageProDetails border-secondary mx-4 rounded-2 px-2 ps-2"
+                                    style="width: 30px;" type="text" id="quantityPageProDetails" value="1"
+                                    name="quantity">
+                                <button style="background-color: transparent;" type="button"
+                                    class="border-0  rounded-2 mx-2" id="increase-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- giá -->
-                    <div class="d-flex align-items-center gap-4">
-                        <div>
-                            <p id="priceDisplay" class="text-danger fs-2"><?=$newPrice?>₫</p>
-                        </div>
+                        <!-- giá -->
                         <div class="d-flex align-items-center gap-4">
-                            <?=($target['sale'] == 0)?'':'<p class="text-light bg-danger p-1">Sale:
+                            <div>
+                                <p id="priceDisplay" class="text-danger fs-2"><?=$newPrice?>₫</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-4">
+                                <?=($target['sale'] == 0)?'':'<p class="text-light bg-danger p-1">Sale:
                             <span>'.$target['sale'].'%</span></p>'?>
-                            <p><del
-                                    class="text-secondary"><?php if($target['sale'] != 0){ echo $target['price'].'₫ đến '.$priceByCur.'₫';}else{echo '';}?></del>
-                            </p>
+                                <p><del
+                                        class="text-secondary"><?php if($target['sale'] != 0){ echo $target['price'].'₫ đến '.$priceByCur.'₫';}else{echo '';}?></del>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <input type="submit" value="Thêm vào giỏ hàng"
-                            class="bg-info p-2 me-1 text-light rounded-2 border-0">
-                        <input type="submit" value="Đặt hàng" class="bg-danger text-light p-2 rounded-2 border-0">
+                        <div>
+                            <!-- dữ liệu cần được đẩy lên session cart -->
+                            <div hidden>
+                                <!-- id -->
+                                <input type="text" name="id" value="<?=$target['product_id']?>">
+                                <!-- name -->
+                                <input type="text" name="name" value="<?=$target['name']?>">
+                                <!-- img -->
+                                <input type="text" name="img" value="<?=$target['image_url']?>">
+                            </div>
+                            <!-- nút thêm vào giỏ -->
+                            <input type="submit" name="btn-addToCart" value="Thêm vào giỏ hàng"
+                                class="bg-info p-2 me-1 text-light rounded-2 border-0">
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                    <input type="submit" value="Đặt hàng"
+                        class="bg-danger text-light p-2 rounded-2 border-0 d-inline-flex">
+
+                </div>
 
                 <div>
                     <div class="accordion accordion-flush" id="accordionFlushExample" style="width: 500px">
@@ -177,9 +194,11 @@
                                     </div>
                                     <?php } ?>
                                 </div>
-                                <div class="card-body">
+                                <div
+                                    class="card-body <?php if($item['sale'] > 0 && $item['sale'] <= 100) {echo '';}else{echo 'mt-4 ';}?>">
                                     <!-- tên -->
-                                    <h6 style="font-size: 14px;" class="card-title fw-bold"><?=$item['name']?>
+                                    <h6 style="font-size: 14px;" class="card-title fw-bold ">
+                                        <?=$item['name']?>
                                     </h6>
                                     <!-- giá -->
                                     <p class="card-text text-danger fw-bold">
@@ -187,11 +206,7 @@
                                         <?php if($item['sale'] > 0 && $item['sale'] <= 100) { ?>
                                         <span class="main-product-price-old text-decoration-line-through text-secondary"
                                             style="font-size: 10px;"><?=$custumPriceOld?></span>
-                                        <?php }else{ ?>
-                                        <span class="main-product-price-old text-decoration-line-through text-secondary"
-                                            style="font-size: 10px;">
-                                            <p class="my-4"></p>
-                                        </span>
+
                                         <?php } ?>
                                     </p>
                                 </div>
@@ -217,7 +232,7 @@ splide.mount();
 </script>
 <script>
 // số lượng
-const quantityInput = document.getElementById('quantity');
+const quantityInput = document.getElementById('quantityPageProDetails');
 const decreaseBtn = document.getElementById('decrease-btn');
 const increaseBtn = document.getElementById('increase-btn');
 

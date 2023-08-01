@@ -297,7 +297,6 @@ if(isset($_GET['url'])) {
                             }
                         }
                     }
-                    
                     $update_at = date("Y-m-d");
                     $idPro = $_POST['id'];
                     if(count($err) === 0){
@@ -309,7 +308,6 @@ if(isset($_GET['url'])) {
                             updateDetails($idPro,$size, $price, $update_at);
                         } 
                         $noti = "Cập nhật thành công!";
-
                         }
                         // updateDetails($idPro,$detailsArray[0]['size'], $detailsArray[0]['price'], $update_at);
                         // updateDetails($idPro,$detailsArray[1]['size'], $detailsArray[1]['price'], $update_at);
@@ -321,8 +319,6 @@ if(isset($_GET['url'])) {
         }
         break;
 
-
-
     // CUSTOMER
     case 'customer':
         if(isset($_GET['act'])) {
@@ -331,7 +327,6 @@ if(isset($_GET['url'])) {
             if($act == 'list') {
                 $kw = 0;
                 $fil = 0;
-
                 //search
                 if(isset($_POST['btn-search'])){
                     if($_POST['keyword'] != ""){
@@ -345,10 +340,7 @@ if(isset($_GET['url'])) {
                     $fil = $_GET['filter'];
                 }
                 $customers = getListCustomerBy($kw,$fil);
-                    
-                
                 require_once "./view/pages/customer/list.php";
-
             }
             // thêm mới khách hàng
             if($act == 'add') {
