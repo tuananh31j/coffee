@@ -31,7 +31,7 @@
                     <input class="p-1 rounded-2" type="search" name="keyword" placeholder="nội dung tìm kiếm...">
                     <input type="submit" name="btn-search" value="Tìm kiếm"
                         class="p-1 border-1 text-light rounded-2 bg-black">
-                        <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
+                    <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
                 </form>
             </div>
         </div>
@@ -48,9 +48,9 @@
                     class="bg-danger border-0 text-light p-1 rounded-2">Xóa</button>
                 <p>Trạng thái: <?php if(isset($item['status'])){
                              if($item['status'] == 0){
-                                echo "<span class='text-danger'>Chưa xử lý</span>";
+                                echo "<span class='text-danger fw-bold'>Chưa xử lý</span>";
                                 }else{
-                                    echo "<span class='text-success'>Đã xử lý</span>";
+                                    echo "<span class='text-success fw-bold'>Đã xử lý</span>";
                                     }} ?>
                 </p>
                 <form action="index.php?url=contact&filter=<?=isset($filter)?$filter:0?>&sort=<?=isset($sort)?$sort:0?>"

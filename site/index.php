@@ -8,6 +8,8 @@ require_once "models/customer.php";
 require_once "models/size.php";
 require_once "models/contact.php";
 require_once "models/feedback.php";
+require_once "models/addressShop.php";
+require_once "models/order.php";
 
 # HEADER
 $categorys = getListCategory();
@@ -335,6 +337,7 @@ if(isset($_GET['url'])) {
     
     # PAY
     case "pay":
+        // chuyển đến trang điền thông tin nhận hàng
        if(isset($_POST['btn-submit'])){
         foreach($_SESSION['cart'] as $key => $item) {
             
@@ -345,7 +348,59 @@ if(isset($_GET['url'])) {
         }
         $listCart = $_SESSION['cart']; 
        }
+       $listShops = getShops();
+
+
+        // thanh toán
+        $err = array();
+
+        if(isset($_POST['btn-pay'])) {
+            //shop
+           
+                $shop = $_POST['shop'];
         
+            // id cus
+          
+                $idCus = $_POST['idCus'];
+          
+           
+                $name = $_POST['name'];
+           
+          
+                $phone = $_POST['phone'];
+          
+            // email
+           
+                $email = $_POST['email'];
+           
+            // địa chỉ nhận hàng
+          
+                $address = $_POST['address'];
+           
+            $note = $_POST['note'];
+            
+                $result = addOrder($shop,$idCus,$phone,$name,$email,$address,$note);
+                if(isset($_SESSION['cart'])) {
+                    foreach($_SESSION['cart'] as $key => $pro) {
+                        $targetPro = getProById($pro['id']);
+                        $idOrder = $result;
+                        $idPro = $pro['id'];
+                        $quantity = $pro['quantity'];
+                        $cost = getPrice($idPro,$pro['size'])['price'];
+                        $priceSale = $cost*$targetPro['sale']/100;
+                        $price = $cost - $priceSale;
+                        $totalPrice = $price*$quantity;
+                        addOrderDetails($idOrder,$idPro,$quantity,$price,$totalPrice);
+                        $noti = "ok";
+                        continue;
+                        
+                        
+                    }
+                    unset($_SESSION['cart']);
+                        header("location: $SITE_URL/view/pages/order/orderDetail.php");
+                }
+            
+        }
         require_once "view/pages/order/pay.php";
         break;
 

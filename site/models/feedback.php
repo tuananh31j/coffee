@@ -7,7 +7,7 @@ function addFeedback($star,$content,$idPro,$idUser) {
 // kiểm tra người dùng đã mua sản phẩm này chưa
 function checkOrder($idPro,$idUser) {
     $sql = "select * from order_detail inner join orders on orders.order_id = order_detail.order_id ";
-    $sql .= "where order_detail.product_id = ? and orders.customer_id = ? and orders.status = 4";
+    $sql .= "where order_detail.product_id = ? and orders.customer_id = ? and orders.status = 3";
     return pdo_query($sql,$idPro,$idUser);
 }
 // lầy toàn bộ feedback theo id sản phẩm

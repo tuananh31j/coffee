@@ -99,7 +99,7 @@
                                     <!-- giỏ hàng -->
                                     <a class=" nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
-                                            class="header-count-cart">2</span></a>
+                                            class="header-count-cart"><?=isset($cartNum)?$cartNum:0?></span></a>
                                 </li>
                                 <?php }else{ ?>
 
@@ -121,7 +121,7 @@
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
-                                            class="header-count-cart"><?=$cartNum?></span></a>
+                                            class="header-count-cart"><?=isset($cartNum)?$cartNum:0?></span></a>
                                 </li>
                                 <?php } ?>
                             </ul>

@@ -1,82 +1,124 @@
 <!-- MAIN CONTENT -->
-<div class="main-content container my-5">
-
+<div class="main-content  container  ">
+    <?php
+    $countQuantity =0;
+foreach($_SESSION['cart'] as $item) {
+    $countQuantity += $item['quantity'];
+}
+?>
     <div class="cart-products  row gap-3 align-items-center">
         <!-- item -->
         <form action="index.php?url=pay" method="post">
-            <?php 
-            $totalPrice = 0;
-            if(isset($listCart)) {
-                foreach($listCart as $index => $product){
-                    $targetPro = getProById($product['id']);
-                    $cost = getPrice($product['id'],$product['size'])['price'];
-                    $priceSale = $cost*$targetPro['sale']/100;
-                    $currentPrice = $cost - $priceSale;
-                    $curPriceFormat = number_format($currentPrice,0,',','.');
-                    $totalPrice = $currentPrice*$product['quantity'];
-
-             ?>
-
-            <div class="cart-product-items col">
-                <div class="cart-item">
-
-                    <!-- id chi tiết sản phẩm -->
-                    <input type="text" value="<?=$product['id']?>" name="id[<?=$index?>]" hidden>
-                    <div class="cart-product-item row align-items-center">
-                        <!-- ảnh sản phẩm -->
-                        <div class="col-2"><img class="w-100" src="<?=$IMAGE.'/'.$product['img']?>" alt=""></div>
-                        <!-- tiêu đề sản phẩm -->
-                        <div class="col-3 fw-bold">
-                            <p><?=$product['name']?></p>
-                        </div>
-                        <div class="d-flex gap-3 col-6 m-3 mb-4 align-items-center">
-                            <!-- giá sản phẩm -->
-                            <div class="text-danger ">
-                                <span class="fw-bold"><?=$curPriceFormat?> <span
-                                        class=" text-decoration-underline">đ</span></span><br>
-                                <span style="font-size: 12px; font-style: italic;"
-                                    class="text-secondary text-decoration-line-through"><?=$cost?> <span
-                                        class=" text-decoration-underline">đ</span></span>
-                            </div>
-                            <!-- số lượng -->
-                            <div>
-                                <button type="button" class="border-info rounded-2">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <input class="quantityPagePro border-secondary mx-2 rounded-2 p-1 ps-2"
-                                    style="width: 30px;" type="text" id="quantity-<?=$index?>"
-                                    value="<?=$product['quantity']?>" name="quantity[<?=$index?>]">
-                                <button type="button" class="border-danger rounded-2">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                            <!-- size -->
-                            <div>
-                                <label class="mx-4  mb-2" for="size">Size: <span
-                                        class=" text-danger fs-4 fw-bold"><?=getSizeName($product['size'])['name']?></span></label>
-                                <input hidden type="text" value="<?=$product['size']?>" name="size">
-
-                            </div>
-                            <!-- nút xóa -->
-                            <div class="col-1">
-                                <a href="index.php?url=cart&index=<?=$index?>"><button type="button"
-                                        class="bg-danger text-light p-1 border-0 rounded-2">Xóa</button></a>
-                            </div>
-                        </div>
+            <div class="row gap-4">
+                <div class="col ">
+                    <h3 class="mb-5">Thông tin thanh toán</h3>
+                    <?php var_dump($err)?>
+                    <div class="form-group my-4">
+                        <label class="my-2 fw-bold" for="shop">Chọn cửa hàng gần bạn<span
+                                class="text-danger">*</span></label>
+                        <!-- shop -->
+                        <select class="form-control" name="shop" id="shop">
+                            <option value="">-Chọn cửa hàng-</option>
+                            <?php foreach($listShops as $shop) {?>
+                            <option value="<?=$shop['address_id']?>"><?=$shop['address']?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <!-- id customer -->
+                    <div hidden class="form-group my-4">
+                        <input type="text" class="form-control" name="idCus"
+                            value="<?=isset($_SESSION['user'])?$_SESSION['user']['customer_id']:''?>" id="name"
+                            placeholder="Nhập tên của bạn!">
+                    </div>
+                    <!-- name -->
+                    <div class="form-group my-4">
+                        <label class="my-2 fw-bold" for="name">Tên người nhận<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name"
+                            value="<?=isset($_SESSION['user'])?$_SESSION['user']['name']:''?>" id="name"
+                            placeholder="Nhập tên của bạn!">
                     </div>
 
-                </div>
-            </div>
+                    <!-- phone -->
+                    <div class="form-group my-4">
+                        <label class="my-2 fw-bold" for="phone">Số điện thoại<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="phone"
+                            value="<?=isset($_SESSION['user'])?$_SESSION['user']['phone']:''?>" id="phone"
+                            placeholder="Nhập số điện thoại nhận hàng!">
+                    </div>
 
-            <?php }} ?>
-            <!-- nút thanh toán và tổng tiền -->
-            <div class="cart-total row col-3  border-top-0 border-end-0 border-bottom-0 border">
-                <div class="">
-                    <p>Tạm tính: <span class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?> <i
-                                class="text-decoration-underline"> đ</i></span></p>
+                    <!-- email -->
+                    <div class="form-group my-4">
+                        <label class="my-2 fw-bold" for="email">Email<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" name="email"
+                            value="<?=isset($_SESSION['user'])?$_SESSION['user']['email']:''?>" id="email"
+                            placeholder="Nhập email liên hệ của bạn!">
+                    </div>
+
+                    <!-- Địa chỉ nhận hàng -->
+                    <div class="form-group my-4">
+                        <label class="my-2 fw-bold" for="address">Địa chỉ nhận hàng<span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="address"
+                            value="<?=isset($_SESSION['user'])?$_SESSION['user']['address']:''?>" id="address"
+                            placeholder="Nhập địa chỉ của bạn!">
+                    </div>
+
+                    <!-- Ghi chú -->
+                    <div class="form-group mt-4">
+                        <label class="my-2 fw-bold" for="note">Ghi chú</label>
+                        <input type="text" class="form-control" value=""
+                            style="word-wrap: break-word; padding-bottom: 108px;" name="note" id="note"
+                            placeholder="Nhập nội dung bạn muốn nhắn gửi đến shop!">
+                    </div>
+
+
+                    <div hidden>
+
+                        <?php 
+                            $totalPrice = 0;
+                            if(isset($listCart)) {
+                                foreach($listCart as $index => $product){
+                                    $targetPro = getProById($product['id']);
+                                    $cost = getPrice($product['id'],$product['size'])['price'];
+                                    $priceSale = $cost*$targetPro['sale']/100;
+                                    $currentPrice = $cost - $priceSale;
+                                    $curPriceFormat = number_format($currentPrice,0,',','.');
+                                    $totalPrice += $currentPrice*$product['quantity'];
+
+                            ?>
+                        <?php }} ?>
+                    </div>
                 </div>
-                <input <?=(count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?> type="submit"
-                    value="Thanh toán" name="btn-submit" class="w-50 text-light bg-danger p-2 border-0 rounded-2">
+                <!-- đơn hàng -->
+                <div class="col">
+                    <h4 class="mb-5">Đơn hàng (<?=$countQuantity?> sản phẩm)</h4>
+                    <div class=" border border-2 border-danger shadow rounded-2 p-4 ">
+                        <iframe src="./site/view/pages/order/orders.php" style="width:100%; height: 340px"
+                            frameborder="1"></iframe>
+                        <div class="form-check p-0 mt-4">
+                            <label for="" class="fw-bold">Thanh toán<span class="text-danger">*</span></label><br>
+                            <div class="border border-2 rounded-2 p-4 ps-5 mt-4">
+                                <input class="form-check-input" type="radio" checked name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label  " for="flexRadioDefault1">
+                                    Thanh toán khi giao hàng(COD)
+                                </label>
+                            </div>
+
+                        </div>
+                        <!-- nút thanh toán và tổng tiền -->
+                        <div style="margin-top: 50px" class="cart-total  ">
+                            <div class="">
+                                <p>Tổng cộng: <span
+                                        class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?> <i
+                                            class="text-decoration-underline"> đ</i></span></p>
+                            </div>
+                            <input <?=(count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?>
+                                type="submit" value="Thanh toán" name="btn-pay"
+                                class="w-50 text-light bg-danger p-2 border-0 rounded-2">
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
 

@@ -6,6 +6,7 @@
         <form action="index.php?url=pay" method="post">
             <?php 
             $totalPrice = 0;
+            $countQuantity = 0;
             if(isset($listCart)) {
                 foreach($listCart as $index => $product){
                     $targetPro = getProById($product['id']);
@@ -13,7 +14,8 @@
                     $priceSale = $cost*$targetPro['sale']/100;
                     $currentPrice = $cost - $priceSale;
                     $curPriceFormat = number_format($currentPrice,0,',','.');
-                    $totalPrice = $currentPrice*$product['quantity'];
+                    $totalPrice += $currentPrice*$product['quantity'];
+                    $countQuantity += $product['quantity'];
 
              ?>
 
@@ -31,7 +33,7 @@
                         </div>
                         <div class="d-flex gap-3 col-6 m-3 mb-4 align-items-center">
                             <!-- giá sản phẩm -->
-                            <div class="text-danger ">
+                            <div class="text-danger" style="width: 100px;">
                                 <span class="fw-bold"><?=$curPriceFormat?> <span
                                         class=" text-decoration-underline">đ</span></span><br>
                                 <span style="font-size: 12px; font-style: italic;"
@@ -51,7 +53,7 @@
                                 </button>
                             </div>
                             <!-- size -->
-                            <div>
+                            <div style="width: 120px;">
                                 <label class="mx-4  mb-2" for="size">Size: <span
                                         class=" text-danger fs-4 fw-bold"><?=getSizeName($product['size'])['name']?></span></label>
                                 <input hidden type="text" value="<?=$product['size']?>" name="size">
@@ -75,8 +77,10 @@
                     <p>Tạm tính: <span class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?> <i
                                 class="text-decoration-underline"> đ</i></span></p>
                 </div>
-                <input <?=(count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?> type="submit"
-                    value="Thanh toán" name="btn-submit" class="w-50 text-light bg-danger p-2 border-0 rounded-2">
+                <input
+                    <?=(!isset($_SESSION['cart'])||count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?>
+                    type="submit" value="Mua hàng (<?=$countQuantity?>)" name="btn-submit"
+                    class="w-50 text-light bg-danger p-2 border-0 rounded-2">
             </div>
         </form>
 
