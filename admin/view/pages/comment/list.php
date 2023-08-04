@@ -30,7 +30,7 @@
             <table class="table table-hover table-bordered text-center">
                 <thead style="border: 2px solid black">
                     <tr>
-                        <th>#MÃ</th>
+                        <th>STT</th>
                         <th>User</th>
                         <th>Sản phẩm</th>
                         <th>Ngày tạo</th>
@@ -40,10 +40,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($comments as $item){ ?>
+                    <?php foreach($comments as $key => $item){ ?>
                     <tr>
 
-                        <td>#<?=isset($item['cmt_id'])?$item['cmt_id']:''?></td>
+                        <td><?=$key + 1?></td>
                         <td><?=isset($item['nameCus'])?$item['nameCus']:''?></td>
                         <td><?=isset($item['namePro'])?$item['namePro']:''?></td>
                         <td><?=isset($item['create_at'])?$item['create_at']:''?></td>

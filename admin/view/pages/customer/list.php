@@ -40,7 +40,7 @@
              <table class="table table-hover table-bordered text-center">
                  <thead style="border: 2px solid black">
                      <tr style="font-size: 14px;">
-                         <th>#MÃ</th>
+                         <th>STT</th>
                          <th>Ảnh</th>
                          <th style="width: 200px">Họ tên</th>
                          <!-- số điện thoại -->
@@ -57,10 +57,10 @@
                      </tr>
                  </thead>
                  <tbody>
-                     <?php foreach($customers as $item){ ?>
+                     <td><?=$key + 1?></td> <?php foreach($customers as $key => $item){ ?>
                      <tr>
 
-                         <td>#<?=$item['customer_id']?></td>
+
                          <td style="width: 60px;"><img class="w-100" src="<?=$IMAGE.'/'.$item['image_url']?>" alt="">
                          </td>
                          <td><?=$item['name']?></td>

@@ -40,7 +40,7 @@
             <table class="table table-hover table-bordered text-center">
                 <thead style="border: 2px solid black">
                     <tr>
-                        <th>MÃ</th>
+                        <th>STT</th>
                         <th>Ảnh</th>
                         <th>Tên sản phẩm</th>
                         <th>Mô tả</th>
@@ -56,17 +56,12 @@
                 </thead>
                 <tbody>
 
-                    <?php foreach($products as $pro){ ?>
+                    <?php foreach($products as $key => $pro){ ?>
                     <tr>
 
-                        <td><?php $flag = 0; for($i = 0; $i < strlen($pro['product_id']); $i++) {
-                            echo $pro['product_id'][$i];
-                            $flag++;
-                            if($flag == 10) {
-                                echo " </br> ";
-                                $flag = 0;
-                            }
-                        }?></td>
+                        <td><?php 
+                            echo $key + 1
+                            ?></td>
                         <td style="width: 60px;"><img class="w-100" src="<?=$IMAGE.'/'.$pro['image_url']?>" alt=""></td>
                         <td><?php $flag = 0; for($i = 0; $i < strlen($pro['name']); $i++) {
                             echo $pro['name'][$i];

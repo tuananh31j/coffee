@@ -586,8 +586,8 @@ if(isset($_GET['url'])) {
         $listContact =  getListContact($filter, $sort,$kw,$offset);
         $update_at = date("Y-m-d");
                 for($i = 0; $i < sizeof($listContact); $i++) {
-                    if(isset($_POST['btn-update-'.$i]) && $_POST['btn-update-'.$i] != '' && $_POST['btn-update-'.$i]) {
-                        if(isset($_POST['status-'.$i]) && $_POST['status-'.$i]){
+                    if(isset($_POST['btn-update-'.$i])) {
+                        if(isset($_POST['status-'.$i]) && $_POST['status-'.$i] != ''){
                             $status = $_POST['status-'.$i];
                             $id = $_POST['id-'.$i];
                             updateStatus($id,$status,$update_at);

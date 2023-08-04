@@ -38,7 +38,7 @@
             <table class="table table-hover table-bordered text-center">
                 <thead style="border: 2px solid black">
                     <tr>
-                        <th>#MÃ</th>
+                        <th>STT</th>
                         <th>Tên danh mục</th>
                         <th>Chức năng</th>
                     </tr>
@@ -46,9 +46,9 @@
 
                 <tbody>
                     <?php
-                        foreach ($categorys as $category) {?>
+                        foreach ($categorys as $key => $category) {?>
                     <tr>
-                        <td><?=$category['category_id']?></td>
+                        <td><?=$key + 1?></td>
                         <td><?=$category['name']?></td>
                         <td>
                             <button onclick="confirmDelete('category&act=delete&id=<?=$category['category_id']?>')"
