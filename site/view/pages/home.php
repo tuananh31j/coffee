@@ -66,7 +66,7 @@
                         <!-- ảnh -->
                         <div class="h-100">
                             <a href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
-                                    style="height: 208px; object-fit: cover;" src="<?=$IMAGE.'/'.$item['image_url']?>"
+                                    style="height: 228px; object-fit: cover;" src="<?=$IMAGE.'/'.$item['image_url']?>"
                                     class="card-img-top" alt="..."></a>
                             <!-- giảm giá -->
                             <?php if($item['sale']>0 && $item['sale']<=100){
@@ -203,6 +203,8 @@
                     </div>
                 </div>
                 <?php } ?>
+            </div>
+            <div class="row">
                 <div onclick="handleItemAll(allProSale)" class="xemthem more-btn-sale">
                     <div class="top"></div>
 
@@ -219,7 +221,6 @@
                     <div class="bottom"></div>
 
                 </div>
-
             </div>
         </div>
 
@@ -365,10 +366,8 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <input type="submit" onclick="alert('Thêm thành công vào giỏ!')"
-                                                    value="Thêm vào giỏ" name="btn-addToCart"
-                                                    class="border-0 rounded-2 bg-primary text-light p-2">
-                                                <input type="submit" value="Đặt hàng"
+
+                                                <input type="submit" name="btn-add" value="Đặt hàng"
                                                     class="border-0 rounded-2 bg-danger text-light p-2">
                                             </div>
                                         </div>
@@ -397,3 +396,39 @@
         </div>
     </div>
 </div>
+<script>
+// Lấy tất cả các phần tử có class "quantity"
+const quantityInputs = document.querySelectorAll('.quantity');
+
+// Thêm sự kiện tăng giảm số lượng cho từng phần tử
+quantityInputs.forEach(input => {
+    input.nextElementSibling.addEventListener('click', function() {
+        increaseQuantity(input);
+    });
+
+    input.previousElementSibling.addEventListener('click', function() {
+        decreaseQuantity(input);
+    });
+});
+
+// Hàm tăng số lượng
+function increaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    quantity += 1;
+    updateQuantity(input, quantity);
+}
+
+// Hàm giảm số lượng, đảm bảo số lượng không âm
+function decreaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    if (quantity > 1) {
+        quantity -= 1;
+        updateQuantity(input, quantity);
+    }
+}
+
+// Hàm cập nhật số lượng vào thẻ input
+function updateQuantity(input, quantity) {
+    input.value = quantity;
+}
+</script>

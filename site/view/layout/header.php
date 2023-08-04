@@ -55,11 +55,11 @@
                                     src="<?=$IMAGE?>/logo.png" alt=""></a>
                             <div>
                                 <!-- tra cứu đơn hàng -->
-                                <form class="d-flex " role="search">
-                                    <input class="form-control border-light text-light "
+                                <form class="d-flex " method="post" action="index.php?url=findMyOrder" role="search">
+                                    <input name="id" class="form-control border-light text-dark "
                                         style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng"
                                         aria-label="Search">
-                                    <button class="border-0 rounded-end-2 bg-danger text-light "
+                                    <button name="btn-find" class="border-0 rounded-end-2 bg-danger text-light "
                                         style="margin-left: -20px; width: 60px; font-size: 14px;" type="submit">Tra
                                         cứu</button>
                                 </form>
@@ -121,7 +121,7 @@
                                     <!-- giỏ hàng -->
                                     <a class="nav-link active p-2" aria-current="page" href="index.php?url=cart"><i
                                             class="fa-solid fa-cart-shopping"></i><span
-                                            class="header-count-cart"><?=isset($cartNum)?$cartNum:0?></span></a>
+                                            class="header-count-cart text-light"><?=isset($cartNum)?$cartNum:0?></span></a>
                                 </li>
                                 <?php } ?>
                             </ul>
@@ -145,7 +145,7 @@
                                 DANH MỤC
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu border-0">
                                 <?php foreach($categorys as $item){ ?>
                                 <li><a class="dropdown-item item__hover-cate"
                                         href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>"><?=$item['name']?></a>

@@ -5,7 +5,8 @@
          <div class="d-flex ">
              <!-- thêm sản phẩm -->
 
-             <a href="index.php?url=customer&act=add" class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm khách
+             <a href="index.php?url=customer&act=add"
+                 class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm khách
                  hàng <i class="fa-solid fa-plus"></i></a>
 
              <!-- fillter -->
@@ -92,6 +93,37 @@
 
                  </tbody>
              </table>
+         </div>
+         <!-- Phân trang -->
+         <div class="d-flex justify-content-center mt-4">
+             <nav aria-label="Page navigation example">
+                 <ul class="pagination">
+                     <li class="page-item"><a class="page-link border-danger"
+                             href="index.php?url=customer&act=list&filter=<?php echo isset($fil)?$fil:0?>">1</a>
+                     </li>
+                     <?php
+                               
+                                $count = 1;
+                                $page = 1;
+                                for($i = 0; $i < sizeof($all ); $i++ ){
+                                    $count++;
+                                    
+                                    if($count == 8) {
+                                        $page +=1;
+                                        $count = 0;
+
+                                ?>
+                     <li class="page-item "><a class="page-link border-danger"
+                             href="index.php?url=customer&act=list&filter=<?php echo isset($fil)?$fil:0?>&pagenum=<?=$page?>">
+                             <?=$page?>
+                         </a>
+                     </li>
+                     <?php }} ?>
+
+
+
+                 </ul>
+             </nav>
          </div>
 
      </div>

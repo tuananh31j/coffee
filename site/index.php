@@ -26,7 +26,7 @@ if(isset($_GET['url'])) {
     case 'product':
         // danh sách danh mục
         $sortStyle = "asc";
-        $sortType = "name";
+        $sortType = "product.name";
         $filterType = 0;
         $kw = 0;
         // tìm kiếm
@@ -247,6 +247,44 @@ if(isset($_GET['url'])) {
             }
             // Đơn hàng của tôi
             if($act == 'myOrder') {
+                $update_at = date('Y-m-d');
+
+                if(isset($_SESSION['user'])){
+                    $id = $_SESSION['user']['customer_id'];
+                    $myOrder = getOrderByCus($id);
+                }
+                // chuyển sang hủy đơn
+                if(isset($_GET['idCancel'])) {
+                    $id = $_GET['idCancel'];
+                    $update_at = date('Y-m-d');
+                    updateOrderStatus($id,4,$update_at);
+                    header("location: index.php?url=account&act=myOrder");
+                }
+                // chuyển trạng thái thành công
+                if(isset($_GET['idDone'])) {
+                    $id = $_GET['idDone'];
+                    $update_at = date('Y-m-d');
+                    updateOrderStatus($id,3,$update_at);
+                }
+                // chi tiết đơn
+                if(isset($_GET['idDetails'])) {
+                    $id = $_GET['idDetails'];
+                    $back = 0;
+                    if(isset($_SESSION['user'])){
+                        $back = 1;
+                    }
+                    header("location: $SITE_URL/view/pages/order/orderDetail.php?id=$id&back=$back");
+                }
+                // xóa đơn
+                if(isset($_GET['idDelete'])) {
+                    $id = $_GET['idDelete'];
+                    updateOrderStatus($id,7,$update_at);
+                }
+                // đánh giá
+                if(isset($_GET['idFeedback'])) {
+                    $id = $_GET['idFeedback'];
+                    
+                }
                 require_once "view/pages/account/myOrder.php";
             }
             // Đổi mật khẩu
@@ -283,10 +321,7 @@ if(isset($_GET['url'])) {
                 }
                 require_once "view/pages/account/changePass.php";
             }
-            // lịch sử mua hàng
-            if($act == 'hisOrder') {
-                require_once "view/pages/account/historyOrder.php";
-            }
+            
             // Đăng xuất
             if($act == 'logout') {
                 require_once "view/pages/account/logOut.php";
@@ -338,6 +373,7 @@ if(isset($_GET['url'])) {
     # PAY
     case "pay":
         // chuyển đến trang điền thông tin nhận hàng
+       $listShops = getShops();
        if(isset($_POST['btn-submit'])){
         foreach($_SESSION['cart'] as $key => $item) {
             
@@ -346,9 +382,11 @@ if(isset($_GET['url'])) {
                 }
             
         }
-        $listCart = $_SESSION['cart']; 
+        //thêm vào giỏ
+       
+        
        }
-       $listShops = getShops();
+       $listCart = $_SESSION['cart']; 
 
 
         // thanh toán
@@ -356,32 +394,45 @@ if(isset($_GET['url'])) {
 
         if(isset($_POST['btn-pay'])) {
             //shop
-           
-                $shop = $_POST['shop'];
-        
+           if($_POST['shop'] != ''){
+            $shop = $_POST['shop'];
+           }else{
+            $err['shop'] = "Chưa chọn cửa hàng!";
+           }
             // id cus
-          
                 $idCus = $_POST['idCus'];
-          
-           
-                $name = $_POST['name'];
-           
-          
-                $phone = $_POST['phone'];
-          
+             //shop
+           if($_POST['name'] != ''){
+            $name = $_POST['name'];
+           }else{
+            $err['name'] = "Chưa nhập tên người nhận!";
+           }  
+           // phone
+           if($_POST['phone'] != ''){
+            $phone = $_POST['phone'];
+           }else{
+            $err['phone'] = "Chưa nhập số điện thoại!";
+           }  
             // email
-           
+            if($_POST['email'] != ''){
                 $email = $_POST['email'];
+                }else{
+                $err['email'] = "Chưa nhập email!";
+                }  
            
             // địa chỉ nhận hàng
-          
+            if($_POST['address'] != ''){
                 $address = $_POST['address'];
+               }else{
+                $err['address'] = "Chưa nhập địa chỉ nhận hàng!";
+               }  
            
             $note = $_POST['note'];
-            
+            if(count($err) === 0){
                 $result = addOrder($shop,$idCus,$phone,$name,$email,$address,$note);
                 if(isset($_SESSION['cart'])) {
                     foreach($_SESSION['cart'] as $key => $pro) {
+                        $idSize = $pro['size'];
                         $targetPro = getProById($pro['id']);
                         $idOrder = $result;
                         $idPro = $pro['id'];
@@ -390,18 +441,37 @@ if(isset($_GET['url'])) {
                         $priceSale = $cost*$targetPro['sale']/100;
                         $price = $cost - $priceSale;
                         $totalPrice = $price*$quantity;
-                        addOrderDetails($idOrder,$idPro,$quantity,$price,$totalPrice);
+                        addOrderDetails($idOrder,$idPro,$idSize,$quantity,$price,$totalPrice);
                         $noti = "ok";
                         continue;
                         
                         
                     }
                     unset($_SESSION['cart']);
-                        header("location: $SITE_URL/view/pages/order/orderDetail.php");
+                        header("location: $SITE_URL/view/pages/order/orderDetail.php?id=$result");
                 }
+            }else{
+                $listCart = $_SESSION['cart']; 
+            }
+                
             
         }
         require_once "view/pages/order/pay.php";
+        break;
+
+    # ORDER DETAILS
+    case "orderdetails":
+        if(isset($_SESSION['cart'])) {
+           $listCart = $_SESSION['cart']; 
+        }
+        //xóa sản phẩm trong giỏ hàng
+        if(isset($_GET['index'])) {
+            $index = $_GET['index'];
+            unset($_SESSION['cart'][$index]);
+            header("location: index.php?url=cart");
+        }
+        
+        require_once "view/pages/order/cart.php";
         break;
 
     # ORDER
@@ -470,8 +540,53 @@ if(isset($_GET['url'])) {
                   
             } 
         }
+        //thêm vào giỏ và đi đến thanh toán
+        if(isset($_POST['btn-add']) && $_POST['btn-add'] == true ) {
+            $cartProducts = ["id" => $_POST['id'],
+                            "name" => $_POST['name'],
+                            "img" => $_POST['img'],
+                            "size" => $_POST['size'],
+                            "quantity" => $_POST['quantity'],
+                        ];
+            if(!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+                array_push($_SESSION['cart'], $cartProducts);
+                header("location: index.php?url=pay");
+
+            }else{
+                if(count($_SESSION['cart']) != 0){
+                    foreach($_SESSION['cart']  as $key => $item) {
+                    if($item['id'] == $cartProducts['id'] && $item['size'] == $cartProducts['size']) {
+                        $_SESSION['cart'][$key]['quantity'] = $item['quantity'] + $cartProducts['quantity'];
+                        break;
+                    }
+                    if($key < sizeof($_SESSION['cart']) - 1){ 
+                    continue;
+                    }
+                    array_push($_SESSION['cart'], $cartProducts);
+                    header("location: index.php?url=pay");
+                } 
+                }else{
+                    array_push($_SESSION['cart'], $cartProducts);
+                    header("location: index.php?url=pay");
+                }
+                  
+            } 
+        }
         require_once "view/pages/detailsPro/proDetails.php";
         break;
+    # FIND ORDER
+    case "findMyOrder":
+        $id = '';
+        if(isset($_POST['btn-find'])){
+            $id = $_POST['id'];
+        
+        }
+        $myOrder = getOrderById($id);
+
+        require_once "view/pages/findOrder.php";
+        break;
+
     # TRANG CHỦ
     default:
         require_once "view/pages/home.php";

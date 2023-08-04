@@ -5,7 +5,7 @@ function getListCategory() {
 }
 function getListCategoryBy($kw, $fil) {
     $keyword = 1;
-    $filter = '';
+    $filter = "order by category.name desc";
 
     if ($fil == "az" && $fil != 0) {
         $filter = "order by category.name asc";
@@ -20,7 +20,7 @@ function getListCategoryBy($kw, $fil) {
         $filter = "order by category.category_id asc";
     }
     if ($kw != 0 && $kw != '') {
-        $keyword = "category.name like '%$kw%'";
+        $keyword = "category.name like '%$kw%' or category.name like '$kw%' or category.name like '%$kw'";
     }
     $sql = "select * from category where $keyword and status = 1 $filter";
     return pdo_query($sql);

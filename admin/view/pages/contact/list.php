@@ -28,7 +28,7 @@
             <div class="m-3">
                 <form action="index.php?url=contact&filter=<?=isset($filter)?$filter:0?>&sort=<?=isset($sort)?$sort:0?>"
                     method="post">
-                    <input class="p-1 rounded-2" type="search" name="keyword" placeholder="nội dung tìm kiếm...">
+                    <input class="p-1 rounded-2" type="search" name="keyword" placeholder="nhập tên...">
                     <input type="submit" name="btn-search" value="Tìm kiếm"
                         class="p-1 border-1 text-light rounded-2 bg-black">
                     <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
@@ -62,7 +62,7 @@
                         <option value="0">Chưa xử lý</option>
                         <option value="1">Đã xử lý</option>
                     </select>
-                    <p class="text-danger"><?=isset($err)?$err:''?></p>
+                    <p class="text-danger"><?=isset($err[$key])?$err[$key]:''?></p>
                     <input type="submit" name="btn-update-<?=$key?>" class="btn border-0 p-1 bg-black text-light"
                         value="Cập nhật">
                 </form>
@@ -90,5 +90,36 @@
             </div>
         </div>
         <?php } ?>
+    </div>
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link border-danger"
+                        href="index.php?url=contact&act=list&filter=<?php echo isset($filter)?$filter:0?>">1</a>
+                </li>
+                <?php
+                               
+                                $count = 1;
+                                $page = 1;
+                                for($i = 0; $i < sizeof($all ); $i++ ){
+                                    $count++;
+                                    
+                                    if($count == 8) {
+                                        $page +=1;
+                                        $count = 0;
+
+                                ?>
+                <li class="page-item "><a class="page-link border-danger"
+                        href="index.php?url=contact&act=list&filter=<?php echo isset($filter)?$filter:0?>&pagenum=<?=$page?>">
+                        <?=$page?>
+                    </a>
+                </li>
+                <?php }} ?>
+
+
+
+            </ul>
+        </nav>
     </div>
 </div>

@@ -1,8 +1,39 @@
 <?php
-//danh sách sản phẩm
-function getListPro($kw, $filter) {
+//danh sách sản phẩm phân trang
+function getListPro($kw, $filter,$offset) {
     $word = 1;
-    $fil = ' asc';
+    $fil = ' desc';
+    $type = "product.product_id";
+    
+    if ($kw != '' && $kw !=0) {
+        $word = "product.name like '%$kw%'";
+    }
+    if ($filter == "az" && $filter != '') {
+        $fil = " asc";
+    } elseif ($filter == "za" && $filter != '') {
+        $fil = " desc";
+    } elseif ($filter == "new" && $filter != '') {
+        $fil = " desc ";
+        $type = "product.product_id";
+    } elseif ($filter == "old" && $filter != '') {
+        $fil = " asc";
+        $type = "product.product_id";
+    } elseif ($filter == "view" && $filter != '') {
+        $fil = " desc ";
+        $type = "view";
+    }
+
+    $sql = "select product.*, product.product_id as pro_id, category.name AS category_name, product_detail.* ";
+    $sql .= "from product inner join product_detail on product_detail.product_id = product.product_id "; 
+    $sql .= "inner join category on category.category_id = product.category_id ";
+    $sql .= "where $word and size_id = 1 and product.status = 1 and category.status = 1 order by $type $fil limit 8 offset $offset";
+
+    return pdo_query($sql);
+}
+// toàn bộ
+function getAllPro($kw, $filter) {
+    $word = 1;
+    $fil = ' desc';
     $type = "product.name";
     
     if ($kw != '' && $kw !=0) {

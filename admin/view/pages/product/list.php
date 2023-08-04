@@ -93,7 +93,8 @@
                         <td><?=$pro['view']?></td>
                         <td><?=$pro['create_at']?></td>
                         <td><?=$pro['update_at']?></td>
-                        <td><?=$pro['price']?></td>
+                        <td class="text-danger"><?=number_format($pro['price'],0,',','.')?><span
+                                class="text-decoration-underline">đ</span></td>
                         <td><?=$pro['sale']?></td>
 
                         <td><button onclick="confirmDelete('product&act=delete&id=<?=$pro['product_id']?>')"
@@ -106,7 +107,37 @@
                 </tbody>
             </table>
         </div>
+        <!-- Phân trang -->
+        <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link border-danger"
+                            href="index.php?url=product&act=list&filter=<?php echo isset($filter)?$filter:0?>">1</a>
+                    </li>
+                    <?php
+                               
+                                $count = 1;
+                                $page = 1;
+                                for($i = 0; $i < sizeof($all ); $i++ ){
+                                    $count++;
+                                    
+                                    if($count == 8) {
+                                        $page +=1;
+                                        $count = 0;
 
+                                ?>
+                    <li class="page-item "><a class="page-link border-danger"
+                            href="index.php?url=product&act=list&filter=<?php echo isset($filter)?$filter:0?>&pagenum=<?=$page?>">
+                            <?=$page?>
+                        </a>
+                    </li>
+                    <?php }} ?>
+
+
+
+                </ul>
+            </nav>
+        </div>
     </div>
 
 

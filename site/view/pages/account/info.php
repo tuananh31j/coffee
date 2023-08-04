@@ -4,7 +4,7 @@
 
         <div class="container ">
             <div class="row">
-                <?php require_once "site/view/layout/menuAccount.php" ?>
+                <?php require_once "../site/view/layout/menuAccount.php" ?>
                 <div class="col">
                     <div class="user-title mb-5">
                         <h2>THÔNG TIN TÀI KHOẢN</h2>

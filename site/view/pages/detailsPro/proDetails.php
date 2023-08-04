@@ -95,13 +95,13 @@
                                 <input type="text" name="img" value="<?=$target['image_url']?>">
                             </div>
                             <!-- nút thêm vào giỏ -->
-                            <input type="submit" name="btn-addToCart" value="Thêm vào giỏ hàng"
-                                class="bg-info p-2 me-1 text-light rounded-2 border-0">
+                            <input type="submit" onclick="alert('Thêm thành công vào giỏ!')" name="btn-addToCart"
+                                value="Thêm vào giỏ hàng" class=" p-2 me-1 text-light rounded-2 border-0"
+                                style="background-color: #503629;">
 
                         </div>
                     </form>
-                    <input type="submit" value="Đặt hàng"
-                        class="bg-danger text-light p-2 rounded-2 border-0 d-inline-flex">
+
 
                 </div>
 
@@ -133,6 +133,7 @@
                             <div id="flush-collapseThree" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body w-100">
+                                    <!-- cmt -->
                                     <iframe style="height: 300px;" class="w-100"
                                         src="./site/view/pages/detailsPro/feedback.php?id=<?php echo $target['product_id']?>"
                                         frameborder="1"></iframe>
@@ -245,7 +246,8 @@ decreaseBtn.addEventListener('click', () => {
 
 increaseBtn.addEventListener('click', () => {
     let currentValue = parseInt(quantityInput.value);
-    quantityInput.value = currentValue + 1;
+    if (currentValue < 9)
+        quantityInput.value = currentValue + 1;
 });
 
 

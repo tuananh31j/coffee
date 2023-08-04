@@ -52,13 +52,13 @@
                     <ul class="dropdown-menu">
 
                         <li><a class="dropdown-item"
-                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">200k
+                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">150k
                                 <i class="fa-solid fa-arrow-down"></i></a></li>
                         <li><a class="dropdown-item"
-                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent1">20k-100k</a>
+                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent1">20k-60k</a>
                         </li>
                         <li><a class="dropdown-item"
-                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent2">100k-200k</a>
+                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent2">60k-150k</a>
                         </li>
                         <li><a class="dropdown-item"
                                 href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=up">60k
@@ -94,7 +94,7 @@
                                     <div class="h-100">
                                         <a
                                             href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
-                                                style="height: 208px; object-fit: cover;"
+                                                style="height: 228px; object-fit: cover;"
                                                 src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
                                                 alt="..."></a>
                                         <!-- giảm giá -->
@@ -107,7 +107,8 @@
                                     </div>
                                     <div class="card-body">
                                         <!-- tên -->
-                                        <h6 style="font-size: 14px;" class="card-title fw-bold"><?=$item['name']?>
+                                        <h6 style="font-size: 14px;" class="card-title fw-bold">
+                                            <?=$item['name']?>
                                         </h6>
                                         <!-- giá -->
                                         <p class="card-text text-danger fw-bold">
@@ -124,7 +125,7 @@
                                             data-bs-target="#exampleModal-<?php echo $index?>">Đặt
                                             ngay</button>
                                         <!-- form thêm vào giỏ hàng -->
-                                        <form class="" action="index.php?url=product" method="post">
+                                        <form class="" action="index.php?url=proDetails" method="post">
                                             <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -146,8 +147,6 @@
                                                                 <input type="text" name="img"
                                                                     value="<?=$item['image_url']?>">
 
-                                                                <input type="text" name="price"
-                                                                    value="<?=$item['price']?>">
                                                             </div>
                                                             <div class="card mb-3" style="max-width: 540px;">
                                                                 <div class="row g-0">
@@ -211,7 +210,7 @@
                                                                                             class="fa-solid fa-minus"></i>
                                                                                     </button>
                                                                                     <input
-                                                                                        class="quantity quantityPagePro border-secondary mx-2 rounded-2 p-1 ps-2"
+                                                                                        class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
                                                                                         style="width: 30px;" type="text"
                                                                                         id="quantity-<?=$index?>"
                                                                                         value="1" name="quantity">
@@ -228,7 +227,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <!-- btn -->
-                                                            <input type="submit" value="Đặt hàng"
+                                                            <input type="submit" name="btn-add" value="Đặt hàng"
                                                                 class="border-0 rounded-2 bg-danger text-light p-2">
                                                         </div>
                                                     </div>
@@ -251,7 +250,7 @@
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item"><a class="page-link border-danger"
-                                            href="index.php?url=product&category=<?=$item['category_id']?>&sort=<?php echo isset($sort)?$sort:0?>&filter=<?php echo isset($filterType)?$filterType:0?>">1</a>
+                                            href="index.php?url=product&category=<?=isset($category)?$category:0?>&sort=<?php echo isset($sort)?$sort:0?>&filter=<?php echo isset($filterType)?$filterType:0?>">1</a>
                                     </li>
                                     <?php
                                
@@ -290,3 +289,39 @@
 
     </main>
 </div>
+<script>
+// Lấy tất cả các phần tử có class "quantity"
+const quantityInputs = document.querySelectorAll('.quantity');
+
+// Thêm sự kiện tăng giảm số lượng cho từng phần tử
+quantityInputs.forEach(input => {
+    input.nextElementSibling.addEventListener('click', function() {
+        increaseQuantity(input);
+    });
+
+    input.previousElementSibling.addEventListener('click', function() {
+        decreaseQuantity(input);
+    });
+});
+
+// Hàm tăng số lượng
+function increaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    quantity += 1;
+    updateQuantity(input, quantity);
+}
+
+// Hàm giảm số lượng, đảm bảo số lượng không âm
+function decreaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    if (quantity > 1) {
+        quantity -= 1;
+        updateQuantity(input, quantity);
+    }
+}
+
+// Hàm cập nhật số lượng vào thẻ input
+function updateQuantity(input, quantity) {
+    input.value = quantity;
+}
+</script>

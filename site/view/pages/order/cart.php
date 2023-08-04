@@ -1,7 +1,11 @@
 <!-- MAIN CONTENT -->
-<div class="main-content container my-5">
 
+<div class="main-content container my-5 ">
+    <a href="/du-an-1-nhom7/index.php"
+        class="btn text-decoration-none border border-2 border-danger text-danger my-4 item__hover-cate rounded-2">Tiếp
+        tục mua sắm</a>
     <div class="cart-products  row gap-3 align-items-center">
+
         <!-- item -->
         <form action="index.php?url=pay" method="post">
             <?php 
@@ -45,9 +49,9 @@
                                 <button type="button" class="border-info rounded-2">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-                                <input class="quantityPagePro border-secondary mx-2 rounded-2 p-1 ps-2"
-                                    style="width: 30px;" type="text" id="quantity-<?=$index?>"
-                                    value="<?=$product['quantity']?>" name="quantity[<?=$index?>]">
+                                <input class="quantity border-secondary mx-2 rounded-2 p-1 ps-2" style="width: 30px;"
+                                    type="text" id="quantity-<?=$index?>" value="<?=$product['quantity']?>"
+                                    name="quantity[<?=$index?>]">
                                 <button type="button" class="border-danger rounded-2">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
@@ -72,7 +76,7 @@
 
             <?php }} ?>
             <!-- nút thanh toán và tổng tiền -->
-            <div class="cart-total row col-3  border-top-0 border-end-0 border-bottom-0 border">
+            <div class="cart-total row col-3 ms-1  border-top-0 border-end-0 border-bottom-0 border">
                 <div class="">
                     <p>Tạm tính: <span class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?> <i
                                 class="text-decoration-underline"> đ</i></span></p>
@@ -80,7 +84,7 @@
                 <input
                     <?=(!isset($_SESSION['cart'])||count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?>
                     type="submit" value="Mua hàng (<?=$countQuantity?>)" name="btn-submit"
-                    class="w-50 text-light bg-danger p-2 border-0 rounded-2">
+                    class="w-50 border border-2 border-danger text-danger p-2 rounded-2 item__hover-cate">
             </div>
         </form>
 
@@ -88,3 +92,39 @@
 
 
 </div>
+<script>
+// Lấy tất cả các phần tử có class "quantity"
+const quantityInputs = document.querySelectorAll('.quantity');
+
+// Thêm sự kiện tăng giảm số lượng cho từng phần tử
+quantityInputs.forEach(input => {
+    input.nextElementSibling.addEventListener('click', function() {
+        increaseQuantity(input);
+    });
+
+    input.previousElementSibling.addEventListener('click', function() {
+        decreaseQuantity(input);
+    });
+});
+
+// Hàm tăng số lượng
+function increaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    quantity += 1;
+    updateQuantity(input, quantity);
+}
+
+// Hàm giảm số lượng, đảm bảo số lượng không âm
+function decreaseQuantity(input) {
+    let quantity = parseInt(input.value);
+    if (quantity > 1) {
+        quantity -= 1;
+        updateQuantity(input, quantity);
+    }
+}
+
+// Hàm cập nhật số lượng vào thẻ input
+function updateQuantity(input, quantity) {
+    input.value = quantity;
+}
+</script>

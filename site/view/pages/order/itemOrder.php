@@ -3,7 +3,9 @@
 require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
 require_once "../../../models/product.php";
 require_once "../../../models/size.php";
-
+require_once "../../../models/order.php";
+$id = $_GET['id'];
+$details = getOrderDetail($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,24 +25,24 @@ require_once "../../../models/size.php";
 
     <?php 
                     $totalPrice = 0;
-                    $listCart =$_SESSION['cart'];
-                    if(isset($listCart)) {
-                        foreach($listCart as $index => $product){
-                            $targetPro = getProById($product['id']);
-                            $cost = getPrice($product['id'],$product['size'])['price'];
+                    $list =$details;
+                    if(isset($list)) {
+                        foreach($list as $index => $item){
+                            $targetPro = getProById($item['product_id']);
+                            $cost = getPrice($item['product_id'],$item['size_id'])['price'];
                             $priceSale = $cost*$targetPro['sale']/100;
                             $currentPrice = $cost - $priceSale;
                             $curPriceFormat = number_format($currentPrice,0,',','.');
-                            $totalPrice = $currentPrice*$product['quantity'];
+                            $totalPrice = $currentPrice*$item['quantity'];
 
                     ?>
-    <div class="row align-items-center w-100 mt-2">
-        <div class="col-3"><img class="w-100" src="<?=$IMAGE.'/'.$product['img']?>" alt=""> <span
+    <div class="row align-items-center w-100 mt-4">
+        <div class="col-3"><img class="w-100" src="<?=$IMAGE.'/'.$item['image_url']?>" alt=""> <span
                 class="position-relative text-light px-2 border border-danger rounded-circle bg-danger"
-                style="bottom: 100px;"><?=$product['quantity']?></span></div>
+                style="bottom: 100px;"><?=$item['quantity']?></span></div>
         <div class="col border-2 border rounded-2 shadow ">
             <span class="fs-5 fw-medium">
-                <?=$product['name']?>
+                <?=$item['name']?>
             </span>
             <div class="d-flex gap-2 align-items-center">
                 <span class="fs-6 text-danger fw-bold ">
@@ -50,7 +52,7 @@ require_once "../../../models/size.php";
                     <?=$cost?><span class="text-decoration-underline fw-normal fa-italic">đ</span>
                 </span>
                 <span class="fs-6 fw-bold text-danger"><span class=" text-dark">size:
-                    </span><?=getSizeName($product['size'])['name']?></span>
+                    </span><?=getSizeName($item['size_id'])['name']?></span>
             </div>
 
         </div>

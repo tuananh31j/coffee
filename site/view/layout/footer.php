@@ -68,41 +68,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script>
-// Lấy tất cả các phần tử có class "quantity"
-const quantityInputs = document.querySelectorAll('.quantityPagePro');
-
-// Thêm sự kiện tăng giảm số lượng cho từng phần tử
-quantityInputs.forEach(input => {
-    input.nextElementSibling.addEventListener('click', function() {
-        increaseQuantity(input);
-    });
-
-    input.previousElementSibling.addEventListener('click', function() {
-        decreaseQuantity(input);
-    });
-});
-
-// Hàm tăng số lượng
-function increaseQuantity(input) {
-    let quantity = parseInt(input.value);
-    quantity += 1;
-    updateQuantity(input, quantity);
-}
-
-// Hàm giảm số lượng, đảm bảo số lượng không âm
-function decreaseQuantity(input) {
-    let quantity = parseInt(input.value);
-    if (quantity > 1) {
-        quantity -= 1;
-        updateQuantity(input, quantity);
-    }
-}
-
-// Hàm cập nhật số lượng vào thẻ input
-function updateQuantity(input, quantity) {
-    input.value = quantity;
-}
-
 let allProSale = document.querySelectorAll(".proSaleItem");
 let btnMoreSale = document.querySelector(".more-btn-sale");
 let btnHideSale = document.querySelector(".hide-btn-sale");
@@ -136,5 +101,29 @@ var splide = new Splide('.splide', {
 });
 
 splide.mount();
+
+
+
+// hàm thông báo xác nhận xóa
+function confirmDelete(link) {
+
+    swal({
+            title: "Bạn có chắc là muốn xóa không?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Xóa thành công!", {
+                    icon: "success",
+                });
+                swal("Xóa thành công!!");
+                window.location.href = "index.php?url=" + link
+            } else {
+
+            }
+        });
+}
   </script>
   </body>

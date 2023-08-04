@@ -1,8 +1,8 @@
 <?php
-//danh sách tài khoản
-function getListCustomerBy($kw, $fil) {
+//danh sách tài khoản phân trang
+function getListCustomerBy($kw, $fil,$offset) {
     $keyword = 1;
-    $filter = '';
+    $filter = "order by customer.name desc";
 
     if ($fil == "az" && $fil != 0) {
         $filter = "order by customer.name asc";
@@ -17,7 +17,30 @@ function getListCustomerBy($kw, $fil) {
         $filter = "order by customer.customer_id asc";
     }
     if ($kw != 0 && $kw != '') {
-        $keyword = "customer.name like '%$kw%'";
+        $keyword = "customer.name like '%$kw%' or customer.name like '%$kw' or customer.name like '$kw%'";
+    }
+    $sql = "select * from customer where $keyword and status = 1 $filter limit 10 offset $offset";
+    return pdo_query($sql);
+}
+// toàn bộ toàn khoản
+function getAllCustomerBy($kw, $fil) {
+    $keyword = 1;
+    $filter = "order by customer.name desc";
+
+    if ($fil == "az" && $fil != 0) {
+        $filter = "order by customer.name asc";
+    }
+    if ($fil == "za" && $fil != 0) {
+        $filter = "order by customer.name desc";
+    }
+    if ($fil == "new" && $fil != 0) {
+        $filter = "order by customer.customer_id desc";
+    }
+    if ($fil == "old" && $fil != 0) {
+        $filter = "order by customer.customer_id asc";
+    }
+    if ($kw != 0 && $kw != '') {
+        $keyword = "customer.name like '%$kw%' or customer.name like '%$kw' or customer.name like '$kw%'";
     }
     $sql = "select * from customer where $keyword and status = 1 $filter";
     return pdo_query($sql);

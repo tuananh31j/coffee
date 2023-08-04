@@ -42,7 +42,7 @@ if(isset($_POST['btn-add'])){
 </head>
 
 <body>
-   
+
     <div class="position-fixed bg-light rounded-2 w-100" style="top: 5px;">
         <form class="d-flex gap-2 align-items-center" action="<?=$_SERVER['PHP_SELF'].'?id='.$id?>" method="POST">
             <input type="text" value="<?=isset($id)?$id:''?>" hidden name="id">
@@ -79,7 +79,7 @@ if(isset($_POST['btn-add'])){
                 <img class="rounded-circle object-fit-cover" style="width:50px; height: 50px;"
                     src="<?=$IMAGE.'/'.$item['imgCus'] ?>" alt="">
                 <div>
-                <span><span class="fw-bold"><?php echo $item['nameCus'] ?>: </span><span
+                    <span><span class="fw-bold"><?php echo $item['nameCus'] ?>: </span><span
                             class=""><?=$item['content']?></span></span><br>
 
                     <i class="text-secondray"

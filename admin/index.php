@@ -10,7 +10,7 @@ require_once "../admin/models/size.php";
 require_once "../admin/models/category.php";
 require_once "../admin/models/contact.php";
 require_once "../admin/models/comment.php";
-
+require_once "../admin/models/order.php";
 
 if (!isset($_SESSION['user'])) {
     header("location: $ROOT_URL/notFound.php");
@@ -27,28 +27,59 @@ if(isset($_GET['url'])) {
         
         
     //ORDER
-        //danh sách đơn hàng
     case 'order':
-        # code...
-        break;
+       
+        if(isset($_GET['act'])) {
+            $act = $_GET['act'];
+            if($act == 'list') {
+                $fil = '';
+                $sort = "new";
+                $kw = 0;
+                $offset = 0;
+                //phân trang
+                if(isset($_GET['pagenum'])) {
+                    $page = $_GET['pagenum'];
+                    $offset = ($page - 1)* 8;
+                }
+                // tìm kiếm
+                if(isset($_POST['btn-search'])) {
+                    if($_POST['keyword'] != ''){
+                        $kw = $_POST['keyword'];
+                    }else{
+                        $errKw = "Chưa nhập từ khóa!";
+                    }
+                }
+                // sắp sếp
+                if(isset($_GET['filter'])) {
+                    $fil = $_GET['filter'];
+                }
+                // lọc
+                if(isset($_GET['sort'])) {
+                    $sort = $_GET['sort'];
+                }
+                $all = getAllOrder($fil, $sort,$kw);
+                $listOrder =  getListOrder($fil, $sort,$kw,$offset);
+                $update_at = date("Y-m-d");
+                        for($i = 0; $i < sizeof($listOrder); $i++) {
+                            if(isset($_POST['btn-update-'.$i]) && $_POST['btn-update-'.$i] != '' && $_POST['btn-update-'.$i]) {
+                                if(isset($_POST['status-'.$i]) && $_POST['status-'.$i] != ''){
+                                    $status = $_POST['status-'.$i];
+                                    $id = $_POST['id-'.$i];
+                                    updateOrderStatus($id,$status,$update_at);
+                                    $listOrder =  getListOrder($fil, $sort,$kw,$offset);
+                                }else{
+                                    $err[$i] = "chưa chọn trạng thái!";;
+                                }
+                            }
+                        }
 
-        //chi tiết đơn hàng
-    case 'order-detail':
-        # code...
-        break;
 
-        //thêm/chỉnh sửa đơn hàng
-    case 'order-edit':
-        # code...
-        break;
 
-        //cập nhật trạng thái đơn hàng
-    case 'order-update-status':
-        # code...
+                require_once "./view/pages/order/list.php";
+            }
+        }
         break;
-        
-        
-        
+           
     //CATEGORY  
     case 'category':
         if(isset($_GET['act'])) {
@@ -129,6 +160,13 @@ if(isset($_GET['url'])) {
             if($_GET['act'] == 'list') {
                 $kw = '';
                 $filter = '';
+                $offset = 0;
+                // phân trang
+                if(isset($_GET['pagenum'])) {
+                    $page = $_GET['pagenum'];
+                    $offset = ($page -1) *8;
+                }
+                // tìm kiếm
                 if(isset($_POST['btn-search'])) {
                     if($_POST['keyWord'] != ''){
                         $kw = $_POST['keyWord'];
@@ -137,10 +175,12 @@ if(isset($_GET['url'])) {
                 }
 
                 }
+                // lock
                 if(isset($_GET['filter'])){
                     $filter = $_GET['filter'];
                 }
-                $products = getListPro($kw,$filter);
+                $all = getAllPro($kw, $filter);
+                $products = getListPro($kw,$filter,$offset);
                 require_once "../admin/view/pages/product/list.php";
             }
             // thêm sản phẩm
@@ -249,7 +289,7 @@ if(isset($_GET['url'])) {
                     }
                     // sale
                     if(isset($_POST['sale']) ) {
-                        if($_POST['sale'] > 0 && $_POST['sale'] <= 100 || $_POST['sale'] == ''){
+                        if($_POST['sale'] >= 0 && $_POST['sale'] <= 100 || $_POST['sale'] == ''){
                             $sale = $_POST['sale'];
                         }else{
                             $err['sale'] = "Giá trị phải >0 và <100!";
@@ -268,7 +308,7 @@ if(isset($_GET['url'])) {
                             $err['img'] = "File gửi lên không phải là file ảnh!";
                         }
                     }else{
-                        $cur = getProById($id);
+                        $cur = getProById($_POST['id']);
                         $img = $cur['image_url'];
                     }
                     //category
@@ -327,6 +367,12 @@ if(isset($_GET['url'])) {
             if($act == 'list') {
                 $kw = 0;
                 $fil = 0;
+                $offset = 0;
+                // phân trang
+                if(isset($_GET['pagenum'])) {
+                    $page = $_GET['pagenum'];
+                    $offset = ($page - 1)*10;
+                }
                 //search
                 if(isset($_POST['btn-search'])){
                     if($_POST['keyword'] != ""){
@@ -339,7 +385,8 @@ if(isset($_GET['url'])) {
                 if(isset($_GET['filter'])) {
                     $fil = $_GET['filter'];
                 }
-                $customers = getListCustomerBy($kw,$fil);
+                $all = getAllCustomerBy($kw, $fil);
+                $customers = getListCustomerBy($kw,$fil,$offset);
                 require_once "./view/pages/customer/list.php";
             }
             // thêm mới khách hàng
@@ -472,7 +519,7 @@ if(isset($_GET['url'])) {
             if($act == 'list') {
                 $kw = 0;
                 $fil = 0;
-
+                $offset = 0;
                 //search
                 if(isset($_POST['btn-search'])){
                     if($_POST['keyword'] != ""){
@@ -485,7 +532,13 @@ if(isset($_GET['url'])) {
                 if(isset($_GET['filter'])) {
                     $fil = $_GET['filter'];
                 }
-                $comments = getListCMT($kw, $fil);
+                // phân trang
+                if(isset($_GET['pagenum'])){
+                    $page = $_GET['pagenum'];
+                    $offset = ($page - 1) * 10;
+                }
+                $all =  getAllCMT($kw, $fil);
+                $comments = getListCMT($kw, $fil, $offset);
                 require_once "./view/pages/comment/list.php";
             }
             // chi tiết cmt
@@ -511,6 +564,11 @@ if(isset($_GET['url'])) {
         $filter = 0;
         $sort = "new";
         $kw = 0;
+        $offset = 0;
+        if(isset($_GET['pagenum'])) {
+            $page = $_GET['pagenum'];
+            $offset = ($page - 1)*8;
+        }
         if(isset($_POST['btn-search'])) {
             if($_POST['keyword'] != ''){
                 $kw = $_POST['keyword'];
@@ -524,22 +582,23 @@ if(isset($_GET['url'])) {
         if(isset($_GET['sort'])) {
             $sort = $_GET['sort'];
         }
-        $listContact =  getListContact($filter, $sort,$kw);
+        $all = getAllContact($filter, $sort,$kw);
+        $listContact =  getListContact($filter, $sort,$kw,$offset);
         $update_at = date("Y-m-d");
                 for($i = 0; $i < sizeof($listContact); $i++) {
                     if(isset($_POST['btn-update-'.$i]) && $_POST['btn-update-'.$i] != '' && $_POST['btn-update-'.$i]) {
-                        if(isset($_POST['status-'.$i])){
+                        if(isset($_POST['status-'.$i]) && $_POST['status-'.$i]){
                             $status = $_POST['status-'.$i];
                             $id = $_POST['id-'.$i];
                             updateStatus($id,$status,$update_at);
-                            $listContact =  getListContact($filter, $sort,$kw);
+                            $listContact =  getListContact($filter, $sort,$kw,$offset);
                         }else{
-                            $err = "chưa chọn trạng thái!";;
+                            $err[$i] = "chưa chọn trạng thái!";;
                         }
                     }
                 }
-        // xóa sản phẩm
-        
+
+        // xóa thư
         if(isset($_GET['act']) && $_GET['act'] == 'delete') {
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
