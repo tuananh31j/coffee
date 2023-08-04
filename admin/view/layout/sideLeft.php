@@ -72,6 +72,12 @@
                                     <i class="fa-solid fa-mug-saucer"></i> Sản phẩm
                                 </li>
                             </a>
+                            <!-- cửa hàng -->
+                            <a class="text-black text-decoration-none item__hover" href="index.php?url=shop&act=list">
+                                <li class="mt-3">
+                                    <i class="fa-solid fa-shop"></i> Shop
+                                </li>
+                            </a>
                             <!-- khách hàng -->
                             <a class="text-black text-decoration-none item__hover"
                                 href="index.php?url=customer&act=list">

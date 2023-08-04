@@ -57,10 +57,9 @@
                      </tr>
                  </thead>
                  <tbody>
-                     <td><?=$key + 1?></td> <?php foreach($customers as $key => $item){ ?>
+                     <?php foreach($customers as $key => $item){ ?>
                      <tr>
-
-
+                         <td><?=$key + 1?></td>
                          <td style="width: 60px;"><img class="w-100" src="<?=$IMAGE.'/'.$item['image_url']?>" alt="">
                          </td>
                          <td><?=$item['name']?></td>
@@ -83,8 +82,8 @@
                          <td><?=($item['role']== 0)?'<span class="text-success">User</span>':'<span class="text-danger">Admin</span>'?>
                          </td>
                          <td>
-                             <button onclick="confirmDelete('customer&act=delete&id=<?=$item['customer_id']?>')"
-                                 class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button>
+                             <!-- <button onclick="confirmDelete('customer&act=delete&id=<?=$item['customer_id']?>')"
+                                 class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button> -->
                              <a href="index.php?url=customer&act=update&id=<?=$item['customer_id']?>"
                                  class="bg-info text-light p-1 rounded-2 text-decoration-none">Sửa</a>
                          </td>

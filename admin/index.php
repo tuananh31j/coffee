@@ -11,6 +11,7 @@ require_once "../admin/models/category.php";
 require_once "../admin/models/contact.php";
 require_once "../admin/models/comment.php";
 require_once "../admin/models/order.php";
+require_once "../admin/models/addressShop.php";
 
 if (!isset($_SESSION['user'])) {
     header("location: $ROOT_URL/notFound.php");
@@ -102,9 +103,6 @@ if(isset($_GET['url'])) {
                     $fil = $_GET['filter'];
                 }
                 $categorys = getListCategoryBy($kw,$fil);
-                    
-                
-                
                 require_once "./view/pages/category/list.php";
             }
             // thêm mới danh mục
@@ -610,6 +608,90 @@ if(isset($_GET['url'])) {
             
         
         require_once "./view/pages/contact/list.php";
+        break;
+    # SHOP
+    case 'shop':
+        if(isset($_GET['act'])){
+            $act = $_GET['act'];
+        if($act == 'list') {
+            $sort = "new";
+            $kw = 0;
+            $offset = 0;
+            //phân trang
+            if(isset($_GET['pagenum'])) {
+                $page = $_GET['pagenum'];
+                $offset = ($page - 1)* 8;
+            }
+            // tìm kiếm
+            if(isset($_POST['btn-search'])) {
+                if($_POST['keyword'] != ''){
+                    $kw = $_POST['keyword'];
+                }else{
+                    $errKw = "Chưa nhập từ khóa!";
+                }
+            }
+            // lọc
+            if(isset($_GET['sort'])) {
+                $sort = $_GET['sort'];
+            }
+            $all = getAllShops($sort,$kw);
+            $list = getShops($sort,$kw,$offset);
+            $update_at = date("Y-m-d");
+
+        require_once "./view/pages/shop/list.php";
+
+
+        }
+        }
+        // thêm mới danh mục
+        if($act == 'add') {
+            $err = [];
+            if(isset($_POST['btn-add'])) {
+                if($_POST['address'] != '') {
+                    $address = $_POST['address'];
+                }else{
+                    $err['address'] = "Chưa nhập địa chỉ!";
+                }
+                if($_POST['phone'] != '') {
+                    $phone = $_POST['phone'];
+                }else{
+                    $err['phone'] = "Chưa nhập số điện thoại!";
+                }
+                if($_POST['link'] != '') {
+                    $link = $_POST['link'];
+                }else{
+                    $err['link'] = "Chưa có link!";
+                }
+                if(count($err) == 0){
+                    addShop($address,$phone,$link);
+                    $noti = "Thêm thành công!";
+                }
+            }
+            include_once "./view/pages/shop/add.php";
+        }
+        // sửa danh mục
+        if($act == 'update') {
+            $errName = '';
+            if(isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $target = getCategoryById($id);
+            }
+            if(isset($_POST['btn-update'])) {
+                $name = $_POST['name'];
+                if($_POST['name'] != '') {
+                    updateCate($name, $_POST['id']);
+                    $noti="Cập nhật thành công!";
+                }else{
+                    $errName = "Chưa nhập tên danh mục!";
+                }
+            }
+            
+            include_once "./view/pages/category/update.php";
+        }
+
+        // add
+        
+        
         break;
     // ĐĂNG XUẤT
     case 'logout':

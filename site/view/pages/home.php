@@ -92,7 +92,7 @@
                                 data-bs-target="#exampleModal-<?php echo $index?>">Đặt
                                 ngay</button>
                             <!-- form thêm vào giỏ hàng -->
-                            <form class="" action="index.php?url=pay" method="post">
+                            <form class="" action="index.php?url=proDetails" method="post">
                                 <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

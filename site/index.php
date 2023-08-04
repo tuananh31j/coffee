@@ -586,6 +586,11 @@ if(isset($_GET['url'])) {
 
         require_once "view/pages/findOrder.php";
         break;
+    # SHOP
+    case "shop":
+        $list = getShops();
+        require_once "view/pages/shop.php";
+        break;
 
     # TRANG CHỦ
     default:

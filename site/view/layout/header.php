@@ -137,7 +137,7 @@
                     <div class="menu ">
 
                         <div><a class="item__hover " href="index.php">TRANG CHỦ</a></div>
-                        <div><a class="item__hover " href="">CỬA HÀNG</a></div>
+                        <div><a class="item__hover " href="index.php?url=shop">CỬA HÀNG</a></div>
                         <div class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle border-0 item__hover-cate"
                                 style="background: none;" href="#" role="button" data-bs-toggle="dropdown"
