@@ -92,7 +92,7 @@
                                 data-bs-target="#exampleModal-<?php echo $index?>">Đặt
                                 ngay</button>
                             <!-- form thêm vào giỏ hàng -->
-                            <form class="" action="index.php?url=product" method="post">
+                            <form class="" action="index.php?url=pay" method="post">
                                 <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -188,10 +188,8 @@
                                                 <!-- <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button> -->
 
-                                                <input type="submit" onclick="alert('Thêm thành công vào giỏ!')"
-                                                    value="Thêm vào giỏ" name="btn-addToCart"
-                                                    class="border-0 rounded-2 bg-primary text-light p-2">
-                                                <input type="submit" value="Đặt hàng"
+
+                                                <input type="submit" name="btn-add" value="Đặt hàng"
                                                     class="border-0 rounded-2 bg-danger text-light p-2">
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@
     <main>
         <div class="container ">
             <div class="row">
-                <?php require_once "../site/view/layout/menuAccount.php" ?>
+                <?php require_once "site/view/layout/menuAccount.php" ?>
                 <div class="col">
                     <div class="user-title mb-5">
                         <h2>ĐƠN HÀNG CỦA TÔI</h2>
@@ -45,7 +45,7 @@
                                     </td>
                                     <?php }elseif($item['status'] == 3){?>
                                     <td class="text-success"><i class="fa-solid fa-circle"></i> Giao thành công!</td>
-                                    <td><a href="index.php?url=account&act=proDetails&id=<?=$item['product_id']?>"><button
+                                    <td><a href="index.php?url=account&act=proDetails&id=<?=$item['order_id']?>"><button
                                                 class="bg-success text-light p-1 border-0 rounded-2 w-100">Đánh
                                                 giá</button></a>
                                     </td>

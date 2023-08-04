@@ -3,7 +3,7 @@
      <main>
          <div class="container ">
              <div class="row">
-                 <?php require_once "../site/view/layout/menuAccount.php" ?>
+                 <?php require_once "site/view/layout/menuAccount.php" ?>
                  <div class="col">
                      <div class="user-title mb-5">
                          <h2>ĐỔI MẬT KHẨU</h2>

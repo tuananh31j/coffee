@@ -11,7 +11,9 @@
             </tr>
         </thead>
         <tbody>
-
+            <?php if($myOrder == []){
+                echo "<p class='text-center text-danger fs-3 fw-bold'>Chưa có đơn hàng nào!</p>";
+            }else{?>
             <tr>
                 <td>#<?=$myOrder['order_id']?></td>
                 <td><?=$myOrder['create_at']?></td>
@@ -55,7 +57,7 @@
                         đơn
                         hàng</a></td>
             </tr>
-
+            <?php } ?>
 
         </tbody>
     </table>
