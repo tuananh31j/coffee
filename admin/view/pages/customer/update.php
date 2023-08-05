@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class="col">
     <div class="container">
-        <h3 class="text-center my-5">Chỉnh sửa thông tin Khách hàng</h3>
+        <h3 class="text-center my-5">CHỈNH SỬA THÔNG TIN</h3>
         <img class="object-fit-cover border border-2 border-danger rounded-2 w-25 my-4 "
             src="<?=$IMAGE.'/'.$target['image_url']?>" alt="">
         <p class="text-success"><?=isset($noti)?$noti:''?></p>

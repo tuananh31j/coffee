@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <?php if($myOrder == []){
-                echo "<p class='text-center text-danger fs-3 fw-bold'>Chưa có đơn hàng nào!</p>";
+                echo "<p class='text-center text-danger fs-3 fw-bold'>Không tìm thấy(kiểm tra lại mã đơn)!</p>";
             }else{?>
             <tr>
                 <td>#<?=$myOrder['order_id']?></td>

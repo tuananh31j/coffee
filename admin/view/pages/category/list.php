@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5">Danh mục</h3>
+        <h3 class="text-center my-5">DANH MỤC</h3>
         <div class="d-flex ">
             <!-- thêm danh mục -->
 

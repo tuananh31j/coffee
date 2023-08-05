@@ -1,7 +1,7 @@
 <!-- content -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center">Thêm sản phẩm</h3>
+        <h3 class="text-center">THÊM SẢN PHẨM</h3>
 
         <div class="">
             <!-- thêm sản phẩm -->

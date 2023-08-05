@@ -84,7 +84,7 @@
                 <input
                     <?=(!isset($_SESSION['cart'])||count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?>
                     type="submit" value="Mua hàng (<?=$countQuantity?>)" name="btn-submit"
-                    class="w-50 border border-2 border-danger text-danger p-2 rounded-2 item__hover-cate">
+                    class="w-50 border border-2 bg-light border-danger text-danger p-2 rounded-2 item__hover-cate">
             </div>
         </form>
 

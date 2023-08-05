@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class="col">
     <div class="container">
-        <h3 class="text-center my-5">Chỉnh sửa địa chỉ</h3>
+        <h3 class="text-center my-5">CHỈNH SỬA ĐỊA CHỈ</h3>
         <div class="d-flex">
             <!--  địa chỉ -->
 

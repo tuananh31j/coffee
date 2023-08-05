@@ -48,17 +48,18 @@
         <!-- sản phẩm giảm giá-->
         <div class="" style="display: flex; justify-content: center; margin-top: 10px">
             <button class="product-sale-title">Đang giảm giá</button>
+
         </div>
         <div class="productrelate">
             <div class="row row-cols-4">
                 <?php
-                        $index = 0;
+                       $index = 0;
                         foreach($listProSale as $item) {
                        
                         $priceNew1 = $item['price'] - ($item['price']*($item['sale']/100));
                         $custumPriceOld1 = number_format($item['price'], 0, ",", ".");
                         $custumPriceNew1 = number_format($priceNew1, 0, ",", ".");
-                        $index++;
+                        $index += 2;
                         ?>
                 <!-- item child -->
                 <div class="col mb-4 proSaleItem text-center">
@@ -92,7 +93,7 @@
                                 data-bs-target="#exampleModal-<?php echo $index?>">Đặt
                                 ngay</button>
                             <!-- form thêm vào giỏ hàng -->
-                            <form class="" action="index.php?url=proDetails" method="post">
+                            <form class="" action="index.php?url=now" method="post">
                                 <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -228,16 +229,17 @@
 
 
 
-
+        <!-- sản phẩm mới -->
         <div class="product-sale my-5">
             <div class="" style="display: flex; justify-content: center; margin-top: 10px">
                 <button class="product-sale-title">Sản phẩm mới</button>
             </div>
             <div class="row row-cols-5">
-                <?php foreach($listProNew as $index => $item){
+                <?php $key = 1; foreach($listProNew as $item){
                     $priceNew = $item['price'] - ($item['price']*($item['sale']/100));
                     $custumPriceOld = number_format($item['price'], 0, ",", ".");
                     $custumPriceNew = number_format($priceNew, 0, ",", ".");
+                    $key += 2;
                      ?>
                 <div class="col mb-4 text-center proNewItem">
                     <div class="card h-100">
@@ -267,18 +269,18 @@
                                 <?php } ?>
                             </p>
                             <button type="button" class="btn border-danger text-danger cart-btn" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal-<?php echo $index?>">Đặt
+                                data-bs-target="#exampleModal-<?php echo $key?>">Đặt
                                 ngay</button>
 
                             <!-- form thêm vào giỏ hàng -->
-                            <form class="" action="index.php?url=product" method="post">
-                                <div class="modal fade" id="exampleModal-<?php echo $index?>" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel<?php echo $index?>" aria-hidden="true">
+                            <form class="" action="index.php?url=now" method="post">
+                                <div class="modal fade" id="exampleModal-<?php echo $key?>" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel<?php echo $key?>" aria-hidden="true">
                                     <div class=" modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <!-- tên sản phẩm -->
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel<?php echo $index?>">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel<?php echo $key?>">
                                                     <?=$item['name']?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -326,11 +328,11 @@
                                                                         <input type="radio"
                                                                             value="<?=$size['size_id']?>"
                                                                             class="btn-check" name="size"
-                                                                            id="btnradio<?=$flag.'-'.$index?>"
+                                                                            id="btnradio<?=$flag.'-'.$key?>"
                                                                             autocomplete="off"
                                                                             <?php if($flag == 1) echo 'checked'?>>
                                                                         <label class="btn btn-outline-primary"
-                                                                            for="btnradio<?=$flag.'-'.$index?>"><?=$size['name']?></label>
+                                                                            for="btnradio<?=$flag.'-'.$key?>"><?=$size['name']?></label>
                                                                         <?php } ?>
                                                                     </div>
                                                                 </div>
@@ -350,7 +352,7 @@
                                                                         <input
                                                                             class="quantity border-secondary mx-2 rounded-2 p-1 ps-2"
                                                                             style="width: 30px;" type="text"
-                                                                            id="quantity-<?=$index?>" value="1"
+                                                                            id="quantity-<?=$key?>" value="1"
                                                                             name="quantity">
                                                                         <button type="button"
                                                                             class="border-danger rounded-2">

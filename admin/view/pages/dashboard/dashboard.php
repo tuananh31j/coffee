@@ -9,7 +9,7 @@
                 ?>
 <div class=" col ">
     <div class="container ">
-        <h3 class="text-center my-5">Thống kê</h3>
+        <h3 class="text-center my-5">THỐNG KÊ</h3>
         <!-- filter -->
         <div>
             <div class="dropdown d-flex flex-row-reverse my-4">

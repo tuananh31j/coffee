@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class="col">
     <div class="container">
-        <h3 class="text-center my-5">Chỉnh sửa Danh Mục</h3>
+        <h3 class="text-center my-5">CHỈNH SỬA DANH MỤC</h3>
         <div class="d-flex">
             <a href="index.php?url=category&act=list"
                 class="text-decoration-none bg-success p-1 px-2 rounded-2 text-light m-3">Danh sách danh mục</a>

@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class="col">
     <div class="container">
-        <h3 class="text-center my-5">Thêm Khách hàng</h3>
+        <h3 class="text-center my-5">THÊM KHÁCH HÀNG</h3>
         <p class="text-success"><?=isset($noti)?$noti:''?></p>
 
         <div class="d-flex">

@@ -143,7 +143,7 @@ function getNewPro() {
     return pdo_query($sql);
 }
 function getAllByCate($id) {
-    $sql = "select * from product inner join product_detail on product_detail.product_id = product.product_id where product.category_id = ? and product_detail.size_id = 1";
+    $sql = "select * from product inner join product_detail on product_detail.product_id = product.product_id where product.category_id = ? and product_detail.size_id = 1 and product.status = 1";
     return pdo_query($sql,$id);
 }
 

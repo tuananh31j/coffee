@@ -754,9 +754,47 @@ if(isset($_GET['url'])) {
         header("location: $ROOT_URL");
         break;
 
+    # SIZE
+    case "size":
+        if(isset($_GET['act'])){
+            $act =$_GET['act'];
+            if($act == 'list') {
+                $list =getListSize();
+                require_once "view/pages/size/list.php";
+            }
+        }
+        if($act == "delete"){
+            $id = $_GET['id'];
+            deleteSize($id);
+            header("location: index.php?url=size&act=list");
+        }
+        if($act == "update"){
+            $list = getListResetSize();
+            if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            updateSize($id);
+            header("location: index.php?url=size&act=update");
+            }
+            require_once "view/pages/size/update.php";
+
+        }
+        if($act == 'add') {
+            $errName = '';
+            if(isset($_POST['btn-add'])) {
+                $name = $_POST['name'];
+                if($_POST['name'] != '') {
+                    addSize($name);
+                    $noti="Thêm mới thành công!";
+                }else{
+                    $errName = "Chưa nhập tên size!";
+                }
+            }
+            include_once "./view/pages/size/add.php";
+        }
+    break;
     // THỐNG KÊ
     default:
-        require_once "./view/dashboard/dashboard.php";
+        require_once "./view/pages/dashboard/dashboard.php";
         break;
 }
 // THÔNG KÊ

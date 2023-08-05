@@ -1,7 +1,7 @@
 <!-- content -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center">Chỉnh sửa sản phẩm</h3>
+        <h3 class="text-center">CHỈNH SỬA SẢN PHẨM</h3>
         <img class="object-fit-cover border border-2 border-danger rounded-2 w-25 my-4 "
             src="<?=$IMAGE.'/'.$target['image_url']?>" alt="">
         <div class="">

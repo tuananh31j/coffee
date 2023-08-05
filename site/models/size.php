@@ -1,7 +1,7 @@
 <?php
 // lấy dnah sách size
 function getListSize() {
-    $sql = "select * from size";
+    $sql = "select * from size where status = 1";
     return pdo_query($sql);
 }
 function getSizeName($id) {

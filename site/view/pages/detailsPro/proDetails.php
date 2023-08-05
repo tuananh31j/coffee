@@ -3,6 +3,7 @@
     <?php
         $newPrice = number_format($target['price']-($target['price']*$target['sale']/100),0,',','.');
         ?>
+   
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="" style="height: 640px;">
@@ -31,21 +32,25 @@
 
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <?php 
+                            $priceByCur = 0;
                             foreach ($listSize as $key => $size) {
+                            if(getPrice($idPro,$size['size_id']) == []){
+                                continue;
+                            }
                             $idSize = $size['size_id'];
                             $priceBysize = getPrice($idPro,$idSize)['price'];
                             $priceBysizeNew = $priceBysize - $priceBysize*$target['sale']/100;
                             $salePrice = number_format($priceBysize- $priceBysizeNew,0,',','.');
                             $result = number_format($priceBysizeNew,0,',','.');
-                            if($key == sizeof($listSize)-1) {
                             $priceByCur = number_format($priceBysize,0,',','.');
 
-                            }
+                            
                             ?>
                             <div class="mx-2">
                                 <input type="radio" class="btn-check" value="<?=$size['size_id']?>" name="size"
                                     id="btnradio<?=$key?>" autocomplete="off" <?=($key == 0)?'checked':''?>>
-                                <label class="btn btn-outline-secondary price__check" data-price="<?=$priceBysizeNew?>"
+                                <label class="btn btn-outline-secondary price__check"
+                                    data-price="<?=isset($priceBysizeNew)?$priceBysizeNew:''?>"
                                     for="btnradio<?=$key?>"><?=$size['name']?></label>
                             </div>
 

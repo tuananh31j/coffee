@@ -8,7 +8,7 @@
 }
 
 .item__hover:hover {
-    background-color: #503629;
+    background-color: #503629 !important;
     color: white;
     padding: 2px;
     border: 1px solid #503629;

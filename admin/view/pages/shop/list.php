@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5">Danh sách địa chỉ sửa hàng</h3>
+        <h3 class="text-center my-5">CỬA HÀNG</h3>
         <div class="d-flex ">
             <!-- thêm danh mục -->
 

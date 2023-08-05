@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5">Bình luận</h3>
+        <h3 class="text-center my-5">BÌNH LUẬN</h3>
         <div class="d-flex ">
             <!-- fillter -->
             <div class="dropdown m-3">
