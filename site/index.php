@@ -176,7 +176,40 @@ if(isset($_GET['url'])) {
         }
         require_once "view/pages/account/signUp.php";
         break;
-
+    # QUÊN MẬT KHẨU
+    case "forgotPass":
+        $err = [];
+        if(isset($_POST['btn-submit']) && $_POST['btn-submit'] == true) {
+        // handle 
+            
+            // số điện thoại
+            // phone
+            if($_POST['phone'] != '') {
+                $phone = $_POST['phone'];
+               
+            }else{
+                $err['phone'] = "Chưa nhập số điện thoại!";
+            }
+            
+            // email
+            if($_POST['email'] != '') {
+                $email = $_POST['email'];
+            }else{
+                $err['email'] = "Chưa nhập email!";
+            }
+            // ảnh
+            // kiểm tra và đẩy lên hệ thống
+            if(count($err) === 0) {
+                $result =  getPass($phone, $email);
+                if(is_array($result)){
+                $noti = "Mật khẩu của bạn là: <span class='text-danger' >".$result['pass']."</span>";
+                }else{
+                    $noti = "Thông tin không hợp lệ!";
+                }
+            }
+        }
+        require_once "view/pages/account/forgotPass.php";
+        break;
     # TRANG TÀI KHOẢN
     case "account":
         $err = [];

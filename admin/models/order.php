@@ -43,7 +43,8 @@ function getAllOrder($fil, $sort,$kw) {
 }
 // chỉ tiết đơn hàng
 function getListDetails($id) {
-    $sql = "select order_detail.*, product.name as namePro from order_detail ";
+    $sql = "select order_detail.*, product.name as namePro, product.image_url as img from order_detail ";
+    $sql .= "inner join size on size.size_id = order_detail.size_id ";
     $sql .= "inner join product on product.product_id = order_detail.product_id ";
     $sql .= "where order_id = ?"; 
     return pdo_query($sql ,$id);

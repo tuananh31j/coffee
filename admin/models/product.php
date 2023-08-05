@@ -1,4 +1,9 @@
 <?php
+// lấy giá tiền theo mã sản phẩm và mã size
+function getPrice($pro_id,$size_id){
+    $sql = "select * from product_detail where product_id = $pro_id and size_id = $size_id";
+    return pdo_query_one($sql);
+}
 //danh sách sản phẩm phân trang
 function getListPro($kw, $filter,$offset) {
     $word = 1;

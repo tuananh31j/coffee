@@ -30,7 +30,8 @@
                             <li>
                                 <div class="d-flex gap-2 align-content-center">
                                     <div class=" h-25" style="width: 42px;">
-                                        <img class="w-100 rounded-circle" style="height: 42px; object-fit: cover;"
+                                        <img class="w-100 rounded-circle border border-4 border-light"
+                                            style="height: 42px; object-fit: cover;"
                                             src="<?=$IMAGE.'/'.$_SESSION['user']['image_url']?>" alt="">
                                     </div>
                                     <div class="">
@@ -110,7 +111,7 @@
                         </ul>
                     </nav>
                     <a class="position-relative text-black fw-bold text-decoration-none item__hover"
-                        style="top: 90px; left: 200px;" href="index.php?url=logout"><i
+                        style="top: 10px; left: 200px;" href="index.php?url=logout"><i
                             class="fa-solid fa-right-from-bracket"></i>
                         Đăng xuất</a>
                 </div>

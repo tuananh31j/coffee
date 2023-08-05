@@ -70,24 +70,18 @@
         </div>
 
         <div class="row align-items-center">
-            <!-- thông kê số lượng sản phẩm theo danh mục -->
+            <!-- top 5 mặt hàng mua nhiều nhất -->
             <div class="col">
-
                 <div>
-
                     <canvas id="top5"></canvas>
                 </div>
             </div>
-            <!-- tình trạng đơn hàng -->
+            <!-- đơn hàng theo danh mục -->
             <div class="col-4 ">
-
                 <div>
                     <canvas id="category"></canvas>
                 </div>
-
             </div>
-
-
         </div>
 
         <!-- đơn hàng gần đây -->

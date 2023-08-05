@@ -16,6 +16,11 @@ function handleSigup( $name,$password, $phone, $email,$image){
    VALUES ('$name','$phone','$email','$image','$password')";
    pdo_execute($sql);
 }
+// lấy lại mật khẩu
+function getPass($phone, $email){
+    $sql = "select * from customer where phone = ? and email = ?";
+    return pdo_query_one($sql,$phone,$email);
+}
 
 // cập nhật thông tin tài khoản
 function updateInfo($name,$update_at,$address,$phone,$email,$image,$id){

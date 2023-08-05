@@ -59,7 +59,8 @@
                 <div class="col">
                     <p class=" text-secondary" style="font-size: 12px;">Thời gian: <span><?=$item['create_at']?></span>
                     </p>
-                    <p>Mã đơn: #<?=$item['order_id']?> (<a href="">Chi tiết </a>)</p>
+                    <p>Mã đơn: #<?=$item['order_id']?> (<a
+                            href="index.php?url=order&act=update&id=<?=$item['order_id']?>">Chi tiết </a>)</p>
                     <!-- sản phẩm -->
                     <p>Trạng thái: <?php 
                     if($item['status'] == 0){

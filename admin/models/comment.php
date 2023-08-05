@@ -48,10 +48,10 @@ function deleteCMT($id) {
 }
 // lấy cmt bằng id
 function getCMTID($id) {
-    $sql = "select * from comment ";
-    $sql .= "inner join customer on customer.customer_id ";
-    $sql .= "inner join product on product.product_id ";
-    $sql .= "where cmt_id = ?";
+    $sql = "select comment.*, customer.name as nameCus,customer.image_url as imgCus , customer.*, product.*, product.name as namePro from comment ";
+    $sql .= "inner join customer on customer.customer_id = comment.customer_id ";
+    $sql .= "inner join product on product.product_id = comment.product_id ";
+    $sql .= "where comment.cmt_id = ?";
     return pdo_query_one($sql,$id);
 }
 ?>

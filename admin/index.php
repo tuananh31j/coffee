@@ -20,17 +20,16 @@ if (!isset($_SESSION['user'])) {
     header("location: $ROOT_URL/notFound.php");
 }
 
-// HEADER
+# HEADER
 require_once "./view/layout/sideLeft.php";
 
-// CONTENT
+# CONTENT
 if(isset($_GET['url'])) {
     switch ($_GET['url']) {
         
         
-    //ORDER
+    # ORDER
     case 'order':
-       
         if(isset($_GET['act'])) {
             $act = $_GET['act'];
             if($act == 'list') {
@@ -79,10 +78,16 @@ if(isset($_GET['url'])) {
 
                 require_once "./view/pages/order/list.php";
             }
+            if($act == "update"){
+                $id = $_GET['id'];
+                $target = getListDetails($id);
+
+                require_once "./view/pages/order/update.php";
+            }
         }
         break;
            
-    //CATEGORY  
+    # CATEGORY  
     case 'category':
         if(isset($_GET['act'])) {
             $act = $_GET['act'];
@@ -154,7 +159,7 @@ if(isset($_GET['url'])) {
     
 
         
-    //PRODUCT
+    # PRODUCT
     case 'product':
         if(isset($_GET['act'])) {
             // danh sách sản phẩm
@@ -370,7 +375,7 @@ if(isset($_GET['url'])) {
         }
         break;
 
-    // CUSTOMER
+    # CUSTOMER
     case 'customer':
         if(isset($_GET['act'])) {
             $act = $_GET['act'];
@@ -553,7 +558,7 @@ if(isset($_GET['url'])) {
         }
         break; 
     
-    // COMMENT
+    # COMMENT
     case 'comment':
         if(isset($_GET['act'])) {
             $act = $_GET['act'];
@@ -601,7 +606,7 @@ if(isset($_GET['url'])) {
             }
         }
         break;
-    // CONTACT
+    # CONTACT
     case 'contact':
         $filter = 0;
         $sort = "new";
@@ -748,7 +753,7 @@ if(isset($_GET['url'])) {
             }
         break;
         
-    // ĐĂNG XUẤT
+    # ĐĂNG XUẤT
     case 'logout':
         require_once "../site/view/pages/account/logOut.php";
         header("location: $ROOT_URL");
@@ -792,12 +797,12 @@ if(isset($_GET['url'])) {
             include_once "./view/pages/size/add.php";
         }
     break;
-    // THỐNG KÊ
+    # THỐNG KÊ
     default:
         require_once "./view/pages/dashboard/dashboard.php";
         break;
 }
-// THÔNG KÊ
+# THÔNG KÊ
 }else{
     $date = 1;
     if(isset($_GET['date'])){

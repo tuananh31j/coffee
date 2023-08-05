@@ -28,7 +28,7 @@
                     <p class="mx-2 text-danger"><?php echo isset($errPass)?$errPass:'' ?></p>
                     <div class="abc2">
                         <a href="index.php?url=signup">Đăng Ký</a>
-                        <a href="#">Quên mật khẩu?</a>
+                        <a href="index.php?url=forgotPass">Quên mật khẩu?</a>
                     </div>
 
                     <input type="submit" name="btn-login" value="Đăng nhập">

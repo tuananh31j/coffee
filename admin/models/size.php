@@ -23,4 +23,8 @@ function addSize($name) {
     $sql = "insert into size (name) values(?)";
     pdo_execute($sql,$name);
 }
+function getSizeName($id) {
+    $sql = "select * from size where size_id = $id";
+    return pdo_query_one($sql);
+}
 ?>
