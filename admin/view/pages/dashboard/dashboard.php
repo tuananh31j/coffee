@@ -1,4 +1,12 @@
 <!-- CONTENT -->
+<?php  
+                $total = 0;
+                foreach($revenue as $item) {
+                    $total += $item['orderPrice'];
+                   
+                }
+              
+                ?>
 <div class=" col ">
     <div class="container ">
         <h3 class="text-center my-5">Thống kê</h3>
@@ -11,33 +19,50 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">30 ngày qua</a></li>
-                    <li><a class="dropdown-item" href="#">3 tháng qua</a></li>
-                    <li><a class="dropdown-item" href="#">6 tháng qua</a></li>
+                    <li><a class="dropdown-item" href="index.php?date=1">30 ngày qua</a></li>
+                    <li><a class="dropdown-item" href="index.php?date=3">3 tháng qua</a></li>
+                    <li><a class="dropdown-item" href="index.php?date=6">6 tháng qua</a></li>
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
+        <div class="row text-light fw-bold mb-5">
+            <div class="col-3">
+
                 <!-- doanh thu -->
                 <div>
 
-                    <canvas id="total-money"></canvas>
+                    <div class="col bg-secondary p-4 rounded-2 text-center ">
+                        <span>Doanh thu <br><span><?=number_format($total,0,',','.')?> <span
+                                    class="text-decoration-underline">đ</span></span></span>
+                    </div>
                 </div>
             </div>
-            <!-- lượng người dùng mới -->
-            <div class="col-4">
+            <div class="col-3">
+                <!-- tổng đơn -->
                 <div>
 
-                    <canvas id="userNew"></canvas>
+                    <div class="col bg-info p-4 rounded-2 text-center">
+                        <span>Tổng đơn <br><span><?=$countOrder?> <i class="fa-solid fa-box"></i></span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- boom hàng -->
+            <div class="col-3">
+                <div>
+
+                    <div class="col bg-danger p-4 rounded-2 text-center">
+                        <span>Hủy <br><span><?=$rejected?> <i class="fa-solid fa-box"></i></span></span>
+                    </div>
                 </div>
 
             </div>
-            <div class="col-4">
-                <!-- số lượng đơn hàng -->
+            <div class="col-3">
+                <!-- đơn thành cồng -->
                 <div>
 
-                    <canvas id="orders"></canvas>
+                    <div class="col bg-success  p-4 rounded-2 text-center">
+                        <span>Thành công <br><span><?=$resole?> <i class="fa-solid fa-box"></i></span></span>
+                    </div>
                 </div>
 
             </div>
@@ -50,28 +75,14 @@
 
                 <div>
 
-                    <canvas id="category"></canvas>
+                    <canvas id="top5"></canvas>
                 </div>
             </div>
             <!-- tình trạng đơn hàng -->
-            <div class="col-4 text-light fw-bold">
+            <div class="col-4 ">
 
-                <div class="row gap-3">
-                    <div class="col bg-info p-4 rounded-2 text-center">
-                        <span>Tổng đơn: <span>2000</span></span>
-                    </div>
-                    <div class="col bg-warning p-4 rounded-2 text-center">
-                        <span>Đang giao: <span>600</span></span>
-
-                    </div>
-                </div>
-                <div class="row gap-3 mt-3">
-                    <div class="col bg-success  p-4 rounded-2 text-center">
-                        <span>Thành công: <span>400</span></span>
-                    </div>
-                    <div class="col bg-danger p-4 rounded-2 text-center">
-                        <span>Hủy: <br><span>1000</span></span>
-                    </div>
+                <div>
+                    <canvas id="category"></canvas>
                 </div>
 
             </div>
@@ -138,113 +149,108 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-    // tổng doanh thu
-    const totalMoney = document.getElementById('total-money');
+    // Top 5 sản phẩm
+    const top5 = document.getElementById('top5');
 
-    let lineTotalMoney = new Chart(totalMoney, {
-        type: 'line',
+    let lineTop5 = new Chart(top5, {
+        type: 'bar',
         data: {
-            labels: ['', '', '', '', '', ''],
+            labels: [
+                <?php
+                $i = 0;
+                $solg = count($top5);
+                     foreach($top5 as $item){
+                        $i++;
+                        $comma = ",";
+                        if($i == $solg) {
+                            $comma = " ";
+                        }?> "<?=$item['namePro']?>"
+                <?=$comma?>
+                <?php } ?>
+            ],
             datasets: [{
-                label: 'VNĐ',
-                data: [12, 19, 3, 6, 7, 2],
-                borderWidth: 4,
-                borderColer: "#b5313a",
-                hoverBorderColor: "#000",
-                hoverBorderWidth: 6,
-                backgroundColor: "#b5313a",
-                tension: 0.5,
-            }],
-
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Doanh thu(VNĐ)'
-                },
-                legend: {
-                    display: false
-                }
-
-            }
-        }
-
-
-    });
-    // số lượng khách hàng mới
-    const userNew = document.getElementById('userNew');
-
-    let lineUserNew = new Chart(userNew, {
-        type: 'line',
-        data: {
-            labels: ['', '', '', '', '', ''],
-            datasets: [{
-                label: 'Số lượng',
-                data: [12, 19, 3, 6, 7, 2],
+                label: 'Đơn',
+                data: [<?php
+                $i = 0;
+                $solg = count($top5);
+                     foreach($top5 as $item){
+                        $i++;
+                        $comma = ",";
+                        if($i == $solg) {
+                            $comma = " ";
+                        }?> <?=$item['countOrder']?>
+                    <?=$comma?>
+                    <?php } ?>
+                ],
                 borderWidth: 4,
                 borderColer: "#777",
                 hoverBorderColor: "#000",
                 hoverBorderWidth: 6,
-                tension: 0.5,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(165, 205, 86)',
+                    'rgb(255, 205, 00)',
+                    'rgb(255, 00, 86)',
+                    'rgb(165, 42, 42)',
+                ],
             }],
+
         },
         options: {
+            indexAxis: 'y',
             plugins: {
                 title: {
                     display: true,
-                    text: 'Khách hàng mới'
+                    text: 'Top 5 sản phẩm bán chạy'
                 },
                 legend: {
-                    display: false
+                    display: false,
+                    label: {
+                        font: {
+                            size: 50
+                        }
+                    }
                 }
 
             }
         }
 
-    });
-    // lượng đơn hàng
-    const orders = document.getElementById('orders');
-
-    let lineOrders = new Chart(orders, {
-        type: 'line',
-        data: {
-            labels: ['', '', '', '', '', ''],
-            datasets: [{
-                label: 'Số lượng',
-                data: [12, 19, 3, 6, 7, 2],
-                borderWidth: 4,
-                borderColer: "#777",
-                hoverBorderColor: "#000",
-                hoverBorderWidth: 6,
-                backgroundColor: "#198754",
-                tension: 0.5,
-
-            }],
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Đơn hàng'
-                },
-                legend: {
-                    display: false
-                }
-            }
-        }
 
     });
+
     // số lượng đơn hàng theo danh mục
     const category = document.getElementById('category');
 
     let barCategory = new Chart(category, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
-            labels: ['Cà phê', 'Chè', 'Trà', 'Trà sữa', 'Sữa', 'Bột cà phê'],
+            labels: [<?php
+                $i = 0;
+                $solg = count($orderCate);
+                     foreach($orderCate as $item){
+                        $i++;
+                        $comma = ",";
+                        if($i == $solg) {
+                            $comma = " ";
+                        }?> "<?=$item['nameCate']?>"
+                <?=$comma?>
+                <?php } ?>
+            ],
             datasets: [{
                 label: 'Số lượng',
-                data: [12, 19, 3, 6, 7, 2],
+                data: [<?php
+                $i = 0;
+                $solg = count($orderCate);
+                     foreach($orderCate as $item){
+                        $i++;
+                        $comma = ",";
+                        if($i == $solg) {
+                            $comma = " ";
+                        }?> "<?=$item['countOrder']?>"
+                    <?=$comma?>
+                    <?php } ?>
+                ],
                 borderWidth: 4,
                 borderColer: "#777",
                 hoverBorderColor: "#000",
@@ -268,7 +274,7 @@
 
                 },
                 legend: {
-                    display: false
+                    display: true
                 }
             }
         }

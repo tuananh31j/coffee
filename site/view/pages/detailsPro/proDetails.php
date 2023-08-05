@@ -133,7 +133,7 @@
                             <div id="flush-collapseThree" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body w-100">
-                                    <!-- cmt -->
+                                    <!-- đánh giá -->
                                     <iframe style="height: 300px;" class="w-100"
                                         src="./site/view/pages/detailsPro/feedback.php?id=<?php echo $target['product_id']?>"
                                         frameborder="1"></iframe>

@@ -21,7 +21,7 @@
               <h2>MENU</h2>
               <ul>
                   <li><a href="index.php">TRANG CHỦ</a></li>
-                  <li><a href="">CỬA HÀNG</a></li>
+                  <li><a href="index.php?url=shop">CỬA HÀNG</a></li>
                   <li><a href="index.php?url=product">SẢN PHẨM</a></li>
                   <li><a href="index.php?url=contact">LIÊN HỆ</a></li>
                   <li><a href="index.php?url=aboutus">GIỚI THIỆU</a></li>

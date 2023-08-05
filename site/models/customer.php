@@ -32,4 +32,14 @@ function checkPass($id,$pass) {
     $sql = "select * from customer where pass = ? and customer_id = ?";
     return pdo_query_one($sql,$pass,$id);
 }
+// kiểm tra email có trên hệ thống không
+function checkEmail($email) {
+    $sql = "select * from customer where email = ?";
+    return pdo_query_one($sql,$email);
+}
+// kiểm tra sđt có trên hệ thống không
+function checkPhone($phone) {
+    $sql = "select * from customer where phone = ?";
+    return pdo_query_one($sql,$phone);
+}
 ?>

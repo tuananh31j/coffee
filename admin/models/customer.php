@@ -2,7 +2,7 @@
 //danh sách tài khoản phân trang
 function getListCustomerBy($kw, $fil,$offset) {
     $keyword = 1;
-    $filter = "order by customer.name desc";
+    $filter = "order by customer.customer_id desc";
 
     if ($fil == "az" && $fil != 0) {
         $filter = "order by customer.name asc";
@@ -65,5 +65,15 @@ function updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$id) {
 function getCusById($id) {
     $sql = "select * from customer where customer_id = ? and status = 1";
     return pdo_query_one($sql, $id);
+}
+// kiểm tra email có trên hệ thống không
+function checkEmail($email) {
+    $sql = "select * from customer where email = ?";
+    return pdo_query_one($sql,$email);
+}
+// kiểm tra sđt có trên hệ thống không
+function checkPhone($phone) {
+    $sql = "select * from customer where phone = ?";
+    return pdo_query_one($sql,$phone);
 }
 ?>

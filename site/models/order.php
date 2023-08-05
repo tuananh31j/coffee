@@ -14,7 +14,7 @@ function addOrderDetails($idOrder,$idPro,$idSize,$quantity,$price,$totalPrice) {
 }
 // lấy đơn hàng theo khách hàng
 function getOrderByCus($id) {
-    $sql = "select * from orders  where customer_id = ?  and status < 4 order by order_id desc";
+    $sql = "select * from orders  where customer_id = ?  and status < 5 order by order_id desc";
     return pdo_query($sql,$id);
 }
 // thay đổi trạng thái
@@ -32,4 +32,5 @@ function getOrderDetail($id) {
     return pdo_query($sql,$id);
 }
 // xóa order
+
 ?>

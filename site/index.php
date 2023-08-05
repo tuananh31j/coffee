@@ -135,31 +135,29 @@ if(isset($_GET['url'])) {
                 $err['name'] = 'Chưa điền tên!';
             }
             // số điện thoại
-            if($_POST['phone'] != ''){
+            // phone
+            if($_POST['phone'] != '') {
                 $phone = $_POST['phone'];
+                $check = checkPhone($phone);
+                if(is_array($check)){
+                    $err['phone'] = "Số điện thoại đã tồn tại";
+                }
             }else{
-                $err['phone'] = 'Chưa điền số điện thoại!';
+                $err['phone'] = "Chưa nhập số điện thoại!";
             }
             
             // email
-            if($_POST['email'] != ''){
+            if($_POST['email'] != '') {
                 $email = $_POST['email'];
-            }else{
-                $err['email'] = 'Chưa điền email!';
-            }
-            // ảnh
-            if(isset($_FILES['img']['name']) && $_FILES['img']['name'] != '' ){
-                $img = $_FILES['img']['name'];
-                $path = pathinfo($img, PATHINFO_EXTENSION);
-                $format= ["jpg", "jpeg", "png", "gif"];
-                if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                    move_uploaded_file($IMAGE,$img);
-                }else{
-                    $err['img'] = "File gửi lên không phải là file ảnh!";
+                $check = checkEmail($email);
+                if(is_array($check)){
+                    $err['email'] = "Email đã tồn tại";
                 }
             }else{
-                $img = "default.png";
+                $err['email'] = "Chưa nhập email!";
             }
+            // ảnh
+                $img = "default.png";
             // mật khẩu
             if($_POST['pass'] != ''){
                 if($_POST['pass'] == $_POST['rePass']) {
@@ -195,11 +193,17 @@ if(isset($_GET['url'])) {
                         }else{
                             $err['name'] = 'Chưa điền tên!';
                         }
-                        // số điện thoại
-                        if($_POST['phone'] != ''){
+                        // phone
+                        if($_POST['phone'] != '') {
                             $phone = $_POST['phone'];
+                            $check = checkPhone($phone);
+                            if(is_array($check)){
+                                if($check['customer_id'] != $_SESSION['user']['customer_id'] && $check['phone'] != $_SESSION['user']['phone'] ){
+                                    $err['phone'] = "Số điện thoại đã tồn tại";
+                                }
+                            }
                         }else{
-                            $err['phone'] = 'Chưa điền số điện thoại!';
+                            $err['phone'] = "Chưa nhập số điện thoại!";
                         }
                         // địa chỉ
                         if(isset($_POST['address'])){
@@ -208,10 +212,16 @@ if(isset($_GET['url'])) {
                             $address = '';
                         }
                         // email
-                        if($_POST['email'] != ''){
+                        if($_POST['email'] != '') {
                             $email = $_POST['email'];
+                            $check = checkEmail($email);
+                            if(is_array($check)){
+                                if($check['customer_id'] != $_SESSION['user']['customer_id'] && $check['email'] != $_SESSION['user']['email']){
+                                    $err['email'] = "Email đã tồn tại";
+                                }
+                            }
                         }else{
-                            $err['email'] = 'Chưa điền email!';
+                            $err['email'] = "Chưa nhập email!";
                         }
                         // ảnh
                         if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
@@ -219,7 +229,11 @@ if(isset($_GET['url'])) {
                             $path = pathinfo($img, PATHINFO_EXTENSION);
                             $format= ["jpg", "jpeg", "png", "gif"];
                             if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                                move_uploaded_file($_FILES['img']['tmp_name'],"./public/img/".$img);
+                                if($_FILES['img']['size'] <= 2097082){
+                                    move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                    }else{
+                                        $err['img'] = "Dung lượng vượt quá giới hạn!";
+                                    }
                             }else{
                                 $err['img'] = "File gửi lên không phải là file ảnh!";
                             }
@@ -279,6 +293,7 @@ if(isset($_GET['url'])) {
                 if(isset($_GET['idDelete'])) {
                     $id = $_GET['idDelete'];
                     updateOrderStatus($id,7,$update_at);
+                    header("location: index.php?url=account&act=myOrder");
                 }
                 // đánh giá
                 if(isset($_GET['idFeedback'])) {
@@ -320,6 +335,15 @@ if(isset($_GET['url'])) {
                     }
                 }
                 require_once "view/pages/account/changePass.php";
+            }
+            // feedback
+            if($act = 'feedback'){
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    $details = getOrderDetail($id);
+                require_once "view/pages/account/feedback.php";
+                }
+
             }
             
             // Đăng xuất
@@ -369,6 +393,8 @@ if(isset($_GET['url'])) {
     case "aboutus":
         require_once "view/pages/aboutUs.php";
         break;
+    
+   
     
     # PAY
     case "pay":

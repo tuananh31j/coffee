@@ -152,14 +152,16 @@ if(isset($_POST['btn-add'])){
                
                ?>
             <li class="nav-link active d-flex gap-2 align-items-center mb-2">
+                <!-- anh đại diện -->
                 <img class="rounded-circle object-fit-cover" style="width:50px; height: 50px;"
                     src="<?=$IMAGE.'/'.$itemFB['imgCus'] ?>" alt="">
                 <div>
+                    <!-- star -->
                     <div class="star-rating" data-rating="<?=$itemFB['star']?>"></div>
-
+                    <!-- name -->
                     <span><span class="fw-bold"><?php echo $itemFB['nameCus'] ?>: </span><span
                             class=""><?=$itemFB['content']?></span></span><br>
-
+                    <!-- ngày -->
                     <i class="text-secondray"
                         style="font-size: 12px;"><?php echo isset($itemFB['update_at'])?$itemFB['update_at']:$itemFB['create_at'] ?>
                     </i>

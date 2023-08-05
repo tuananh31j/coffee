@@ -39,12 +39,12 @@
             <p class="text-danger"><?=isset($err['pass'])?$err['pass']:''?></p>
         </div>
 
-        <!-- image -->
+        <!-- image
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label">Ảnh đại diện</label>
             <input type="file" class="form-control" value="" name="img" id="validationCustom03">
             <p class="text-danger"><?=isset($err['img'])?$err['img']:''?></p>
-        </div>
+        </div> -->
         <!-- btn -->
         <div class="button">
             <input type="reset" value="Nhập lại" class="bg-info p-2 border-0 rounded-2">

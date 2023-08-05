@@ -45,7 +45,7 @@
                                     </td>
                                     <?php }elseif($item['status'] == 3){?>
                                     <td class="text-success"><i class="fa-solid fa-circle"></i> Giao thành công!</td>
-                                    <td><a href="index.php?url=account&act=proDetails&id=<?=$item['order_id']?>"><button
+                                    <td><a href="index.php?url=account&act=feedback&id=<?=$item['order_id']?>"><button
                                                 class="bg-success text-light p-1 border-0 rounded-2 w-100">Đánh
                                                 giá</button></a>
                                     </td>

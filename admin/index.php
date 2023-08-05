@@ -12,6 +12,7 @@ require_once "../admin/models/contact.php";
 require_once "../admin/models/comment.php";
 require_once "../admin/models/order.php";
 require_once "../admin/models/addressShop.php";
+require_once "../admin/models/dashboard.php";
 
 if (!isset($_SESSION['user'])) {
     header("location: $ROOT_URL/notFound.php");
@@ -131,6 +132,8 @@ if(isset($_GET['url'])) {
                     if($_POST['name'] != '') {
                         updateCate($name, $_POST['id']);
                         $noti="Cập nhật thành công!";
+                        $target = getCategoryById($_POST['id']);
+
                     }else{
                         $errName = "Chưa nhập tên danh mục!";
                     }
@@ -173,7 +176,7 @@ if(isset($_GET['url'])) {
                 }
 
                 }
-                // lock
+                // lọc
                 if(isset($_GET['filter'])){
                     $filter = $_GET['filter'];
                 }
@@ -204,12 +207,16 @@ if(isset($_GET['url'])) {
                                 $sale = 0;
                             }
                             // ảnh
-                            if(isset($_FILES['img']) && $_FILES['img'] == true){
+                            if(isset($_FILES['img']) && $_FILES['img']['name'] != ''){
                                 $img = $_FILES['img']['name'];
                                 $path = pathinfo($img, PATHINFO_EXTENSION);
                                 $format= ["jpg", "jpeg", "png", "gif"];
                                 if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
+                                    if($_FILES['img']['size'] <= 1048576){
                                     move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                    }else{
+                                        $err['img'] = "Dung lượng vượt quá giới hạn!";
+                                    }
                                 }else{
                                     $err['img'] = "File gửi lên không phải là file ảnh!";
                                 }
@@ -301,7 +308,11 @@ if(isset($_GET['url'])) {
                         $path = pathinfo($img, PATHINFO_EXTENSION);
                         $format= ["jpg", "jpeg", "png", "gif"];
                         if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                            if($_FILES['img']['size'] <= 1048576){
+                                move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                }else{
+                                    $err['img'] = "Dung lượng vượt quá giới hạn!";
+                                }
                         }else{
                             $err['img'] = "File gửi lên không phải là file ảnh!";
                         }
@@ -346,6 +357,8 @@ if(isset($_GET['url'])) {
                             updateDetails($idPro,$size, $price, $update_at);
                         } 
                         $noti = "Cập nhật thành công!";
+                        $target = getProById($idPro);
+
                         }
                         // updateDetails($idPro,$detailsArray[0]['size'], $detailsArray[0]['price'], $update_at);
                         // updateDetails($idPro,$detailsArray[1]['size'], $detailsArray[1]['price'], $update_at);
@@ -400,6 +413,10 @@ if(isset($_GET['url'])) {
                     // phone
                     if($_POST['phone'] != '') {
                         $phone = $_POST['phone'];
+                        $check = checkPhone($phone);
+                        if(is_array($check)){
+                            $err['phone'] = "Số điện thoại đã tồn tại";
+                        }
                     }else{
                         $err['phone'] = "Chưa nhập số điện thoại!";
                     }
@@ -412,6 +429,10 @@ if(isset($_GET['url'])) {
                     // email
                     if($_POST['email'] != '') {
                         $email = $_POST['email'];
+                        $check = checkEmail($email);
+                        if(is_array($check)){
+                            $err['email'] = "Email đã tồn tại";
+                        }
                     }else{
                         $err['email'] = "Chưa nhập email!";
                     }
@@ -423,7 +444,11 @@ if(isset($_GET['url'])) {
                         $path = pathinfo($img, PATHINFO_EXTENSION);
                         $format= ["jpg", "jpeg", "png", "gif"];
                         if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                            if($_FILES['img']['size'] <= 2097082){
+                                move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                }else{
+                                    $err['img'] = "Dung lượng vượt quá giới hạn!";
+                                }
                         }else{
                             $err['img'] = "File gửi lên không phải là file ảnh!";
                         }
@@ -447,6 +472,8 @@ if(isset($_GET['url'])) {
                     $target = getCusById($id);
                 }
                 if(isset($_POST['btn-update'])) {
+                    $id = $_POST['id'];
+                    $target = getCusById($id);
                     // name
                     if($_POST['name'] != '') {
                         $name = $_POST['name'];
@@ -456,6 +483,12 @@ if(isset($_GET['url'])) {
                     // phone
                     if($_POST['phone'] != '') {
                         $phone = $_POST['phone'];
+                        $check = checkPhone($phone);
+                        if(is_array($check)){
+                            if($check['customer_id'] != $target['customer_id'] && $check['phone'] != $target['phone'] ){
+                                $err['phone'] = "Số điện thoại đã tồn tại";
+                            }
+                        }
                     }else{
                         $err['phone'] = "Chưa nhập số điện thoại!";
                     }
@@ -468,6 +501,12 @@ if(isset($_GET['url'])) {
                     // email
                     if($_POST['email'] != '') {
                         $email = $_POST['email'];
+                        $check = checkEmail($email);
+                        if(is_array($check)){
+                            if($check['customer_id'] != $target['customer_id'] && $check['email'] != $target['email']){
+                                $err['email'] = "Email đã tồn tại";
+                            }
+                        }
                     }else{
                         $err['email'] = "Chưa nhập email!";
                     }
@@ -479,7 +518,11 @@ if(isset($_GET['url'])) {
                         $path = pathinfo($img, PATHINFO_EXTENSION);
                         $format= ["jpg", "jpeg", "png", "gif"];
                         if (preg_match("/^(" . implode("|", $format) . ")$/", $path)) {
-                            move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                            if($_FILES['img']['size'] <= 2097082){
+                                move_uploaded_file($_FILES['img']['tmp_name'],"../public/img/".$img);
+                                }else{
+                                    $err['img'] = "Dung lượng vượt quá giới hạn!";
+                                }
                         }else{
                             $err['img'] = "File gửi lên không phải là file ảnh!";
                         }
@@ -490,10 +533,11 @@ if(isset($_GET['url'])) {
                     // vai trò
                         $role = $_POST['role'];
                     // id 
-                    $id = $_POST['id'];
                     if(count($err) === 0){
                         updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$id);
                         $noti = "Cập nhật thành công!";
+                        $target = getCusById($id);
+
                       }  
                 }
                 include_once "./view/pages/customer/update.php";
@@ -636,14 +680,13 @@ if(isset($_GET['url'])) {
             }
             $all = getAllShops($sort,$kw);
             $list = getShops($sort,$kw,$offset);
-            $update_at = date("Y-m-d");
 
         require_once "./view/pages/shop/list.php";
 
 
         }
         }
-        // thêm mới danh mục
+        // thêm mới địa chỉ shop
         if($act == 'add') {
             $err = [];
             if(isset($_POST['btn-add'])) {
@@ -669,30 +712,42 @@ if(isset($_GET['url'])) {
             }
             include_once "./view/pages/shop/add.php";
         }
-        // sửa danh mục
+        // sửa địa chỉ shop
         if($act == 'update') {
-            $errName = '';
+            $update_at = date("Y-m-d");
+            $err = [];
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $target = getCategoryById($id);
+                $target = getShopById($id);
             }
             if(isset($_POST['btn-update'])) {
-                $name = $_POST['name'];
-                if($_POST['name'] != '') {
-                    updateCate($name, $_POST['id']);
-                    $noti="Cập nhật thành công!";
+                if($_POST['address'] != '') {
+                    $address = $_POST['address'];
                 }else{
-                    $errName = "Chưa nhập tên danh mục!";
+                    $err['address'] = "Chưa nhập địa chỉ!";
+                }
+                if($_POST['phone'] != '') {
+                    $phone = $_POST['phone'];
+                }else{
+                    $err['phone'] = "Chưa nhập số điện thoại!";
+                }
+                if($_POST['link'] != '') {
+                    $link = $_POST['link'];
+                }else{
+                    $err['link'] = "Chưa có link!";
+                }
+                $id = $_POST['id'];
+                if(count($err) == 0){
+                    updateShop($id,$address,$phone,$link,$update_at);
+                    $noti = "Chỉnh sửa thành công!";
+                    $target = getShopById($id);
+
                 }
             }
-            
-            include_once "./view/pages/category/update.php";
-        }
-
-        // add
-        
-        
+            include_once "./view/pages/shop/update.php";
+            }
         break;
+        
     // ĐĂNG XUẤT
     case 'logout':
         require_once "../site/view/pages/account/logOut.php";
@@ -706,6 +761,36 @@ if(isset($_GET['url'])) {
 }
 // THÔNG KÊ
 }else{
+    $date = 1;
+    if(isset($_GET['date'])){
+        $date = $_GET['date'];
+    }
+    // doanh thu
+    $orderCate =  getOrderByCate();
+    $top5 = getTop5Pro();
+    $rejected = countRejected()['countOrder'];
+    $resole = countResole()['countOrder'];
+    $countOrder = countAll()['countOrder'];
+    $revenue = getRevenue();
+    if(isset($_GET['date'])){
+        $date = $_GET['date']; 
+        if($date == 3) {
+            $orderCate =  getOrderByCate3();
+            $top5 = getTop5Pro3();
+            $rejected = countRejected3()['countOrder'];
+            $resole = countResole3()['countOrder'];
+            $countOrder = countAll3()['countOrder'];
+            $revenue = getRevenue3();
+        }
+        if($date == 6) {
+            $orderCate =  getOrderByCate6();
+            $top5 = getTop5Pro6();
+            $rejected = countRejected6()['countOrder'];
+            $resole = countResole6()['countOrder'];
+            $countOrder = countAll6()['countOrder'];
+            $revenue = getRevenue6();
+        }
+    }
     require_once "./view/pages/dashboard/dashboard.php";
     
 }
