@@ -2,7 +2,7 @@
 //hàm kết nối database
     function pdo_get_connection() {
         $hostname='localhost';
-        $db_name='du_an_mau';
+        $db_name='du-an-13';
         $username='root';
         $password="";
         // Dựng đối tương PDO
@@ -31,11 +31,25 @@
         }
     }
 
-
-
-
-
-
+    function pdoExecutePro($sql) {
+        $sql_args = array_slice(func_get_args(), 1);
+            
+        try{
+            $connect = pdo_get_connection();
+            $stmt = $connect->prepare($sql);
+            $stmt->execute($sql_args);
+            $product_id = $connect->lastInsertId();
+    
+            return $product_id;
+        }
+        catch(PDOException $e){
+            throw $e;
+        }
+        finally{
+            unset($connect);
+        }
+        
+    }
 
 //hàm query nhiều
 function pdo_query($sql) {
@@ -75,5 +89,7 @@ function pdo_query_one($sql) {
         unset($connect);
     }
 }
+
+
 
 ?>

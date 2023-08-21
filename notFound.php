@@ -1,0 +1,1 @@
+<img style="margin: auto;" src="./public/img/notFound.jpg" alt="">
