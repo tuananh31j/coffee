@@ -82,9 +82,8 @@
                                 class="text-decoration-underline"> đ</i></span></p>
                 </div>
                 <input
-                    <?=(!isset($_SESSION['cart'])||count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;""':''?>
-                    type="submit" value="Mua hàng (<?=$countQuantity?>)" name="btn-submit"
-                    class="w-50 border border-2 bg-light border-danger text-danger p-2 rounded-2 item__hover-cate">
+                    <?=(!isset($_SESSION['cart'])||count($_SESSION['cart']) == 0)?'disabled style="opacity: 0.3;" class="w-50 border border-2 bg-light border-danger text-danger p-2 rounded-2"':'class="w-50 border border-2 bg-light border-danger text-danger p-2 rounded-2 item__hover-cate"'?>
+                    type="submit" value="Mua hàng (<?=$countQuantity?>)" name="btn-submit" class=" ">
             </div>
         </form>
 

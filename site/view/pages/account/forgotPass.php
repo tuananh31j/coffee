@@ -1,5 +1,5 @@
 <div class="wrapper" style="margin:0px auto;width:1050px;">
-    <h2 style="padding: 20px;color:green">Đăng ký</h2>
+    <h2>QUÊN MẬT KHẨU</h2>
     <p class="text-danger"><?=isset($noti)?$noti:''?></p>
     <form class=" g-3 needs-validation" method="post" action="index.php?url=forgotPass" enctype="multipart/form-data">
 

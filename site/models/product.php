@@ -24,10 +24,10 @@ function getListProduct($offset,$type = "product.name", $sort = 'ASC',$filterTyp
         $kw = "product.name like '%$keyword%'";
     }
     if($filterType == "down") {
-        $queryFilter = "price - (price * sale/100) <= 150000";
+        $queryFilter = "price - (price * sale/100) <= 50000";
     }
     if($filterType == "up") {
-        $queryFilter = "price - (price * sale/100) >= 60000";
+        $queryFilter = "price - (price * sale/100) >= 50000";
     }
     if($filterType == "betweent1") {
         $queryFilter = "price - (price * sale/100) >= 20000 and price - (price * sale/100) <=60000";
@@ -53,10 +53,10 @@ function getAllProducts($type = "product.name", $sort = 'ASC',$filterType = 0,$k
     }
    
         if($filterType == "down") {
-            $queryFilter = "price - (price * sale/100) <= 150000";
+            $queryFilter = "price - (price * sale/100) <= 50000";
         }
         if($filterType == "up") {
-            $queryFilter = "price - (price * sale/100) >= 60000";
+            $queryFilter = "price - (price * sale/100) >= 50000";
         }
         if($filterType == "betweent1") {
             $queryFilter = "price - (price * sale/100) >= 20000 and price - (price * sale/100) <=60000";
@@ -81,10 +81,10 @@ function getAllProductsByCate($id, $type = "product.name", $sort = 'ASC',$filter
     }
    
         if($filterType == "down") {
-            $queryFilter = "price - (price * sale/100) <= 150000";
+            $queryFilter = "price - (price * sale/100) <= 50000";
         }
         if($filterType == "up") {
-            $queryFilter = "price - (price * sale/100) >= 60000";
+            $queryFilter = "price - (price * sale/100) >= 50000";
         }
         if($filterType == "betweent1") {
             $queryFilter = "price - (price * sale/100) >= 20000 and price - (price * sale/100) <=60000";
@@ -108,10 +108,10 @@ function getListProductsByCate($cate, $offset, $type = "product.name", $sort = '
     }
    
     if($filterType == "down") {
-        $queryFilter = "price - (price * sale/100) <= 150000";
+        $queryFilter = "price - (price * sale/100) <= 50000";
     }
     if($filterType == "up") {
-        $queryFilter = "price - (price * sale/100) >= 60000";
+        $queryFilter = "price - (price * sale/100) >= 50000";
     }
     if($filterType == "betweent1") {
         $queryFilter = "price - (price * sale/100) >= 20000 and price - (price * sale/100) <=60000";

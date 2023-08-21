@@ -1,6 +1,6 @@
 <?php
 // GLOBAL
-require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
+require_once "../global.php";
 
 // MODELS
 require_once "/xampp/htdocs/du-an-1-nhom7/pdo.php";
@@ -78,10 +78,21 @@ if(isset($_GET['url'])) {
 
                 require_once "./view/pages/order/list.php";
             }
+            // chi tiết và cập nhật đơn hàng
             if($act == "update"){
                 $id = $_GET['id'];
                 $target = getListDetails($id);
-
+                if(isset($_POST['btn-update'])){
+                    foreach($target as $key => $item) {
+                        
+                            if($item['product_id'] == $_POST['id'][$key]) {
+                                $target[$key]['quantity'] = $_POST['quantity'][$key];
+                                updateQuantity($id, $item['product_id'], $_POST['quantity'][$key]);
+                                    $noti = "Cập nhật đơn hàng thành công!";
+                            }
+                    }
+                }
+                $target = getListDetails($id);
                 require_once "./view/pages/order/update.php";
             }
         }

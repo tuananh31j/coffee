@@ -1,6 +1,6 @@
 <?php
 // global
-require_once "/xampp/htdocs/du-an-1-nhom7/global.php";
+require_once "./global.php";
 // models
 require_once "models/product.php";
 require_once "models/category.php";
@@ -289,9 +289,8 @@ if(isset($_GET['url'])) {
                             $noti = "Cập nhật thành công!";
                        }
                     }
-            require_once "view/pages/account/edit.php";
-                
-            }
+                    require_once "view/pages/account/edit.php";
+                }
             // Đơn hàng của tôi
             if($act == 'myOrder') {
                 $update_at = date('Y-m-d');
@@ -370,7 +369,7 @@ if(isset($_GET['url'])) {
                 require_once "view/pages/account/changePass.php";
             }
             // feedback
-            if($act = 'feedback'){
+            if($act == 'feedback'){
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
                     $details = getOrderDetail($id);

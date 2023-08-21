@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu">
 
                         <li><a class="dropdown-item"
-                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">150k
+                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=down">50k
                                 <i class="fa-solid fa-arrow-down"></i></a></li>
                         <li><a class="dropdown-item"
                                 href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent1">20k-60k</a>
@@ -61,7 +61,7 @@
                                 href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=betweent2">60k-150k</a>
                         </li>
                         <li><a class="dropdown-item"
-                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=up">60k
+                                href="index.php?url=product&sort=<?php echo isset($sort)?$sort:0?>&category=<?php echo isset($category)?$category:0?>&filter=up">50k
                                 <i class="fa-solid fa-arrow-up"></i></a></li>
                     </ul>
                 </div>

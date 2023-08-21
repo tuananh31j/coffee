@@ -1,5 +1,5 @@
 <div class="wrapper" style="margin:0px auto;width:1050px;">
-    <h2 style="padding: 20px;color:green">Đăng ký</h2>
+    <h2>ĐĂNG KÝ</h2>
     <p class="text-danger"><?=isset($noti)?$noti:''?></p>
     <form class="row g-3 needs-validation" action="index.php?url=signup" method="post" enctype="multipart/form-data">
         <!-- id -->

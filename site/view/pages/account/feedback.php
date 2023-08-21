@@ -18,7 +18,9 @@
                     ?>
             <div class="row align-items-center w-100 mt-4">
                 <!-- ảnh số lượng -->
-                <div class="col-3"><img class="w-100" src="<?=$IMAGE.'/'.$item['image_url']?>" alt=""> <span
+                <div class="col-3"><a
+                        href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
+                            class="w-100" src="<?=$IMAGE.'/'.$item['image_url']?>" alt=""></a> <span
                         class="position-relative text-light px-2 border border-danger rounded-circle bg-danger"
                         style="bottom: 230px; left: 200px"><?=$item['quantity']?></span></div>
                 <div class="col border-2 border rounded-2 shadow ">

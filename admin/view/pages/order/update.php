@@ -3,25 +3,26 @@
         <!-- MAIN CONTENT -->
 
         <div class="main-content container my-5 ">
-
+            <h3 class="text-center my-5">CHI TIẾT ĐƠN HÀNG</h3>
+            <p class="text-success"><?=isset($noti)?$noti:''?></p>
             <div class="cart-products  row gap-3 align-items-center">
 
                 <!-- item -->
-                <form action="index.php?url=pay" method="post">
+                <form action="index.php?url=order&act=update&id=<?=$id?>" method="post">
                     <?php 
-            $totalPrice = 0;
-            $countQuantity = 0;
-            if(isset($target)) {
-                foreach($target as $index => $product){
-                    $targetPro = getProById($product['product_id']);
-                    $cost = getPrice($product['product_id'],$product['size_id'])['price'];
-                    $priceSale = $cost*$targetPro['sale']/100;
-                    $currentPrice = $cost - $priceSale;
-                    $curPriceFormat = number_format($currentPrice,0,',','.');
-                    $totalPrice += $currentPrice*$product['quantity'];
-                    $countQuantity += $product['quantity'];
+                        $totalPrice = 0;
+                        $countQuantity = 0;
+                        if(isset($target)) {
+                            foreach($target as $index => $product){
+                                $targetPro = getProById($product['product_id']);
+                                $cost = getPrice($product['product_id'],$product['size_id'])['price'];
+                                $priceSale = $cost*$targetPro['sale']/100;
+                                $currentPrice = $cost - $priceSale;
+                                $curPriceFormat = number_format($currentPrice,0,',','.');
+                                $totalPrice += $currentPrice*$product['quantity'];
+                                $countQuantity += $product['quantity'];
 
-             ?>
+                        ?>
 
                     <div class="cart-product-items col">
                         <div class="cart-item">

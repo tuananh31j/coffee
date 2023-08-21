@@ -54,4 +54,9 @@ function updateOrderStatus($id,$status,$update_at) {
     $sql = "UPDATE `orders` SET `update_at` = ?, `status` = ? WHERE `orders`.`order_id` = ?;";
     pdo_execute($sql,$update_at,$status,$id);
 }
+// cập nhật số lượng đơn hàng bằng id order và pro
+function updateQuantity($idOrder, $idPro, $quantity) {
+    $sql = "update order_detail set quantity = ? where product_id = ? and order_id = ?";
+    pdo_execute($sql,$quantity,$idPro,$idOrder);
+}
 ?>

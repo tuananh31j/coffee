@@ -16,7 +16,7 @@
             </div>
             <div class="col-4 bg-secondary-subtle rounded-end-2 "
                 style="padding: 6px; margin-left: -12px; height: 607px;">
-                <h2>Đăng nhập</h2>
+                <h2>ĐĂNG NHẬP</h2>
                 <p class="text-center text-danger"><?= isset($noti)?$noti:''?></p>
 
                 <form method="post" action="index.php?url=login">
