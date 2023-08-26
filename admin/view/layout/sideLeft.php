@@ -38,7 +38,7 @@
     <div class="container-fluid">
         <div class=" row ">
             <!-- THANH ĐIỀU KHIỂN -->
-            <div class="col-3 " style="background-color:#b5313a;">
+            <div id="hideParent" class="col-3 tw-ease-in" style="background-color:#b5313a;">
                 <!--   -->
                 <div class="dashboard-menu tw-overflow-y-scroll col-3 h-100 tw-fixed" style="margin-left:-12px;background-color:#b5313a;">
                     <h2 class="text-center pe-3 mb-4 tw-font-semibold tw-text-4xl">Hignland coffee</h2>
@@ -51,9 +51,14 @@
                                     <div class=" h-25" style="width: 42px;">
                                         <img class="w-100 rounded-circle border border-4 border-light" style="height: 42px; object-fit: cover;" src="<?= $IMAGE . '/' . $_SESSION['user']['image_url'] ?>" alt="">
                                     </div>
-                                    <div class="">
-                                        <p class="fw-bold m-0 tw-text-white"><?= $_SESSION['user']['name'] ?></p>
-                                        <p class=" fs-6 m-0 tw-text-white"><?= $_SESSION['user']['email'] ?></p>
+                                    <div class="tw-flex tw-gap-11 tw-items-center">
+                                        <div class="">
+                                            <p class="fw-bold m-0 tw-text-white"><?= $_SESSION['user']['name'] ?></p>
+                                            <p class=" fs-6 m-0 tw-text-white"><?= $_SESSION['user']['email'] ?></p>
+                                        </div>
+                                        <div>
+                                            <i onclick="handleMenu()" class="fa-solid fa-arrow-left tw-text-white"></i>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -136,3 +141,18 @@
                         Đăng xuất</a>
                 </div>
             </div>
+            <div id="showParent" class="col-1 tw-hidden tw-relative tw-left-[-104px] tw-ease-in" style="background-color:#b5313a;">
+                <i id="show" onclick="handleMenu()" class="fa-solid fa-arrow-right tw-text-white tw-absolute tw-top-16 tw-left-24  tw-bg-red-900 tw-p-4 tw-border-red-900 tw-rounded"></i>
+            </div>
+
+            <script>
+                const elementShow = document.querySelector("#show")
+                const elementHide = document.querySelector("#hide")
+                const elementHideParent = document.querySelector("#hideParent")
+                const elementShowParent = document.querySelector("#showParent")
+
+                function handleMenu() {
+                    elementShowParent.classList.toggle("tw-hidden")
+                    elementHideParent.classList.toggle("tw-hidden")
+                }
+            </script>

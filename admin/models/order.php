@@ -74,7 +74,7 @@ function updateQuantity($idOrder, $idPro, $quantity)
 // 8 đơn mới nhất
 function get8Order()
 {
-    $sql = "select * from orders limit 8";
+    $sql = "select * from orders  order by order_id desc limit 8";
     return pdo_query($sql);
 }
 function get8OrderDetails($id)
