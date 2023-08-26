@@ -1,34 +1,33 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5">DANH SÁCH DANH MỤC</h3>
+        <h3 class="text-center my-5 tw-font-semibold tw-text-lg">DANH SÁCH DANH MỤC</h3>
         <div class="d-flex ">
             <!-- thêm danh mục -->
 
-            <a href="index.php?url=category&act=add"
-                class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
+            <a href="index.php?url=category&act=add" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
                 mục <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
-            <div class="dropdown m-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa-solid fa-filter"></i> Sắp xếp
-                </button>
-                <ul class="dropdown-menu">
-                    <!-- sắp xếp list -->
-                    <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=az">A->Z</a></li>
-                    <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=za">Z->A</a></li>
-                    <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=new">Mới nhất</a></li>
-                    <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=old">Cũ nhất</a></li>
-                </ul>
+            <div>
+                <div class="dropdown m-3">
+                    <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-filter"></i> Sắp xếp
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- sắp xếp list -->
+                        <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=az">A->Z</a></li>
+                        <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=za">Z->A</a></li>
+                        <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=new">Mới nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?url=category&act=list&filter=old">Cũ nhất</a></li>
+                    </ul>
+                </div>
             </div>
             <!-- tìm kiếm -->
             <div class="m-3">
                 <form action="index.php?url=category&act=list" method="post">
-                    <input class="p-1 rounded-2" type="text" name="keyword" placeholder="nội dung tìm kiếm...">
-                    <input type="submit" name="btn-search" value="Tìm kiếm"
-                        class="p-1 border-1 text-light rounded-2 bg-black">
-                    <p class="text-danger"><?=isset($errKw)?$errKw:''?></p>
+                    <input class="p-1 rounded-2 tw-border-2" type="text" name="keyword" placeholder="nội dung tìm kiếm...">
+                    <input type="submit" name="btn-search" value="Tìm kiếm" class="p-1 border-1 text-light rounded-2 bg-black">
+                    <p class="text-danger"><?= isset($errKw) ? $errKw : '' ?></p>
                 </form>
             </div>
         </div>
@@ -46,17 +45,15 @@
 
                 <tbody>
                     <?php
-                        foreach ($categorys as $key => $category) {?>
-                    <tr>
-                        <td><?=$key + 1?></td>
-                        <td><?=$category['name']?></td>
-                        <td>
-                            <button onclick="confirmDelete('category&act=delete&id=<?=$category['category_id']?>')"
-                                class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button>
-                            <a href="index.php?url=category&act=update&id=<?=$category['category_id']?>"
-                                class="bg-info text-light p-1 rounded-2">Sửa</a>
-                        </td>
-                    </tr>
+                    foreach ($categorys as $key => $category) { ?>
+                        <tr>
+                            <td><?= $key + 1 ?></td>
+                            <td><?= $category['name'] ?></td>
+                            <td>
+                                <button onclick="confirmDelete('category&act=delete&id=<?= $category['category_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button>
+                                <a href="index.php?url=category&act=update&id=<?= $category['category_id'] ?>" class="bg-info text-light p-1 rounded-2">Sửa</a>
+                            </td>
+                        </tr>
                     <?php } ?>
 
                 </tbody>

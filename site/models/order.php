@@ -22,9 +22,14 @@ function updateOrderStatus($id,$status,$update_at) {
     $sql = "UPDATE `orders` SET `update_at` = ?, `status` = ? WHERE `orders`.`order_id` = ?";
     pdo_execute($sql,$update_at,$status,$id);
 }
-// lấy thông tin đơn hàng by id
+// lấy thông tin đơn hàng by id theo trạng thái
 function getOrderById($id){
     $sql = "select orders.*, shop_address.address as shop from orders inner join shop_address on shop_address.address_id =  orders.address_id where order_id = ? and status < 4";
+    return pdo_query_one($sql, $id);
+}
+// lấy thông tin đơn hàng by id ko theo trạng thái
+function getOrderByIdNoStatus($id){
+    $sql = "select orders.*, shop_address.address as shop from orders inner join shop_address on shop_address.address_id =  orders.address_id where order_id = ?";
     return pdo_query_one($sql, $id);
 }
 function getOrderDetail($id) {

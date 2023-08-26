@@ -200,8 +200,7 @@
                                     </div>
                                     <?php } ?>
                                 </div>
-                                <div
-                                    class="card-body <?php if($item['sale'] > 0 && $item['sale'] <= 100) {echo '';}else{echo 'mt-4 ';}?>">
+                                <div class="card-body">
                                     <!-- tên -->
                                     <h6 style="font-size: 14px;" class="card-title fw-bold ">
                                         <?=$item['name']?>
@@ -230,8 +229,8 @@
 <script>
 var splide = new Splide('.splide', {
     type: 'loop',
-    perPage: 2,
-    focus: 'center',
+    perPage: 5,
+ 
 });
 
 splide.mount();

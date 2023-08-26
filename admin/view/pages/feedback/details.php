@@ -1,13 +1,13 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5 tw-font-semibold tw-text-lg">CHI TIẾT BÌNH LUẬN</h3>
+        <h3 class="text-center my-5 tw-font-semibold tw-text-lg">CHI TIẾT ĐÁNH GIÁ</h3>
         <div class="d-flex ">
             <!-- thêm sản phẩm -->
 
-            <a href="index.php?url=comment&act=list" class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Danh
+            <a href="index.php?url=feedback&act=list" class="bg-success p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Danh
                 sách
-                bình luận</i></a>
+                đánh giá</i></a>
 
 
 

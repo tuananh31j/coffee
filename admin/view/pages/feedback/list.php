@@ -1,7 +1,7 @@
 <!-- CONTENT -->
 <div class=" col ">
     <div class="container">
-        <h3 class="text-center my-5 tw-font-semibold tw-text-lg">DANH SÁCH BÌNH LUẬN</h3>
+        <h3 class="text-center my-5 tw-font-semibold tw-text-lg">DANH SÁCH ĐÁNH GIÁ</h3>
         <div class="d-flex ">
             <!-- fillter -->
             <div class="dropdown m-3">
@@ -29,16 +29,17 @@
                 <thead style="border: 2px solid black">
                     <tr>
                         <th>STT</th>
-                        <th>User</th>
+                        <th>Khách</th>
                         <th>Sản phẩm</th>
                         <th>Ngày tạo</th>
                         <th>Ngày sửa</th>
+                        <th>Đánh giá</th>
                         <th>Nội dung</th>
                         <th style="width: 170px;">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($comments as $key => $item) { ?>
+                    <?php foreach ($feedback as $key => $item) { ?>
                         <tr>
 
                             <td><?= $key + 1 ?></td>
@@ -46,6 +47,7 @@
                             <td><?= isset($item['namePro']) ? $item['namePro'] : '' ?></td>
                             <td><?= isset($item['create_at']) ? $item['create_at'] : '' ?></td>
                             <td><?= isset($item['update_at']) ? $item['update_at'] : '' ?></td>
+                            <td><?= isset($item['star']) ? $item['star'] : '' ?><i class="fa-solid fa-star text-warning"></i></td>
                             <td><?php $flag = 0;
                                 for ($i = 0; $i < strlen($item['content']); $i++) {
                                     echo $item['content'][$i];
@@ -55,8 +57,8 @@
                                         $flag = 0;
                                     }
                                 } ?></td>
-                            <td><button onclick="confirmDelete('comment&act=delete&id=<?= $item['cmt_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button> |
-                                <a href="index.php?url=comment&act=details&id=<?= $item['cmt_id'] ?>" class="text-decoration-none bg-info text-light p-1 rounded-2">Chi tiết</a>
+                            <td><button onclick="confirmDelete('feedback&act=delete&id=<?= $item['feedback_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button> |
+                                <a href="index.php?url=feedback&act=details&id=<?= $item['feedback_id'] ?>" class="text-decoration-none bg-info text-light p-1 rounded-2">Chi tiết</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -68,7 +70,7 @@
         <div class="d-flex justify-content-center mt-4">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link border-danger" href="index.php?url=comment&act=list&filter=<?php echo isset($fil) ? $fil : 0 ?>">1</a>
+                    <li class="page-item"><a class="page-link border-danger" href="index.php?url=feedback&act=list&filter=<?php echo isset($fil) ? $fil : 0 ?>">1</a>
                     </li>
                     <?php
 
@@ -82,7 +84,7 @@
                             $count = 0;
 
                     ?>
-                            <li class="page-item "><a class="page-link border-danger" href="index.php?url=comment&act=list&filter=<?php echo isset($fil) ? $fil : 0 ?>&pagenum=<?= $page ?>">
+                            <li class="page-item "><a class="page-link border-danger" href="index.php?url=feedback&act=list&filter=<?php echo isset($fil) ? $fil : 0 ?>&pagenum=<?= $page ?>">
                                     <?= $page ?>
                                 </a>
                             </li>

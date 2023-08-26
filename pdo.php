@@ -30,7 +30,7 @@
             unset($connect);
         }
     }
-
+// hàm CUD có return
     function pdoExecutePro($sql) {
         $sql_args = array_slice(func_get_args(), 1);
             

@@ -4,7 +4,7 @@
       <div class="container footer ">
           <div class="footer-about">
               <h2>HAI LẦN COFFEE CPG</h2>
-              <p class="lh-4">Hai Lần coffee là dự án của sinh viên của trường cao đẳng thực hàng FPT polytechnic</p>
+              <p class="lh-4">Hai Lần coffee là dự án của sinh viên trường cao đẳng thực hành FPT polytechnic</p>
               <img src="img/logo 1.svg" alt="">
           </div>
 
@@ -60,13 +60,7 @@
 
 
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-  </script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
   <script>
 let allProSale = document.querySelectorAll(".proSaleItem");
 let btnMoreSale = document.querySelector(".more-btn-sale");
@@ -94,13 +88,8 @@ function handleItem(items) {
 }
   </script>
   <script>
-var splide = new Splide('.splide', {
-    type: 'loop',
-    perPage: 5,
-    focus: 'center',
-});
 
-splide.mount();
+
 
 
 

@@ -3,6 +3,12 @@
   font-size: 20px;
 }
 
+/* .header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+} */
+
 .carousel-item p {
   margin: 0;
   padding: 2px;
@@ -17,7 +23,7 @@
 .header-logo-img {
   margin-top: 0;
   justify-content: center;
-  gap: 50px;
+  gap: 5%;
 }
 
 .header-logo {
@@ -25,7 +31,7 @@
 }
 
 .header-logo-search {
-  gap: 50px;
+  gap: 5%;
 }
 
 .header-logo-search-input {
@@ -173,9 +179,9 @@
 }
 
 .main-product-sale {
-  position: relative;
-  top: -180px;
-  left: 50px;
+  position: absolute;
+  bottom: 88%;
+  left: 68%;
 }
 
 .main-product-btn {
@@ -535,4 +541,12 @@
 /* Hiển thị menu dropdown khi hover vào nút DANH MỤC */
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+.name-product {
+  display: flex;
+  flex-direction: column;
+  height: 34px;
+  flex-shrink: 0;
+
 }

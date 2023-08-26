@@ -1,7 +1,12 @@
 <!-- MAIN CONTENT -->
 <div class="main-content ">
     <div class="header-banner">
-        <img src="<?=$IMAGE?>/bannerpro.jpg" alt="" class="header-banner-img">
+    
+    <!-- banner -->
+    <div class="header-banner" style="max-height:500px; overflow-y: hidden;">
+        <a href="index.php?url=proDetails&id=<?= $banner['product_id'] ?>&view=<?= getProById($banner['product_id'])['view'] + 1 ?>"><img src="<?= $IMAGE . '/' . $banner['banner_url'] ?>" alt="" class="  w-100  object-fit-cover" /></a>
+    </div>
+
     </div>
     <main class="container">
         <!-- đường dẫn -->
@@ -88,13 +93,13 @@
                         $index++;
                         ?>
                             <!-- item child -->
-                            <div class="col mb-4">
+                            <div class="col mb-4 position-relative">
                                 <div class="card h-100">
                                     <!-- ảnh -->
                                     <div class="h-100">
                                         <a
                                             href="index.php?url=proDetails&id=<?=$item['product_id']?>&view=<?=$item['view'] + 1?>"><img
-                                                style="height: 228px; object-fit: cover;"
+                                                style="height: 100%; object-fit: cover;"
                                                 src="<?=$IMAGE.'/'.$item['image_url']?>" class="card-img-top"
                                                 alt="..."></a>
                                         <!-- giảm giá -->
@@ -107,9 +112,12 @@
                                     </div>
                                     <div class="card-body">
                                         <!-- tên -->
+                                        <div class="name-product">
                                         <h6 style="font-size: 14px;" class="card-title fw-bold">
                                             <?=$item['name']?>
                                         </h6>
+                                        </div>
+                                        
                                         <!-- giá -->
                                         <p class="card-text text-danger fw-bold">
                                             <?php echo $custumPriceNew?> <span
@@ -120,6 +128,28 @@
                                                 style="font-size: 10px;"><?=$custumPriceOld?></span>
                                             <?php } ?>
                                         </p>
+                                        <?php 
+                                       
+                                            $idPro = $item['product_id'];
+                                            $item = getProFeedback($idPro);
+                                            $countFB =  getFeedbackCountById($idPro);
+                                            if($item == []) {
+                                                $item = getProNoFeedback($idPro);
+                                            }
+                                            if(isset($_GET['view']) && $_GET['view'] > 0) {
+                                                $view = $_GET['view'];
+                                                updateView($idPro,$view);
+                                            }
+                                        
+                                        $target = $item;
+                                        ?>
+                                        <!-- điểm đánh giá trung bình -->
+                                        <div class="content-right-whitlist d-flex align-items-center gap-1 mb-2 justify-content-center">
+                                            <span class="star-rating fs-3"
+                                                data-rating="<?=isset($target['avg_star'])?$target['avg_star']:0?>">
+                                            </span><span class=" fs-6">(<?=isset($countFB['count_fb'])?$countFB['count_fb']:0?>)</span>
+
+                                        </div>
                                         <button type="button" class="btn border-danger text-danger cart-btn"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal-<?php echo $index?>">Đặt
@@ -324,4 +354,46 @@ function decreaseQuantity(input) {
 function updateQuantity(input, quantity) {
     input.value = quantity;
 }
+
+//rating
+// star
+document.addEventListener("DOMContentLoaded", function() {
+    const starRatingElements = document.querySelectorAll(".star-rating");
+
+    starRatingElements.forEach(function(starRatingElement) {
+        const rating = parseFloat(starRatingElement.dataset.rating);
+        const fullStars = Math.floor(rating);
+        const decimalPart = rating % 1;
+        const halfStars = decimalPart >= 0.25 && decimalPart < 0.75 ? 1 : 0;
+        const remainingStars = 5 - fullStars - halfStars;
+
+        starRatingElement.innerHTML = getStarIcons(fullStars, halfStars, remainingStars);
+    });
+});
+
+function getStarIcons(fullStars, halfStars, remainingStars) {
+    let starIcons = "";
+
+    for (let i = 0; i < fullStars; i++) {
+        starIcons += `<span class="full-star">&#9733;</span>`;
+    }
+
+    if (halfStars === 1) {
+        starIcons += `<span class="half-star">&#9733;</span>`;
+    }
+
+    for (let i = 0; i < remainingStars; i++) {
+        starIcons += `<span class="empty-star">&#9733;</span>`;
+    }
+
+    return starIcons;
+}
+
+
+
+const banner = new Splide( '.splide', {
+  type   : 'loop',
+  perPage: 1,
+} );
+banner.mount()
 </script>

@@ -38,7 +38,7 @@
                         <div class="d-flex gap-3 col-6 m-3 mb-4 align-items-center">
                             <!-- giá sản phẩm -->
                             <div class="text-danger" style="width: 100px;">
-                                <span class="fw-bold"><?=$curPriceFormat?> <span
+                                <span data-price="<?=$currentPrice?>" class="fw-bold price"><?=$curPriceFormat?><span
                                         class=" text-decoration-underline">đ</span></span><br>
                                 <span style="font-size: 12px; font-style: italic;"
                                     class="text-secondary text-decoration-line-through"><?=$cost?> <span
@@ -78,7 +78,7 @@
             <!-- nút thanh toán và tổng tiền -->
             <div class="cart-total row col-3 ms-1  border-top-0 border-end-0 border-bottom-0 border">
                 <div class="">
-                    <p>Tạm tính: <span class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?> <i
+                    <p>Tạm tính: <span class="text-danger fw-bold fs-3"><span id="total"></span> <i
                                 class="text-decoration-underline"> đ</i></span></p>
                 </div>
                 <input
@@ -92,11 +92,13 @@
 
 </div>
 <script>
+const price = document.querySelectorAll(".price")
+const totalPrice = document.querySelector("#total")
 // Lấy tất cả các phần tử có class "quantity"
 const quantityInputs = document.querySelectorAll('.quantity');
 
 // Thêm sự kiện tăng giảm số lượng cho từng phần tử
-quantityInputs.forEach(input => {
+quantityInputs.forEach((input,index) => {
     input.nextElementSibling.addEventListener('click', function() {
         increaseQuantity(input);
     });
@@ -109,8 +111,9 @@ quantityInputs.forEach(input => {
 // Hàm tăng số lượng
 function increaseQuantity(input) {
     let quantity = parseInt(input.value);
-    quantity += 1;
+    if(quantity < 9) quantity += 1;
     updateQuantity(input, quantity);
+    updateTotal();
 }
 
 // Hàm giảm số lượng, đảm bảo số lượng không âm
@@ -119,6 +122,7 @@ function decreaseQuantity(input) {
     if (quantity > 1) {
         quantity -= 1;
         updateQuantity(input, quantity);
+        updateTotal();
     }
 }
 
@@ -126,4 +130,13 @@ function decreaseQuantity(input) {
 function updateQuantity(input, quantity) {
     input.value = quantity;
 }
+//cập nhật tông tiền
+const updateTotal = () => {
+    let result = 0;
+    price.forEach((e,key) => {
+       result += e.getAttribute("data-price") * quantityInputs[key].value;
+    })
+    totalPrice.innerText = result.toLocaleString().replace(/,/, '.');
+}
+updateTotal();
 </script>

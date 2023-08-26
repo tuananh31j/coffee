@@ -112,9 +112,8 @@ foreach($_SESSION['cart'] as $item) {
                         <!-- nút thanh toán và tổng tiền -->
                         <div style="margin-top: 50px" class="cart-total  ">
                             <div class="">
-                                <p>Phí vận chuyển: 25.000 <i class="text-decoration-underline"> đ</i></p>
                                 <p>Tổng cộng: <span
-                                        class="text-danger fw-bold fs-3"><?=number_format($totalPrice+25000,0,',','.')?>
+                                        class="text-danger fw-bold fs-3"><?=number_format($totalPrice,0,',','.')?>
                                         <i class="text-decoration-underline"> đ</i></span></p>
                             </div>
 
