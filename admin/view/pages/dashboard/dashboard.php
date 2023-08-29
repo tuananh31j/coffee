@@ -83,7 +83,7 @@ foreach ($revenue as $item) {
 
         <!-- đơn hàng gần đây -->
         <div>
-            <h3 class="my-4 tw-font-semibold tw-text-lg">8 đơn hàng gần đây</h3>
+            <h3 class="my-4 tw-font-semibold tw-text-lg">Đơn hàng gần đây</h3>
             <table class="table table-hover table-bordered text-center">
                 <thead class="">
                     <tr class="fw-bold ">
