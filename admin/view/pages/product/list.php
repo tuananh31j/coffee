@@ -5,7 +5,7 @@
         <div class="d-flex ">
             <!-- thêm sản phẩm -->
 
-            <a href="index.php?url=product&act=add" class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm sản
+            <a href="index.php?url=product&act=add" class="bg-success hover:tw-opacity-75 h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm sản
                 phẩm <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
             <div class="dropdown m-3">
@@ -60,31 +60,26 @@
                                 echo $key + 1
                                 ?></td>
                             <td style="width: 60px;"><img class="w-100" src="<?= $IMAGE . '/' . $pro['image_url'] ?>" alt=""></td>
-                            <td><?php $flag = 0;
-                                for ($i = 0; $i < strlen($pro['name']); $i++) {
-                                    echo $pro['name'][$i];
-                                    $flag++;
-                                    if ($flag == 5) {
-                                        echo " </br> ";
-                                        $flag = 0;
-                                    }
-                                } ?></td>
-                            <td class="tw-relative des__custom"><?php $flag = 0;
-                                                                $index = 0;
-                                                                for ($i = 0; $i < strlen($pro['des']); $i++) {
-                                                                    echo $pro['des'][$i];
-                                                                    $flag++;
-                                                                    if ($flag >= 10 && $flag <= 20  && $pro['des'][$i] == ' ') {
-                                                                        echo "</br>";
-                                                                        $flag = 0;
-                                                                        $index++;
-                                                                    }
-                                                                    if ($index == 2) {
-                                                                        echo '.....';
-                                                                        break;
-                                                                    }
-                                                                } ?>
-                                <span class="des__more tw-hidden tw-absolute tw-bg-white tw-z-10 tw-w-96 tw-p-4 tw-border-2 tw-border-red-900 tw-rounded tw-bottom-3"><?= $pro['des'] ?></span>
+                            <td>
+                                <div class="tw-overflow-auto tw-w-20"><?= $pro['name'] ?></div>
+                            </td>
+                            <td class="tw-relative des__custom">
+                                <div class="tw-w-24"><?php $flag = 0;
+                                                        $index = 0;
+                                                        for ($i = 0; $i < strlen($pro['des']); $i++) {
+                                                            echo $pro['des'][$i];
+                                                            $flag++;
+                                                            if ($flag >= 10 && $flag <= 20  && $pro['des'][$i] == ' ') {
+                                                                echo "</br>";
+                                                                $flag = 0;
+                                                                $index++;
+                                                            }
+                                                            if ($index == 2) {
+                                                                echo '.....';
+                                                                break;
+                                                            }
+                                                        } ?></div>
+                                <span class="des__more tw-hidden tw-absolute tw-bg-white tw-text-gray-600 tw-z-10 tw-w-96 tw-p-4 tw-border-2 tw-border-red-900 tw-rounded tw-bottom-3"><?= $pro['des'] ?></span>
                             </td>
                             <td><?= $pro['category_name'] ?></td>
                             <td><?= $pro['view'] ?></td>
@@ -93,8 +88,8 @@
                             <td class="text-danger"><?= number_format($pro['price'], 0, ',', '.') ?><span class="text-decoration-underline">đ</span></td>
                             <td><?= $pro['sale'] ?></td>
 
-                            <td><button onclick="confirmDelete('product&act=delete&id=<?= $pro['product_id'] ?>')" class="bg-danger border-0 text-light p-1 rounded-2">Xóa</button> |
-                                <a href="index.php?url=product&act=update&id=<?= $pro['product_id'] ?>" class="bg-info text-light p-1 rounded-2">Sửa</a>
+                            <td><button onclick="confirmDelete('product&act=delete&id=<?= $pro['product_id'] ?>')" class="bg-danger border-0 text-light p-1 rounded-2 hover:tw-opacity-75">Xóa</button> |
+                                <a href="index.php?url=product&act=update&id=<?= $pro['product_id'] ?>" class="bg-info text-light p-1 rounded-2 hover:tw-opacity-75">Sửa</a>
                             </td>
                         </tr>
                     <?php } ?>

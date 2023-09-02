@@ -5,7 +5,7 @@
          <div class="d-flex ">
              <!-- thêm sản phẩm -->
 
-             <a href="index.php?url=customer&act=add" class="bg-success h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm khách
+             <a href="index.php?url=customer&act=add" class="bg-success hover:tw-opacity-75 h-25 p-1 px-2 rounded-2 text-light m-3 text-decoration-none">Thêm khách
                  hàng <i class="fa-solid fa-plus"></i></a>
 
              <!-- fillter -->
@@ -61,20 +61,12 @@
                              </td>
                              <td><?= $item['name'] ?></td>
                              <td><?= $item['phone'] ?></td>
-                             <td><?php $flag = 0;
-                                    for ($i = 0; $i < strlen($item['email']); $i++) {
-                                        echo $item['email'][$i];
-                                        if ($item['email'][$i] === '@' || $item['email'][$i] === '.') {
-                                            echo " </br> ";
-                                        }
-                                    } ?></td>
-                             <td><?php $flag = 0;
-                                    for ($i = 0; $i < strlen($item['address']); $i++) {
-                                        echo $item['address'][$i];
-                                        if ($item['address'][$i] === ',' || $item['address'][$i] === '.') {
-                                            echo " </br> ";
-                                        }
-                                    } ?></td>
+                             <td>
+                                 <div class="tw-overflow-auto"><?= $item['email'] ?></div>
+                             </td>
+                             <td>
+                                 <div class="tw-overflow-auto tw-w-20"><?= $item['address'] ?></div>
+                             </td>
                              <td><?= $item['create_at'] ?></td>
                              <td><?= isset($item['update_at']) ? $item['update_at'] : '' ?></td>
                              <td><?= $item['pass'] ?></td>
@@ -83,7 +75,7 @@
                              <td>
                                  <!-- <button onclick="confirmDelete('customer&act=delete&id=<?= $item['customer_id'] ?>')"
                                  class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button> -->
-                                 <a href="index.php?url=customer&act=update&id=<?= $item['customer_id'] ?>" class="bg-info text-light p-1 rounded-2 text-decoration-none">Sửa</a>
+                                 <a href="index.php?url=customer&act=update&id=<?= $item['customer_id'] ?>" class="bg-info text-light p-1 rounded-2 text-decoration-none hover:tw-opacity-75">Sửa</a>
                              </td>
                          </tr>
                      <?php } ?>

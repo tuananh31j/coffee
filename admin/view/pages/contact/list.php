@@ -38,7 +38,7 @@
                     <p class=" text-secondary" style="font-size: 12px;">Thời gian:
                         <span><?= isset($item['create_at']) ? $item['create_at'] : '' ?></span>
                     </p>
-                    <button onclick="confirmDelete('contact&act=delete&id=<?= $item['contact_id'] ?>')" class="bg-danger border-0 text-light p-1 rounded-2">Xóa</button>
+                    <button onclick="confirmDelete('contact&act=delete&id=<?= $item['contact_id'] ?>')" class="bg-danger border-0 text-light p-1 rounded-2  hover:tw-opacity-75">Xóa</button>
                     <p>Trạng thái: <?php if (isset($item['status'])) {
                                         if ($item['status'] == 0) {
                                             echo "<span class='text-danger fw-bold'>Chưa xử lý</span>";
@@ -56,7 +56,7 @@
                             <option value="1">Đã xử lý</option>
                         </select>
                         <p class="text-danger"><?= isset($err[$key]) ? $err[$key] : '' ?></p>
-                        <input type="submit" name="btn-update-<?= $key ?>" class="btn border-0 p-1 bg-black text-light" value="Cập nhật">
+                        <input type="submit" name="btn-update-<?= $key ?>" class="btn border-0 p-1 bg-black text-light hover:tw-opacity-75" value="Cập nhật">
                     </form>
                 </div>
                 <div class="col">

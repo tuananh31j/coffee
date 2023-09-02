@@ -14,7 +14,7 @@
                                                                                     } ?></h3>
 
 
-        <div><a href="index.php?url=banner&act=list" class="bg-success p-1 px-2 rounded-2 text-light mb-3 text-decoration-none">Danh sách banner</a></div>
+        <div><a href="index.php?url=banner&act=list" class="bg-success p-1 px-2 rounded-2 text-light mb-3 text-decoration-none hover:tw-opacity-75">Danh sách banner</a></div>
         <!-- content -->
         <div class="wrapper" style="margin-top: 20px; width: 100%">
             <p class="text-success"><?= isset($noti) ? $noti : '' ?></p>
@@ -54,8 +54,8 @@
                     <p class="text-danger"><?= isset($err['img']) ? $err['img'] : '' ?></p>
                 </div>
                 <div class="my-4">
-                    <input type="reset" class="bg-info text-light rounded-2 border-0 p-2" value="Nhập lại">
-                    <input type="submit" class="bg-success text-light rounded-2 border-0 p-2" value="Cập nhật" name="btn-update">
+                    <input type="reset" class="bg-info text-light rounded-2 border-0 p-2 hover:tw-opacity-75" value="Nhập lại">
+                    <input type="submit" class="tw-bg-red-800 text-light rounded-2 border-0 p-2 hover:tw-opacity-75" value="Cập nhật" name="btn-update">
                 </div>
 
             </form>

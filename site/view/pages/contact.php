@@ -15,15 +15,17 @@
     <main>
 
         <div class="row gap-3">
-            <div class="col">
+            <div class="col tw-leading-7">
                 <p class="text-secondary">Hailen Coffee CPG tự hào là nhà phân phối hợp lệ và độc quyền cho tất
                     cả các
                     sản
                     phẩm mang thương hiệu Highlands Coffee. Mọi thông tin liên hệ xin gửi vào form dưới đây
                     hoặc liên hệ chúng tôi theo địa chỉ.</p>
-                <p>Địa chỉ:<span> Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Tp. Hà Nội</span></p>
-                <p>Điện thoại: <span>012345678</span></p>
-                <p>Email: <span>Hailen@gmail.com</span></p>
+                <div class="tw-leading-9">
+                    <p>Địa chỉ:<span> Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Tp. Hà Nội</span></p>
+                    <p>Điện thoại: <span>012345678</span></p>
+                    <p>Email: <span>Hailen@gmail.com</span></p>
+                </div>
             </div>
             <div class="col">
                 <div>
@@ -60,7 +62,7 @@
                             </div>
 
                         </div>
-                        <input type="submit" name="btn-send" value="Gửi tin nhắn" class="px-4 py-2 bg-danger border-0 text-light rounded-2">
+                        <input type="submit" name="btn-send" value="Gửi liện hệ" class="px-4 py-2 tw-text-white tw-bg-red-800 hover:tw-opacity-75 tw-border tw-rounded">
                         <p class="text-danger my-3"><?= isset($noti) ? $noti : '' ?></p>
 
                     </form>

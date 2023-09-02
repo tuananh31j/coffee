@@ -8,7 +8,7 @@
 
             <a href="index.php?url=product&act=list" class="bg-success p-1 px-2 rounded-2 text-light mb-3 text-decoration-none">Danh sách sản
                 phẩm</a>
-            <p class="text-danger m-3"><?= isset($noti) ? $noti : '' ?></p>
+            <p class="text-success my-3 mx-0"><?= isset($noti) ? $noti : '' ?></p>
 
 
         </div>
@@ -56,7 +56,7 @@
                     ?>
                         <div class="tw-my-1">
                             <label for="size">Size <span class="text-danger fw-bold"><?= $size['name'] ?></span> có giá
-                                là<span class="text-danger">*</span>:</label>
+                                là<?= $key == 0 ? '<span> (Mặc định)</span><span class="text-danger">*</span>' : '' ?>:</label>
                             <input type="text" value="<?= $size['size_id'] ?>" hidden name="details[<?= $key ?>][size]">
                             <input type="text" class="form-control tw-my-1" name="details[<?= $key ?>][price]" value="" placeholder="₫" />
                             <p class="text-danger"><?= isset($err['price-' . $key]) ? $err['price-' . $key] : '' ?></p>
@@ -71,8 +71,8 @@
                 </div>
         </div>
         <div class="my-4">
-            <input type="reset" class="bg-info text-light rounded-2 border-0 p-2" value="Nhập lại">
-            <input type="submit" class="bg-success text-light rounded-2 border-0 p-2" value="Thêm" name="btn-add">
+            <input type="reset" class="bg-info text-light rounded-2 border-0 p-2 hover:tw-opacity-75" value="Nhập lại">
+            <input type="submit" class="tw-bg-red-800 text-light rounded-2 border-0 p-2 hover:tw-opacity-75" value="Thêm" name="btn-add">
         </div>
 
         </form>

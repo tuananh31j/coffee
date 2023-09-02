@@ -9,36 +9,36 @@
         <!-- dịch vụ -->
         <div class="row justify-content-center align-content-center text-center my-5">
             <div class="col">
-                <a href="" class="text-dark text-decoration-none"><img class="w-25" src="<?= $IMAGE ?>/tk.jpg" alt="" />
-                    <div>
-                        <h4 class="fs-5 mt-4">Mua hàng siêu tiết kiệm</h4>
-                        <p style="font-size: 14px;">Các sản phẩm luôn được bán với giá ưu đãi nhất</p>
-                    </div>
-                </a>
+                <div class="tw-flex tw-flex-col tw-justify-center">
+                    <img src="<?= $IMAGE ?>/tk.jpg" alt="" class="tw-w-20 tw-mx-auto">
+                    <h4 class="fs-5 tw-mt-4 tw-mb-1 tw-text-xl tw-font-semibold">Mua hàng siêu tiết kiệm</h4>
+                    <p style="font-size: 14px;">Các sản phẩm luôn được bán với giá ưu đãi nhất</p>
+                </div>
+
             </div>
             <div class="col">
-                <a href="" class="text-dark text-decoration-none"><img class="w-25" src="<?= $IMAGE ?>/khuyenmai.jpg" alt="" />
-                    <div>
-                        <h4 class="fs-5 mt-4">Khuyến mãi cực lớn</h4>
-                        <p style="font-size: 14px;">Được hưởng chương trình và các khuyến mãi cực lớn</p>
-                    </div>
-                </a>
+                <div class="tw-flex tw-flex-col tw-justify-center">
+                    <img src="<?= $IMAGE ?>/khuyenmai.jpg" alt="" class="tw-w-20 tw-mx-auto">
+                    <h4 class="fs-5 tw-mt-4 tw-mb-1 tw-text-xl tw-font-semibold">Khuyến mãi cực lớn</h4>
+                    <p style="font-size: 14px;">Được hưởng chương trình và các khuyến mãi cực lớn</p>
+                </div>
+
             </div>
             <div class="col">
-                <a href="" class="text-dark text-decoration-none"><img class="w-25" src="<?= $IMAGE ?>/chatluong.jpg" alt="" />
-                    <div class="ms-3">
-                        <h4 class="fs-5 mt-4 ">Chất lượng</h4>
-                        <p style="font-size: 14px;">Nguyên liệu đảm bảo vệ sinh an toàn thực phẩm</p>
-                    </div>
-                </a>
+                <div class="tw-flex tw-flex-col tw-justify-center">
+                    <img src="<?= $IMAGE ?>/chatluong.jpg" alt="" class="tw-w-20 tw-mx-auto">
+                    <h4 class="fs-5 tw-mt-4 tw-mb-1 tw-text-xl tw-font-semibold">Chất lượng</h4>
+                    <p style="font-size: 14px;">Nguyên liệu đảm bảo vệ sinh an toàn vệ sinh thực phẩm</p>
+                </div>
+
             </div>
             <div class="col">
-                <a href="" class="text-dark text-decoration-none"><img class="w-25" src="<?= $IMAGE ?>/thanhtoan.jpg" alt="" />
-                    <div>
-                        <h4 class="fs-5 mt-4">Thanh toán dễ dàng</h4>
-                        <p style="font-size: 14px;">Trả tiền khi nhận hàng <br><span>(COD)</span></p>
-                    </div>
-                </a>
+                <div class="tw-flex tw-flex-col tw-justify-center">
+                    <img src="<?= $IMAGE ?>/thanhtoan.jpg" alt="" class="tw-w-20 tw-mx-auto">
+                    <h4 class="fs-5 tw-mt-4 tw-mb-1 tw-text-xl tw-font-semibold">Thanh toán dễ dàng</h4>
+                    <p style="font-size: 14px;">Trả tiền khi nhận hàng <br><span>(COD)</span></p>
+                </div>
+
             </div>
 
         </div>
@@ -61,7 +61,7 @@
                 ?>
                     <!-- item child -->
                     <div class="col mb-4 proSaleItem text-center position-relative">
-                        <div class="card h-100">
+                        <div class="card h-100 tw-border-0 hover:tw-border">
                             <!-- ảnh -->
                             <div class="h-100">
                                 <a href="index.php?url=proDetails&id=<?= $item['product_id'] ?>&view=<?= $item['view'] + 1 ?>"><img style="height: 100%; object-fit: cover;" src="<?= $IMAGE . '/' . $item['image_url'] ?>" class="card-img-top" alt="..."></a>
@@ -152,6 +152,9 @@
                                                                             $flag = 0;
                                                                             foreach ($listSize as $size) {
                                                                                 $flag += 1;
+                                                                                if (getPrice($item['product_id'], $size['size_id']) == []) {
+                                                                                    continue;
+                                                                                }
                                                                             ?>
                                                                                 <input type="radio" value="<?= $size['size_id'] ?>" class="btn-check" name="size" id="btnradio<?= $flag . '-' . $index ?>" autocomplete="off" <?php if ($flag == 1) echo 'checked' ?>>
                                                                                 <label class="btn btn-outline-primary" for="btnradio<?= $flag . '-' . $index ?>"><?= $size['name'] ?></label>
@@ -202,7 +205,7 @@
                 <div onclick="handleItemAll(allProSale)" class="xemthem more-btn-sale">
                     <div class="top"></div>
 
-                    <h5>Xem thêm sản phẩm</h5>
+                    <h5 class="tw-font-semibold tw-text-md">Xem thêm</h5>
 
                     <div class="bottom"></div>
 
@@ -210,7 +213,7 @@
                 <div onclick="handleItem(allProSale)" class="xemthem hide-btn-sale d-none">
                     <div class="top"></div>
 
-                    <h5>Ẩn bớt</h5>
+                    <h5 class="tw-font-semibold tw-text-md">Ẩn bớt</h5>
 
                     <div class="bottom"></div>
 
@@ -238,7 +241,7 @@
                     $key += 2;
                 ?>
                     <div class="col mb-4 text-center proNewItem position-relative">
-                        <div class="card h-100">
+                        <div class="card h-100 tw-border-0 hover:tw-border">
                             <!-- ảnh -->
                             <div class="h-100">
                                 <a href="index.php?url=proDetails&id=<?= $item['product_id'] ?>&view=<?= $item['view'] + 1 ?>"><img style="height: 100%; object-fit: cover;" src="<?= $IMAGE . '/' . $item['image_url'] ?>" class="card-img-top" alt="..."></a>
@@ -332,6 +335,9 @@
                                                                             $flag = 0;
                                                                             foreach ($listSize as $size) {
                                                                                 $flag += 1;
+                                                                                if (getPrice($item['product_id'], $size['size_id']) == []) {
+                                                                                    continue;
+                                                                                }
                                                                             ?>
                                                                                 <input type="radio" value="<?= $size['size_id'] ?>" class="btn-check" name="size" id="btnradio<?= $flag . '-' . $key ?>" autocomplete="off" <?php if ($flag == 1) echo 'checked' ?>>
                                                                                 <label class="btn btn-outline-primary" for="btnradio<?= $flag . '-' . $key ?>"><?= $size['name'] ?></label>
@@ -380,7 +386,7 @@
 
                 <div class="top"></div>
                 <a class="text-danger text-decoration-none" href="index.php?url=product">
-                    <h5>Xem thêm sản phẩm</h5>
+                    <h5 class=" tw-font-semibold tw-text-md">Xem thêm sản phẩm</h5>
                 </a>
                 <div class="bottom"></div>
 

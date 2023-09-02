@@ -3,9 +3,9 @@
     <div class="container">
         <h3 class="text-center my-5 tw-font-semibold tw-text-lg">DANH SÁCH KÍCH CỠ ĐÃ XÓA</h3>
 
-        <!-- thêm size -->
+        <!-- danh sách size -->
 
-        <a href="index.php?url=size&act=list" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Danh sách<i class="fa-solid fa-plus"></i></a>
+        <a href="index.php?url=size&act=list" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3 hover:tw-opacity-75">Danh sách<i class="fa-solid fa-plus"></i></a>
 
         <!-- content -->
         <div class="mt-5">
@@ -26,7 +26,7 @@
                             <td><?= $size['name'] ?></td>
                             <td>
 
-                                <a href="index.php?url=size&act=update&id=<?= $size['size_id'] ?>" onclick='alert("Đã khôi phục!")' class="border-0 bg-secondary text-light p-1 rounded-2">Khôi phục</a>
+                                <a href="index.php?url=size&act=restore&id=<?= $size['size_id'] ?>" onclick='alert("Đã khôi phục!")' class="border-0 bg-secondary text-light p-1 rounded-2 hover:tw-opacity-75">Khôi phục</a>
 
 
                             </td>

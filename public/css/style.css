@@ -117,49 +117,7 @@
   color: white !important;
 }
 
-/* footer */
-.footer {
-  display: grid;
-  grid-template-columns: 20% 20% auto auto;
-  gap: 110px;
-  max-width: 1200px;
-  margin: 30px auto;
-  border-top: 1px solid #dadcdf;
-  padding-top: 20px;
-  justify-content: center;
-}
 
-.footer-contact {
-  display: grid;
-  grid-template-columns: 14% auto;
-  align-items: center;
-  gap: 20px;
-
-}
-
-.footer-contact-icon {
-  font-size: 34px;
-}
-
-.footer h3 {
-  font-size: 15px;
-}
-
-.footer h2 {
-  font-size: 20px;
-}
-
-.footer-menu ul {
-  list-style: none;
-  margin-left: -33px;
-  line-height: 30px;
-
-}
-
-.footer-menu ul li a {
-  text-decoration: none;
-  color: black;
-}
 
 .price-filter {
   display: flex;

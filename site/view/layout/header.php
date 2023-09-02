@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            prefix: 'tw-',
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $STYLE ?>/style.css">
@@ -12,8 +26,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -57,7 +69,7 @@
                             <div>
                                 <!-- tra cứu đơn hàng -->
                                 <form class="d-flex " method="post" action="index.php?url=findMyOrder" role="search">
-                                    <input name="id" class="form-control border-light text-dark " style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng" aria-label="Search">
+                                    <input name="id" class="tw-p-2 tw-border tw-rounded-md border-light text-dark " style="font-size: 14px; width: 150px;" type="search" placeholder="#Mã đơn hàng" aria-label="Search">
                                     <button name="btn-find" class="border-0 rounded-end-2 bg-danger text-light " style="margin-left: -20px; width: 60px; font-size: 14px;" type="submit">Tra
                                         cứu</button>
                                 </form>
@@ -72,8 +84,8 @@
 
                         <div class="collapse navbar-collapse header-logo-search" id="navbarSupportedContent">
                             <form method="post" action="index.php?url=product" class="d-flex header-logo-search-form" role="search">
-                                <input name="keyword" value="" class="form-control header-logo-search-input " type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
-                                <button name="btn-search" class=" header-logo-search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input name="keyword" value="" class="tw-p-2 tw-border tw-rounded-md header-logo-search-input " type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                                <button name="btn-search" class="header-logo-search-btn tw-bg-white tw-px-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 <p class="text-black"><?= isset($errKw) ? $errKw : '' ?></p>
 
                             </form>

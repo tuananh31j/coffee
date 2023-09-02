@@ -42,20 +42,33 @@
                         <tr>
 
                             <td><?= $key + 1 ?></td>
-                            <td><?= isset($item['nameCus']) ? $item['nameCus'] : '' ?></td>
-                            <td><?= isset($item['namePro']) ? $item['namePro'] : '' ?></td>
+                            <td>
+                                <div class="tw-w-24 tw-overflow-auto"><?= isset($item['nameCus']) ? $item['nameCus'] : '' ?></div>
+                            </td>
+                            <td>
+                                <div class="tw-w-24 tw-overflow-auto"><?= isset($item['namePro']) ? $item['namePro'] : '' ?></div>
+                            </td>
                             <td><?= isset($item['create_at']) ? $item['create_at'] : '' ?></td>
                             <td><?= isset($item['update_at']) ? $item['update_at'] : '' ?></td>
-                            <td><?php $flag = 0;
-                                for ($i = 0; $i < strlen($item['content']); $i++) {
-                                    echo $item['content'][$i];
-                                    $flag++;
-                                    if ($flag == 15) {
-                                        echo " </br> ";
-                                        $flag = 0;
-                                    }
-                                } ?></td>
-                            <td><button onclick="confirmDelete('comment&act=delete&id=<?= $item['cmt_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button> |
+                            <td class="tw-relative">
+                                <div class="tw-w-24 tw-overflow-auto"><?php $flag = 0;
+                                                                        $index = 0;
+                                                                        for ($i = 0; $i < strlen($item["content"]); $i++) {
+                                                                            echo $item["content"][$i];
+                                                                            $flag++;
+                                                                            if ($flag >= 10 && $flag <= 20  && $item["content"][$i] == ' ') {
+                                                                                echo "</br>";
+                                                                                $flag = 0;
+                                                                                $index++;
+                                                                            }
+                                                                            if ($index == 2) {
+                                                                                echo '<div class="des__custom">....</div>';
+                                                                                break;
+                                                                            }
+                                                                        } ?></div>
+                                <span class="des__more tw-hidden tw-absolute tw-bg-white tw-text-gray-600 tw-z-10 tw-w-44 tw-p-4 tw-border-2 tw-border-red-900 tw-rounded tw-bottom-3"><?= $item["content"] ?></span>
+                            </td>
+                            <td><button onclick="confirmDelete('comment&act=delete&id=<?= $item['cmt_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2 hover:tw-opacity-75">Xóa</button> |
                                 <a href="index.php?url=comment&act=details&id=<?= $item['cmt_id'] ?>" class="text-decoration-none bg-info text-light p-1 rounded-2">Chi tiết</a>
                             </td>
                         </tr>
@@ -97,3 +110,15 @@
 
     </div>
 </div>
+<script>
+    const desCustom = document.querySelectorAll('.des__custom');
+    const desMore = document.querySelectorAll('.des__more');
+    desCustom.forEach((item, index) => {
+        item.addEventListener("mouseenter", function() {
+            desMore[index].classList.remove("tw-hidden");
+        });
+        item.addEventListener("mouseleave", function() {
+            desMore[index].classList.add("tw-hidden");
+        })
+    })
+</script>

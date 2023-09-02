@@ -6,9 +6,9 @@
         <p class="text-success"><?= isset($noti) ? $noti : '' ?></p>
 
         <div class="d-flex">
-            <!-- thêm danh mục -->
+            <!-- danh sách kh -->
 
-            <a href="index.php?url=customer&act=list" class="text-decoration-none bg-success p-1 px-2 rounded-2 text-light ">Danh sách khách
+            <a href="index.php?url=customer&act=list" class="text-decoration-none hover:tw-opacity-75 bg-success p-1 px-2 rounded-2 text-light ">Danh sách khách
                 hàng</a>
         </div>
 
@@ -93,8 +93,8 @@
                 </div>
                 <!-- thêm -->
                 <div class="button">
-                    <input type="reset" value="Nhập lại" class="p-2 bg-success rounded-2 border-0 text-light">
-                    <input type="submit" class="p-2 bg-info rounded-2 border-0 text-light" value="Cập nhật" name="btn-update">
+                    <input type="reset" value="Nhập lại" class="p-2 bg-info rounded-2 border-0 text-light hover:tw-opacity-75">
+                    <input type="submit" class="p-2 tw-bg-red-800 rounded-2 border-0 text-light hover:tw-opacity-75" value="Cập nhật" name="btn-update">
                 </div>
             </form>
         </div>

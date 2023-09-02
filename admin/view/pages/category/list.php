@@ -5,7 +5,7 @@
         <div class="d-flex ">
             <!-- thêm danh mục -->
 
-            <a href="index.php?url=category&act=add" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
+            <a href="index.php?url=category&act=add" class="text-decoration-none h-25 hover:tw-opacity-75 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm danh
                 mục <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
             <div>
@@ -50,8 +50,8 @@
                             <td><?= $key + 1 ?></td>
                             <td><?= $category['name'] ?></td>
                             <td>
-                                <button onclick="confirmDelete('category&act=delete&id=<?= $category['category_id'] ?>')" class="border-0 bg-danger text-light p-1 rounded-2">Xóa</button>
-                                <a href="index.php?url=category&act=update&id=<?= $category['category_id'] ?>" class="bg-info text-light p-1 rounded-2">Sửa</a>
+                                <button onclick="confirmDelete('category&act=delete&id=<?= $category['category_id'] ?>')" class="border-0 hover:tw-opacity-75 bg-danger text-light p-1 rounded-2">Xóa</button>
+                                <a href="index.php?url=category&act=update&id=<?= $category['category_id'] ?>" class="bg-info hover:tw-opacity-75 text-light p-1 rounded-2">Sửa</a>
                             </td>
                         </tr>
                     <?php } ?>

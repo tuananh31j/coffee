@@ -18,8 +18,8 @@
                 </div>
                 <p class="text-danger"><?php echo isset($errName) ? $errName : '' ?></p>
                 <div class="button">
-                    <input type="reset" value="Nhập lại" class="p-2 bg-info rounded-2 border-0 text-light">
-                    <input type="submit" class="p-2 bg-success rounded-2 border-0 text-light" value="Thêm" name="btn-add">
+                    <input type="reset" value="Nhập lại" class="p-2 bg-info rounded-2 border-0 text-light hover:tw-opacity-75">
+                    <input type="submit" class="p-2 tw-bg-red-800 rounded-2 border-0 text-light hover:tw-opacity-75" value="Thêm" name="btn-add">
                 </div>
             </form>
 

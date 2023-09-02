@@ -35,7 +35,7 @@ foreach ($details as $item) {
 <body>
     <div class="container">
         <?php if (isset($_GET['back'])) { ?>
-            <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn text-decoration-none bg-danger text-light my-4">Trở về</a>
+            <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn text-decoration-none bg-danger text-light my-4 fw-bold"><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
         <?php } else { ?>
 
         <?php } ?>

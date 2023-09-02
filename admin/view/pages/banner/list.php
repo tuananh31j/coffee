@@ -51,7 +51,7 @@
                             <td><?= $banner['update_at'] ?></td>
                             <td>
 
-                                <a href="index.php?url=banner&act=update&id=<?= $banner['banner_id'] ?>" class="bg-info text-light p-1 rounded-2">Sửa</a>
+                                <a href="index.php?url=banner&act=update&id=<?= $banner['banner_id'] ?>" class="bg-info text-light p-1 rounded-2 hover:tw-opacity-75">Sửa</a>
                             </td>
                         </tr>
                     <?php } ?>

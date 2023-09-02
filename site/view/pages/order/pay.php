@@ -11,7 +11,7 @@
         <form action="index.php?url=pay" method="post">
             <div class="row gap-4">
                 <div class="col ">
-                    <h3 class="mb-5">Thông tin thanh toán</h3>
+                    <h3 class="mb-5 tw-text-xl tw-font-semibold">Thông tin thanh toán</h3>
                     <div class="form-group my-4">
                         <label class="my-2 fw-bold" for="shop">Chọn cửa hàng gần bạn<span class="text-danger">*</span></label>
                         <!-- shop -->
@@ -81,7 +81,7 @@
                 </div>
                 <!-- đơn hàng -->
                 <div class="col">
-                    <h4 class="mb-5">Đơn hàng (<?= $countQuantity ?> sản phẩm)</h4>
+                    <h4 class="mb-5"><span class="tw-text-xl tw-font-semibold">Đơn hàng</span> (<?= $countQuantity ?> sản phẩm)</h4>
                     <div class=" border border-2 border-danger shadow rounded-2 p-4 ">
                         <iframe src="./site/view/pages/order/itemCart.php" style="width:100%; height: 340px" frameborder="1"></iframe>
                         <div class="form-check p-0 mt-4">

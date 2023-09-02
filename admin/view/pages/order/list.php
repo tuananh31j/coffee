@@ -79,7 +79,7 @@
                             <?php if ($item['status'] == 3) { ?>
                                 <span onclick="swal('Đơn hàng đã hoàn thành! không thể thay đổi trạng thái.')" name="btn-update-<?= $key ?>" class="tw-opacity-25 btn border-0 p-1 bg-black text-light">Cập nhật</span>
                             <?php } else { ?>
-                                <input type="submit" name="btn-update-<?= $key ?>" class="btn border-0 p-1 bg-black text-light" value="Cập nhật">
+                                <input type="submit" name="btn-update-<?= $key ?>" class="btn border-0 p-1 bg-black text-light hover:tw-opacity-75" value="Cập nhật">
                             <?php } ?>
                         </form>
                     </div>

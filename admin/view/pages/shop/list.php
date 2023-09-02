@@ -5,7 +5,7 @@
         <div class="d-flex ">
             <!-- thêm danh mục -->
 
-            <a href="index.php?url=shop&act=add" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3">Thêm địa chỉ <i class="fa-solid fa-plus"></i></a>
+            <a href="index.php?url=shop&act=add" class="text-decoration-none h-25 bg-success p-1 px-2 rounded-2 text-light m-3 hover:tw-opacity-75">Thêm địa chỉ <i class="fa-solid fa-plus"></i></a>
             <!-- fillter -->
             <div class="dropdown m-3">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,11 +51,11 @@
                             <td><?= $key + 1 ?></td>
                             <td><?= $item['address'] ?></td>
                             <td><?= $item['phone'] ?></td>
-                            <td><a target="_blank" href="<?= $item['link'] ?>">Xem địa chỉ</a></td>
+                            <td><a target="_blank" class="hover:tw-text-red-800 tw-text-blue-500 tw-underline tw-text-center" href="<?= $item['link'] ?>">Xem địa chỉ</a></td>
 
                             <td>
 
-                                <a href="index.php?url=shop&act=update&id=<?= $item['address_id'] ?>" class="bg-info text-light p-1 rounded-2">Sửa</a>
+                                <a href="index.php?url=shop&act=update&id=<?= $item['address_id'] ?>" class="bg-info text-light p-1 rounded-2 hover:tw-opacity-75">Sửa</a>
                             </td>
                         </tr>
                     <?php } ?>

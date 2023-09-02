@@ -164,6 +164,7 @@ if (isset($_GET['url'])) {
                             $target = getCategoryById($_POST['id']);
                         } else {
                             $errName = "Chưa nhập tên danh mục!";
+                            $target = getCategoryById($_POST['id']);
                         }
                     }
 
@@ -233,6 +234,9 @@ if (isset($_GET['url'])) {
                             updateBanner($name, $banner_id, $product_id, $img, $update_at);
                             $noti = "Cập nhật thành công!";
                             $target = getBannerById($_POST['id']);
+                        } else {
+                            $target = getBannerById($banner_id);
+                            $listPro = getListProFromBanner();
                         }
                     }
 
@@ -334,10 +338,12 @@ if (isset($_GET['url'])) {
                             foreach ($_POST['details'] as $key => $value) {
                                 $size = $value['size'];
                                 $price = $value['price'];
-                                if ($price != '') {
-                                    $detailsArray[$key] = array('size' => $size, 'price' => $price);
+                                if ($price != '' && !is_numeric($price)) {
+                                    $err["price-" . $key] = "Không phải là số!";
+                                } elseif ($key == 0 && $price == '') {
+                                    $err["price-" . $key] = "Phải nhập giá tiền cho size mặc định!";
                                 } else {
-                                    $err["price-" . $key] = "Chưa nhập giá!";
+                                    $detailsArray[$key] = array('size' => $size, 'price' => $price);
                                 }
                             }
                         }
@@ -345,8 +351,12 @@ if (isset($_GET['url'])) {
                             $result = add_product($name, $sale, $img, $category, $des);
                             if ($result) {
                                 foreach ($detailsArray as $details) {
+                                    if ($details['price'] === '') {
+                                        continue;
+                                    }
                                     add_product_details($result, $details['size'], $details['price']);
                                 }
+
                                 $noti = "Thêm mới thành công!";
                             }
                         }
@@ -422,14 +432,17 @@ if (isset($_GET['url'])) {
                         // dữ liệu chi tiết sản phẩm
                         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $detailsArray = array();
+
                             // Lặp qua dữ liệu được post từ form và lưu vào mảng $detailsArray
                             foreach ($_POST['details'] as $key => $value) {
                                 $size = $value['size'];
                                 $price = $value['price'];
-                                if ($price != '') {
-                                    $detailsArray[$key] = array('size' => $size, 'price' => $price);
+                                if ($price != '' && !is_numeric($price)) {
+                                    $err["price-" . $key] = "Không phải là số!";
+                                } elseif ($key == 0 && $price == '') {
+                                    $err["price-" . $key] = "Phải nhập giá tiền cho size mặc định!";
                                 } else {
-                                    $err["price-" . $key] = "Chưa nhập giá!";
+                                    $detailsArray[$key] = array('size' => $size, 'price' => $price);
                                 }
                             }
                         }
@@ -453,6 +466,12 @@ if (isset($_GET['url'])) {
                             // updateDetails($idPro,$detailsArray[0]['size'], $detailsArray[0]['price'], $update_at);
                             // updateDetails($idPro,$detailsArray[1]['size'], $detailsArray[1]['price'], $update_at);
                             // updateDetails($idPro,$detailsArray[2]['size'], $detailsArray[2]['price'], $update_at);
+                        } else {
+                            $id = $idPro;
+                            $listSize = getListSize();
+                            $listCategory = getListCategory();
+                            $target = getProById($id);
+                            $listProDetail = getlistProDetailById($id);
                         }
                     }
                     require "./view/pages/product/update.php";
@@ -626,6 +645,8 @@ if (isset($_GET['url'])) {
                         if (count($err) === 0) {
                             updateCustomer($name, $phone, $pass, $email, $status, $img, $role, $id);
                             $noti = "Cập nhật thành công!";
+                            $target = getCusById($id);
+                        } else {
                             $target = getCusById($id);
                         }
                     }
@@ -876,6 +897,8 @@ if (isset($_GET['url'])) {
                         updateShop($id, $address, $phone, $link, $update_at);
                         $noti = "Chỉnh sửa thành công!";
                         $target = getShopById($id);
+                    } else {
+                        $target = getShopById($id);
                     }
                 }
                 include_once "./view/pages/shop/update.php";
@@ -902,14 +925,14 @@ if (isset($_GET['url'])) {
                 deleteSize($id);
                 header("location: index.php?url=size&act=list");
             }
-            if ($act == "update") {
+            if ($act == "restore") {
                 $list = getListResetSize();
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                     updateSize($id);
-                    header("location: index.php?url=size&act=update");
+                    header("location: index.php?url=size&act=restore");
                 }
-                require_once "view/pages/size/update.php";
+                require_once "view/pages/size/restore.php";
             }
             if ($act == 'add') {
                 $errName = '';
@@ -939,6 +962,7 @@ if (isset($_GET['url'])) {
         $date = $_GET['date'];
     }
     // doanh thu
+    // 1 tháng
     $orderCate =  getOrderByCate();
     $top5 = getTop5Pro();
     $rejected = countRejected()['countOrder'];
@@ -946,6 +970,7 @@ if (isset($_GET['url'])) {
     $countOrder = countAll()['countOrder'];
     $revenue = getRevenue();
     if (isset($_GET['date'])) {
+        // 3 tháng
         $date = $_GET['date'];
         if ($date == 3) {
             $orderCate =  getOrderByCate3();
@@ -955,6 +980,7 @@ if (isset($_GET['url'])) {
             $countOrder = countAll3()['countOrder'];
             $revenue = getRevenue3();
         }
+        // 6 tháng
         if ($date == 6) {
             $orderCate =  getOrderByCate6();
             $top5 = getTop5Pro6();

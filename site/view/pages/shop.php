@@ -15,7 +15,7 @@
         <?php foreach ($list as $item) { ?>
             <div class="">
 
-                <div class="row gap-5 align-items-end justify-content-center ">
+                <div class="row gap-5 align-items-end justify-content-center tw-leading-9 tw-mt-11">
                     <div class="col-6">
                         <p><i class="fa-solid fa-shop"></i>
                             <?php for ($i = 0; $i < strlen($item['address']); $i++) {
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-2 mb-3">
 
-                        <a target="_blank" href="<?= $item['link'] ?>">Xem
+                        <a class="hover:tw-text-red-800 tw-text-blue-500 tw-underline tw-text-center" target="_blank" href="<?= $item['link'] ?>">Xem
                             bản đồ <i class="fa-sharp fa-solid fa-location-dot"></i></a>
                     </div>
                 </div>
