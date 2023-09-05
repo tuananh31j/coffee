@@ -39,7 +39,7 @@
                      <tr style="font-size: 14px;">
                          <th>STT</th>
                          <th>Ảnh</th>
-                         <th style="width: 200px">Họ tên</th>
+                         <th style="width: 40px">Họ tên</th>
                          <!-- số điện thoại -->
                          <th><i class="fa-solid fa-phone"></i></th>
                          <!-- email -->
@@ -59,7 +59,9 @@
                              <td><?= $key + 1 ?></td>
                              <td style="width: 60px;"><img class="w-100" src="<?= $IMAGE . '/' . $item['image_url'] ?>" alt="">
                              </td>
-                             <td><?= $item['name'] ?></td>
+                             <td>
+                                 <div class="tw-w-14 tw-overflow-auto"><?= $item['name'] ?></div>
+                             </td>
                              <td><?= $item['phone'] ?></td>
                              <td>
                                  <div class="tw-overflow-auto"><?= $item['email'] ?></div>

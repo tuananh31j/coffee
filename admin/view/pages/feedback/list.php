@@ -15,7 +15,7 @@
             </div>
             <!-- tìm kiếm -->
             <div class="m-3">
-                <form action="index.php?url=comment&act=list" method="post">
+                <form action="index.php?url=feedback&act=list" method="post">
                     <input class="p-1 rounded-2 tw-border-2" type="text" name="keyword" placeholder="nội dung tìm kiếm...">
                     <input type="submit" name="btn-search" value="Tìm kiếm" class="p-1 border-1 text-light rounded-2 bg-black">
                     <p class="text-danger"><?= isset($errKw) ? $errKw : '' ?></p>

@@ -81,7 +81,9 @@
                                                         } ?></div>
                                 <span class="des__more tw-hidden tw-absolute tw-bg-white tw-text-gray-600 tw-z-10 tw-w-96 tw-p-4 tw-border-2 tw-border-red-900 tw-rounded tw-bottom-3"><?= $pro['des'] ?></span>
                             </td>
-                            <td><?= $pro['category_name'] ?></td>
+                            <td>
+                                <div class="tw-w-14 tw-overflow-auto"><?= $pro['category_name'] ?></div>
+                            </td>
                             <td><?= $pro['view'] ?></td>
                             <td><?= $pro['create_at'] ?></td>
                             <td><?= $pro['update_at'] ?></td>

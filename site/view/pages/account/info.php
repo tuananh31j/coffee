@@ -22,7 +22,7 @@
                                     <p class="fw-bold">Điện thoại: <span class="fw-lighter"><?= $_SESSION['user']['phone'] ?></span></p>
                                 </li>
                                 <li>
-                                    <p class="fw-bold">Địa chỉ: <span class="fw-lighter"><?= isset($_SESSION['user']['address']) ? $_SESSION['user']['name'] : '[Chưa có]' ?></span>
+                                    <p class="fw-bold">Địa chỉ: <span class="fw-lighter"><?= isset($_SESSION['user']['address']) ? $_SESSION['user']['address'] : '[Chưa có]' ?></span>
                                     </p>
                                 </li>
                             </ul>

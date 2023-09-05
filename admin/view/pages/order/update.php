@@ -6,7 +6,7 @@
             <h3 class="text-center my-5 tw-font-semibold tw-text-lg">CHI TIẾT ĐƠN HÀNG</h3>
             <p class="text-success"><?= isset($noti) ? $noti : '' ?></p>
             <div class="cart-products  row gap-3 align-items-center">
-                <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn text-decoration-none bg-danger text-light my-4 tw-w-28 tw-ms-4">Trở về</a>
+
                 <!-- item -->
                 <form action="index.php?url=order&act=update&id=<?= $id ?>" method="post">
                     <?php
