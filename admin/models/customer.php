@@ -56,9 +56,9 @@ function deleteCus($id) {
     pdo_execute($sql);
 }
 // chỉnh sửa
-function updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$id) {
-    $sql="update customer set name = ?, phone = ?, pass = ?, email = ?, status = ?, image_url = ?, role = ? where customer_id = ?";
-    pdo_execute($sql,$name, $phone, $pass,$email,$status,$img,$role,$id);
+function updateCustomer($name, $phone, $pass,$email,$status,$img,$role,$update_at,$id) {
+    $sql="update customer set name = ?, phone = ?, pass = ?, email = ?, status = ?, image_url = ?, role = ?, update_at = ? where customer_id = ?";
+    pdo_execute($sql,$name, $phone, $pass,$email,$status,$img,$role,$update_at,$id);
     
 }
 // lấy ra 1 user
@@ -76,4 +76,3 @@ function checkPhone($phone) {
     $sql = "select * from customer where phone = ?";
     return pdo_query_one($sql,$phone);
 }
-?>

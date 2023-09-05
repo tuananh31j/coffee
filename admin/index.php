@@ -641,9 +641,10 @@ if (isset($_GET['url'])) {
                         }
                         // vai trò
                         $role = $_POST['role'];
+                        $update_at = date("Y-m-d");
                         // id 
                         if (count($err) === 0) {
-                            updateCustomer($name, $phone, $pass, $email, $status, $img, $role, $id);
+                            updateCustomer($name, $phone, $pass, $email, $status, $img, $role, $update_at, $id);
                             $noti = "Cập nhật thành công!";
                             $target = getCusById($id);
                         } else {

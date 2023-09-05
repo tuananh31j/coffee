@@ -14,14 +14,14 @@
                     <!-- sđt -->
                     <div class="tw-mx-auto">
                         <label for="validationCustom03" class="form-label">Số điện thoại<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control tw-border-gray-700 tw-rounded tw-p-3 tw-w-80" placeholder="Nhập địa chỉ email" name="phone" value="" id="validationCustom03">
+                        <input type="text" class="form-control tw-border-gray-700 tw-rounded tw-p-3 tw-w-80" placeholder="Nhập số điện thoại" name="phone" value="" id="validationCustom03">
                         <p class="text-danger"><?= isset($err['phone']) ? $err['phone'] : '' ?></p>
                     </div>
 
                     <!-- email -->
                     <div class="tw-mx-auto">
                         <label for="validationCustom03" class="form-label">Email<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control tw-border-gray-700 tw-rounded tw-p-3 tw-w-80" placeholder="Nhập số điện thoại" name="email" value="" id="validationCustom03">
+                        <input type="text" class="form-control tw-border-gray-700 tw-rounded tw-p-3 tw-w-80" placeholder="Nhập địa chỉ email" name="email" value="" id="validationCustom03">
                         <p class="text-danger"><?= isset($err['email']) ? $err['email'] : '' ?></p>
                     </div>
 

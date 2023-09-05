@@ -38,7 +38,7 @@
                 <!-- mật khẩu -->
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">Mật khẩu<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" value="<?= isset($target['pass']) ? $target['pass'] : '' ?>" name="pass" id="validationCustom03" />
+                    <input type="text" class="form-control" value="<?= isset($target['pass']) ? $target['pass'] : '' ?>" name="pass" id="validationCustom03" />
                     <p class="text-danger"><?= isset($err['pass']) ? $err['pass'] : '' ?></p>
                     <div style="color: red"></div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="check">
                         <!-- on -->
                         <div class="form-check form-check-inline">
-                            <input checked class="form-check-input border-secondary" <?= (isset($target['status']) && $target['status'] == 1) ? 'checked' : '' ?> name="status" type="radio" value="1" />
+                            <input class="form-check-input border-secondary" <?= (isset($target['status']) && $target['status'] == 1) ? 'checked' : '' ?> name="status" type="radio" value="1" />
                             <label class="form-check-label" for="inlineCheckbox1">Hoạt động</label>
                         </div>
                         <!-- off -->
@@ -91,7 +91,7 @@
                     </div>
 
                 </div>
-                <!-- thêm -->
+                <!-- update -->
                 <div class="button">
                     <input type="reset" value="Nhập lại" class="p-2 bg-info rounded-2 border-0 text-light hover:tw-opacity-75">
                     <input type="submit" class="p-2 tw-bg-red-800 rounded-2 border-0 text-light hover:tw-opacity-75" value="Cập nhật" name="btn-update">

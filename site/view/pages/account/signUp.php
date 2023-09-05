@@ -4,9 +4,11 @@
         <div class="row tw-border-2 tw-  align-items-center rounded-start-2 w-100 position-relative py-5" style="justify-content: center;height: 700px;background-size: cover; filter: blur(3px); background-image: url(<?= $IMAGE ?>/bnLogin.jpg);"></div>
         <div class="row  align-items-center rounded-start-2 w-100 position-relative py-5" style="justify-content: center">
 
-            <div class="col-4 bg-secondary-subtle rounded-2 position-absolute tw-bottom-36 tw-w-[700px]" style="padding: 6px; margin-left: -12px; height: 607px;">
-                <h2 class="tw-text-xl tw-font-semibold tw-text-center tw-mt-8">ĐĂNG KÝ</h2>
-                <p class="tw-text-green-800 tw-text-center"><?= isset($noti) ? $noti : '' ?></p>
+            <div class="col-4 bg-secondary-subtle rounded-2 position-absolute tw-bottom-36 tw-w-[700px]" style="padding: 6px; margin-left: -12px; height: 616px;">
+                <div class="tw-h-10">
+                    <h2 class="tw-text-xl tw-font-semibold tw-text-center tw-mt-8">ĐĂNG KÝ</h2>
+                    <p class="tw-text-green-800 tw-text-center"><?= isset($noti) ? $noti : '' ?></p>
+                </div>
                 <form class="tw-flex tw-flex-col tw-justify-center tw-mt-14 tw-leading-9 tw-mx-auto" action="index.php?url=signup" method="post" enctype="multipart/form-data">
                     <!-- id -->
                     <div class="tw-mx-auto" hidden>
