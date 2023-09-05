@@ -22,7 +22,7 @@ function getListContact($fil, $sort,$kw, $offset) {
     $sql = "select * from contact where $keyword and $filter $sortCase limit 8 offset $offset";
     return pdo_query($sql);
 }
-// taonf bộ conteact
+// toàn bộ contact
 function getAllContact($fil, $sort,$kw) {
     $filter = 1;
     $sortCase = "order by contact_id desc";
@@ -55,4 +55,3 @@ function deleteContact($id) {
     $sql = "delete from contact where contact_id = ?";
     pdo_execute($sql,$id);
 }
-?>

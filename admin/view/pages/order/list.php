@@ -67,7 +67,7 @@
                             <!-- id đơn hàng -->
                             <input type="text" name="id-<?= $key ?>" value="<?= $item['order_id'] ?>" hidden>
                             <select name="status-<?= $key ?>" id="" class="p-1 border rounded-2">
-                                <option value="">Trạng thái</option>
+                                <option value="">----Trạng thái----</option>
                                 <option value="0">Chưa xác nhận</option>
                                 <option value="1">Xác nhận</option>
                                 <option value="2">Đang giao hàng</option>
